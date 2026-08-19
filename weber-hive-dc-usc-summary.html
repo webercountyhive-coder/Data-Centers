@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USC Marshall: Data Center Growth Policy Choices — The Weber County Hive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;0,8..60,600;0,8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f0e6;
+    --paper-card: #faf7ef;
+    --paper-card-2: #f0ecdf;
+    --ink: #1c1c1a;
+    --ink-dim: #5b5850;
+    --ink-dimmer: #8c8878;
+    --rust: #c0572e;
+    --amber: #d9a441;
+    --teal: #2e5f5a;
+    --blue: #3a5f7d;
+    --border: #ddd6c4;
+    --serif: 'Playfair Display', Georgia, serif;
+    --serif-body: 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--sans);
+    line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--rust); }
+
+  .wrap { max-width: 800px; margin: 0 auto; padding: 0 32px; }
+
+  .breadcrumb { font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); padding: 24px 0 0; }
+  .breadcrumb a { color: var(--ink-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--rust); }
+
+  header { padding: 20px 0 36px; border-bottom: 2px solid var(--ink); }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--rust); margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: var(--serif); font-weight: 800; font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 16px;
+  }
+
+  .dek { font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--ink-dim); max-width: 620px; }
+
+  .meta-row { display: flex; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .meta-item { font-family: var(--mono); font-size: 11.5px; color: var(--ink-dimmer); }
+  .meta-item strong { color: var(--ink-dim); font-weight: 500; }
+
+  .badge-pill {
+    display: inline-block; background: var(--teal); color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 3px; margin-bottom: 18px;
+  }
+
+  .flip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0 32px; }
+  .flip-card { perspective: 1000px; height: 148px; cursor: pointer; }
+  .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s; transform-style: preserve-3d; }
+  .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+  .flip-face {
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+    border-radius: 6px; padding: 16px; display: flex; flex-direction: column;
+    justify-content: center; box-sizing: border-box;
+  }
+  .flip-front { background: var(--paper-card); border: 2px solid var(--border); text-align: center; }
+  .flip-front:hover { border-color: var(--rust); }
+  .flip-back { background: var(--teal); color: var(--paper); transform: rotateY(180deg); border: 2px solid var(--teal); }
+  .flip-term { font-family: var(--serif); font-weight: 700; font-size: 18px; color: var(--ink); }
+  .flip-hint { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dimmer); margin-top: 8px; }
+  .flip-back-title { font-family: var(--serif); font-weight: 700; font-size: 13.5px; margin-bottom: 7px; }
+  .flip-back-def { font-family: var(--sans); font-size: 12.5px; line-height: 1.42; }
+  .flip-back a { color: var(--amber); }
+
+  nav.jumplinks {
+    display: flex; gap: 8px; flex-wrap: wrap; padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  nav.jumplinks button {
+    font-family: var(--mono); font-size: 11.5px; background: var(--paper-card);
+    border: 1px solid var(--border); color: var(--ink-dim); padding: 6px 12px;
+    border-radius: 3px; cursor: pointer; transition: border-color 0.15s, color 0.15s;
+  }
+  nav.jumplinks button:hover { border-color: var(--rust); color: var(--rust); }
+
+  section { padding: 44px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-num {
+    font-family: var(--mono); font-size: 11px; color: var(--rust);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+  }
+
+  h2 { font-family: var(--serif); font-weight: 700; font-size: 27px; margin-bottom: 18px; letter-spacing: -0.005em; }
+  h3 { font-family: var(--serif); font-weight: 700; font-size: 19px; margin: 30px 0 12px; }
+
+  p { margin-bottom: 15px; font-family: var(--serif-body); font-size: 16px; color: var(--ink); }
+  p.dim { color: var(--ink-dim); }
+
+  ul, ol { margin: 0 0 16px 22px; }
+  li { margin-bottom: 9px; font-family: var(--serif-body); font-size: 16px; }
+
+  .callout { border-radius: 4px; padding: 18px 22px; margin: 20px 0; font-size: 15px; background: var(--paper-card); }
+  .callout-claim { border: 1px dashed var(--blue); }
+  .callout-gap { border: 1px dashed var(--rust); }
+  .callout-confirm { border: 1px dashed var(--teal); }
+  .callout-label {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; display: block;
+  }
+  .callout-claim .callout-label { color: var(--blue); }
+  .callout-gap .callout-label { color: var(--rust); }
+  .callout-confirm .callout-label { color: var(--teal); }
+  .callout p { margin-bottom: 0; font-family: var(--sans); font-size: 14.5px; color: var(--ink-dim); }
+  .callout p + p { margin-top: 10px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 13.5px; }
+  th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--ink-dimmer); font-weight: 500;
+  }
+  td { font-family: var(--serif-body); color: var(--ink-dim); }
+  td.strong { color: var(--ink); font-weight: 600; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0 26px; }
+  .stat-card { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 16px 14px; text-align: center; }
+  .stat-card-num { font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--rust); margin-bottom: 4px; }
+  .stat-card-label { font-family: var(--mono); font-size: 10px; color: var(--ink-dimmer); text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .county-row { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 14px 18px; margin-bottom: 10px; }
+  .county-row-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+  .county-name { font-family: var(--serif); font-weight: 700; font-size: 15.5px; }
+  .county-date { font-family: var(--mono); font-size: 11px; color: var(--ink-dimmer); }
+  .county-detail { font-family: var(--sans); font-size: 13.5px; color: var(--ink-dim); }
+
+  .quote {
+    font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--ink-dim);
+    border-left: 3px solid var(--amber); padding-left: 20px; margin: 22px 0;
+  }
+  .quote cite { display: block; font-family: var(--mono); font-style: normal; font-size: 11.5px; color: var(--ink-dimmer); margin-top: 8px; }
+
+  .slide-ref { font-family: var(--mono); font-size: 11px; color: var(--ink-dimmer); }
+
+  details { margin: 16px 0; border: 1px solid var(--border); border-radius: 4px; padding: 4px 18px; background: var(--paper-card); }
+  summary { cursor: pointer; font-family: var(--mono); font-size: 12.5px; color: var(--rust); padding: 13px 0; }
+  details[open] summary { border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+  details p, details li { font-family: var(--sans); font-size: 13.5px; }
+
+  .sources { font-family: var(--sans); font-size: 13.5px; color: var(--ink-dimmer); }
+  .sources li { margin-bottom: 10px; font-family: var(--sans); }
+  .sources a { word-break: break-all; }
+
+  footer {
+    padding: 40px 0 64px; font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .flip-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 32px 0; }
+    .stat-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="breadcrumb"><a href="weber-hive-datacenters-docket.html">&larr; Data Centers Docket</a></div>
+
+  <header>
+    <div class="eyebrow">Case file 4 of 5 &middot; Aug. 19, 2026 EDWS interim hearing</div>
+    <h1>Data Center Growth: Policy Choices Facing Utah and Other States</h1>
+    <p class="dek">The one presentation at this hearing that didn't come from a state agency. USC Marshall's Shon Hiatt lays out the moratorium wave hitting Utah counties, the national cancellation numbers, and how Utah's incentives compare to its neighbors.</p>
+    <div class="meta-row">
+      <div class="meta-item"><strong>Presenter:</strong> Shon R. Hiatt, USC Marshall &mdash; Zage Business of Energy Initiative</div>
+      <div class="meta-item"><strong>Committee:</strong> Economic Development &amp; Workforce Services Interim</div>
+      <div class="meta-item"><strong>Date:</strong> August 19, 2026</div>
+    </div>
+  </header>
+
+  <section id="beginners">
+    <span class="badge-pill">Quick recap</span>
+    <p class="dim">Tap a term for a plain-language definition. Everything past this point assumes you know these.</p>
+
+    <div class="flip-grid">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Moratorium</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Moratorium</div>
+            <div class="flip-back-def">A local government's temporary freeze on accepting new applications for a type of project &mdash; here, data centers &mdash; while it studies or writes new rules.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Qualifying data center</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Qualifying data center</div>
+            <div class="flip-back-def">Utah's legal size threshold: at least 150,000 square feet, to get the state's sales &amp; use tax exemption.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">High-impact consumer</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">High-impact consumer</div>
+            <div class="flip-back-def">A large load customer or a qualifying data center &mdash; the category counties can levy a special energy excise tax on.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">GRAMA</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Government Records Access and Management Act</div>
+            <div class="flip-back-def">Utah's public records law &mdash; the one that determines whether a document about a data center deal has to be released if someone asks.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">NDA</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Non-disclosure agreement</div>
+            <div class="flip-back-def">A contract keeping deal details secret. Several states have banned governments from signing these with data centers; Utah's ban attempt failed in 2026.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Ordinance</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Ordinance</div>
+            <div class="flip-back-def">A law passed by a county or city commission &mdash; the tool counties are using to enact these moratoriums.</div>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">MIDA</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Military Installation Development Authority</div>
+            <div class="flip-back-def">A state authority that captures property tax increment inside its project areas, the same way UIPA and PIDs do. Stratos runs through a MIDA project area.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-confirm">
+      <span class="callout-label">Why this matters here</span>
+      <p>This deck is the only one of the five that reports what's happening at the county level in real time &mdash; moratoriums are ordinances, passed county by county, often specifically naming high-impact consumers or qualifying data centers as the thing being paused. The NDA and GRAMA terms matter because Utah's attempt to ban secrecy in these deals failed the same session SB 132 and HB 507 passed.</p>
+    </div>
+
+    <h2>What's different about this deck</h2>
+    <p class="dim">Every other presentation in this docket came from a Utah state agency with a stake in the outcome. This one didn't &mdash; and it's the only one that reports Stratos being delayed, BrightNight being stalled, and Provo rejecting a project outright.</p>
+  </section>
+
+  <nav class="jumplinks">
+    <button data-scroll-to="definitions">How states define this</button>
+    <button data-scroll-to="utah-today">Utah today</button>
+    <button data-scroll-to="moratoriums">The moratorium wave</button>
+    <button data-scroll-to="cancellations">Cancellations nationally</button>
+    <button data-scroll-to="incentives">Utah vs. its neighbors</button>
+    <button data-scroll-to="sources">Sources</button>
+  </nav>
+
+  <section id="definitions">
+    <div class="section-num">01</div>
+    <h2>How states define "big enough to regulate"</h2>
+    <p>There's no single national threshold for what counts as a data center worth writing a law about. Utah's own rules aren't even consistent with each other:</p>
+    <ul>
+      <li><strong>Utah's tax incentive</strong> applies to data centers of at least 150,000 square feet.</li>
+      <li><strong>Utah's utility law (SB 132)</strong> uses a completely different measure &mdash; large loads of 100 megawatts or more, regardless of building size.</li>
+      <li><strong>Utah's water law (HB 76)</strong> uses a third measure again: over 75 acre-feet/year of water withdrawal and over 10,000 square feet.</li>
+    </ul>
+    <p>Nationally, large-load utility thresholds range from 20 MW (proposed in Maine and Iowa) to 100 MW (enacted in Utah and Florida).</p>
+    <p class="slide-ref">&mdash; Slide 2, "Definition for policies varies across states and statutes"</p>
+  </section>
+
+  <section id="utah-today">
+    <div class="section-num">02</div>
+    <h2>Utah's data centers today</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-card-num">48</div><div class="stat-card-label">Operating (Apr 2026)</div></div>
+      <div class="stat-card"><div class="stat-card-num">920 MW</div><div class="stat-card-label">Combined capacity</div></div>
+      <div class="stat-card"><div class="stat-card-num">2,600 MW</div><div class="stat-card-label">Under construction</div></div>
+    </div>
+    <p class="dim">For scale: the deck notes a typical AI data center can use about as much electricity as 100,000 homes.</p>
+    <p>On water, the deck's finding is mixed: liquid cooling adoption remains gradual (about 22% of operators, under 10% of racks), but water use varies enormously across facilities &mdash; from Novva's minimal recirculated system to NSA's, which used roughly 120 million gallons over 12 months according to Salt Lake Tribune records requests cited in the deck.</p>
+    <p class="slide-ref">&mdash; Slides 3&ndash;4, "Utah's data centers: energy demand" and "water demand"</p>
+  </section>
+
+  <section id="moratoriums">
+    <div class="section-num">03</div>
+    <h2>Utah counties are acting ahead of the state</h2>
+    <p>The deck's most reportable finding: six local pauses in ten weeks, none of them driven by state action.</p>
+
+    <div class="county-row">
+      <div class="county-row-top"><span class="county-name">Salt Lake City</span><span class="county-date">March 26, 2026</span></div>
+      <div class="county-detail">Ords. 008/009: 200,000 gal/day water cap; 180-day rule blocks noncompliant applications. Not data-center-specific, but binding on any high-water facility.</div>
+    </div>
+    <div class="county-row">
+      <div class="county-row-top"><span class="county-name">Iron County</span><span class="county-date">May 2026</span></div>
+      <div class="county-detail">Ord. 2026-13: no new applications for data centers, data center power plants, or solar. Project Antelope's already-complete application proceeded under the old ordinance (approved June 4). BrightNight's proposed 1.5 GW project is on hold.</div>
+    </div>
+    <div class="county-row">
+      <div class="county-row-top"><span class="county-name">Box Elder County</span><span class="county-date">June 10, 2026</span></div>
+      <div class="county-detail">Ord. 654, unanimous. No new applications on unincorporated land.</div>
+    </div>
+    <div class="county-row">
+      <div class="county-row-top"><span class="county-name">Cache County</span><span class="county-date">June 23, 2026</span></div>
+      <div class="county-detail">Ord. 2026-32, unanimous. No new applications on unincorporated land; code "does not contain clear definitions or regulations."</div>
+    </div>
+    <div class="county-row">
+      <div class="county-row-top"><span class="county-name">Logan City</span><span class="county-date">June 30, 2026</span></div>
+      <div class="county-detail">Ord. 26-12: temporary prohibition on data centers and power plants while permanent rules are studied.</div>
+    </div>
+    <div class="county-row">
+      <div class="county-row-top"><span class="county-name">Grand County</span><span class="county-date">July 7, 2026</span></div>
+      <div class="county-detail">Precautionary; no application pending.</div>
+    </div>
+    <div class="county-row">
+      <div class="county-row-top"><span class="county-name">Wayne County</span><span class="county-date">July 21, 2026</span></div>
+      <div class="county-detail">Res. 2026-04, unanimous, immediate: covers data centers and data center power plants, including nuclear. The county's own ordinance "does not in any way address data centers" otherwise.</div>
+    </div>
+
+    <p class="slide-ref">&mdash; "Within Utah: counties are acting ahead of the state," statuses verified Aug. 16, 2026</p>
+
+    <div class="callout callout-claim">
+      <span class="callout-label">Direct connection</span>
+      <p>Iron County's moratorium is the same one Case File 3 traced against GOED's Opportunity Zone map and UIPA's Iron Springs/Enoch project area &mdash; the state-facilitated zone sits inside the same county that just voted to pause new applications.</p>
+    </div>
+  </section>
+
+  <section id="cancellations">
+    <div class="section-num">04</div>
+    <h2>The national picture: opposition is winning money away from projects</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-card-num">$156B</div><div class="stat-card-label">Cancelled/delayed, all of 2025</div></div>
+      <div class="stat-card"><div class="stat-card-num">$130B</div><div class="stat-card-label">Cancelled/delayed, Q1 2026 alone</div></div>
+      <div class="stat-card"><div class="stat-card-num">60%</div><div class="stat-card-label">Of 2027-planned capacity hasn't broken ground</div></div>
+    </div>
+    <p>The top concerns driving opposition nationally, per the deck's own survey data: noise/light/quality of life (51%), land use and place preservation (43%), water use and hydrology (40%), infrastructure and traffic (34%), and energy/grid capacity (34%). Tax incentives and subsidies rank last among stated concerns, at just 6%.</p>
+    <p class="slide-ref">&mdash; "Growing data center opposition and cancellations"</p>
+
+    <h3>States are starting to reverse course</h3>
+    <p>Thirteen states are considering substantially unwinding their data center tax incentives. Three states paused theirs outright in 2026 (Arizona, Illinois, Ohio), and Minnesota trimmed its exemption while adding a new energy-based fee. Texas's incentive is now estimated at $3.3 billion a year &mdash; one of the most expensive tax breaks in the state.</p>
+    <details>
+      <summary>The state moratorium tracker (as of July 2026)</summary>
+      <ul>
+        <li><strong>New York</strong> &mdash; one-year pause via executive order (50 MW threshold); bill awaits governor</li>
+        <li><strong>Virginia</strong> &mdash; no final approvals until interconnection requests are filled, or July 2028</li>
+        <li><strong>Delaware</strong> &mdash; permits paused for 100 MW+ until January 2027</li>
+        <li><strong>Georgia</strong> &mdash; no local permitting until December 2028 (introduced)</li>
+        <li><strong>Michigan</strong> &mdash; no new approvals until April 2027 (introduced)</li>
+        <li><strong>Pennsylvania</strong> &mdash; 3-year moratorium plus studies proposed, or municipal bans</li>
+        <li><strong>South Carolina, Vermont</strong> &mdash; introduced, pending</li>
+        <li><strong>Maine, Maryland, Minnesota, New Hampshire, Oklahoma, South Dakota, Wisconsin</strong> &mdash; failed or vetoed as of this tracker</li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="incentives">
+    <div class="section-num">05</div>
+    <h2>How Utah's incentives compare to its neighbors</h2>
+    <table>
+      <thead><tr><th>State</th><th>Sales tax</th><th>Electricity</th><th>Property tax</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="strong">Utah</td><td>Yes</td><td>No</td><td>No&dagger;</td><td>Over 150,000 sq ft; HB 76 water reporting; HB 507 local incentives via zones only from May 2027; county energy tax up to 6%; Gov. Cox EO 2026-03 directs a "Data Center Framework"</td></tr>
+        <tr><td class="strong">Nevada</td><td>Yes (rate to 2%)</td><td>Yes</td><td>Up to 75% abated</td><td>50% of construction workers must be NV residents</td></tr>
+        <tr><td class="strong">Arizona</td><td>Yes</td><td>No</td><td>No</td><td>Exemption paused 3 yrs by statute</td></tr>
+        <tr><td class="strong">Idaho</td><td>Yes (server equip.)</td><td>No</td><td>Partial</td><td>2026 law limits consumptive water cooling</td></tr>
+        <tr><td class="strong">Wyoming</td><td>Yes</td><td>Exempt if &gt;$50M</td><td>No</td><td>Jobs "appropriate to size"</td></tr>
+        <tr><td class="strong">Colorado</td><td>No incentive</td><td>&mdash;</td><td>&mdash;</td><td></td></tr>
+        <tr><td class="strong">New Mexico</td><td>No incentive</td><td>&mdash;</td><td>&mdash;</td><td>Regulators rejected a pipeline serving a 2.5 GW campus</td></tr>
+      </tbody>
+    </table>
+    <p class="dim">Nationally, 31 states set capital-investment minimums as a condition of incentives; a smaller number require job creation, clawbacks, or sunset dates.</p>
+    <p class="slide-ref">&mdash; "How Utah compares to its neighbors in incentives/policy"</p>
+
+    <div class="callout callout-gap">
+      <span class="callout-label">&dagger; This deck's table understates Utah's property tax picture</span>
+      <p>The "No" in Utah's property tax column is only true for a statewide <em>statutory abatement written specifically for data centers</em> &mdash; which doesn't exist by that name. It's not true that Utah has no property-tax mechanism a data center can benefit from. Three confirmed, separate examples &mdash; and the third is the biggest:</p>
+      <p><strong>UIPA, statewide:</strong> The Utah Inland Port Authority runs <strong>fifteen</strong> project areas across the state &mdash; West Weber, Tooele Valley, Pony Express, Central Utah Agri-Park, Historic Capitol, Mineral Mountains, Iron Springs, Ancient Sky, Golden Spike, Northwest Quadrant, Twenty Wells, Black Gold, Verk Industrial Park, Castle Country, and Skyline Corridor. This isn't one county's exception: UIPA's own recruitment strategy explicitly names "technology and data centers (low water use)" as a favored industry, with post-performance property tax rebates up to 20% of assessed value for 25 years, scaled to capital investment ($15M minimum, up to 20% at $50M+). Any data center locating in any of these fifteen zones can apply.</p>
+      <p><strong>MIDA:</strong> Stratos runs through a MIDA project area, approved by the MIDA board April 24, 2026, and MIDA project areas capture property tax increment the same way UIPA zones do. Our own GRAMA requests to Box Elder County and the Utah Tax Commission are specifically examining whether Stratos's base-year property valuation was set in a way that maximizes that captured increment.</p>
+      <p><strong>Local RDA/CRA abatement:</strong> Meta's Eagle Mountain data center received a documented package including a 100% exemption on personal property and an 80% reduction on real property, structured over a 20-to-40-year framework and granted by local taxing entities.</p>
+      <p><strong>Ordinary county/city CRA authority, the broadest tool of all:</strong> Beyond UIPA, MIDA, and one-off local deals like Meta's, any Utah county or city can create its own Community Reinvestment Area under Title 17C and set its own abatement terms &mdash; no state statute, UIPA membership, or MIDA project area required. This isn't hypothetical: Weber County's own CRA record shows the tool in active, general use &mdash; the Nordic Village PID (roughly $47 million in property tax redirected over 30&ndash;40 years), the Airport Community Reinvestment Project Area (tax increment reduced from 90% to 75%, capped at $17 million over 18 years), and a standing county policy setting a baseline 50%-for-10-years abatement. None of those specific deals is a data center, but they confirm the underlying mechanism &mdash; ordinary county CRA authority &mdash; is live, general-purpose, and available to any commercial project a county wants to attract, data centers included.</p>
+      <p>Four different mechanisms, four different administering bodies, all producing the same result a national comparison table built around statewide statutes is structurally prone to miss.</p>
+    </div>
+
+    <div class="callout callout-gap">
+      <span class="callout-label">Worth noting</span>
+      <p>Utah is one of only 11 states nationally with zero jobs/wage conditions attached to its incentives &mdash; 23 states require job creation (from 5 jobs in Maryland to 100 in Massachusetts), and at least 11 require those jobs to pay above a wage floor. Utah's median "data center technician" pay ($49,188) and "data center electrical engineer" pay ($134,244) both run below the national medians for those roles ($54,031 and $147,461).</p>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="section-num">Sources</div>
+    <h2>Primary sources</h2>
+    <ul class="sources">
+      <li>Shon R. Hiatt, USC Marshall Zage Business of Energy Initiative, "Data Center Growth: Policy Choices Facing Utah and Other States," presented to the Economic Development and Workforce Services Interim Committee, Aug. 19, 2026.</li>
+      <li>Sources cited within the deck: NCSL "Subsidizing Servers" (Apr. 2026); NCSL "Which States Are Banning Data Centers" (Jul. 2026); Multistate "State Data Center Water Usage Legislation Gains Momentum" (Mar. 2026); Salt Lake Tribune data center water use records; Data Center Watch cancellation tracker (2023&ndash;Q2 2026); JPMorgan 2027 capacity pipeline (May 2025).</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span><a href="weber-hive-datacenters-docket.html">&larr; Back to Data Centers Docket</a></span>
+    <span>&copy; 2026 The Weber County Hive</span>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('button[data-scroll-to]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.scrollTo);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
