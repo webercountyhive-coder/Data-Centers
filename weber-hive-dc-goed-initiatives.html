@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOED: Data Center Initiatives — The Weber County Hive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;0,8..60,600;0,8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f0e6;
+    --paper-card: #faf7ef;
+    --paper-card-2: #f0ecdf;
+    --ink: #1c1c1a;
+    --ink-dim: #5b5850;
+    --ink-dimmer: #8c8878;
+    --rust: #c0572e;
+    --amber: #d9a441;
+    --teal: #2e5f5a;
+    --blue: #3a5f7d;
+    --border: #ddd6c4;
+    --serif: 'Playfair Display', Georgia, serif;
+    --serif-body: 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--rust); }
+
+  .wrap { max-width: 800px; margin: 0 auto; padding: 0 32px; }
+
+  .breadcrumb { font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); padding: 24px 0 0; }
+  .breadcrumb a { color: var(--ink-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--rust); }
+
+  header { padding: 20px 0 36px; border-bottom: 2px solid var(--ink); }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--rust); margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: var(--serif); font-weight: 800; font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 16px;
+  }
+
+  .dek { font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--ink-dim); max-width: 620px; }
+
+  .meta-row { display: flex; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .meta-item { font-family: var(--mono); font-size: 11.5px; color: var(--ink-dimmer); }
+  .meta-item strong { color: var(--ink-dim); font-weight: 500; }
+
+  .badge-pill {
+    display: inline-block; background: var(--teal); color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 3px; margin-bottom: 18px;
+  }
+
+  .step-list { list-style: none; margin: 26px 0 0; padding: 0; }
+  .step-item { display: flex; gap: 18px; margin-bottom: 24px; }
+  .step-item:last-child { margin-bottom: 0; }
+  .step-circle {
+    flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+    border: 2px solid var(--teal); color: var(--teal); font-family: var(--mono);
+    font-size: 14px; font-weight: 500; display: flex; align-items: center; justify-content: center;
+  }
+  .step-body h4 { font-family: var(--serif); font-weight: 700; font-size: 16.5px; margin-bottom: 5px; }
+  .step-body p { font-family: var(--sans); font-size: 14.5px; color: var(--ink-dim); margin-bottom: 0; }
+
+  .path-picker { margin-top: 20px; margin-bottom: 32px; }
+  .path-picker-label {
+    font-family: var(--mono); font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-dimmer); margin-bottom: 14px;
+  }
+  .path-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .path-btn {
+    flex: 1 1 220px; background: var(--paper-card); border: 2px solid var(--border);
+    border-radius: 6px; padding: 18px 20px; text-align: left; cursor: pointer;
+    font-family: var(--sans); transition: border-color 0.15s, background 0.15s;
+  }
+  .path-btn:hover { border-color: var(--ink-dimmer); }
+  .path-btn.active { border-color: var(--rust); background: rgba(192, 87, 46, 0.06); }
+  .path-btn-title { font-family: var(--serif); font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 4px; }
+  .path-btn-sub { font-size: 13px; color: var(--ink-dim); }
+
+  .path-result { border-radius: 6px; padding: 22px 24px; display: none; }
+  .path-result.show { display: block; }
+  .path-result.edtif { background: rgba(58, 95, 125, 0.08); border: 1px dashed var(--blue); }
+  .path-result.redtif { background: rgba(46, 95, 90, 0.08); border: 1px dashed var(--teal); }
+  .path-result-title { font-family: var(--serif); font-weight: 700; font-size: 17px; margin-bottom: 10px; color: var(--ink); }
+  .path-result ul { margin: 10px 0 0 20px; }
+  .path-result li { font-family: var(--sans); font-size: 14px; color: var(--ink-dim); margin-bottom: 7px; }
+  .path-result-tag {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    display: inline-block; margin-bottom: 10px; padding: 3px 9px; border-radius: 3px;
+  }
+  .path-result.edtif .path-result-tag { color: var(--blue); background: rgba(58, 95, 125, 0.12); }
+  .path-result.redtif .path-result-tag { color: var(--teal); background: rgba(46, 95, 90, 0.12); }
+
+  nav.jumplinks {
+    display: flex; gap: 8px; flex-wrap: wrap; padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  nav.jumplinks button {
+    font-family: var(--mono); font-size: 11.5px; background: var(--paper-card);
+    border: 1px solid var(--border); color: var(--ink-dim); padding: 6px 12px;
+    border-radius: 3px; cursor: pointer; transition: border-color 0.15s, color 0.15s;
+  }
+  nav.jumplinks button:hover { border-color: var(--rust); color: var(--rust); }
+
+  section { padding: 44px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-num {
+    font-family: var(--mono); font-size: 11px; color: var(--rust);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+  }
+
+  h2 { font-family: var(--serif); font-weight: 700; font-size: 27px; margin-bottom: 18px; letter-spacing: -0.005em; }
+  h3 { font-family: var(--serif); font-weight: 700; font-size: 19px; margin: 30px 0 12px; }
+
+  p { margin-bottom: 15px; font-family: var(--serif-body); font-size: 16px; color: var(--ink); }
+  p.dim { color: var(--ink-dim); }
+
+  ul, ol { margin: 0 0 16px 22px; }
+  li { margin-bottom: 9px; font-family: var(--serif-body); font-size: 16px; }
+
+  .plain-box { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 30px 30px 20px; }
+  .plain-box p:last-child { margin-bottom: 0; }
+
+  .callout { border-radius: 4px; padding: 18px 22px; margin: 20px 0; font-size: 15px; background: var(--paper-card); }
+  .callout-claim { border: 1px dashed var(--blue); }
+  .callout-gap { border: 1px dashed var(--rust); }
+  .callout-confirm { border: 1px dashed var(--teal); }
+  .callout-label {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; display: block;
+  }
+  .callout-claim .callout-label { color: var(--blue); }
+  .callout-gap .callout-label { color: var(--rust); }
+  .callout-confirm .callout-label { color: var(--teal); }
+  .callout p { margin-bottom: 0; font-family: var(--sans); font-size: 14.5px; color: var(--ink-dim); }
+  .callout p + p { margin-top: 10px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--ink-dimmer); font-weight: 500;
+  }
+  td { font-family: var(--serif-body); color: var(--ink-dim); }
+  td.strong { color: var(--ink); font-weight: 600; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0 26px; }
+  .stat-card { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 16px 14px; text-align: center; }
+  .stat-card-num { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--rust); margin-bottom: 4px; }
+  .stat-card-label { font-family: var(--mono); font-size: 10.5px; color: var(--ink-dimmer); text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .quote {
+    font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--ink-dim);
+    border-left: 3px solid var(--amber); padding-left: 20px; margin: 22px 0;
+  }
+  .quote cite { display: block; font-family: var(--mono); font-style: normal; font-size: 11.5px; color: var(--ink-dimmer); margin-top: 8px; }
+
+  .slide-ref { font-family: var(--mono); font-size: 11px; color: var(--ink-dimmer); }
+
+  .county-row {
+    background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px;
+    padding: 16px 20px; margin-bottom: 12px;
+  }
+  .county-name { font-family: var(--serif); font-weight: 700; font-size: 15.5px; margin-bottom: 10px; }
+  .county-name .maybe { font-family: var(--mono); font-size: 10.5px; color: var(--ink-dimmer); font-weight: 400; }
+  .match-pair { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pill { font-family: var(--mono); font-size: 12px; padding: 6px 12px; border-radius: 5px; flex: 1 1 220px; }
+  .pill-uipa { background: rgba(58, 95, 125, 0.08); color: var(--blue); border: 1px solid rgba(58, 95, 125, 0.3); }
+  .pill-oz { background: rgba(217, 164, 65, 0.12); color: #8a6420; border: 1px solid rgba(217, 164, 65, 0.4); }
+
+  .no-overlap-box { background: var(--paper-card-2); border: 1px solid var(--border); border-radius: 6px; padding: 20px 22px; margin-top: 8px; }
+  .no-overlap-box h4 { font-family: var(--serif); font-weight: 700; font-size: 15px; margin-bottom: 12px; color: var(--ink-dim); }
+  .no-overlap-list { columns: 2; column-gap: 24px; font-family: var(--sans); font-size: 13px; color: var(--ink-dimmer); }
+  .no-overlap-list div { margin-bottom: 8px; break-inside: avoid; }
+
+  .legend { display: flex; gap: 20px; margin: 18px 0 24px; font-family: var(--mono); font-size: 12px; color: var(--ink-dim); }
+  .legend-swatch { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+
+  details { margin: 16px 0; border: 1px solid var(--border); border-radius: 4px; padding: 4px 18px; background: var(--paper-card); }
+  summary { cursor: pointer; font-family: var(--mono); font-size: 12.5px; color: var(--rust); padding: 13px 0; }
+  details[open] summary { border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+  details p, details li { font-family: var(--sans); font-size: 13.5px; }
+
+  .sources { font-family: var(--sans); font-size: 13.5px; color: var(--ink-dimmer); }
+  .sources li { margin-bottom: 10px; font-family: var(--sans); }
+  .sources a { word-break: break-all; }
+
+  footer {
+    padding: 40px 0 64px; font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+
+  .flip-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin: 22px 0 32px;
+  }
+  .flip-card { perspective: 1000px; height: 148px; cursor: pointer; }
+  .flip-card-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.5s; transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+  .flip-face {
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+    border-radius: 6px; padding: 16px; display: flex; flex-direction: column;
+    justify-content: center; box-sizing: border-box;
+  }
+  .flip-front { background: var(--paper-card); border: 2px solid var(--border); text-align: center; }
+  .flip-front:hover { border-color: var(--rust); }
+  .flip-back { background: var(--teal); color: var(--paper); transform: rotateY(180deg); border: 2px solid var(--teal); }
+  .flip-term { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--ink); }
+  .flip-hint { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dimmer); margin-top: 8px; }
+  .flip-back-title { font-family: var(--serif); font-weight: 700; font-size: 14px; margin-bottom: 7px; }
+  .flip-back-def { font-family: var(--sans); font-size: 12.5px; line-height: 1.42; }
+  .flip-back a { color: var(--amber); }
+
+  @media (max-width: 640px) {
+    .flip-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 32px 0; }
+    .plain-box { padding: 22px 20px 12px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .no-overlap-list { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="breadcrumb"><a href="weber-hive-datacenters-docket.html">&larr; Data Centers Docket</a></div>
+
+  <header>
+    <div class="eyebrow">Case file 3 of 5 &middot; Aug. 19, 2026 EDWS interim hearing</div>
+    <h1>Data Center Initiatives</h1>
+    <p class="dek">GOED's own posture: "We aren't actively recruiting data centers. We work to match communities to projects." Here's what its incentive tools actually offer, the one deal it's made, and where its 2026 Opportunity Zone map lands.</p>
+    <div class="meta-row">
+      <div class="meta-item"><strong>Presenter:</strong> Governor's Office of Economic Development</div>
+      <div class="meta-item"><strong>Committee:</strong> Economic Development &amp; Workforce Services Interim</div>
+      <div class="meta-item"><strong>Date:</strong> August 19, 2026</div>
+    </div>
+  </header>
+
+  <section id="beginners">
+    <span class="badge-pill">Quick recap</span>
+    <p class="dim">Tap a term for a plain-language definition. Everything past this point assumes you know these.</p>
+
+    <div class="flip-grid" id="flip-grid">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">PID</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Public Infrastructure District</div>
+            <div class="flip-back-def">A special taxing area that borrows money to build things like roads and sewer lines, then bills the people who move in later to pay it back. <a href="https://weber-county-hive.github.io/PIDS-Utah/" target="_blank" rel="noopener">Full explainer &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">TIF</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Tax Increment Financing</div>
+            <div class="flip-back-def">When a government redirects the extra tax money new development creates, instead of collecting it as usual. The underlying idea behind PIDs, HTRZs, and UIPA zones alike.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">UIPA</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Utah Inland Port Authority</div>
+            <div class="flip-back-def">A state agency that can create its own tax-break project areas and capture tax revenue from land anywhere in Utah &mdash; not just near an actual port.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">HTRZ</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Housing &amp; Transit Reinvestment Zone</div>
+            <div class="flip-back-def">A zone near a transit station where a city redirects growth in property tax to help pay for dense housing development nearby.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">CRA</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Community Reinvestment Agency</div>
+            <div class="flip-back-def">The local body a city or county sets up to actually manage and spend TIF, PID, or zone money once it's been approved.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">RSDZ</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Regionally Significant Development Zone</div>
+            <div class="flip-back-def">A new state-approved zone (2026) for large projects, including data centers, that combines multiple tax tools under a state committee's oversight rather than the local government's.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-confirm">
+      <span class="callout-label">Why this matters here</span>
+      <p>Everything on this page runs on those six mechanics. GOED's EDTIF and REDTIF credits, below, are TIF's cousin &mdash; a rebate of new tax revenue, not new taxpayer money. The Creekstone deal and GOED's Opportunity Zone map both work the same way. And UIPA matters specifically because it's a <em>separate</em> state agency handing out its own zones and rebates alongside GOED's &mdash; which is exactly the comparison later in this page.</p>
+    </div>
+
+    <h2>Two ways Utah offers a tax break to a data center</h2>
+    <p class="dim">This part matters no matter how familiar you are with TIF generally &mdash; it's specific to how GOED actually applies it, and everything later on this page assumes you've seen it.</p>
+
+    <div class="path-picker">
+      <div class="path-picker-label">Try it: pick a project location and see the terms</div>
+      <div class="path-buttons">
+        <button class="path-btn" id="btn-edtif" onclick="selectPath('edtif')">
+          <div class="path-btn-title">Urban project</div>
+          <div class="path-btn-sub">EDTIF &mdash; Economic Development Tax Increment Financing</div>
+        </button>
+        <button class="path-btn" id="btn-redtif" onclick="selectPath('redtif')">
+          <div class="path-btn-title">Rural project</div>
+          <div class="path-btn-sub">REDTIF &mdash; Rural Economic Development TIF</div>
+        </button>
+      </div>
+
+      <div class="path-result edtif" id="result-edtif">
+        <span class="path-result-tag">EDTIF terms</span>
+        <div class="path-result-title">Urban tool &mdash; tighter eligibility, smaller rebate.</div>
+        <ul>
+          <li>Limited to GOED's targeted industries only</li>
+          <li>Wages must reach 110% of the average county wage</li>
+          <li>Rebates up to 30% of new state tax revenue, paid only after performance</li>
+          <li>Comes with a service requirement</li>
+        </ul>
+      </div>
+
+      <div class="path-result redtif" id="result-redtif">
+        <span class="path-result-tag">REDTIF terms</span>
+        <div class="path-result-title">Rural tool &mdash; looser eligibility, bigger rebate.</div>
+        <ul>
+          <li>Targeted industries are preferred, not required</li>
+          <li>Wages only need to reach 100% of the average county wage</li>
+          <li>Rebates up to 50% of new state tax revenue, based on location and project size, paid only after performance</li>
+          <li>Also comes with a service requirement</li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="step-list">
+      <li class="step-item">
+        <div class="step-circle">1</div>
+        <div class="step-body">
+          <h4>A company applies.</h4>
+          <p>GOED's economic growth team, an incentives manager, and GOED leadership vet the application first.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle">2</div>
+        <div class="step-body">
+          <h4>The GOED Board reviews it &mdash; twice.</h4>
+          <p>The board's incentive committee conducts a formal review, then the full board votes at a public meeting.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle">3</div>
+        <div class="step-body">
+          <h4>The commissioner signs off.</h4>
+          <p>Final approval runs through GOED's commissioner before anything is finalized.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle">4</div>
+        <div class="step-body">
+          <h4>Nothing gets paid until the company delivers.</h4>
+          <p>Both EDTIF and REDTIF are post-performance &mdash; the state rebates a share of new tax revenue only after jobs and investment materialize, not upfront cash.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <nav class="jumplinks">
+    <button data-scroll-to="posture">GOED's posture</button>
+    <button data-scroll-to="creekstone">Creekstone Energy</button>
+    <button data-scroll-to="oz">Opportunity Zones</button>
+    <button data-scroll-to="gap">Reading it together</button>
+    <button data-scroll-to="sources">Sources</button>
+  </nav>
+
+  <section id="posture">
+    <div class="section-num">01</div>
+    <h2>GOED's stated posture and framework</h2>
+    <blockquote class="quote">
+      "We aren't actively recruiting data centers. We work to match communities to projects."
+      <cite>Slide 3, GOED presentation</cite>
+    </blockquote>
+    <p>GOED lists five industries it actively targets: aerospace and defense, fintech, life sciences and health care, tech (AI, quantum, blockchain), and energy and minerals &mdash; plus a broader "ecosystems and manufacturing" category. Data centers aren't named as a targeted industry on their own; they fall under the tech umbrella.</p>
+
+    <h3>The five-principle incentive framework</h3>
+    <p>GOED says every incentive is evaluated against five guiding principles:</p>
+    <ul>
+      <li><strong>Outcomes</strong>, not outputs</li>
+      <li><strong>Additionality</strong> &mdash; would the project have happened without the incentive?</li>
+      <li><strong>Human-centered</strong> &mdash; does it help the economy and the people in it?</li>
+      <li><strong>Transparency</strong> &mdash; "full and complete"</li>
+      <li><strong>Accountability</strong> &mdash; performance is expected and upheld</li>
+    </ul>
+    <p class="slide-ref">&mdash; Slide 10, "Incentive decision framework"</p>
+
+    <h3>On cash and abatements</h3>
+    <p>GOED draws a specific distinction on this slide: a use-based sales tax exemption exists for equipment at qualifying data centers (created by S.B. 114, 2020), but GOED itself "doesn't offer abatements or cash incentives to any project." That's consistent with how EDTIF and REDTIF actually work &mdash; both are post-performance rebates of new tax revenue the state wouldn't have collected otherwise, not upfront payments or reductions to an existing tax bill. If you want the full mechanics of how tax increment financing works generally &mdash; the same underlying concept behind PIDs, TIF, and UIPA project areas &mdash; see our <a href="https://weber-county-hive.github.io/PIDS-Utah/pid_mechanism_map.html" target="_blank" rel="noopener">PID Mechanism Map</a>.</p>
+    <p class="slide-ref">&mdash; Slide 6, "Note on tax exemptions, abatements, and cash"</p>
+  </section>
+
+  <section id="creekstone">
+    <div class="section-num">02</div>
+    <h2>Creekstone Energy: the only data center incentive GOED has given</h2>
+    <p>Of every data center operating or under construction in Utah, GOED's deck identifies exactly one that has received a state post-performance incentive: <strong>Creekstone Energy</strong>, near Delta in Millard County.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-card-num">$17B+</div><div class="stat-card-label">Projected investment</div></div>
+      <div class="stat-card"><div class="stat-card-num">$344M</div><div class="stat-card-label">Projected new state revenue</div></div>
+      <div class="stat-card"><div class="stat-card-num">$333M</div><div class="stat-card-label">Projected wages</div></div>
+      <div class="stat-card"><div class="stat-card-num">106</div><div class="stat-card-label">Projected permanent jobs</div></div>
+      <div class="stat-card"><div class="stat-card-num">50%</div><div class="stat-card-label">Post-performance credit rate</div></div>
+      <div class="stat-card"><div class="stat-card-num">20 yrs</div><div class="stat-card-label">Credit duration</div></div>
+    </div>
+    <p class="dim">GOED also notes Creekstone runs on behind-the-meter power (various sources planned) and describes a "deep partnership" with Millard County and Delta built over a long, high-engagement process.</p>
+    <p class="slide-ref">&mdash; Slide 9, "Only one post-performance state incentive for a data center"</p>
+
+    <h3>The statewide numbers around it</h3>
+    <p>Utah hosts 48 operational data centers with just over 1 GW of combined capacity, with another 2.6 GW under active construction. GOED frames the state as "mid-tier" nationally &mdash; for comparison, Texas recently paused to evaluate 474 GW of data center power connection requests. GOED projects 2,000&ndash;3,250 permanent data center jobs statewide by 2030, citing the Gardner Policy Institute (March 2026).</p>
+    <p class="slide-ref">&mdash; Slide 11, "Metrics, scale, jobs, and direction"</p>
+  </section>
+
+  <section id="oz">
+    <div class="section-num">03</div>
+    <h2>The 2026 Opportunity Zone map</h2>
+    <p>GOED's deck includes a map of "recommended" Opportunity Zones for 2026, with this explanation of the process:</p>
+    <ul>
+      <li>50% of the 2026 process is based on feedback from communities and stakeholders</li>
+      <li>The rest is primarily quantitative analysis of infrastructure and readiness</li>
+      <li>GOED frames it as "a tool for enabling further growth" &mdash; areas the state wants "prepared"</li>
+    </ul>
+    <p class="slide-ref">&mdash; Slide 4, "How is GOED identifying recommended OZs?"</p>
+
+    <div class="callout callout-claim">
+      <span class="callout-label">Statutory basis</span>
+      <p>This map traces back to H.B. 475 (2026), which renamed GOEO to GOED and created the Economic Opportunity Coordinating Council &mdash; explicitly requiring the council to "create a working group to provide oversight for the opportunity zone application process in 2026." The map on this slide is that process's first public output.</p>
+    </div>
+
+    <h3>Where the zones land relative to UIPA</h3>
+    <div class="plain-box">
+      <p><strong>The simple version:</strong> when you lay GOED's four new 2026 Opportunity Zones next to UIPA's fifteen existing project areas, three of them land in the exact same county as an existing UIPA zone, and a fourth is a plausible match. Out of only four new zones, that's not a coincidence &mdash; it means GOED's "new" push is landing almost entirely on ground the state already has incentive tools in, rather than opening up fresh territory.</p>
+      <p>The technical breakdown of exactly which counties match is below, for anyone who wants to check our work.</p>
+    </div>
+
+    <p>Separately from GOED's own map, <a href="https://github.com/Weber-County-Hive/UIPA" target="_blank" rel="noopener">UIPA</a> publishes its own project-area map. Laid side by side by county, three of GOED's four visible Opportunity Zones sit on top of counties UIPA already operates in, and a fourth is a plausible match.</p>
+
+    <div class="callout callout-gap">
+      <span class="callout-label">Caveat</span>
+      <p>This is a county-level comparison only, not a GIS overlay &mdash; neither source map has published coordinates. It shows the two zones fall in the same county, not that their boundaries are identical.</p>
+    </div>
+
+    <div class="county-row">
+      <div class="county-name">Tooele County</div>
+      <div class="match-pair">
+        <div class="pill pill-uipa">UIPA &middot; Tooele Valley &middot; 242 ac</div>
+        <div class="pill pill-oz">GOED OZ &middot; Great Salt Lake Desert / Dugway</div>
+      </div>
+    </div>
+
+    <div class="county-row">
+      <div class="county-name">Duchesne County</div>
+      <div class="match-pair">
+        <div class="pill pill-uipa">UIPA &middot; Black Gold &middot; 2,780 ac</div>
+        <div class="pill pill-oz">GOED OZ &middot; Uinta / Duchesne area</div>
+      </div>
+    </div>
+
+    <div class="county-row">
+      <div class="county-name">Iron County</div>
+      <div class="match-pair">
+        <div class="pill pill-uipa">UIPA &middot; Iron Springs &middot; 4,018 ac (incl. Enoch)</div>
+        <div class="pill pill-oz">GOED OZ &middot; St. George / Enoch</div>
+      </div>
+    </div>
+
+    <div class="county-row">
+      <div class="county-name">Sanpete / Sevier / Wayne <span class="maybe">(possible)</span></div>
+      <div class="match-pair">
+        <div class="pill pill-uipa">UIPA &middot; Skyline Corridor &middot; 1,415 ac</div>
+        <div class="pill pill-oz">GOED OZ &middot; near Fishlake National Forest</div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><span class="legend-swatch" style="background:var(--blue)"></span>Existing UIPA project area</span>
+      <span><span class="legend-swatch" style="background:#d9a441"></span>GOED proposed Opportunity Zone</span>
+    </div>
+
+    <div class="no-overlap-box">
+      <h4>UIPA areas with no visible Opportunity Zone overlap</h4>
+      <div class="no-overlap-list">
+        <div>West Weber &mdash; Weber Co., 9,000 ac</div>
+        <div>Pony Express &mdash; Fairfield/Cedar Fort/Payson, 1,700 ac</div>
+        <div>Central Utah Agri-Park &mdash; Juab Co., 42,820 ac</div>
+        <div>Historic Capitol &mdash; Millard Co., 1,960 ac</div>
+        <div>Mineral Mountains &mdash; Beaver Co., 25,427 ac</div>
+        <div>Ancient Sky &mdash; San Juan Co., 5,300 ac</div>
+        <div>Golden Spike &mdash; Box Elder Co., 1,500 ac</div>
+        <div>Northwest Quadrant &mdash; Salt Lake Co., 16,000 ac</div>
+        <div>Twenty Wells &mdash; Grantsville, 498 ac</div>
+        <div>Verk Industrial Park &mdash; Spanish Fork, 2,600 ac</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gap">
+    <div class="section-num">04</div>
+    <h2>Reading it together</h2>
+    <p>Ten of UIPA's fifteen project areas &mdash; including its two largest, Central Utah Agri-Park (42,820 ac, Juab County) and Mineral Mountains (25,427 ac, Beaver County) &mdash; sit in counties GOED's map doesn't touch at all. The overlap isn't broad geographic density; it's concentrated in a specific subset of counties where UIPA already has infrastructure and incentive authority on the ground.</p>
+
+    <div class="callout callout-confirm">
+      <span class="callout-label">Open question</span>
+      <p>Whether that concentration reflects genuinely shared infrastructure planning, or something more coordinated, isn't something the county-level view can answer on its own. It would take the actual Opportunity Zone legal descriptions, once GOED publishes them, compared against UIPA's recorded project-area boundaries &mdash; the same way this docket verified the Iron Springs/Enoch boundary against UIPA's own project area plan.</p>
+    </div>
+
+    <p>Worth holding next to the "additionality" principle GOED names on this same deck &mdash; would Creekstone's $17B project have happened without the state's 50%/20-year credit? GOED's own framework says that question should be asked before an incentive is granted. Nothing in this presentation shows GOED's answer to it for Creekstone specifically.</p>
+  </section>
+
+  <section id="sources">
+    <div class="section-num">Sources</div>
+    <h2>Primary sources</h2>
+    <ul class="sources">
+      <li>Governor's Office of Economic Development, "Data Center Initiatives" presentation, Economic Development and Workforce Services Interim Committee, Aug. 19, 2026.</li>
+      <li>H.B. 475, Development Planning and Coordination Amendments, 2026 General Session.</li>
+      <li>Utah Inland Port Authority, "Iron Springs: A Utah Inland Port Project Area," Draft Project Area Plan &amp; Budget, Amendment #4.</li>
+      <li>Gardner Policy Institute (Hiatt, 2026), cited in GOED presentation for statewide job projections.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span><a href="weber-hive-datacenters-docket.html">&larr; Back to Data Centers Docket</a></span>
+    <span>&copy; 2026 The Weber County Hive</span>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('button[data-scroll-to]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.scrollTo);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  function selectPath(path) {
+    document.getElementById('btn-edtif').classList.toggle('active', path === 'edtif');
+    document.getElementById('btn-redtif').classList.toggle('active', path === 'redtif');
+    document.getElementById('result-edtif').classList.toggle('show', path === 'edtif');
+    document.getElementById('result-redtif').classList.toggle('show', path === 'redtif');
+  }
+</script>
+
+</body>
+</html>
