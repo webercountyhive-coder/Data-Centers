@@ -217,7 +217,32 @@
   .path-result.protected .path-result-tag { color: var(--teal); background: rgba(46, 95, 90, 0.12); }
   .path-result.unregulated .path-result-tag { color: var(--rust); background: rgba(192, 87, 46, 0.12); }
 
+  .flip-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin: 22px 0 32px;
+  }
+  .flip-card { perspective: 1000px; height: 148px; cursor: pointer; }
+  .flip-card-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.5s; transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+  .flip-face {
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+    border-radius: 6px; padding: 16px; display: flex; flex-direction: column;
+    justify-content: center; box-sizing: border-box;
+  }
+  .flip-front { background: var(--paper-card); border: 2px solid var(--border); text-align: center; }
+  .flip-front:hover { border-color: var(--rust); }
+  .flip-back { background: var(--teal); color: var(--paper); transform: rotateY(180deg); border: 2px solid var(--teal); }
+  .flip-term { font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--ink); }
+  .flip-hint { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dimmer); margin-top: 8px; }
+  .flip-back-title { font-family: var(--serif); font-weight: 700; font-size: 13.5px; margin-bottom: 7px; }
+  .flip-back-def { font-family: var(--sans); font-size: 12.5px; line-height: 1.42; }
+  .flip-back a { color: var(--amber); }
+
   @media (max-width: 640px) {
+    .flip-grid { grid-template-columns: repeat(2, 1fr); }
     section { padding: 32px 0; }
     .plain-box { padding: 22px 20px 12px; }
     .step-item { gap: 14px; }
@@ -241,9 +266,96 @@
   </header>
 
   <section id="beginners">
-    <span class="badge-pill">New to this? Start here</span>
-    <h2>How a data center gets its power, in four steps</h2>
-    <p class="dim">If terms like "large load customer" or "PSC" are new to you, start here. Everything below this section goes deeper, at your own pace.</p>
+    <span class="badge-pill">Quick recap</span>
+    <p class="dim">Tap a term for a plain-language definition. Everything past this point assumes you know these. One more: <strong>OED</strong> stands for the <strong>Office of Energy Development</strong>, the state office that gave the presentation this page is about.</p>
+
+    <div class="flip-grid">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">PSC</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Public Service Commission</div>
+            <div class="flip-back-def">Utah's utility regulator &mdash; the body that has to approve rates and contracts for a power company like Rocky Mountain Power.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Rate base</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Rate base</div>
+            <div class="flip-back-def">The pool of costs a utility is allowed to recover from everyday customers' bills. If a cost is "in the rate base," you're paying for it.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Ratepayer</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Ratepayer</div>
+            <div class="flip-back-def">Anyone who pays a regular electric bill &mdash; the person this whole bill claims to protect.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Large load customer</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Large load customer</div>
+            <div class="flip-back-def">Utah's legal term for anything needing 100+ megawatts of power &mdash; roughly enough for 80,000&ndash;100,000 homes. Most data centers qualify.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Connected generation</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Connected generation system</div>
+            <div class="flip-back-def">A large load customer's power setup that stays hooked to the utility's grid &mdash; and stays under PSC oversight.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Closed private generation</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Closed private generation system</div>
+            <div class="flip-back-def">A large load customer's own private power plant, never connected to the public grid &mdash; and exempt from PSC oversight entirely.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-confirm">
+      <span class="callout-label">Why this matters here</span>
+      <p>OED's whole "cost-causer pays" pitch, below, depends entirely on which of the last two terms a data center picks. A connected-generation project goes through the PSC, and the ratepayer protections apply. A closed private generation project doesn't &mdash; none of them do. Pick a path in the tool below to see the difference play out.</p>
+    </div>
+
+    <h2>Two paths for powering a data center</h2>
+    <p class="dim">This part is the whole story &mdash; everything later on this page is about which path a given project takes, and what OED's slide leaves out about the second one.</p>
 
     <div class="path-picker">
       <div class="path-picker-label">Try it: pick a path and see what applies</div>
@@ -314,7 +426,7 @@
   </section>
 
   <nav class="jumplinks">
-    <button data-scroll-to="beginners">New to this? Start here</button>
+    <button data-scroll-to="beginners">Quick recap &amp; the two paths</button>
     <button data-scroll-to="plain">Plain-language summary</button>
     <button data-scroll-to="deck">What the slides say</button>
     <button data-scroll-to="sb132">What SB 132 actually does</button>
