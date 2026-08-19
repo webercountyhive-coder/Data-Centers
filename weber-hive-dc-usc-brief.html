@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Center Entry &amp; U.S. Electricity Prices — The Weber County Hive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;0,8..60,600;0,8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f0e6;
+    --paper-card: #faf7ef;
+    --ink: #1c1c1a;
+    --ink-dim: #5b5850;
+    --ink-dimmer: #8c8878;
+    --rust: #c0572e;
+    --amber: #d9a441;
+    --teal: #2e5f5a;
+    --blue: #3a5f7d;
+    --border: #ddd6c4;
+    --serif: 'Playfair Display', Georgia, serif;
+    --serif-body: 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--sans);
+    line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--rust); }
+
+  .wrap { max-width: 800px; margin: 0 auto; padding: 0 32px; }
+
+  .breadcrumb { font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); padding: 24px 0 0; }
+  .breadcrumb a { color: var(--ink-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--rust); }
+
+  header { padding: 20px 0 36px; border-bottom: 2px solid var(--ink); }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--rust); margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: var(--serif); font-weight: 800; font-size: clamp(30px, 4.6vw, 42px);
+    line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 16px;
+  }
+
+  .dek { font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--ink-dim); max-width: 620px; }
+
+  .meta-row { display: flex; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .meta-item { font-family: var(--mono); font-size: 11.5px; color: var(--ink-dimmer); }
+  .meta-item strong { color: var(--ink-dim); font-weight: 500; }
+
+  .badge-pill {
+    display: inline-block; background: var(--teal); color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 3px; margin-bottom: 18px;
+  }
+
+  .flip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0 32px; }
+  .flip-card { perspective: 1000px; height: 158px; cursor: pointer; }
+  .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s; transform-style: preserve-3d; }
+  .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+  .flip-face {
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+    border-radius: 6px; padding: 16px; display: flex; flex-direction: column;
+    justify-content: center; box-sizing: border-box;
+  }
+  .flip-front { background: var(--paper-card); border: 2px solid var(--border); text-align: center; }
+  .flip-front:hover { border-color: var(--rust); }
+  .flip-back { background: var(--teal); color: var(--paper); transform: rotateY(180deg); border: 2px solid var(--teal); }
+  .flip-term { font-family: var(--serif); font-weight: 700; font-size: 17px; color: var(--ink); }
+  .flip-hint { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dimmer); margin-top: 8px; }
+  .flip-back-title { font-family: var(--serif); font-weight: 700; font-size: 13px; margin-bottom: 7px; }
+  .flip-back-def { font-family: var(--sans); font-size: 12px; line-height: 1.4; }
+  .flip-back a { color: var(--amber); }
+
+  nav.jumplinks {
+    display: flex; gap: 8px; flex-wrap: wrap; padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  nav.jumplinks button {
+    font-family: var(--mono); font-size: 11.5px; background: var(--paper-card);
+    border: 1px solid var(--border); color: var(--ink-dim); padding: 6px 12px;
+    border-radius: 3px; cursor: pointer; transition: border-color 0.15s, color 0.15s;
+  }
+  nav.jumplinks button:hover { border-color: var(--rust); color: var(--rust); }
+
+  section { padding: 44px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-num {
+    font-family: var(--mono); font-size: 11px; color: var(--rust);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+  }
+
+  h2 { font-family: var(--serif); font-weight: 700; font-size: 27px; margin-bottom: 18px; letter-spacing: -0.005em; }
+  h3 { font-family: var(--serif); font-weight: 700; font-size: 19px; margin: 30px 0 12px; }
+
+  p { margin-bottom: 15px; font-family: var(--serif-body); font-size: 16px; color: var(--ink); }
+  p.dim { color: var(--ink-dim); }
+
+  ul, ol { margin: 0 0 16px 22px; }
+  li { margin-bottom: 9px; font-family: var(--serif-body); font-size: 16px; }
+
+  .callout { border-radius: 4px; padding: 18px 22px; margin: 20px 0; font-size: 15px; background: var(--paper-card); }
+  .callout-claim { border: 1px dashed var(--blue); }
+  .callout-gap { border: 1px dashed var(--rust); }
+  .callout-confirm { border: 1px dashed var(--teal); }
+  .callout-label {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 8px; display: block;
+  }
+  .callout-claim .callout-label { color: var(--blue); }
+  .callout-gap .callout-label { color: var(--rust); }
+  .callout-confirm .callout-label { color: var(--teal); }
+  .callout p { margin-bottom: 0; font-family: var(--sans); font-size: 14.5px; color: var(--ink-dim); }
+  .callout p + p { margin-top: 10px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 13.5px; }
+  th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--ink-dimmer); font-weight: 500;
+  }
+  td { font-family: var(--serif-body); color: var(--ink-dim); }
+  td.strong { color: var(--ink); font-weight: 600; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0 26px; }
+  .stat-card { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 16px 14px; text-align: center; }
+  .stat-card-num { font-family: var(--serif); font-weight: 700; font-size: 19px; color: var(--rust); margin-bottom: 4px; }
+  .stat-card-label { font-family: var(--mono); font-size: 10px; color: var(--ink-dimmer); text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .quote {
+    font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--ink-dim);
+    border-left: 3px solid var(--amber); padding-left: 20px; margin: 22px 0;
+  }
+  .quote cite { display: block; font-family: var(--mono); font-style: normal; font-size: 11.5px; color: var(--ink-dimmer); margin-top: 8px; }
+
+  .slide-ref { font-family: var(--mono); font-size: 11px; color: var(--ink-dimmer); }
+
+  details { margin: 16px 0; border: 1px solid var(--border); border-radius: 4px; padding: 4px 18px; background: var(--paper-card); }
+  summary { cursor: pointer; font-family: var(--mono); font-size: 12.5px; color: var(--rust); padding: 13px 0; }
+  details[open] summary { border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+  details p, details li { font-family: var(--sans); font-size: 13.5px; }
+
+  .sources { font-family: var(--sans); font-size: 13.5px; color: var(--ink-dimmer); }
+  .sources li { margin-bottom: 10px; font-family: var(--sans); }
+  .sources a { word-break: break-all; }
+
+  footer {
+    padding: 40px 0 64px; font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .flip-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 32px 0; }
+    .stat-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="breadcrumb"><a href="weber-hive-datacenters-docket.html">&larr; Data Centers Docket</a></div>
+
+  <header>
+    <div class="eyebrow">Case file 5 of 5 &middot; Aug. 19, 2026 EDWS interim hearing</div>
+    <h1>Data Center Entry and U.S. Electricity Prices</h1>
+    <p class="dek">The full academic study behind Case File 4's summary slides. The headline finding: data centers do raise electricity prices &mdash; but the effect is concentrated almost entirely on electric cooperatives and municipal utilities, not investor-owned utilities like Rocky Mountain Power.</p>
+    <div class="meta-row">
+      <div class="meta-item"><strong>Authors:</strong> Angela Ryu &amp; Shon R. Hiatt, USC Marshall</div>
+      <div class="meta-item"><strong>Published:</strong> May 22, 2026</div>
+      <div class="meta-item"><strong>Submitted to:</strong> EDWS Interim Committee, Aug. 19, 2026</div>
+    </div>
+  </header>
+
+  <section id="beginners">
+    <span class="badge-pill">Quick recap</span>
+    <p class="dim">Tap a term for a plain-language definition. This is the most technical document in the docket &mdash; these six terms unlock most of it.</p>
+
+    <div class="flip-grid">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">LMP</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Locational Marginal Price</div>
+            <div class="flip-back-def">The wholesale price of electricity at a specific point on the grid at a specific time &mdash; made up of an energy cost, a congestion cost, and a loss cost added together.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">RTO</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Regional Transmission Organization</div>
+            <div class="flip-back-def">A nonprofit that runs the wholesale power grid across a multi-state region and sets prices. <strong>PJM</strong> covers the Mid-Atlantic and parts of the Midwest (Pennsylvania to Illinois, plus D.C.). <strong>MISO</strong> covers the Midwest and parts of the South, from the Dakotas down to Louisiana. ERCOT is Texas; SPP is the Great Plains. Utah isn't in any of them, and isn't in this study's price data.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">IOU</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Investor-Owned Utility</div>
+            <div class="flip-back-def">A for-profit, shareholder-owned power company &mdash; like Rocky Mountain Power. Serves about 68% of U.S. customers.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Cooperative utility</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Cooperative (co-op) utility</div>
+            <div class="flip-back-def">A power company owned by the customers it serves, common in rural areas. About 16% of U.S. customers, covering roughly 56% of U.S. land area.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Municipal utility</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Municipal (muni) utility</div>
+            <div class="flip-back-def">A power company owned and run by a city government. About 11% of U.S. customers.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">Statistical significance</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Statistical significance</div>
+            <div class="flip-back-def">A way of testing whether a pattern in data is a real effect or just noise. "Not statistically significant" means the study can't confidently say the effect is real, even if the number isn't zero.</div>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-term">EDAM</div>
+            <div class="flip-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="flip-back-title">Extended Day-Ahead Market</div>
+            <div class="flip-back-def">A shared wholesale power-trading market, run by CAISO, that utilities across the West can join voluntarily. Instead of scheduling power only within its own territory, a member utility gets access to the whole shared market a day in advance. RMP is joining in May 2026.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-confirm">
+      <span class="callout-label">Why this matters here</span>
+      <p>This whole study's headline result is a story about ownership type: IOU, cooperative, or municipal. RMP &mdash; the utility serving most of Utah &mdash; is an IOU. Everything below is really answering one question: does data center growth raise prices for RMP customers specifically, or for someone else?</p>
+    </div>
+
+    <h2>The one-paragraph answer</h2>
+    <p class="dim">Data center entry raises wholesale electricity prices, consistently and with strong statistical confidence. But at the retail level &mdash; the number on your actual bill &mdash; the effect the authors can detect with confidence is concentrated in cooperative and municipal utility territory. For investor-owned utilities, which serve 68% of U.S. customers and include Rocky Mountain Power, the retail effect is not statistically significant.</p>
+  </section>
+
+  <nav class="jumplinks">
+    <button data-scroll-to="wholesale">Wholesale prices</button>
+    <button data-scroll-to="retail">Retail prices by ownership</button>
+    <button data-scroll-to="forward">What's coming</button>
+    <button data-scroll-to="gap">Reading it against Utah</button>
+    <button data-scroll-to="sources">Sources</button>
+  </nav>
+
+  <section id="wholesale">
+    <div class="section-num">01</div>
+    <h2>Wholesale prices: the effect is real and well-documented</h2>
+    <p>The study traces price effects at three geographic scales, from the transmission node up to the household bill.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-card-num">+$2.30/MWh</div><div class="stat-card-label">Node-level congestion (CAISO)</div></div>
+      <div class="stat-card"><div class="stat-card-num">+$3.44/MWh</div><div class="stat-card-label">Zone-level total price (non-CAISO)</div></div>
+      <div class="stat-card"><div class="stat-card-num">+$5.43/MWh</div><div class="stat-card-label">Zone-level energy component</div></div>
+    </div>
+
+    <p>At the node level (California's grid specifically), a new data center raises nearby congestion costs &mdash; consistent with the facility straining a specific point on the local transmission system. At the zone level, across PJM, ERCOT, MISO, and SPP, the effect shows up almost entirely in the energy component of price: additional demand forces the grid operator to dispatch more expensive power plants to meet it, and that raises the price for everyone drawing from that zone.</p>
+
+    <blockquote class="quote">
+      "The wholesale price pressure documented here is consistent with a tightening supply-demand balance in affected wholesale zones."
+      <cite>Executive Summary</cite>
+    </blockquote>
+    <p class="slide-ref">&mdash; Section 4.1&ndash;4.2, "Wholesale Node-Level Effects" and "Wholesale Zone-Level Effects"</p>
+  </section>
+
+  <section id="retail">
+    <div class="section-num">02</div>
+    <h2>Retail prices: the effect depends entirely on who your utility is</h2>
+    <p>This is the section that matters most for Utah. When operating data center capacity in a utility's territory doubles, the study finds an average <strong>0.65% increase</strong> in residential electricity prices &mdash; roughly $1.04&ndash;$1.10 per megawatt-hour at typical rates. But that average hides a sharp split by ownership type:</p>
+
+    <table>
+      <thead><tr><th>Ownership type</th><th>Effect when capacity doubles</th><th>Statistically significant?</th></tr></thead>
+      <tbody>
+        <tr><td class="strong">Cooperative</td><td>+0.42% (~$0.67&ndash;$0.71/MWh)</td><td>Yes</td></tr>
+        <tr><td class="strong">Municipal</td><td>+0.63% (~$1.01&ndash;$1.07/MWh)</td><td>Yes</td></tr>
+        <tr><td class="strong">Investor-owned (RMP's type)</td><td>+0.06% (~$0.07&ndash;$0.08/MWh)</td><td><strong>No</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="slide-ref">&mdash; Section 4.3, "Retail Price Effects"; figures hold in both the primary 2015&ndash;2024 window and the preliminary 2015&ndash;2025 extension</p>
+
+    <div class="callout callout-confirm">
+      <span class="callout-label">Why the split happens</span>
+      <p>The authors' explanation: IOUs are larger, have more sophisticated procurement (long-term contracts, hedging), and have more market exposure to spread the cost around. Cooperatives and municipals tend to be smaller utilities more directly exposed to zone-clearing wholesale prices &mdash; even when they aren't the ones hosting the data center themselves.</p>
+    </div>
+  </section>
+
+  <section id="forward">
+    <div class="section-num">03</div>
+    <h2>What the study can't yet tell us</h2>
+    <p>The authors are explicit about their own limits. Two matter for reading this docket honestly:</p>
+    <ul>
+      <li>This is a study of <strong>recent entry effects</strong> under historically adequate reserve margins &mdash; it does not model what happens as the currently announced data center pipeline actually gets built out nationally.</li>
+      <li>The forward-looking reliability data (NERC's 2025 Long-Term Reliability Assessment) projects the steepest reserve margin declines in <strong>PJM</strong> (the Mid-Atlantic grid, Pennsylvania to Illinois) <strong>and MISO</strong> (the Midwest/South grid, the Dakotas to Louisiana) &mdash; not the regions Utah's grid operator, Rocky Mountain Power, sits in. This study's price findings are strongest exactly where Utah isn't.</li>
+    </ul>
+
+    <details>
+      <summary>The reserve margin numbers, if you want them</summary>
+      <p>PJM's Anticipated Reserve Margin falls from 29.7% (2026) to 13.9% (2030) while its Reference Margin Level rises from 18.6% to 26.3% &mdash; a projected 12.4-point deficit. MISO reaches a 4.2-point deficit by 2030. ERCOT and SPP are projected to remain above their reference levels through the period, though ERCOT's adequacy depends heavily on a demand-response expansion tied to Texas's large-load curtailment authority.</p>
+    </details>
+  </section>
+
+  <section id="gap">
+    <div class="section-num">04</div>
+    <h2>Reading it against Utah specifically</h2>
+    <div class="callout callout-claim">
+      <span class="callout-label">The RMP question</span>
+      <p>Rocky Mountain Power, which serves most of Utah, is an investor-owned utility &mdash; the exact category this study finds <em>no statistically significant retail price effect</em> for. Taken at face value, this national study would suggest Utah residential ratepayers are among the <em>least</em> likely, by this methodology, to see a measurable data-center-driven bill increase from wholesale pass-through.</p>
+    </div>
+    <p>That's a real finding, and it cuts against the instinct to assume data centers are straightforwardly raising Utah bills through this specific channel. But it comes with real limits worth holding onto: Utah isn't in any of the four RTOs this study's wholesale price data comes from, so none of the wholesale price effects in Section 01 were measured using Utah data at all. And a null result for IOU retail prices nationally doesn't rule out the other cost channels this docket has already documented in Utah specifically &mdash; the property tax mechanisms in Case File 4, or the closed private generation pathway in Case File 1 that removes a project from PSC rate review (and this study's retail price panel) entirely.</p>
+
+    <div class="callout callout-gap">
+      <span class="callout-label">This isn't a settled question &mdash; it's an active fight at the PSC and in the press</span>
+      <p>Rocky Mountain Power (PacifiCorp) operates the same multi-state system across Utah, Wyoming, Oregon, Washington, Idaho, and California. In May 2026, RMP publicly denied &mdash; in a statement responding to press questions in Wyoming &mdash; that an 8.8% rate hike request there was driven by data centers. The fact that RMP had to issue that denial at all shows this is a live, contested public narrative, not a resolved one.</p>
+      <p>There's also a real, currently active party at Utah's own PSC: the <strong>Utah Large Customer Group (UTLCG)</strong>, an intervenor in RMP's 2024&ndash;2025 Utah rate case (Docket 24-035-04) that negotiated a partial settlement with RMP specifically over data reporting for large-load customers. Separately, the PSC's own investigation into a large-load flexible tariff for RMP's territory &mdash; ordered by SB 132 &mdash; is still in progress with no public outcome yet.</p>
+      <p>Worth noting on the other side: intervenor testimony from Utah Clean Energy in that same 2024&ndash;2025 rate case attributes most of RMP's proposed increase to wildfire mitigation costs and fuel prices, not data centers &mdash; which is broadly consistent with this study's finding. And RMP is scheduled to enter CAISO's day-ahead wholesale market (<strong>EDAM</strong>, the Extended Day-Ahead Market &mdash; a shared power-trading system across Western utilities, one day in advance) in May 2026. That's the same kind of wholesale market this study's node-level findings were measured in, just in California specifically; RMP joining it is a structural change the study's historical Utah data wouldn't have captured, and it could change Utah's wholesale price exposure going forward.</p>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="section-num">Sources</div>
+    <h2>Primary sources</h2>
+    <ul class="sources">
+      <li>Angela Ryu &amp; Shon R. Hiatt, "Data Center Entry and U.S. Electricity Prices: From the Wholesale Market to the Power Bill," USC Marshall Zage Business of Energy Initiative Energy Brief, May 22, 2026.</li>
+      <li>Data sources cited within the brief: S&amp;P Global 451 Research (data center database); GridStatus (wholesale LMP data, CAISO/PJM/ERCOT/MISO/SPP); EIA Form 861 and Form 861-M (retail utility revenue and sales); EIA Form 923 and 860 (fuel mix, retirements); NERC 2025 Long-Term Reliability Assessment.</li>
+      <li>Cowboy State Daily, "Rocky Mountain Power Says 8.8% Rate Hike Request Not Because Of Data Centers," May 14, 2026.</li>
+      <li>Utah Public Service Commission, Docket No. 24-035-04, Order Memorializing Decision (settlement with Utah Large Customer Group), June 24, 2025.</li>
+      <li>Utah Clean Energy, "Rocky Mountain Power's Rate Case: What You Need to Know" &mdash; intervenor testimony summary, Docket 24-035-04.</li>
+      <li>Davis Graham, "Wyoming and Utah: Emerging Frontiers for Data Center BTM Generation," May 8, 2026 (RMP's anticipated CAISO EDAM entry, May 2026).</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span><a href="weber-hive-datacenters-docket.html">&larr; Back to Data Centers Docket</a></span>
+    <span>&copy; 2026 The Weber County Hive</span>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('button[data-scroll-to]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.scrollTo);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
