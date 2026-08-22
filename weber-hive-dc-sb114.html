@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.B. 114 (2020) — The Weber County Hive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;0,8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f0e6;
+    --paper-card: #faf7ef;
+    --ink: #1c1c1a;
+    --ink-dim: #5b5850;
+    --ink-dimmer: #8c8878;
+    --header-bg: #142a2c;
+    --header-bg-2: #1c3a3a;
+    --header-text: #f4f0e6;
+    --header-dim: #9fb0ac;
+    --rust: #c0572e;
+    --amber: #d9a441;
+    --teal: #2e5f5a;
+    --border: #ddd6c4;
+    --border-dark: rgba(244, 240, 230, 0.16);
+    --serif: 'Playfair Display', Georgia, serif;
+    --serif-body: 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--rust); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+  header { background: linear-gradient(155deg, var(--header-bg), var(--header-bg-2)); padding: 48px 0 40px; border-bottom: 3px solid var(--rust); }
+  .backlink { font-family: var(--mono); font-size: 12px; color: var(--header-dim); display: block; text-align: center; margin-bottom: 22px; }
+  .backlink a { color: var(--amber); }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 16px; text-align: center; }
+  h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(30px, 4.6vw, 46px); line-height: 1.1; letter-spacing: -0.01em; color: var(--header-text); text-align: center; margin-bottom: 16px; }
+  .dek { font-family: var(--serif-body); font-style: italic; font-size: 16.5px; color: var(--header-dim); max-width: 640px; margin: 0 auto; text-align: center; }
+  .meta-row { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 26px; font-family: var(--mono); font-size: 12px; color: var(--header-dim); }
+  .meta-row strong { color: var(--amber); }
+  .jump-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .jump-btn { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.02em; color: var(--header-text); background: rgba(244,240,230,0.08); border: 1px solid var(--border-dark); border-radius: 20px; padding: 7px 14px; cursor: pointer; }
+  .jump-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+  main { padding: 48px 0 80px; }
+
+  .plain-box { background: var(--paper-card); border: 2px solid var(--teal); border-radius: 8px; padding: 30px 32px; margin-bottom: 48px; }
+  .plain-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+  .plain-box h2 { font-family: var(--serif); font-size: 22px; margin-bottom: 12px; }
+  .plain-box p { font-family: var(--serif-body); font-size: 16px; color: var(--ink-dim); margin-bottom: 14px; }
+  .plain-box p:last-child { margin-bottom: 0; }
+  .plain-box strong { color: var(--ink); font-weight: 600; }
+
+  .three-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .fact-card { background: rgba(46,95,90,0.05); border: 1px solid var(--border); border-radius: 6px; padding: 16px 14px; text-align: center; }
+  .fact-num { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--rust); }
+  .fact-label { font-family: var(--mono); font-size: 10.5px; color: var(--ink-dimmer); text-transform: uppercase; margin-top: 4px; }
+
+  .calc-box { background: rgba(217,164,65,0.07); border: 1px solid var(--amber); border-radius: 8px; padding: 22px 26px; margin: 20px 0; text-align: center; }
+  .calc-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-dimmer); margin-bottom: 16px; }
+  .calc-row { display: flex; flex-direction: column; align-items: center; margin-bottom: 4px; }
+  .calc-item { font-family: var(--serif); font-weight: 700; font-size: 24px; color: var(--ink); }
+  .calc-desc { font-family: var(--sans); font-size: 12.5px; color: var(--ink-dim); max-width: 460px; margin-top: 2px; }
+  .calc-op { font-family: var(--serif); font-size: 18px; color: var(--ink-dimmer); margin: 8px 0; }
+  .calc-result { font-family: var(--serif); font-weight: 800; font-size: 36px; color: var(--rust); margin-top: 4px; }
+  .calc-sub { font-family: var(--sans); font-size: 13px; color: var(--ink-dim); margin-top: 6px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+  /* Interactive calculator */
+  .live-calc { background: rgba(217,164,65,0.07); border: 1px solid var(--amber); border-radius: 8px; padding: 26px 28px; margin: 20px 0; }
+
+  .preset-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+  .preset-btn {
+    font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--ink-dim);
+    background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px;
+    padding: 10px 8px; cursor: pointer; text-align: center; line-height: 1.4;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .preset-btn span { display: block; font-family: var(--mono); font-size: 10.5px; color: var(--ink-dimmer); margin-top: 3px; }
+  .preset-btn:hover { border-color: var(--amber); }
+  .preset-btn.active { border-color: var(--rust); background: rgba(192,87,46,0.08); color: var(--ink); }
+  .preset-btn.active span { color: var(--rust); }
+
+  #equip-slider {
+    width: 100%; height: 6px; border-radius: 3px; background: var(--border);
+    -webkit-appearance: none; appearance: none; margin: 8px 0 12px; cursor: pointer;
+  }
+  #equip-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--rust); border: 3px solid var(--paper-card); cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  }
+  #equip-slider::-moz-range-thumb {
+    width: 22px; height: 22px; border-radius: 50%; background: var(--rust);
+    border: 3px solid var(--paper-card); cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  }
+
+  .slider-value { text-align: center; font-family: var(--sans); font-size: 14px; color: var(--ink-dim); margin-bottom: 22px; }
+  .slider-value strong { font-family: var(--serif); color: var(--ink); font-size: 17px; }
+
+  .rate-toggle { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .rate-toggle-label { font-family: var(--mono); font-size: 11px; color: var(--ink-dimmer); text-transform: uppercase; letter-spacing: 0.04em; }
+  .rate-btn {
+    font-family: var(--mono); font-size: 11.5px; color: var(--ink-dim);
+    background: var(--paper-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 6px 14px; cursor: pointer;
+  }
+  .rate-btn:hover { border-color: var(--teal); }
+  .rate-btn.active { border-color: var(--teal); background: rgba(46,95,90,0.08); color: var(--teal); font-weight: 500; }
+
+  .calc-result-row { text-align: center; margin-bottom: 18px; }
+  .calc-result-big { font-family: var(--serif); font-weight: 800; font-size: 44px; color: var(--rust); line-height: 1; }
+  .calc-result-label { font-family: var(--mono); font-size: 11.5px; color: var(--ink-dimmer); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 6px; }
+
+  .calc-split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  .split-card { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 16px 14px; text-align: center; }
+  .split-num { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--teal); }
+  .split-label { font-family: var(--sans); font-size: 11.5px; color: var(--ink-dim); margin-top: 6px; line-height: 1.5; }
+
+  .calc-footnote { font-family: var(--sans); font-size: 11.5px; color: var(--ink-dimmer); text-align: center; font-style: italic; max-width: 520px; margin: 0 auto; }
+
+  .distance-diagram-wrap { background: var(--paper-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 10px; margin: 20px 0; }
+  .distance-diagram-wrap svg { width: 100%; height: auto; display: block; }
+
+  .stack-diagram { display: flex; flex-direction: column; gap: 4px; margin: 22px 0; }
+  .stack-layer { border-radius: 6px; padding: 18px 22px; border: 1px solid var(--border); }
+  .stack-layer-label { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.8; margin-bottom: 6px; }
+  .stack-layer-title { font-family: var(--serif); font-weight: 700; font-size: 18px; margin-bottom: 6px; }
+  .stack-layer-desc { font-family: var(--sans); font-size: 13.5px; line-height: 1.55; }
+  .layer-1 { background: rgba(46,95,90,0.07); border-color: var(--teal); }
+  .layer-1 .stack-layer-label, .layer-1 .stack-layer-title { color: var(--teal); }
+  .layer-1 .stack-layer-desc { color: var(--ink-dim); }
+  .layer-2 { background: rgba(192,87,46,0.06); border-color: var(--rust); margin-left: 18px; }
+  .layer-2 .stack-layer-label, .layer-2 .stack-layer-title { color: var(--rust); }
+  .layer-2 .stack-layer-desc { color: var(--ink-dim); }
+  .layer-3 { background: rgba(217,164,65,0.09); border-color: var(--amber); margin-left: 36px; }
+  .layer-3 .stack-layer-label { color: #a67c1e; }
+  .layer-3 .stack-layer-title { color: #8f6a19; }
+  .layer-3 .stack-layer-desc { color: var(--ink-dim); }
+
+  .fund-table-wrap { background: var(--paper-card); border: 1px solid var(--border); border-radius: 8px; padding: 22px 24px; margin: 20px 0; }
+  .fund-table-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-dimmer); margin-bottom: 14px; }
+  .fund-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 13.5px; margin-bottom: 14px; }
+  .fund-table th, .fund-table td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--border); }
+  .fund-table th { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-dimmer); }
+  .fund-table td:first-child { color: var(--ink); font-weight: 500; }
+  .fund-tag { display: inline-block; font-family: var(--mono); font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; border-radius: 3px; padding: 2px 8px; margin-right: 4px; }
+  .fund-state { background: rgba(46,95,90,0.1); color: var(--teal); border: 1px solid var(--teal); }
+  .fund-local { background: rgba(192,87,46,0.1); color: var(--rust); border: 1px solid var(--rust); }
+  .fund-mida { background: rgba(217,164,65,0.15); color: #8f6a19; border: 1px solid var(--amber); }
+  .fund-table-note { font-family: var(--sans); font-size: 13px; color: var(--ink-dim); line-height: 1.6; margin: 0; }
+
+  .gap-calc { display: flex; flex-direction: column; gap: 0; margin: 22px 0; }
+  .gap-row { background: var(--paper-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; }
+  .gap-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-dimmer); margin-bottom: 8px; }
+  .gap-detail { font-family: var(--sans); font-size: 13.5px; color: var(--ink-dim); line-height: 1.55; margin-bottom: 12px; }
+  .gap-num { font-family: var(--serif); font-weight: 800; font-size: 32px; color: var(--rust); margin-bottom: 10px; }
+  .gap-num-small { font-size: 26px; color: var(--teal); }
+  .gap-caveat { font-family: var(--sans); font-size: 12.5px; color: var(--ink-dim); background: rgba(217,164,65,0.1); border-left: 3px solid var(--amber); padding: 10px 14px; border-radius: 0 4px 4px 0; line-height: 1.55; }
+  .gap-op { text-align: center; font-family: var(--serif); font-size: 15px; color: var(--ink-dimmer); padding: 6px 0; letter-spacing: 0.05em; }
+
+  section { margin-bottom: 52px; }
+  .section-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dimmer); padding-bottom: 12px; border-bottom: 1px solid var(--ink); margin-bottom: 22px; }
+
+  h3 { font-family: var(--serif); font-size: 21px; margin: 26px 0 10px; color: var(--ink); }
+  p { font-family: var(--serif-body); font-size: 15.5px; color: var(--ink-dim); margin-bottom: 14px; max-width: 720px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  .quote-block { background: var(--paper-card); border-left: 3px solid var(--rust); border-radius: 0 6px 6px 0; padding: 18px 22px; margin: 16px 0; font-family: var(--serif-body); font-size: 15px; color: var(--ink); font-style: italic; }
+  .quote-source { font-family: var(--mono); font-style: normal; font-size: 11.5px; color: var(--ink-dimmer); margin-top: 8px; }
+
+  .vote-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-family: var(--mono); font-size: 13px; }
+  .vote-table th, .vote-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .vote-table th { color: var(--ink-dimmer); font-weight: 500; text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em; }
+  .vote-yes { color: var(--teal); font-weight: 600; }
+
+  .empty-record { background: rgba(192,87,46,0.05); border: 1px dashed var(--rust); border-radius: 6px; padding: 18px 22px; margin: 16px 0; font-family: var(--serif-body); font-size: 15px; color: var(--ink-dim); }
+  .empty-record .tag-mini { font-family: var(--mono); font-size: 10.5px; color: var(--rust); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px; }
+
+  .code-block { background: #1c1c1a; color: #f4f0e6; border-radius: 6px; padding: 20px 24px; margin: 16px 0; font-family: var(--mono); font-size: 13px; line-height: 1.7; overflow-x: auto; }
+  .code-block .hi { color: var(--amber); }
+
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+  .compare-card { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 18px 20px; }
+  .compare-card h4 { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-dimmer); margin-bottom: 8px; }
+  .compare-card .big { font-family: var(--serif); font-weight: 700; font-size: 24px; color: var(--rust); margin-bottom: 6px; }
+  .compare-card .desc { font-family: var(--serif-body); font-size: 13.5px; color: var(--ink-dim); }
+
+  .source-list { list-style: none; }
+  .source-list li { font-family: var(--mono); font-size: 13px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .source-list li:last-child { border-bottom: none; }
+  .source-list .src-title { color: var(--ink); display: block; margin-bottom: 3px; }
+  .source-list a { font-weight: 500; }
+
+  details { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; margin: 14px 0; }
+  summary { font-family: var(--mono); font-size: 13px; color: var(--teal); padding: 14px 20px; cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary:before { content: "+ "; }
+  details[open] summary:before { content: "\2212 "; }
+  details .inner { padding: 0 20px 20px; }
+
+  footer { padding: 36px 0 60px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
+
+  @media (max-width: 640px) {
+    header { padding: 36px 0 30px; }
+    .three-facts { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .preset-row { grid-template-columns: 1fr 1fr; }
+    .calc-split { grid-template-columns: 1fr; }
+    .calc-result-big { font-size: 34px; }
+    .layer-2 { margin-left: 8px; }
+    .layer-3 { margin-left: 16px; }
+    .fund-table { font-size: 12px; }
+    .fund-table th, .fund-table td { padding: 8px 6px; }
+    .gap-num { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="backlink"><a href="weber-hive-datacenters-bills-docket.html">&larr; Back to the Bills Docket</a></span>
+    <div class="eyebrow">Case File &middot; 2020 General Session</div>
+    <h1>S.B. 114 — The Exemption With No Jobs Requirement</h1>
+    <p class="dek">Utah's sales tax exemption for large data centers. No jobs, wage, or investment requirement to qualify. Passed unanimously. The state's own fiscal analysts called the cost "unknown" — and it still is.</p>
+    <div class="meta-row">
+      <span>Chief Sponsor: <strong>Sen. Kirk Cullimore</strong></span>
+      <span>House Sponsor: <strong>Rep. Mike Schultz</strong></span>
+      <span>Signed: <strong>Mar. 31, 2020</strong></span>
+    </div>
+    <div class="jump-row">
+      <button class="jump-btn" data-scroll-to="text">What the law says</button>
+      <button class="jump-btn" data-scroll-to="votes">The vote</button>
+      <button class="jump-btn" data-scroll-to="record">The record</button>
+      <button class="jump-btn" data-scroll-to="cost">What it costs</button>
+      <button class="jump-btn" data-scroll-to="compare">Other states</button>
+      <button class="jump-btn" data-scroll-to="stratos">The Stratos example</button>
+      <button class="jump-btn" data-scroll-to="sources">Sources</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="plain-box">
+      <div class="plain-label">Start here — plain language</div>
+      <h2>The short version</h2>
+      <p>In 2020, the Utah Legislature exempted large data centers (150,000+ square feet) from paying sales tax on their equipment — servers, cooling systems, machinery. <strong>To qualify, a company doesn't have to create a single job, pay any particular wage, or invest a set amount of money.</strong> Most other states that offer this kind of break attach at least one of those strings. Utah's doesn't.</p>
+      <p>The exemption also reaches backward in time: it covers any qualifying facility built <strong>on or after July 1, 2016</strong> — four years before the bill even passed.</p>
+      <p>The bill passed with zero recorded "no" votes in either chamber. The Legislature's own fiscal note said the cost to the state was <strong>"unknown."</strong> Six years later, Utah's State Auditor confirmed the state still has no system to calculate what the exemption has actually cost in lost tax revenue.</p>
+      <div class="three-facts">
+        <div class="fact-card"><div class="fact-num">0</div><div class="fact-label">Jobs required</div></div>
+        <div class="fact-card"><div class="fact-num">0</div><div class="fact-label">"No" votes, either chamber</div></div>
+        <div class="fact-card"><div class="fact-num">6 yrs</div><div class="fact-label">Still no cost figure</div></div>
+      </div>
+      <div class="live-calc" id="live-calc">
+        <div class="calc-label">Try it yourself &mdash; move the slider to any equipment value</div>
+        <div class="preset-row">
+          <button class="preset-btn" data-val="50000000">Retail data center<br><span>~$50M equip.</span></button>
+          <button class="preset-btn" data-val="500000000">Mid-size facility<br><span>~$500M equip.</span></button>
+          <button class="preset-btn active" data-val="1500000000">Hyperscale campus<br><span>~$1.5B equip.</span></button>
+          <button class="preset-btn" data-val="3000000000">Largest proposed<br><span>~$3B equip.</span></button>
+        </div>
+        <input type="range" id="equip-slider" min="10000000" max="4000000000" step="10000000" value="1500000000">
+        <div class="slider-value">Equipment value: <strong id="equip-display">$1.5 billion</strong></div>
+
+        <div class="rate-toggle">
+          <span class="rate-toggle-label">Sales tax rate used:</span>
+          <button class="rate-btn active" data-rate="6.1">6.1% &mdash; mandatory floor</button>
+          <button class="rate-btn" data-rate="7.19">7.19% &mdash; avg. combined w/ local option</button>
+        </div>
+
+        <div class="calc-result-row">
+          <div class="calc-result-big" id="result-total">$91.5M</div>
+          <div class="calc-result-label">total exempted from sales tax</div>
+        </div>
+        <div class="calc-split">
+          <div class="split-card">
+            <div class="split-num" id="result-state">$72.75M</div>
+            <div class="split-label">state share (4.85%)<br>General Fund &middot; Education Fund &middot; Uniform School Fund</div>
+          </div>
+          <div class="split-card">
+            <div class="split-num" id="result-local">$18.75M</div>
+            <div class="split-label">local share (1.25%+)<br>the city or county where the facility sits</div>
+          </div>
+        </div>
+        <div class="calc-footnote">Illustrative only &mdash; Utah does not publish actual equipment values or exemption amounts for any real facility. This calculator applies the state's own published tax rates to a value you choose.</div>
+      </div>
+    </div>
+
+    <section id="text">
+      <div class="section-label"><span>What the law actually says</span></div>
+      <p>The operative exemption is Utah Code <strong>§59-12-104(84)</strong>. Here is the exemption language, verbatim from the enrolled bill:</p>
+      <div class="code-block">amounts paid or charged for a purchase or lease made by a <span class="hi">qualifying data center</span> or an occupant of a qualifying data center of machinery, equipment, or normal operating repair or replacement parts, if the machinery, equipment, or normal operating repair or replacement parts:<br>&nbsp;&nbsp;(a) are used in the operation of the qualifying data center or the occupant's operations in the qualifying data center; and<br>&nbsp;&nbsp;(b) have an economic life of one or more years</div>
+      <p>Nowhere in that subsection — or in the definition of a "qualifying data center" under §59-12-102(106) — is there a jobs, wage, or investment threshold. The full definition requires only:</p>
+      <div class="code-block">"Qualifying data center" means a data center facility that:<br>&nbsp;&nbsp;(a) houses a group of networked server computers... to disseminate, manage, and store data;<br>&nbsp;&nbsp;(b) is located in the state;<br>&nbsp;&nbsp;(c) is a new operation constructed on or after <span class="hi">July 1, 2016</span>;<br>&nbsp;&nbsp;(d) consists of one or more buildings that total <span class="hi">150,000 or more square feet</span>;<br>&nbsp;&nbsp;(e)&ndash;(f) is owned or leased by the operator or a commonly-owned entity</div>
+      <p>By contrast, elsewhere in the very same enrolled bill, a different exemption — for amusement and recreation facilities under subsection (76) — <em>does</em> require the purchaser to show that "51% or more of the purchaser's sales revenue... is amounts paid or charged as admission or user fees," and it empowers the Tax Commission to write rules verifying that. The Legislature clearly knew how to attach a performance condition to an exemption in this bill. It chose not to for data centers.</p>
+
+      <h3>What this exemption doesn't cover</h3>
+      <p>S.B. 114 only exempts what a data center <strong>buys</strong> — equipment purchased from vendors. It says nothing about what a data center <strong>sells</strong> to its own customers, and that turns out to be a separate, murkier tax question that depends entirely on the facility's business model:</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4>Internal use only</h4>
+          <div class="desc">A company running its own data center for its own products (e.g. an in-house hyperscaler) has no external customer &mdash; no sale occurs, so there's nothing to tax.</div>
+        </div>
+        <div class="compare-card">
+          <h4>Colocation (leased rack space)</h4>
+          <div class="desc">A Utah Tax Commission private letter ruling found that leasing physical server/disk space located in Utah is treated as a <strong>taxable lease of tangible personal property</strong> under &sect;59-12-103(1)(k).</div>
+        </div>
+        <div class="compare-card">
+          <h4>Cloud computing / SaaS</h4>
+          <div class="desc">Utah taxes software-as-a-service and remotely accessed prewritten software when used in Utah, per current Tax Commission guidance (Publication 64).</div>
+        </div>
+        <div class="compare-card">
+          <h4>Pure data access/storage</h4>
+          <div class="desc">Amounts charged to access a database are exempt under &sect;59-12-104(78) <em>if</em> the customer's primary purpose is to view or retrieve information &mdash; a narrow carve-out, not a blanket exemption for data services.</div>
+        </div>
+      </div>
+      <p>Which category a given facility falls into isn't disclosed anywhere in public record for any Utah data center, including Stratos, whose developer has publicly described a leased-tenant model rather than internal-only use — a structure that points toward the taxable-lease or SaaS categories rather than the internal-use or narrow database exemptions. No Utah Tax Commission ruling or public filing classifies Stratos's own service revenue one way or the other. It's a genuinely open, untracked question, entirely separate from the equipment exemption documented throughout the rest of this case file.</p>
+    </section>
+
+    <section id="votes">
+      <div class="section-label"><span>The vote</span></div>
+      <p>S.B. 114 passed both chambers of the Utah Legislature without a single recorded "no" vote at any stage:</p>
+      <table class="vote-table">
+        <tr><th>Stage</th><th>Vote</th></tr>
+        <tr><td>Senate Revenue &amp; Taxation Committee</td><td class="vote-yes">5&ndash;0&ndash;3</td></tr>
+        <tr><td>Senate 2nd Reading</td><td class="vote-yes">22&ndash;0&ndash;7</td></tr>
+        <tr><td>Senate 3rd Reading</td><td class="vote-yes">23&ndash;0&ndash;6</td></tr>
+        <tr><td>House Revenue &amp; Taxation Committee</td><td class="vote-yes">10&ndash;0&ndash;5</td></tr>
+        <tr><td>House 3rd Reading</td><td class="vote-yes">68&ndash;0&ndash;7</td></tr>
+        <tr><td>Senate Concurrence</td><td class="vote-yes">27&ndash;0&ndash;2</td></tr>
+      </table>
+      <p>Every stage passed with zero "no" votes recorded — only yeas and absences/not-voting.</p>
+    </section>
+
+    <section id="record">
+      <div class="section-label"><span>The record: what was actually discussed</span></div>
+      <p>Both committee hearings are on the public record. Here is the entire substantive record of discussion on the data center provision, as captured in the official minutes:</p>
+
+      <div class="empty-record">
+        <span class="tag-mini">Senate Revenue &amp; Taxation &middot; Feb. 14, 2020</span>
+        The complete record: "Sen. Cullimore presented the bill." A motion followed immediately, passing 5&ndash;0&ndash;3. No questions or public comment on S.B. 114 are recorded. The committee handled six bills total in roughly 15 minutes.
+      </div>
+
+      <div class="empty-record">
+        <span class="tag-mini">House Revenue &amp; Taxation &middot; Mar. 6, 2020</span>
+        "Sen. Cullimore explained the bill assisted by John Valentine, Chairman, Utah State Tax Commission." The only public comment recorded at this hearing was from a restaurant owner — on an unrelated provision in the same bill concerning admission fees for lessons, not the data center exemption. No discussion of the data center provision, its retroactive date, or its lack of a jobs requirement is recorded. Rep. Mike Schultz — the bill's own House floor sponsor — was absent from this hearing.
+      </div>
+
+      <p>The same House committee, in the same meeting, immediately before taking up S.B. 114, killed a different bill: <strong>H.B. 424, Tax Exemptions Economic Impact Amendments</strong> (Rep. Robert Spendlove). That bill would have required businesses to report the dollar value of their sales tax exemptions by category, required the Tax Commission to categorize every exemption in the code, and required annual reporting to the Revenue and Taxation Interim Committee — essentially the tracking system Utah still lacks today. Its own sponsor moved to hold it. The vote was 11&ndash;1&ndash;3.</p>
+
+      <details>
+        <summary>Read the exact sequence from the House committee minutes</summary>
+        <div class="inner">
+          <div class="quote-block">
+            "Rep. Spendlove explained the bill... MOTION: Rep. Spendlove moved to hold H.B. 424. The motion passed with a vote of 11-1-3."
+            <div class="quote-source">— House Revenue and Taxation Committee minutes, March 6, 2020, agenda item 2</div>
+          </div>
+          <div class="quote-block">
+            "Sen. Cullimore explained the bill assisted by John Valentine, Chairman, Utah State Tax Commission... MOTION: Rep. Stoddard moved to replace S.B. 114 with 2nd Substitute S.B. 114. The motion passed with a vote of 10-0-5."
+            <div class="quote-source">— House Revenue and Taxation Committee minutes, March 6, 2020, agenda item 3 (the very next item)</div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section id="cost">
+      <div class="section-label"><span>What it costs — according to the state's own records</span></div>
+      <p>The Legislative Fiscal Analyst's note on S.B. 114 did not put a dollar figure on the exemption. Every relevant revenue line was marked unknown:</p>
+      <div class="quote-block">
+        "Enactment of this bill may reduce state sales tax revenue by an unknown amount." ... "Enactment of this legislation may reduce revenue to local governments by an unknown amount." ... "Enactment of this legislation may reduce individuals' and businesses' sales tax liability by an unknown amount."
+        <div class="quote-source">— S.B. 114 2nd Substitute Fiscal Note, Utah Legislative Fiscal Analyst, March 12, 2020</div>
+      </div>
+      <p>The official Net GF/EF/USF impact on the note is recorded as <strong>$0 / $0 / $0</strong> — not because the impact was zero, but because it was never quantified. The note also states: <strong>"No performance note required for this bill."</strong> A performance note is the Legislature's mechanism (Joint Rule JR4-2-404) for tracking whether a new program or agency delivers on its stated goals over one, two, and three years. Under Utah's Joint Rules, that mechanism is built for new programs and agencies — not for tax exemptions — so tax breaks like this one never trigger the kind of outcome tracking that spending programs do.</p>
+      <p>Six years later, the gap remains. In a July 2026 investigation, Utah's own State Auditor confirmed the state still cannot produce a cost figure for its data center tax breaks:</p>
+      <div class="quote-block">
+        Utah State Auditor Tina Cannon acknowledged the information is not readily accessible, and said there is no single statewide system because different levels of government can offer different types of tax incentives. Her office is developing a new dashboard through Transparent Utah specifically because no centralized tracking system currently exists.
+        <div class="quote-source">— KUTV 2News Investigates, "Utah lacks system to track data center tax breaks as costs soar elsewhere," July 2026</div>
+      </div>
+      <h3>Which government actually loses this money?</h3>
+      <p>The fiscal note doesn't treat this as one undifferentiated loss — it separates the impact into three categories, and marks all three "unknown":</p>
+      <div class="quote-block">
+        "Enactment of this bill may reduce <strong>state</strong> sales tax revenue by an unknown amount." ... "Enactment of this legislation may reduce revenue to <strong>local governments</strong> by an unknown amount." ... "Enactment of this legislation may reduce <strong>individuals' and businesses'</strong> sales tax liability by an unknown amount."
+        <div class="quote-source">— S.B. 114 2nd Substitute Fiscal Note, Utah Legislative Fiscal Analyst, March 12, 2020</div>
+      </div>
+      <p>That three-way split isn't a formality — it reflects how Utah's sales tax is actually structured. The 6.1% combined rate used in the calculation below is two separate pieces: a <strong>4.85% state rate</strong>, which feeds the state's General Fund, Education Fund, and Uniform School Fund (the "GF/EF/USF" line on every Utah fiscal note); and a <strong>1.25% local add-on</strong> that is mandatory statewide but is distributed to <strong>cities and counties</strong>, not the state. Any additional local option sales taxes a county or city has separately adopted layer on top of that, and are lost as well. So a single exempted equipment purchase is simultaneously a loss to the state's own budget and to the county or city where the facility sits &mdash; and neither side has ever been required to say by how much.</p>
+      <p>The watchdog group Good Jobs First lists Utah as one of just seven states nationally for which no cost data — not even outdated or unofficial figures — can be found at all.</p>
+      <h3>What a single facility's exemption is actually worth</h3>
+      <p>Because Utah doesn't track this, there's no official number for what any specific facility has saved. But the exemption applies only to equipment — servers, cooling systems, machinery — not to the building itself, which was never subject to sales tax to begin with. Using the Kem C. Gardner Policy Institute's own modeling of a hypothetical $2 billion data center (roughly $500 million in real property, $1.5 billion in equipment), here is what that $91.5 million in exempted tax actually splits into:</p>
+      <div class="calc-box">
+        <div class="calc-label">Where a hypothetical $91.5M exemption actually falls</div>
+        <div class="calc-row">
+          <span class="calc-item">$72.75 million</span>
+          <span class="calc-desc">state share (4.85%) &mdash; would otherwise flow to Utah's General Fund, Education Fund, and Uniform School Fund</span>
+        </div>
+        <div class="calc-op">+</div>
+        <div class="calc-row">
+          <span class="calc-item">$18.75 million</span>
+          <span class="calc-desc">mandatory local share (1.25%) &mdash; would otherwise flow to the city or county where the facility sits</span>
+        </div>
+        <div class="calc-op">=</div>
+        <div class="calc-result">$91.5 million</div>
+        <div class="calc-sub">on one facility this size &mdash; before counting any additional local option sales tax the host county or city may separately impose</div>
+      </div>
+    </section>
+
+    <section id="compare">
+      <div class="section-label"><span>How other states structured the same kind of break</span></div>
+      <p>Most states with a comparable data center sales tax exemption attach at least a minimum jobs requirement. Utah's exemption has none.</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4>Virginia</h4>
+          <div class="big">50 jobs</div>
+          <div class="desc">$150M minimum investment, 50 new jobs at 150% of prevailing wage required to qualify.</div>
+        </div>
+        <div class="compare-card">
+          <h4>Texas</h4>
+          <div class="big">20 jobs</div>
+          <div class="desc">$200M investment over 5 years and 20 new jobs required.</div>
+        </div>
+        <div class="compare-card">
+          <h4>Mississippi</h4>
+          <div class="big">50 jobs</div>
+          <div class="desc">$50M investment and 50 jobs at 150% of average wage required.</div>
+        </div>
+        <div class="compare-card">
+          <h4>Utah</h4>
+          <div class="big">0 jobs</div>
+          <div class="desc">150,000 sq ft and a 2016 construction date. No jobs, wage, or investment condition of any kind.</div>
+        </div>
+      </div>
+      <p>Where cost data does exist elsewhere, it shows what an unquantified exemption can grow into. Georgia's own state audit, after being revised downward, found its data center tax break cost roughly $227 million against 1,641 actual operations jobs — about $138,000 per job, using the state's own corrected figures. Indiana's cumulative subsidy commitment to a single company's data center campuses is estimated by Good Jobs First at roughly $8.2 billion over the life of the projects — the largest known data center subsidy tied to one company in the country. Utah has no equivalent audited figure to compare, because it has never required one to be produced.</p>
+    </section>
+
+    <section id="stratos">
+      <div class="section-label"><span>How this stacks: the Stratos example</span></div>
+      <p>S.B. 114's exemption isn't the only tax relief a large facility can collect in Utah — it's the floor underneath whatever else gets negotiated on top of it. The clearest public example is the Stratos Project, a proposed 40,000-acre data and energy campus in Box Elder County, being developed by O'Leary Digital under the Military Installation Development Authority (MIDA). Stratos far exceeds S.B. 114's 150,000-square-foot, Utah-located, post-2016 threshold, so it would qualify for the baseline sales tax exemption automatically. On top of that baseline, MIDA separately negotiated three more layers of relief specific to this one project, disclosed in its own public FAQ materials and the interlocal agreement approved by Box Elder County (Resolution 26-12, May 4, 2026):</p>
+
+      <div class="stack-diagram">
+        <div class="stack-layer layer-1">
+          <div class="stack-layer-label">Layer 1 &middot; Statewide, automatic</div>
+          <div class="stack-layer-title">S.B. 114 sales tax exemption</div>
+          <div class="stack-layer-desc">Equipment (servers, cooling, switchgear) exempt from sales/use tax under Utah Code &sect;59-12-104 &mdash; the same mechanism modeled in the calculator above, applying automatically once a facility meets the 150,000 sq ft / 2016 threshold.</div>
+        </div>
+        <div class="stack-layer layer-2">
+          <div class="stack-layer-label">Layer 2 &middot; Negotiated by MIDA for this project</div>
+          <div class="stack-layer-title">80% real property tax rebate + 100% personal property tax rebate</div>
+          <div class="stack-layer-desc">MIDA rebates 80% of the project's real estate tax revenue back to the developer, and separately rebates personal property tax on equipment in full, replaced by a 1.2% "letter of completion" rate in place of standard taxation.</div>
+        </div>
+        <div class="stack-layer layer-3">
+          <div class="stack-layer-label">Layer 3 &middot; Negotiated by MIDA for this project</div>
+          <div class="stack-layer-title">Energy tax cut: 6% &rarr; 0.5%</div>
+          <div class="stack-layer-desc">MIDA's standard energy-use tax rate reduced specifically for this project &mdash; roughly a 92% cut on that tax alone.</div>
+        </div>
+      </div>
+
+      <p>Box Elder County's own official Stratos FAQ confirms Resolution 26-12 authorized the interlocal agreement containing these terms. The specific rebate percentages and rate structure are further detailed in a public FAQ compiled by Grow The Flow Utah, an accountability group tracking the project, drawing directly on MIDA's own disclosed materials and county meeting records.</p>
+
+      <div class="fund-table-wrap">
+        <div class="fund-table-label">Where each layer actually lands &mdash; not all of it is "the state"</div>
+        <table class="fund-table">
+          <tr><th>Layer</th><th>Where it's diverted to</th></tr>
+          <tr><td>S.B. 114 sales tax exemption</td><td><span class="fund-tag fund-state">State</span> (4.85% share &mdash; GF/EF/USF) + <span class="fund-tag fund-local">Local</span> (1.25%+ share &mdash; host county/city)</td></tr>
+          <tr><td>80% real property tax rebate</td><td><span class="fund-tag fund-local">Local</span> &mdash; split among county, school district, and other local entities per MIDA's project area plan (exact percentages not public)</td></tr>
+          <tr><td>100% personal property tax rebate</td><td><span class="fund-tag fund-local">Local</span> &mdash; same as above</td></tr>
+          <tr><td>MIDA energy tax cut (6%&rarr;0.5%)</td><td><span class="fund-tag fund-mida">MIDA</span> &mdash; MIDA's own fund; this tax exists only because of MIDA's involvement, so it was never the county's or state's to begin with</td></tr>
+        </table>
+        <p class="fund-table-note">MIDA is legally empowered to levy this energy tax itself, "as though the authority were a municipality," under Utah Code &sect;63H-1-204 &mdash; it is paid directly to MIDA, monthly, by energy suppliers. MIDA's own budget documents show it keeps a fund it calls its <strong>"MIDA General Fund"</strong> ($140.9 million in total revenue across all its project areas in FY2024) &mdash; a fund entirely separate from the <strong>State of Utah's own General Fund</strong>. Cutting this tax doesn't reduce state revenue; it reduces revenue MIDA would otherwise have collected for itself.</p>
+        <p class="fund-table-note"><strong>This isn't money Box Elder County would otherwise have collected, either.</strong> Utah Code &sect;10-1-304 grants the power to levy this specific "municipal energy sales and use tax" to a narrow, named list: municipalities (cities and towns), MIDA, and the Point of the Mountain State Land Authority. Counties are not on that list, and the same law defines "unincorporated" as land "not within a municipality" &mdash; which is what the Stratos site is. Without MIDA's project-area designation, no public record reviewed here shows Box Elder County having independent authority to levy this tax on that land at all. MIDA's involvement is what makes the tax possible on this site in the first place; cutting its rate to 0.5% reduces revenue MIDA created the opportunity to collect, not revenue diverted away from the county.</p>
+      </div>
+      <p>So of the four layers stacked on Stratos, only one &mdash; the S.B. 114 exemption &mdash; touches Utah's actual state General Fund, Education Fund, or Uniform School Fund at all, and only for its 4.85% state-rate share. The property tax rebates divert money that would otherwise fund the county, the school district, and other local taxing entities. The energy tax cut diverts money that would otherwise flow into MIDA's own separate fund. MIDA's project materials separately project $250 million a year in state sales tax receipts from the data centers at full buildout &mdash; a real state-level number, but a gross projection, not reconciled anywhere in public records against how much the S.B. 114 exemption already removes from it.</p>
+
+      <h3>What Box Elder County itself actually captures</h3>
+      <p>MIDA's own governing document for this project &mdash; the Stratos Project Area Plan, effective May 4, 2026 &mdash; states plainly that the revenue this project generates is meant to be split three ways: it "will be used by MIDA to support new improvements and missions on the Associated Military Land; provide the State with revenue for it to pursue its purposes statewide; and, provide significant perpetual funding to the County for providing municipal services to the Project Area, support the local school district, and enhance its local government." The county assessor, per MIDA's own April 2026 correspondence with Box Elder officials, continues to value the property and collect the tax &mdash; then distributes it according to the interlocal agreement's formula. What that formula actually is, in exact percentages by recipient, has not been made public.</p>
+
+      <div class="gap-calc">
+        <div class="gap-row">
+          <div class="gap-label">Phase 1 &mdash; what's actually promised vs. what a normal rate would generate</div>
+          <div class="gap-detail">Per a public FAQ compiled by Grow The Flow Utah, drawing on MIDA's own disclosed Phase 1 figures:</div>
+          <div class="gap-num gap-num-small">$30 million <span style="font-size:16px; color:var(--ink-dimmer); font-family: var(--sans);">promised</span></div>
+          <div class="gap-caveat">At Box Elder County's standard, un-rebated tax rate, the same Phase 1 investment "would likely be closer to <strong>$360 million</strong>" &mdash; a roughly <strong>12&times;</strong> difference, on the phase of the project already approved and underway.</div>
+        </div>
+        <div class="gap-op">at full buildout, the same comparison scales up to:</div>
+        <div class="gap-row">
+          <div class="gap-label">Full buildout &mdash; developer's own $100B valuation claim</div>
+          <div class="gap-detail">MIDA's and the project's own public figures for the county's eventual share, vs. Box Elder's standard combined local rate (0.9%) applied to the full $100B figure, per the BEAR campaign's calculation reported by Fox 13:</div>
+          <div class="gap-num gap-num-small">$100&ndash;108M <span style="font-size:14px; color:var(--ink-dimmer); font-family: var(--sans);">promised</span></div>
+          <div class="gap-num">vs. $900M+ <span style="font-size:14px; color:var(--ink-dimmer); font-family: var(--sans);">at standard rate</span></div>
+          <div class="gap-caveat">The $900M figure is the <strong>combined</strong> rate across every local taxing entity on that land (county, school district, fire district, etc.), not county government alone &mdash; and both numbers are unaudited projections tied to the developer's own stated valuation, not confirmed figures.</div>
+        </div>
+      </div>
+
+      <p>Both comparisons point the same direction: whether measured on the phase already built or the full buildout the developer publicly claims, Box Elder is positioned to receive roughly a tenth of what the same investment would generate at the county's ordinary tax rate. Neither number is audited, and Utah has no requirement that either ever be checked against what the project actually generates once built.</p>
+
+      <h3>What the county is actually guaranteed &mdash; separate from projected tax revenue</h3>
+      <p>Apart from the projected tax figures above, the interlocal agreement (Resolution 26-12, May 4, 2026) does lock in a small number of concrete, negotiated items, per Box Elder County's own official press release and its County Auditor's formal fiscal impact statement:</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4>$16.2 million upfront</h4>
+          <div class="desc">Paid before tax revenue starts flowing, earmarked "to offset the county's cost for hiring police and fire workers," per the county's own FAQ. County Auditor Shirlene Larsen's official fiscal impact statement values this at <strong>$5.4 million a year, guaranteed</strong>, for three years.</div>
+        </div>
+        <div class="compare-card">
+          <h4>A conditional fire truck</h4>
+          <div class="desc">Not an outright decade-by-decade gift &mdash; the actual negotiated term restricts building heights to what the county's existing emergency response equipment can reach. <strong>Only if a building exceeds that height</strong> is the developer required to provide "a new appropriately equipped fire truck every ten years," per the county's own official press release.</div>
+        </div>
+      </div>
+      <p>Beyond these two items, the guardrails are operational, not financial: a 55-decibel noise limit at the site boundary, dark-sky lighting compliance, a local landowner seat on the Design Review Committee, and a requirement that the developer fund and maintain the project's own public infrastructure. None of these convert into additional county revenue &mdash; they constrain how the project behaves, not what the county collects. The Auditor's same fiscal impact statement is also the most authoritative version yet of the eventual number: the $5.4M guaranteed figure "could balloon to $108 million annually once the data center reaches full capacity" &mdash; the same full-buildout projection already covered above, now confirmed as an official county estimate rather than only a developer or MIDA talking point.</p>
+
+      <h3>Isolating just the county government's own general fund</h3>
+      <p>The $900M figure above is a combined rate across every local taxing entity &mdash; it overstates what county government itself would ever see, since most of it is the school district's share. The Utah State Tax Commission's own 2025 area tax rate report for Box Elder County breaks the combined rate apart by entity. For a representative unincorporated tax area in the county, the county's own General Operations levy &mdash; the rate that actually funds Box Elder County government's general fund, separate from the school district, fire district, and other special districts &mdash; is <strong>0.001149</strong> (about 0.115%). The Box Elder School District's own rate in that same area is <strong>0.006978</strong> &mdash; roughly six times larger than the county's own share.</p>
+      <div class="calc-box">
+        <div class="calc-label">Box Elder County government's own general fund, at standard rate, full buildout</div>
+        <div class="calc-row">
+          <span class="calc-item">$100 billion</span>
+          <span class="calc-desc">the developer's own publicly stated full-buildout valuation</span>
+        </div>
+        <div class="calc-op">&times;</div>
+        <div class="calc-row">
+          <span class="calc-item">0.1149%</span>
+          <span class="calc-desc">Box Elder County's own General Operations tax rate (2025, per the Utah State Tax Commission) &mdash; not the school district's or any other entity's share</span>
+        </div>
+        <div class="calc-op">=</div>
+        <div class="calc-result">$114.9 million</div>
+        <div class="calc-sub">what county government's own general fund alone would collect annually at full buildout, under the standard rate &mdash; more than the entire $100&ndash;108M figure currently used to describe what "the county" gets overall under MIDA's negotiated structure</div>
+      </div>
+      <p>That's the sharpest version of the comparison: even if MIDA's structure delivered the full promised $100&ndash;108M figure, and even if every dollar of it landed specifically in county government's own general fund &mdash; which no public document confirms, since the money is described as split among the county, the school district, and local government broadly &mdash; it would still fall short of what the county's general fund alone would normally collect from this one property, before the school district, fire district, and every other local taxing entity took their own separate shares on top of that.</p>
+
+      <h3>Compare this to a regular project: Tyson Foods, Eagle Mountain</h3>
+      <p>Stratos runs through MIDA, a special state authority. Most Utah companies don't get that route — they use the state's standard economic development tool, EDTIF (Economic Development Tax Increment Financing), the same program referenced earlier in this case file. Tyson Foods' $300 million Eagle Mountain plant, which opened in 2021 and closed in August 2026, is a documented example of what that ordinary process looks like, and the contrast with Stratos is sharp:</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4>Tyson (standard EDTIF)</h4>
+          <div class="big" style="font-size:20px;">Small, capped, and conditional</div>
+          <div class="desc">GOED capped Tyson's entire state incentive at <strong>$5,258,324</strong> &mdash; 20% of the $27.8 million in new state tax revenue the project was projected to generate over 10 years &mdash; plus a separate $300,000 infrastructure grant. The credit was earned only in years Tyson actually created jobs meeting a wage floor of 110% of the county average, and only against taxes Tyson had already paid. Eagle Mountain City and Alpine School District separately approved a Community Reinvestment Project Area for the site; the specific local terms aren't detailed in public reporting reviewed here. When Tyson closed early in 2026, reporting citing the Salt Lake Tribune found the company had ultimately collected only 25&ndash;50% of the state credit it was eligible for.</div>
+        </div>
+        <div class="compare-card">
+          <h4>Stratos (MIDA + S.B. 114)</h4>
+          <div class="big" style="font-size:20px;">Large, automatic, and uncapped</div>
+          <div class="desc">80% of real property tax and 100% of personal property tax are rebated automatically under the negotiated structure, on a project the developer values at $100 billion. Equipment is exempt from sales tax automatically under S.B. 114, with no jobs requirement at all. A separate MIDA energy tax cut applies on top. When Box Elder County Commissioners asked MIDA directly what would hold the project accountable if it failed to deliver the promised jobs, MIDA "failed to provide a clear answer," and the promised jobs are not written into the Interlocal Cooperation Agreement at all, per a public FAQ from Grow The Flow Utah.</div>
+        </div>
+      </div>
+      <p>The difference isn't just scale — Stratos is a vastly larger project than a single meatpacking plant. It's structural: Tyson's incentive was small relative to the state's overall EDTIF caseload, capped in dollar terms from the start, and tied to performance the state could verify and claw back year by year — and it clawed back, in practice, the moment Tyson underperformed. Stratos's incentives reduce or eliminate what's owed automatically, on a project many times larger, with no comparable job-performance enforcement mechanism documented in the interlocal agreement itself.</p>
+
+      <h3>A remote site, a small workforce, and a ban on housing anyone there</h3>
+      <p>Set the incentive structure aside for a moment and ask what it's actually buying. The Stratos site is 40,000 acres of unincorporated ranchland in Hansel Valley &mdash; genuinely remote, even by rural Box Elder County standards.</p>
+
+      <div class="distance-diagram-wrap">
+        <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Distance diagram: Stratos site to Snowville and Tremonton">
+          <line x1="90" y1="130" x2="610" y2="130" stroke="#ddd6c4" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+          <circle cx="90" cy="130" r="9" fill="#c0572e"/>
+          <text x="90" y="90" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="17" fill="#1c1c1a">Stratos Site</text>
+          <text x="90" y="110" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#8c8878">Hansel Valley</text>
+          <text x="90" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#5b5850">dirt &amp; gravel roads</text>
+          <text x="90" y="176" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#5b5850">to the site itself</text>
+          <circle cx="230" cy="130" r="6" fill="#8c8878"/>
+          <text x="230" y="105" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="14" fill="#1c1c1a">Snowville</text>
+          <text x="230" y="160" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#c0572e" font-weight="600">pop. 163</text>
+          <text x="230" y="176" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#8c8878">the site's nearest neighbor</text>
+          <text x="350" y="108" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#2e5f5a" font-weight="600">&larr; 40 miles &rarr;</text>
+          <text x="350" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#5b5850">rural highway, then</text>
+          <text x="350" y="176" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#5b5850">unpaved gravel/dirt</text>
+          <circle cx="610" cy="130" r="10" fill="#2e5f5a"/>
+          <text x="610" y="90" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="17" fill="#1c1c1a">Tremonton</text>
+          <text x="610" y="110" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#8c8878">nearest real town</text>
+          <text x="610" y="160" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#2e5f5a" font-weight="600">pop. 13,700</text>
+          <text x="350" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#8c8878" letter-spacing="0.5">REALISTIC DAILY ROUND TRIP: 1.5&ndash;2 HOURS</text>
+        </svg>
+      </div>
+
+      <div class="quote-block">
+        "A dirt road cuts through Hansel Valley" &mdash; the reporter describes standing "on the side of the gravel road" while a local rancher stopped to ask if they were lost.
+        <div class="quote-source">— Utah News Dispatch, on-site visit, May 2026</div>
+      </div>
+
+      <div class="three-facts">
+        <div class="fact-card"><div class="fact-num">1,000&ndash;2,000</div><div class="fact-label">Permanent jobs promised</div></div>
+        <div class="fact-card"><div class="fact-num">4,000</div><div class="fact-label">Construction jobs, per skeptical outside estimate</div></div>
+        <div class="fact-card"><div class="fact-num">163</div><div class="fact-label">Population of nearest neighbor town</div></div>
+      </div>
+      <p>Box Elder County's own FAQ puts the permanent figure at 1,000&ndash;2,000 jobs. A public FAQ compiled by Grow The Flow Utah is more skeptical, stating "industry experts say those numbers are overstated" and putting construction closer to 4,000 jobs over 10&ndash;15 years rather than the 10,000 sometimes cited &mdash; a pattern consistent with the national data center jobs research covered earlier in this case file. Combined with the commute distance and the tiny population of the only town that actually neighbors the site, the practical likelihood is that a small fraction of even that modest permanent headcount is on site on any given day &mdash; consistent with the automation-driven staffing levels documented earlier for hyperscale facilities nationally.</p>
+      <p>The county's own plan documents anticipate the site eventually growing beyond just server buildings &mdash; "future phases might include some stores, restaurants, manufacturing, and commercial development," per the same official FAQ. But the interlocal agreement approved alongside that FAQ contains a direct contradiction: it <strong>"strictly prohibits any permanent residential housing"</strong> on the site, while separately capping hotel construction at a small number of rooms. Box Elder County's own FAQ confirms both restrictions in the same document that describes future retail and manufacturing plans.</p>
+      <div class="clarify-box">
+        <span class="tag-mini">The math doesn't reconcile</span>
+        A site planning retail, restaurants, manufacturing, and thousands of construction and permanent workers &mdash; while legally barring anyone from living there permanently, and capping hotel rooms at a fraction of what a construction workforce alone would need &mdash; has no disclosed plan for where its own workforce is supposed to live. The standard industry solution for a remote site barred from permanent housing is temporary or rotating "man camp"&#8211;style worker housing, common on oil, gas, and mining projects for exactly this reason &mdash; but nothing in Stratos's public materials confirms this is the plan. It's simply an open question the interlocal agreement doesn't answer.
+      </div>
+      <p>That gap matters for the incentive question specifically. Much of the standard justification for large tax breaks &mdash; the case Tyson's own EDTIF terms were built around &mdash; rests on new local spending: workers who live nearby, buy homes, shop locally, and send kids to local schools, generating tax base beyond the project itself. A workforce that commutes long distances or rotates through temporary housing doesn't generate that same local multiplier. If the people who build and eventually staff Stratos never become Box Elder County residents, a meaningful part of the standard economic case for granting incentives this size &mdash; automatic, uncapped, and larger than any comparable Utah project on record &mdash; doesn't apply the way it would for a facility employing local residents in place.</p>
+      <p>None of this confirms Stratos has actually claimed the S.B. 114 exemption — Utah doesn't publish that information for any facility, which is the same tracking gap documented throughout this case file. What's confirmed is that Stratos meets S.B. 114's qualifying criteria by a wide margin, and that it separately received three additional, project-specific tax concessions on top of whatever the statewide exemption is worth to it. The state exemption with no jobs requirement isn't an isolated policy — it's the base layer a much larger, individually negotiated package gets built on.</p>
+    </section>
+
+    <section id="sources">
+      <div class="section-label"><span>Sources</span></div>
+      <ul class="source-list">
+        <li><span class="src-title">S.B. 114, 2020 General Session — enrolled bill, sponsors, vote history</span><a href="https://le.utah.gov/~2020/bills/static/SB0114.html" target="_blank" rel="noopener">le.utah.gov/~2020/bills/static/SB0114.html</a></li>
+        <li><span class="src-title">S.B. 114 2nd Substitute — full bill text (Utah Code §59-12-102, §59-12-104)</span><a href="https://le.utah.gov/~2020/bills/sbillint/SB0114S02.pdf" target="_blank" rel="noopener">le.utah.gov/~2020/bills/sbillint/SB0114S02.pdf</a></li>
+        <li><span class="src-title">Senate Revenue &amp; Taxation Committee minutes, Feb. 14, 2020</span><a href="https://le.utah.gov/interim/2020/html/00001933.htm" target="_blank" rel="noopener">le.utah.gov/interim/2020/html/00001933.htm</a></li>
+        <li><span class="src-title">House Revenue &amp; Taxation Committee minutes, Mar. 6, 2020</span><a href="https://le.utah.gov/interim/2020/html/00002393.htm" target="_blank" rel="noopener">le.utah.gov/interim/2020/html/00002393.htm</a></li>
+        <li><span class="src-title">KUTV 2News Investigates — Utah lacks system to track data center tax breaks</span><a href="https://kutv.com/news/2news-investigates/utah-lacks-system-to-track-data-center-tax-breaks-as-costs-soar-elsewhere" target="_blank" rel="noopener">kutv.com/news/2news-investigates</a></li>
+        <li><span class="src-title">KUTV 2News Investigates — Utah lawmakers say more info is needed</span><a href="https://kutv.com/news/2news-investigates/utah-lawmakers-say-more-info-is-needed-as-data-center-tax-incentives-come-under-scrutiny" target="_blank" rel="noopener">kutv.com/news/2news-investigates</a></li>
+        <li><span class="src-title">Good Jobs First — Even Cloudier with a Greater Loss of Spending Control</span><a href="https://goodjobsfirst.org/even-cloudier-with-a-greater-loss-of-spending-control-how-data-center-tax-abatements-undermine-public-budgets/" target="_blank" rel="noopener">goodjobsfirst.org</a></li>
+        <li><span class="src-title">Kem C. Gardner Policy Institute — Data Centers and Utah's Property Tax</span><a href="https://d36oiwf74r1rap.cloudfront.net/wp-content/uploads/2026/08/DataCentPropTax-FS-Aug2026.pdf" target="_blank" rel="noopener">Gardner Institute fact sheet, Aug. 2026</a></li>
+        <li><span class="src-title">Tax Foundation — 2026 Utah Tax Rates & Rankings (6.10% state rate incl. mandatory local add-on)</span><a href="https://taxfoundation.org/location/utah/" target="_blank" rel="noopener">taxfoundation.org/location/utah</a></li>
+        <li><span class="src-title">Georgia data center audit revision — WSB-TV / Yahoo Finance</span><a href="https://finance.yahoo.com/news/state-revises-audit-data-center-182340475.html" target="_blank" rel="noopener">finance.yahoo.com</a></li>
+        <li><span class="src-title">Box Elder County — Stratos Project FAQs & Facts (official, confirms Resolution 26-12)</span><a href="https://www.boxeldercountyut.gov/661/Stratos-Page-FAQ-Page" target="_blank" rel="noopener">boxeldercountyut.gov/661/Stratos-Page-FAQ-Page</a></li>
+        <li><span class="src-title">Grow The Flow Utah — Stratos Data Center FAQ (rebate terms, energy tax cut, compiled from MIDA's disclosed materials)</span><a href="https://growtheflowutah.org/stratos/" target="_blank" rel="noopener">growtheflowutah.org/stratos</a></li>
+        <li><span class="src-title">Fox 13 Now — Poll shows 7 of 10 Box Elder County voters oppose Stratos Project (Garbett/$900M calculation)</span><a href="https://www.fox13now.com/news/local-news/northern-utah/poll-shows-7-of-10-box-elder-county-voters-oppose-stratos-project-data-center" target="_blank" rel="noopener">fox13now.com</a></li>
+        <li><span class="src-title">The Stratos Project — independent public-source guide (scale, taxes, meeting citations)</span><a href="https://stratos.fiftheast.com/" target="_blank" rel="noopener">stratos.fiftheast.com</a></li>
+        <li><span class="src-title">Utah Code &sect;63H-1-204 — MIDA energy tax (levied and collected by MIDA itself, not the state)</span><a href="https://law.justia.com/codes/utah/title-63h/chapter-1/part-2/section-204/" target="_blank" rel="noopener">law.justia.com &middot; Utah Code 63H-1-204</a></li>
+        <li><span class="src-title">Utah Code &sect;10-1-304 — Municipal Energy Sales and Use Tax Act (who may levy: municipality, MIDA, Point of the Mountain State Land Authority only)</span><a href="https://le.utah.gov/~2014/bills/sbillint/SB0216S01.htm" target="_blank" rel="noopener">le.utah.gov &middot; Utah Code 10-1-304 (amendment text)</a></li>
+        <li><span class="src-title">MIDA FY2024 Amended Budget (shows MIDA's own separate "MIDA General Fund")</span><a href="https://www.utah.gov/pmn/files/1137725.pdf" target="_blank" rel="noopener">utah.gov/pmn &middot; MIDA Board Meeting, June 11, 2024</a></li>
+        <li><span class="src-title">Utah State Tax Commission — Application Hosting Services private letter ruling (colocation/leased space taxability)</span><a href="https://tax.utah.gov/commission/ruling/01-030.htm" target="_blank" rel="noopener">tax.utah.gov/commission/ruling/01-030</a></li>
+        <li><span class="src-title">Utah State Tax Commission — Publication 64, Sales Tax Information for Computer Service Providers</span><a href="https://tax.utah.gov/forms-pubs/pub-64/" target="_blank" rel="noopener">tax.utah.gov/forms-pubs/pub-64</a></li>
+        <li><span class="src-title">Stratos Project Area Plan (MIDA's governing document, effective May 4, 2026 — revenue distribution intent)</span><a href="https://static1.squarespace.com/static/68fa79dd76f6c50e5cc4bf18/t/69fb8c8e11644d4741215b47/1778093202872/Stratos+Project+Area+Plan+-+May+2026.pdf" target="_blank" rel="noopener">Stratos Project Area Plan, May 2026 (PDF)</a></li>
+        <li><span class="src-title">ABC4 — Documents reveal why this area was chosen for Stratos (county assessor's role, MIDA April 2026 correspondence)</span><a href="https://www.abc4.com/news/digital-exclusives/documents-stratos-project-area-box-elder/" target="_blank" rel="noopener">abc4.com</a></li>
+        <li><span class="src-title">Utah GOED — Tyson Fresh Meats to Build Food Production Plant in Utah (official incentive terms: $5,258,324 cap)</span><a href="https://business.utah.gov/news/tyson-fresh-meats-to-build-food-production-plant-in-utah/" target="_blank" rel="noopener">business.utah.gov &middot; GOED announcement, May 2019</a></li>
+        <li><span class="src-title">Utah Money Watch — Five Years After Opening, Tyson Foods is Shutting Down Eagle Mountain Plant (25&ndash;50% credit actually collected)</span><a href="https://www.utahmoneywatch.com/five-years-after-opening-a-286-million-plant-in-eagle-mountain-utah-tyson-foods-is-shutting-it-down-and-eliminating-723-utah-jobs-in-the-process/" target="_blank" rel="noopener">utahmoneywatch.com, Aug. 2026</a></li>
+        <li><span class="src-title">Utah State Tax Commission — 2025 Area Tax Rates by County (Box Elder County entity-level breakdown: county 0.001149, school district 0.006978)</span><a href="https://files.tax.utah.gov/propertytax/tax-rates/area-rates/taxarearates2025.pdf" target="_blank" rel="noopener">files.tax.utah.gov &middot; 2025 Area Tax Rates, Box Elder County</a></li>
+        <li><span class="src-title">Box Elder News Journal — County passes 2025 budget with smaller tax increase ($76.3M total county budget)</span><a href="https://www.benewsjournal.com/articles/county-passes-2025-budget-with-smaller-tax-increase/" target="_blank" rel="noopener">benewsjournal.com, Dec. 2024</a></li>
+        <li><span class="src-title">MEAT+POULTRY — Tyson Foods selects site for Utah case-ready plant (Eagle Mountain/Alpine School District CRA)</span><a href="https://www.meatpoultry.com/articles/21332-tyson-foods-selects-site-for-utah-case-ready-plant" target="_blank" rel="noopener">meatpoultry.com, May 2019</a></li>
+        <li><span class="src-title">Deseret News — Utah House speaker on data center controversy (site distance from Tremonton, on-site reporting)</span><a href="https://www.deseret.com/utah/2026/05/12/everything-about-utah-stratos-project-data-center/" target="_blank" rel="noopener">deseret.com, May 2026</a></li>
+        <li><span class="src-title">Wikipedia / U.S. Census — Snowville, Utah population (163, 2020 census)</span><a href="https://en.wikipedia.org/wiki/Snowville,_Utah" target="_blank" rel="noopener">Snowville, Utah, 2020 Census figures</a></li>
+        <li><span class="src-title">Utah News Dispatch — Photographer's report: What I saw at the Hansel Valley data center site (first-hand road conditions)</span><a href="https://utahnewsdispatch.com/2026/06/17/photographer-report-hansel-valley-data-center-site/" target="_blank" rel="noopener">utahnewsdispatch.com, June 2026</a></li>
+        <li><span class="src-title">Box Elder County — Authorizes MIDA to Initiate Stratos Project (official press release; exact fire truck / building-height provision)</span><a href="https://www.boxeldercountyut.gov/m/newsflash/Home/Detail/82" target="_blank" rel="noopener">boxeldercountyut.gov, May 4, 2026</a></li>
+        <li><span class="src-title">Cache Valley Daily — Box Elder County Attorney rejects referendums (Auditor Larsen's official fiscal impact statement: $5.4M guaranteed, $108M at full capacity)</span><a href="https://www.cachevalleydaily.com/news/box-elder-county-attorney-rejects-referendums-challenging-stratos-data-center/article_b0d35187-447c-40e2-adf7-a9aaa11b3ad6.html" target="_blank" rel="noopener">cachevalleydaily.com, June 2026</a></li>
+        <li><span class="src-title">Box Elder County — Stratos FAQ ($16.2M earmarked for police/fire hiring)</span><a href="https://www.boxeldercountyut.gov/m/faq?cat=32" target="_blank" rel="noopener">boxeldercountyut.gov/m/faq</a></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <span>&copy; 2026 The Weber County Hive</span>
+    <span><a href="https://webercountyhive.substack.com" target="_blank" rel="noopener">webercountyhive.substack.com</a></span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-scroll-to]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.scrollTo);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Interactive exemption calculator
+  (function() {
+    const slider = document.getElementById('equip-slider');
+    const equipDisplay = document.getElementById('equip-display');
+    const resultTotal = document.getElementById('result-total');
+    const resultState = document.getElementById('result-state');
+    const resultLocal = document.getElementById('result-local');
+    const presetBtns = document.querySelectorAll('.preset-btn');
+    const rateBtns = document.querySelectorAll('.rate-btn');
+
+    let currentRate = 6.1;
+    const stateRate = 4.85;
+
+    function fmtMoney(n) {
+      if (n >= 1e9) return '$' + (n / 1e9).toFixed(2).replace(/\.00$/, '') + 'B';
+      if (n >= 1e6) return '$' + (n / 1e6).toFixed(n >= 1e8 ? 0 : 1) + 'M';
+      return '$' + Math.round(n).toLocaleString();
+    }
+
+    function fmtBillion(n) {
+      if (n >= 1e9) return '$' + (n / 1e9).toFixed(2).replace(/\.00$/, '') + ' billion';
+      return '$' + (n / 1e6).toFixed(0) + ' million';
+    }
+
+    function update() {
+      const equip = parseFloat(slider.value);
+      const localRate = currentRate - stateRate;
+      const total = equip * (currentRate / 100);
+      const stateShare = equip * (stateRate / 100);
+      const localShare = equip * (localRate / 100);
+
+      equipDisplay.textContent = fmtBillion(equip);
+      resultTotal.textContent = fmtMoney(total);
+      resultState.textContent = fmtMoney(stateShare);
+      resultLocal.textContent = fmtMoney(localShare);
+    }
+
+    slider.addEventListener('input', () => {
+      presetBtns.forEach(b => b.classList.remove('active'));
+      update();
+    });
+
+    presetBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        slider.value = btn.dataset.val;
+        presetBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        update();
+      });
+    });
+
+    rateBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        rateBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentRate = parseFloat(btn.dataset.rate);
+        update();
+      });
+    });
+
+    update();
+  })();
+</script>
+
+</body>
+</html>
