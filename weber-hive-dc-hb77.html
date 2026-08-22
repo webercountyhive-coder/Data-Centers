@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H.B. 77 (2026) — The Weber County Hive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;0,8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f0e6;
+    --paper-card: #faf7ef;
+    --ink: #1c1c1a;
+    --ink-dim: #5b5850;
+    --ink-dimmer: #8c8878;
+    --header-bg: #142a2c;
+    --header-bg-2: #1c3a3a;
+    --header-text: #f4f0e6;
+    --header-dim: #9fb0ac;
+    --rust: #c0572e;
+    --amber: #d9a441;
+    --teal: #2e5f5a;
+    --border: #ddd6c4;
+    --border-dark: rgba(244, 240, 230, 0.16);
+    --serif: 'Playfair Display', Georgia, serif;
+    --serif-body: 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--rust); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+  header { background: linear-gradient(155deg, var(--header-bg), var(--header-bg-2)); padding: 48px 0 40px; border-bottom: 3px solid var(--rust); }
+  .backlink { font-family: var(--mono); font-size: 12px; color: var(--header-dim); display: block; text-align: center; margin-bottom: 22px; }
+  .backlink a { color: var(--amber); }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 16px; text-align: center; }
+  h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(30px, 4.6vw, 46px); line-height: 1.1; letter-spacing: -0.01em; color: var(--header-text); text-align: center; margin-bottom: 16px; }
+  .dek { font-family: var(--serif-body); font-style: italic; font-size: 16.5px; color: var(--header-dim); max-width: 640px; margin: 0 auto; text-align: center; }
+  .meta-row { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 26px; font-family: var(--mono); font-size: 12px; color: var(--header-dim); }
+  .meta-row strong { color: var(--amber); }
+  .jump-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .jump-btn { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.02em; color: var(--header-text); background: rgba(244,240,230,0.08); border: 1px solid var(--border-dark); border-radius: 20px; padding: 7px 14px; cursor: pointer; }
+  .jump-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+  main { padding: 48px 0 80px; }
+
+  .plain-box { background: var(--paper-card); border: 2px solid var(--teal); border-radius: 8px; padding: 30px 32px; margin-bottom: 48px; }
+  .plain-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+  .plain-box h2 { font-family: var(--serif); font-size: 22px; margin-bottom: 12px; }
+  .plain-box p { font-family: var(--serif-body); font-size: 16px; color: var(--ink-dim); margin-bottom: 14px; }
+  .plain-box p:last-child { margin-bottom: 0; }
+  .plain-box strong { color: var(--ink); font-weight: 600; }
+
+  .before-after { display: grid; grid-template-columns: 1fr auto 1fr 1fr; gap: 14px; align-items: center; margin: 22px 0; }
+  .ba-card { background: rgba(46,95,90,0.05); border: 1px solid var(--border); border-radius: 6px; padding: 18px 16px; text-align: center; }
+  .ba-label { font-family: var(--mono); font-size: 10.5px; color: var(--ink-dimmer); text-transform: uppercase; margin-bottom: 6px; }
+  .ba-num { font-family: var(--serif); font-weight: 700; font-size: 30px; color: var(--ink); }
+  .ba-num.residential { color: var(--rust); }
+  .ba-num.commercial { color: var(--teal); }
+  .ba-sub { font-family: var(--sans); font-size: 12px; color: var(--ink-dim); margin-top: 4px; }
+  .ba-arrow { font-family: var(--serif); font-size: 24px; color: var(--ink-dimmer); }
+
+  section { margin-bottom: 52px; }
+  .section-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dimmer); padding-bottom: 12px; border-bottom: 1px solid var(--ink); margin-bottom: 22px; }
+
+  h3 { font-family: var(--serif); font-size: 21px; margin: 26px 0 10px; color: var(--ink); }
+  p { font-family: var(--serif-body); font-size: 15.5px; color: var(--ink-dim); margin-bottom: 14px; max-width: 720px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  .quote-block { background: var(--paper-card); border-left: 3px solid var(--rust); border-radius: 0 6px 6px 0; padding: 18px 22px; margin: 16px 0; font-family: var(--serif-body); font-size: 15px; color: var(--ink); font-style: italic; }
+  .quote-source { font-family: var(--mono); font-style: normal; font-size: 11.5px; color: var(--ink-dimmer); margin-top: 8px; }
+
+  .redline { background: #1c1c1a; color: #f4f0e6; border-radius: 6px; padding: 20px 24px; margin: 16px 0; font-family: var(--mono); font-size: 13px; line-height: 1.8; overflow-x: auto; }
+  .redline .del { color: #d97757; text-decoration: line-through; opacity: 0.7; }
+  .redline .ins { color: var(--amber); font-weight: 500; }
+
+  .vote-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-family: var(--mono); font-size: 13px; }
+  .vote-table th, .vote-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .vote-table th { color: var(--ink-dimmer); font-weight: 500; text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em; }
+  .vote-yes { color: var(--teal); font-weight: 600; }
+
+  .clarify-box { background: rgba(217,164,65,0.08); border: 1px solid var(--amber); border-radius: 6px; padding: 18px 22px; margin: 16px 0; font-family: var(--serif-body); font-size: 15px; color: var(--ink-dim); }
+  .clarify-box .tag-mini { font-family: var(--mono); font-size: 10.5px; color: var(--amber); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px; }
+
+  .thresh-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-family: var(--sans); font-size: 14px; }
+  .thresh-table th, .thresh-table td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .thresh-table th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-dimmer); }
+  .thresh-table td.num { font-family: var(--serif); font-weight: 700; font-size: 17px; }
+  .thresh-table .r-num { color: var(--rust); }
+  .thresh-table .t-num { color: var(--teal); }
+
+  .source-list { list-style: none; }
+  .source-list li { font-family: var(--mono); font-size: 13px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .source-list li:last-child { border-bottom: none; }
+  .source-list .src-title { color: var(--ink); display: block; margin-bottom: 3px; }
+  .source-list a { font-weight: 500; }
+
+  footer { padding: 36px 0 60px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
+
+  @media (max-width: 900px) {
+    .before-after { grid-template-columns: 1fr; }
+    .ba-arrow { transform: rotate(90deg); margin: 0 auto; }
+  }
+  @media (max-width: 640px) {
+    header { padding: 36px 0 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="backlink"><a href="weber-hive-datacenters-bills-docket.html">&larr; Back to the Bills Docket</a></span>
+    <div class="eyebrow">Case File &middot; 2026 General Session</div>
+    <h1>H.B. 77 — Two Thresholds for Two Kinds of Property</h1>
+    <p class="dek">A floor amendment widened the gap between when a home gets flagged for reassessment and when commercial property does — in a bill that started with both treated the same.</p>
+    <div class="meta-row">
+      <span>Chief Sponsor: <strong>Rep. Steve Eliason</strong></span>
+      <span>Senate Sponsor: <strong>Sen. Daniel McCay</strong></span>
+      <span>Signed: <strong>Mar. 23, 2026</strong></span>
+    </div>
+    <div class="jump-row">
+      <button class="jump-btn" data-scroll-to="mechanism">The mechanism</button>
+      <button class="jump-btn" data-scroll-to="amendment">The amendment</button>
+      <button class="jump-btn" data-scroll-to="votes">The vote</button>
+      <button class="jump-btn" data-scroll-to="fiscal">The fiscal note</button>
+      <button class="jump-btn" data-scroll-to="sources">Sources</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="plain-box">
+      <div class="plain-label">Start here — plain language</div>
+      <h2>The short version</h2>
+      <p>Utah law has an "automatic review" rule: when a property's assessed value jumps a lot in one year, the county assessor has to take a closer look before that value goes on the tax roll. It's a safeguard against bad assessments.</p>
+      <p>H.B. 77 changed how big that jump has to be before it triggers review — and it set two different bars. A <strong>home</strong> gets flagged once its value increases <strong>150%</strong> in a year. Any other kind of property — commercial buildings, industrial facilities, data centers — doesn't get flagged until it increases <strong>350%</strong>.</p>
+      <p>That gap wasn't in the bill as introduced. A floor amendment added it. The original bill set <strong>both</strong> categories at the same 150% threshold; the amendment more than doubled the bar for everything that isn't a home, while leaving the homeowner threshold untouched.</p>
+      <div class="before-after">
+        <div class="ba-card">
+          <div class="ba-label">Before the amendment</div>
+          <div class="ba-num">150%</div>
+          <div class="ba-sub">for every property type</div>
+        </div>
+        <div class="ba-arrow">&rarr;</div>
+        <div class="ba-card">
+          <div class="ba-label">After &mdash; homes</div>
+          <div class="ba-num residential">150%</div>
+          <div class="ba-sub">unchanged</div>
+        </div>
+        <div class="ba-card">
+          <div class="ba-label">After &mdash; everything else</div>
+          <div class="ba-num commercial">350%</div>
+          <div class="ba-sub">commercial, industrial, data centers</div>
+        </div>
+      </div>
+      <p>In dollars, on a $400,000 property: a home needs to gain <strong>$600,000</strong> in value in one year to trigger review. A commercial property starting at the same value needs to gain <strong>$1.4 million</strong> &mdash; more than double &mdash; before the same safeguard applies. Scaled to data center size, a $500 million facility (the real-property portion of a hypothetical $2 billion campus, per the Kem C. Gardner Policy Institute) would need to gain roughly <strong>$1.75 billion</strong> in a single year to cross the 350% bar &mdash; a threshold large facilities are unlikely to ever reach, meaning the safeguard rarely applies to them in practice. This is not data-center-specific language &mdash; it applies to all non-residential property statewide. But it does mean a data center or any commercial facility has to more than triple in value before the same safeguard that applies to a family home at 150% kicks in for it.</p>
+    </div>
+
+    <section id="mechanism">
+      <div class="section-label"><span>The mechanism, in the code</span></div>
+      <p>The relevant law is Utah Code <strong>§59-2-303.3</strong>, "Automatic review for property with qualifying increase." As enrolled:</p>
+      <div class="redline">"Qualifying increase" means a valuation increase that is equal to or more than <span class="ins">150%</span> higher than the previous year's valuation for <span class="ins">residential property</span>, or equal to or more than <span class="ins">350%</span> higher than the previous year's valuation for <span class="ins">any other property that is not residential property</span></div>
+      <p>A separate dollar floor also applies: a property only counts as a <strong>"specified property"</strong> requiring formal review and record-keeping if the qualifying increase is <strong>$250,000 or more</strong>. And a county is only required to report a repeat pattern to the Revenue and Taxation Interim Committee if a specified property's increase is <strong>$50,000 or more</strong> and recurs for two consecutive years.</p>
+    </section>
+
+    <section id="amendment">
+      <div class="section-label"><span>Where the split came from</span></div>
+      <p>The bill as introduced did not treat residential and commercial property differently. A House floor amendment offered by <strong>Rep. Norman K. Thurston</strong> on January 26, 2026 changed that. Here is the amendment's own redline, exactly as filed — bracketed text was struck, the replacement was inserted:</p>
+      <div class="redline">"[Qualifying]"Qualifying increase" means a valuation increase that is equal to or more than 150% higher than the previous year's valuation for residential property, or equal to or more than <span class="del">[150%]</span><span class="ins">350%</span> higher than the previous year's valuation for any other property that is not residential property</div>
+      <p>The bracket shows exactly what happened: the non-residential threshold was struck at 150% and replaced with 350%. The residential threshold — already 150% — was left alone. This was the only substantive change the amendment made to the reassessment-trigger language itself.</p>
+    </section>
+
+    <section id="votes">
+      <div class="section-label"><span>The vote</span></div>
+      <p>H.B. 77 was recommended by the Revenue and Taxation Interim Committee before the session began, and moved through with no recorded opposition at that stage:</p>
+      <table class="vote-table">
+        <tr><th>Stage</th><th>Vote</th></tr>
+        <tr><td>Revenue and Taxation Interim Committee (recommendation)</td><td class="vote-yes">15&ndash;0&ndash;3</td></tr>
+      </table>
+      <p>The bill's long title itself carries a formal committee note: <em>"The Revenue and Taxation Interim Committee recommended this bill."</em> — meaning it arrived in the 2026 session already vetted and endorsed unanimously by the interim committee, before any floor amendment was offered.</p>
+    </section>
+
+    <section id="fiscal">
+      <div class="section-label"><span>The fiscal note — and what it doesn't cover</span></div>
+      <p>H.B. 77 is a large, 40-section omnibus tax bill — it touches everything from mineral production withholding to short-term rental definitions to the state's low-income housing tax credit. Its fiscal note does contain one specific dollar figure:</p>
+      <div class="quote-block">
+        "Enactment of this legislation could increase revenue to the Income Tax Fund by an estimated $4 million beginning in FY 2027 resulting from changes to the nonrefundable taxpayer tax credit... could increase state income taxes paid by approximately 13,300 taxpayers with itemized State And Local Tax deductions."
+        <div class="quote-source">— H.B. 77 Fiscal Note, Utah Legislative Fiscal Analyst, Jan. 14, 2026</div>
+      </div>
+      <div class="clarify-box">
+        <span class="tag-mini">Important distinction</span>
+        That $4 million figure has <strong>nothing to do with the reassessment threshold</strong>. It comes from an entirely separate provision realigning Utah's taxpayer tax credit formula with a recent federal change to the SALT deduction cap. It is a projected state income tax <em>increase</em> on roughly 13,300 itemizing Utah taxpayers statewide — unrelated to data centers, property valuation, or the 150%/350% split.
+      </div>
+      <p>The fiscal note assigns <strong>no separate dollar estimate</strong> to the property reassessment threshold change itself. Its "Performance Evaluation" section states plainly: <em>"This bill does not create a new program or significantly expand an existing program"</em> — meaning, as with S.B. 114 above, this provision falls outside the kind of outcome-tracking mechanism Utah reserves for new programs and agencies, not tax and assessment rule changes.</p>
+    </section>
+
+    <section id="sources">
+      <div class="section-label"><span>Sources</span></div>
+      <ul class="source-list">
+        <li><span class="src-title">H.B. 77, 2026 General Session — enrolled bill, sponsors, status</span><a href="https://le.utah.gov/~2026/bills/static/HB0077.html" target="_blank" rel="noopener">le.utah.gov/~2026/bills/static/HB0077.html</a></li>
+        <li><span class="src-title">H.B. 77 Enrolled — full text (Utah Code §59-2-303.3)</span><a href="https://le.utah.gov/Session/2026/bills/enrolled/HB0077.pdf" target="_blank" rel="noopener">le.utah.gov/Session/2026/bills/enrolled/HB0077.pdf</a></li>
+        <li><span class="src-title">House Amendment 1 (Thurston) — the 150%/350% redline, Jan. 26, 2026</span><a href="https://le.utah.gov/Session/2026/bills/amended/HB0077.Hamd.1.pdf" target="_blank" rel="noopener">le.utah.gov/Session/2026/bills/amended/HB0077.Hamd.1.pdf</a></li>
+        <li><span class="src-title">H.B. 77 Fiscal Note</span><a href="https://le.utah.gov/~2026/bills/static/HB0077.html" target="_blank" rel="noopener">le.utah.gov &middot; Fiscal Note PDF (linked from bill page)</a></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <span>&copy; 2026 The Weber County Hive</span>
+    <span><a href="https://webercountyhive.substack.com" target="_blank" rel="noopener">webercountyhive.substack.com</a></span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-scroll-to]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.scrollTo);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
