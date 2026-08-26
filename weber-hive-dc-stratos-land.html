@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do You Have The Land? — The Weber County Hive</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<style>
+  :root{
+    --paper:#f2ede2;
+    --ink:#20241f;
+    --ink-soft:#4a4f45;
+    --line:#c9c0a8;
+    --rule:#8a8265;
+    --flag:#8a2e1f;
+    --flag-soft:#f4e2dc;
+    --gold:#8a6a1f;
+    --gold-soft:#f4ecdc;
+    --serif:"Iowan Old Style","Georgia","Times New Roman",serif;
+    --sans:"Helvetica Neue",Arial,sans-serif;
+    --mono:"Courier New",Courier,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.6;}
+  .sheet{max-width:760px;margin:0 auto;padding:56px 28px 120px;}
+
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px double var(--rule);padding-bottom:14px;margin-bottom:6px;}
+  .masthead .name{font-family:var(--sans);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;font-size:12px;color:var(--ink-soft);}
+  .masthead .date{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--ink-soft);}
+  .file-tag{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--gold);margin-top:18px;text-transform:uppercase;}
+
+  h1{font-family:var(--serif);font-size:clamp(2rem, 5vw, 2.9rem);line-height:1.12;font-weight:400;margin:14px 0 6px;letter-spacing:-0.01em;}
+  .dek{font-family:var(--sans);font-size:1.08rem;color:var(--ink-soft);max-width:58ch;margin:0 0 24px;}
+
+  .byline-row{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:32px;}
+  .byline-row span b{color:var(--ink);font-weight:700;}
+
+  blockquote{margin:0 0 34px;border-left:3px solid var(--flag);background:var(--flag-soft);padding:16px 20px;}
+  blockquote p{font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.5;margin:0 0 6px;color:var(--ink);}
+  blockquote cite{font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);}
+
+  .accordion{border-top:2px solid var(--gold);}
+  .acc-item{border-bottom:1px solid var(--line);}
+  .acc-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 2px;cursor:pointer;user-select:none;}
+  .acc-head h2{margin:0;padding:0;border:none;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);}
+  .acc-toggle{font-family:var(--mono);font-size:14px;color:var(--gold);flex-shrink:0;transition:transform .2s ease;}
+  .acc-item.open .acc-toggle{transform:rotate(45deg);}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+  .acc-item.open .acc-body{max-height:4000px;}
+  .acc-inner{padding:0 2px 22px;}
+  .acc-inner p{font-size:1.04rem;margin:0 0 18px;}
+  .acc-inner p:last-child{margin-bottom:0;}
+
+  .timeline{list-style:none;margin:16px 0;padding:0;border-left:2px solid var(--line);}
+  .tl-item{position:relative;padding:2px 0 20px 22px;font-family:var(--sans);}
+  .tl-item::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);}
+  .tl-item.clash::before{background:var(--flag);}
+  .tl-date{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:0.03em;display:block;margin-bottom:2px;}
+  .tl-item.clash .tl-date{color:var(--flag);}
+  .tl-text{font-size:14.5px;color:var(--ink);}
+
+  .stat-strip{display:flex;gap:12px;margin:20px 0;flex-wrap:wrap;}
+  .stat{flex:1;min-width:130px;border:1px solid var(--line);background:#fff;padding:14px 12px;text-align:center;}
+  .stat .num{font-family:var(--serif);font-size:1.7rem;color:var(--gold);line-height:1;}
+  .stat .label{font-family:var(--sans);font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px;}
+
+  .verdict-strip{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0;}
+  .verdict{flex:1;min-width:150px;border:1px solid var(--line);background:#fff;padding:12px 14px;}
+  .verdict .vlabel{font-family:var(--mono);font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .verdict .vtext{font-family:var(--sans);font-size:12.5px;color:var(--ink);margin-top:4px;font-weight:700;}
+  .verdict.confirmed{border-left:3px solid var(--gold);}
+  .verdict.open{border-left:3px solid var(--flag);}
+
+  .caveat{background:#eae4d4;border:1px solid var(--line);padding:18px 20px;margin:24px 0 0;font-family:var(--sans);font-size:13px;color:var(--ink-soft);}
+  .caveat b{color:var(--ink);}
+  .caveat.caveat--first{margin-top:0;}
+
+  .mermaid{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:18px 10px;
+    margin:20px 0 24px;
+    display:flex;
+    justify-content:center;
+    overflow-x:auto;
+  }
+
+  footer{margin-top:44px;padding-top:16px;border-top:3px double var(--rule);font-family:var(--sans);font-size:11px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="name">The Weber County Hive</div>
+    <div class="date">August 2026</div>
+  </div>
+
+  <div class="file-tag">Stratos / Box Elder County / MIDA</div>
+  <h1>"Do You Have The Land?"</h1>
+  <p class="dek">MIDA approved the 40,000-acre Stratos data center in April 2026. The House Speaker says he was blindsided by a project that turned up ten miles from his own 25,000 acres — but the investor behind it says the Speaker was in the room a year earlier than he admits, and the state authority that approved it is chaired by the same Senate President who was reportedly in that room too.</p>
+
+  <div class="byline-row">
+    <span>Sources: <b>KSL, Salt Lake Tribune, ABC4, Fox News</b></span>
+    <span>Method: <b>Public records only, no comment requested</b></span>
+  </div>
+
+  <blockquote>
+    <p>"Do you have the land? — 40,000 acres."</p>
+    <cite>Kevin O'Leary, describing a late-2025 conversation with Gov. Cox, Speaker Schultz, and Senate President Adams &mdash; Fox News, "Fox &amp; Friends," April 27, 2026</cite>
+  </blockquote>
+
+  <p style="font-size:1.06rem;">On April 24, 2026, the Military Installation Development Authority &mdash; MIDA, the state-created land-use authority already documented across this investigation for its property-tax powers, its transparency exemptions, and its Senate President chairman &mdash; unanimously approved the Stratos Project Area, clearing the way for a data center campus roughly the size of Manhattan in Box Elder County. Ten days later, the Box Elder County Commission approved it too. That sequence &mdash; MIDA first, the county second, with the county board later saying its vote felt more involuntary than voluntary &mdash; is the same structural pattern already documented at Deer Valley and Sundance: a state board decides, and the local government ratifies.</p>
+
+  <p style="font-size:1.06rem;">Speaker Mike Schultz's public account of what happened next is simple: he found out about the project in early April 2026, the same as everyone else, and was "blindsided." His own land &mdash; more than 25,000 acres, about ten miles from the project site &mdash; is, he says, "remote" ranch land, not suitable for development. The problem is that Kevin O'Leary, the celebrity investor bankrolling the project, has publicly described sitting in a room with Schultz, the Governor, and Senate President Stuart Adams &mdash; MIDA's own chairman &mdash; months before that, being asked directly whether the land was available.</p>
+
+  <div class="accordion" id="accordion">
+
+    <div class="acc-item open">
+      <div class="acc-head"><h2>MIDA Approved It &mdash; Chaired By A Man Reportedly In The Room</h2><div class="acc-toggle">+</div></div>
+      <div class="acc-body"><div class="acc-inner">
+        <p>MIDA's board approved the entire Stratos package in a single April 24, 2026 meeting: the Project Area Plan, its standards and guidelines, the development agreement with the developer, a municipal energy sales-and-use tax ordinance, and an interlocal agreement with Box Elder County. The vote was unanimous. Board member Gage Froerer voiced Weber County's support; non-voting member Jefferson Moss touted "economic growth potential for Northern Utah." The referral that sent Stratos to MIDA in the first place, in January 2026, came from Moss's own office at the Governor's Office of Economic Opportunity, citing "military use."</p>
+        <p><b>MIDA's chairman is Senate President Stuart Adams</b> &mdash; the same official Kevin O'Leary says was in the late-2025 meeting where the land question was asked. Adams chaired the board that approved the project, then five weeks later sent O'Leary a public letter demanding a 75% reduction in the footprint &mdash; a request that came after approval, not before it, and while Adams was in a contested primary he would go on to lose that June, with the Stratos backlash cited as a key factor.</p>
+        <p>MIDA's deal terms, separate from the land question: the authority cut Stratos's energy-use tax from a standard 6% down to 0.5%, and agreed to rebate 80% of the property tax revenue the project generates back to the developer. Box Elder County's own commissioners had no negotiating role in any of it &mdash; MIDA set the terms on April 24; the county voted to accept them ten days later without taking public comment from the 1,000-plus residents who showed up to oppose it.</p>
+
+        <div class="mermaid">
+flowchart TD
+    A["GOEO refers Stratos to MIDA<br/>(Jan 2026, citing 'military use')"] --> B["MIDA Board votes<br/>unanimous approval, Apr 24, 2026"]
+    B --> C["Chaired by<br/>Sen. Stuart Adams"]
+    D["Kevin O'Leary: late-2025 meeting<br/>with Cox, Schultz, Adams"] -->|"'Do you have the land?<br/>— 40,000 acres'"| C
+    D --> E["Speaker Schultz's own<br/>25,000+ acres, ~10 mi away"]
+    C --> F["Adams demands 75% cut<br/>five weeks after his own board's approval"]
+    E --> G["Schultz: 'blindsided,'<br/>learned in April 2026"]
+    G -.->|"contradicts"| D
+        </div>
+      </div></div>
+    </div>
+
+    <div class="acc-item open">
+      <div class="acc-head"><h2>The Land, Entity By Entity</h2><div class="acc-toggle">+</div></div>
+      <div class="acc-body"><div class="acc-inner">
+        <p>KSL and Salt Lake Tribune reporting confirms the acreage independently &mdash; not just the claim of a single advocacy site. Three of Schultz's disclosed entities hold land within roughly ten miles of the Stratos Project Area:</p>
+        <div class="stat-strip">
+          <div class="stat"><div class="num">23,575</div><div class="label">Keller Cattle Corp. acres</div></div>
+          <div class="stat"><div class="num">1,300</div><div class="label">Sawmill Ranch LLC acres</div></div>
+          <div class="stat"><div class="num">640</div><div class="label">Mike Schultz Inc. acres</div></div>
+        </div>
+        <p>Total: more than 25,000 acres, most of it purchased in 2022. On his own annual conflict-of-interest disclosure, Mike Schultz Inc. is listed every year only as "Holding Company" &mdash; the optional field for disclosing specific real property has been left blank every year on record. A 2024 Utah Investigative Journalism Project review separately found four of his real estate entities missing from his disclosure entirely, added only after a reporter asked; the Legislature's stated explanation was that he "no longer oversees day-to-day operations."</p>
+        <p>The corporate structure around the entity nearest the Stratos land shifted twice in the run-up to the project's approval: Schultz became an <b>Officer</b> in March 2025, then <b>Incorporator</b> in March 2026, with the entity's principal office moved to his own personal address.</p>
+      </div></div>
+    </div>
+
+    <div class="acc-item open">
+      <div class="acc-head"><h2>The Timeline That Doesn't Match</h2><div class="acc-toggle">+</div></div>
+      <div class="acc-body"><div class="acc-inner">
+        <div class="timeline">
+          <li class="tl-item"><span class="tl-date">2022</span><div class="tl-text">Most of the Schultz-controlled acreage near the future Stratos site is purchased.</div></li>
+          <li class="tl-item clash"><span class="tl-date">Late 2025</span><div class="tl-text"><b>Per Kevin O'Leary's own account:</b> he meets with Gov. Cox, Speaker Schultz, and Senate President Adams &mdash; MIDA's own chairman &mdash; about the project. He says the question "Do you have the land? &mdash; 40,000 acres" was asked in that meeting.</div></li>
+          <li class="tl-item"><span class="tl-date">March 2025</span><div class="tl-text">Schultz becomes an Officer of the land-holding entity nearest the Stratos site.</div></li>
+          <li class="tl-item"><span class="tl-date">Jan 2026</span><div class="tl-text">GOEO (Jefferson Moss's office) refers Stratos to MIDA, citing "military use."</div></li>
+          <li class="tl-item"><span class="tl-date">March 2026</span><div class="tl-text">Schultz becomes Incorporator of the same entity; its principal office moves to his personal address.</div></li>
+          <li class="tl-item clash"><span class="tl-date">Apr 24, 2026</span><div class="tl-text"><b>MIDA's board, chaired by Adams, unanimously approves the entire Stratos Project Area package.</b></div></li>
+          <li class="tl-item"><span class="tl-date">May 4, 2026</span><div class="tl-text">Box Elder County Commission ratifies MIDA's approval, without taking public comment.</div></li>
+          <li class="tl-item clash"><span class="tl-date">Early Apr 2026</span><div class="tl-text">Schultz's public account: he learns the project is serious, is "blindsided," calls his land "remote" and unsuitable for development &mdash; weeks before MIDA's own vote.</div></li>
+          <li class="tl-item"><span class="tl-date">Apr 27, 2026</span><div class="tl-text">O'Leary describes the late-2025 meeting on national television, on Fox News's "Fox &amp; Friends."</div></li>
+          <li class="tl-item"><span class="tl-date">Jun 1, 2026</span><div class="tl-text">Adams &mdash; MIDA's own chairman, five weeks after his board's unanimous approval &mdash; publicly demands O'Leary cut the project 75%.</div></li>
+        </div>
+        <p>Asked about O'Leary's account, Schultz didn't deny the meeting happened. He deflected: "I wasn't a part of that," and that he "was too busy." That's not the same as saying it didn't happen.</p>
+      </div></div>
+    </div>
+
+    <div class="acc-item open">
+      <div class="acc-head"><h2>He's Not The Only One</h2><div class="acc-toggle">+</div></div>
+      <div class="acc-body"><div class="acc-inner">
+        <p>Sen. Scott Sandall, R-Box Elder, sponsored SB 132 (2025) &mdash; the bill that created the legal framework that made the Stratos power arrangement possible. His own family's land, held through the Sandall Farm &amp; Ranch Family Partnership, sits roughly four miles from the project site. Asked by ABC4 whether anyone had approached him about selling, he gave a direct, on-record answer:</p>
+        <blockquote>
+          <p>No one has approached him about selling &mdash; but he "would not be opposed to it, for the right price."</p>
+          <cite>Sen. Scott Sandall, to ABC4</cite>
+        </blockquote>
+        <p>A second legislator holding land near a project his own bill enabled &mdash; not proof of coordination on its own, but the same structural pattern as Schultz, from a different direction: land in hand before the enabling law, an honest answer about its market value once asked directly.</p>
+      </div></div>
+    </div>
+
+    <div class="acc-item open">
+      <div class="acc-head"><h2>The Governor's Family Business</h2><div class="acc-toggle">+</div></div>
+      <div class="acc-body"><div class="acc-inner">
+        <p>CentraCom, a telecommunications company founded in 1903, has been in Gov. Spencer Cox's family for generations. His own father currently serves as the company's president. Whether Cox himself holds a direct financial stake, and whether CentraCom stands to gain specifically from Stratos's build-out, isn't established here &mdash; the family and corporate connection is real and confirmed; the financial-interest question is not yet answered one way or the other.</p>
+      </div></div>
+    </div>
+
+    <div class="acc-item open">
+      <div class="acc-head"><h2>What's Confirmed, What Isn't</h2><div class="acc-toggle">+</div></div>
+      <div class="acc-body"><div class="acc-inner">
+        <div class="verdict-strip">
+          <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">Schultz's 25,000+ acres, ~10 miles from Stratos</div></div>
+          <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">"Holding Company" disclosure, blank real-property field</div></div>
+          <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">Sandall's land, ~4 miles from Stratos, his own quote</div></div>
+          <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">Cox family founded and still runs CentraCom</div></div>
+        </div>
+        <div class="verdict-strip">
+          <div class="verdict open"><div class="vlabel">Still open</div><div class="vtext">Whether Cox has a direct financial stake in CentraCom</div></div>
+          <div class="verdict open"><div class="vlabel">Still open</div><div class="vtext">Whether CentraCom directly benefits from Stratos</div></div>
+          <div class="verdict open"><div class="vlabel">Debunked elsewhere</div><div class="vtext">A separate viral claim about the Paxtons owning land nearby &mdash; real parcel, wildly exaggerated size, no Stratos link found</div></div>
+        </div>
+        <div class="caveat caveat--first"><b>The core tension, stated plainly:</b> Schultz's own public account and O'Leary's own public account can't both be fully true. Either the "late 2025" meeting O'Leary described on national television didn't happen the way he says, or Schultz's "blindsided in April 2026" timeline is not accurate. Schultz has had the chance to directly deny O'Leary's account and hasn't &mdash; he's deflected instead. That gap, not a settled conclusion either way, is the story.</div>
+      </div></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>The Weber County Hive</span>
+    <span>Built from KSL, Salt Lake Tribune, ABC4, Fox News &mdash; no comment requested</span>
+  </footer>
+
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#f4ecdc',
+      primaryTextColor: '#20241f',
+      primaryBorderColor: '#8a6a1f',
+      lineColor: '#8a8265',
+      secondaryColor: '#f4e2dc',
+      tertiaryColor: '#e2e8e0',
+      fontFamily: 'Helvetica Neue, Arial, sans-serif',
+      fontSize: '13px'
+    }
+  });
+
+  document.querySelectorAll('.acc-head').forEach(function(head){
+    head.addEventListener('click', function(){
+      head.parentElement.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>

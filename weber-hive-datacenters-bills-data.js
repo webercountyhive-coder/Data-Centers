@@ -23,5 +23,16 @@ const BILLS_DOCS = [
     tags: ["HB 77", "property tax", "reassessment threshold", "Eliason", "McCay", "2026"],
     status: "live",
     page: "weber-hive-dc-hb77.html"
+  },
+  {
+    id: "stratos-land-2026",
+    title: "\"Do You Have The Land?\" — Stratos, MIDA, and Who Owns What Nearby",
+    presenter: "The Weber County Hive — Investigation",
+    date: "2026-04-24",
+    hearing: "MIDA Board Approval, Apr 24, 2026",
+    summary: "MIDA's board unanimously approved the 40,000-acre Stratos data center — chaired by the same Senate President Kevin O'Leary says was in a room a year earlier being asked 'Do you have the land?' Speaker Schultz's 25,000+ acres sit ten miles away; Sen. Sandall's land sits four miles away; both sponsored or chaired the mechanisms that made it possible.",
+    tags: ["Stratos", "MIDA", "SB 132", "Schultz", "Sandall", "Adams", "land holdings", "2026"],
+    status: "live",
+    page: "weber-hive-dc-stratos-land.html"
   }
 ];
