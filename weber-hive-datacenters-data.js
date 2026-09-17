@@ -1,60 +1,49 @@
-// Weber County Hive — Data Centers Docket data file
-// Add one object per document. Bump the version query param in the docket HTML on every update.
+// Weber County Hive — Data Center Bills Docket data file
+// Add one object per bill. Bump the version query param in the docket HTML on every update.
 
-const DATACENTERS_DOCS = [
+const BILLS_DOCS = [
   {
-    id: "oed-sb132",
-    title: "Data Centers — SB 132 & Utah's Data Center Landscape",
-    presenter: "Office of Energy Development",
-    date: "2026-08-19",
-    hearing: "Economic Development and Workforce Services Interim Committee",
-    summary: "OED's promotional framing of SB 132 as a national 'cost-causer pays' model — checked against the bill's actual text, which also creates a closed private generation pathway with no PSC oversight at all.",
-    tags: ["SB 132", "PSC", "closed private generation", "MIDA", "electricity"],
+    id: "sb114-2020",
+    title: "S.B. 114 (2020) — The Exemption With No Jobs Requirement",
+    presenter: "Sen. Kirk Cullimore (chief sponsor) & Rep. Mike Schultz (House sponsor)",
+    date: "2020-03-31",
+    hearing: "2020 General Session",
+    summary: "The sales tax exemption that built Utah's data center industry. No jobs, wage, or investment requirement to qualify — retroactive to 2016 — passed unanimously with a fiscal note that called the cost 'unknown' and required no performance tracking.",
+    tags: ["SB 114", "sales tax exemption", "no jobs required", "Cullimore", "Schultz", "2020"],
     status: "live",
-    page: "weber-hive-dc-oed-sb132.html"
+    page: "weber-hive-dc-sb114.html"
   },
   {
-    id: "deq-abundance",
-    title: "Data Centers — Abundance Accelerator Initiative",
-    presenter: "Dept. of Environmental Quality (Commissioner Tim Davis)",
-    date: "2026-08-19",
-    hearing: "Economic Development and Workforce Services Interim Committee",
-    summary: "DEQ's own map of who actually regulates a data center in Utah — no single approving agency, the 6-phase development process, and the full agency-by-agency approval matrix, including where public comment is and isn't guaranteed.",
-    tags: ["DEQ", "HB 76", "SB 132", "MIDA", "permitting", "agency matrix"],
+    id: "hb77-2026",
+    title: "H.B. 77 (2026) — Two Thresholds for Two Kinds of Property",
+    presenter: "Rep. Steve Eliason (chief sponsor) & Sen. Daniel McCay (Senate sponsor)",
+    date: "2026-03-23",
+    hearing: "2026 General Session",
+    summary: "A floor amendment quietly widened the gap between when a home gets flagged for reassessment (150% value increase) and when any other property does (350%) — more than doubling the threshold for commercial property only, in a bill that started with both at the same level.",
+    tags: ["HB 77", "property tax", "reassessment threshold", "Eliason", "McCay", "2026"],
     status: "live",
-    page: "weber-hive-dc-deq-abundance.html"
+    page: "weber-hive-dc-hb77.html"
   },
   {
-    id: "goed-initiatives",
-    title: "Data Center Initiatives",
-    presenter: "Governor's Office of Economic Development",
-    date: "2026-08-19",
-    hearing: "Economic Development and Workforce Services Interim Committee",
-    summary: "GOED's posture, its EDTIF/REDTIF tax tools, the Creekstone Energy deal (the only state post-performance incentive given to a data center), and the Opportunity Zone map — checked against UIPA's own 15-project-area statewide map and the Tyson Eagle Mountain closure as a real accountability test case.",
-    tags: ["GOED", "Creekstone", "Opportunity Zones", "EDTIF", "UIPA", "Tyson"],
+    id: "stratos-land-2026",
+    title: "\"Do You Have The Land?\" — Stratos, MIDA, and Who Owns What Nearby",
+    presenter: "The Weber County Hive — Investigation",
+    date: "2026-04-24",
+    hearing: "MIDA Board Approval, Apr 24, 2026",
+    summary: "MIDA's board unanimously approved the 40,000-acre Stratos data center — chaired by the same Senate President Kevin O'Leary says was in a room a year earlier being asked 'Do you have the land?' Speaker Schultz's 25,000+ acres sit ten miles away; Sen. Sandall's land sits four miles away; both sponsored or chaired the mechanisms that made it possible.",
+    tags: ["Stratos", "MIDA", "SB 132", "Schultz", "Sandall", "Adams", "land holdings", "2026"],
     status: "live",
-    page: "weber-hive-dc-goed-initiatives.html"
+    page: "weber-hive-dc-stratos-land.html"
   },
   {
-    id: "usc-marshall-summary",
-    title: "Data Center Growth: Policy Choices Facing Utah and Other States",
-    presenter: "Shon R. Hiatt, USC Marshall — Zage Business of Energy Initiative",
-    date: "2026-08-19",
-    hearing: "Economic Development and Workforce Services Interim Committee",
-    summary: "The county-by-county moratorium wave (Iron, Box Elder, Cache, SLC, Logan, Grand, Wayne), national cancellation data, and Utah's incentive comparison to its neighbors — including a correction on Utah's property tax picture, sourced to UIPA, MIDA/Stratos, and Meta/Eagle Mountain.",
-    tags: ["moratoriums", "Iron County", "Box Elder", "Stratos", "property tax", "national comparison"],
+    id: "meta-eagle-mountain-2026",
+    title: "The Deal That Started With a Fake Name — Meta's Eagle Mountain Campus",
+    presenter: "The Weber County Hive — Investigation",
+    date: "2026-09-14",
+    hearing: "Eagle Mountain City / Alpine School Board, 2018-2026",
+    summary: "Facebook negotiated its first Eagle Mountain data center in 2018 under the pseudonym 'Stadion, LLC,' pressuring a school board into a five-day approval window. Eight years, four expansions, and $3 billion later, a 2018 side deal still requires the city to alert Meta before releasing its own water-use records — the same year a dedicated gas plant and Utah's largest solar farm were built just to power the site.",
+    tags: ["Meta", "Eagle Mountain", "Stadion", "water confidentiality", "QTS", "Project Aquila", "Hemmert", "2018-2026"],
     status: "live",
-    page: "weber-hive-dc-usc-summary.html"
-  },
-  {
-    id: "usc-marshall-brief",
-    title: "Data Center Entry and U.S. Electricity Prices (full academic brief)",
-    presenter: "Angela Ryu & Shon R. Hiatt, USC Marshall",
-    date: "2026-05-22",
-    hearing: "Submitted to Economic Development and Workforce Services Interim Committee, 2026-08-19",
-    summary: "The underlying study behind the summary deck. Key finding: no statistically significant retail price effect for investor-owned utilities like RMP, concentrated instead in cooperatives and municipals — read against RMP's own public denial of a data-center-driven rate hike and its pending PSC large-load tariff investigation.",
-    tags: ["electricity prices", "RMP", "PSC", "EDAM", "IOU", "academic study"],
-    status: "live",
-    page: "weber-hive-dc-usc-brief.html"
+    page: "weber-hive-dc-meta-eagle-mountain.html"
   }
 ];

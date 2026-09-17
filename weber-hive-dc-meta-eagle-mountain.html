@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Deal That Started With a Fake Name — The Weber County Hive</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<style>
+:root{
+--paper:#f2ede2;
+--ink:#20241f;
+--ink-soft:#4a4f45;
+--line:#c9c0a8;
+--rule:#8a8265;
+--flag:#8a2e1f;
+--flag-soft:#f4e2dc;
+--gold:#8a6a1f;
+--gold-soft:#f4ecdc;
+--serif:"Iowan Old Style","Georgia","Times New Roman",serif;
+--sans:"Helvetica Neue",Arial,sans-serif;
+--mono:"Courier New",Courier,monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.6;}
+.sheet{max-width:760px;margin:0 auto;padding:56px 28px 120px;}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px double var(--rule);padding-bottom:14px;margin-bottom:6px;}
+.masthead .name{font-family:var(--sans);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;font-size:12px;color:var(--ink-soft);}
+.masthead .date{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--ink-soft);}
+.file-tag{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--gold);margin-top:18px;text-transform:uppercase;}
+h1{font-family:var(--serif);font-size:clamp(2rem, 5vw, 2.9rem);line-height:1.12;font-weight:400;margin:14px 0 6px;letter-spacing:-0.01em;}
+.dek{font-family:var(--sans);font-size:1.08rem;color:var(--ink-soft);max-width:58ch;margin:0 0 24px;}
+.byline-row{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:32px;}
+.byline-row span b{color:var(--ink);font-weight:700;}
+blockquote{margin:0 0 34px;border-left:3px solid var(--flag);background:var(--flag-soft);padding:16px 20px;}
+blockquote p{font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.5;margin:0 0 6px;color:var(--ink);}
+blockquote cite{font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);}
+.accordion{border-top:2px solid var(--gold);}
+.acc-item{border-bottom:1px solid var(--line);}
+.acc-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 2px;cursor:pointer;user-select:none;}
+.acc-head h2{margin:0;padding:0;border:none;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);}
+.acc-toggle{font-family:var(--mono);font-size:14px;color:var(--gold);flex-shrink:0;transition:transform .2s ease;}
+.acc-item.open .acc-toggle{transform:rotate(45deg);}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.acc-item.open .acc-body{max-height:6000px;}
+.acc-inner{padding:0 2px 22px;}
+.acc-inner p{font-size:1.04rem;margin:0 0 18px;}
+.acc-inner p:last-child{margin-bottom:0;}
+.timeline{list-style:none;margin:16px 0;padding:0;border-left:2px solid var(--line);}
+.tl-item{position:relative;padding:2px 0 20px 22px;font-family:var(--sans);}
+.tl-item::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);}
+.tl-item.clash::before{background:var(--flag);}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:0.03em;display:block;margin-bottom:2px;}
+.tl-item.clash .tl-date{color:var(--flag);}
+.tl-text{font-size:14.5px;color:var(--ink);}
+.stat-strip{display:flex;gap:12px;margin:20px 0;flex-wrap:wrap;}
+.stat{flex:1;min-width:130px;border:1px solid var(--line);background:#fff;padding:14px 12px;text-align:center;}
+.stat .num{font-family:var(--serif);font-size:1.7rem;color:var(--gold);line-height:1;}
+.stat .label{font-family:var(--sans);font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px;}
+.verdict-strip{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0;}
+.verdict{flex:1;min-width:150px;border:1px solid var(--line);background:#fff;padding:12px 14px;}
+.verdict .vlabel{font-family:var(--mono);font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+.verdict .vtext{font-family:var(--sans);font-size:12.5px;color:var(--ink);margin-top:4px;font-weight:700;}
+.verdict.confirmed{border-left:3px solid var(--gold);}
+.verdict.open{border-left:3px solid var(--flag);}
+.caveat{background:#eae4d4;border:1px solid var(--line);padding:18px 20px;margin:24px 0 0;font-family:var(--sans);font-size:13px;color:var(--ink-soft);}
+.caveat b{color:var(--ink);}
+.caveat.caveat--first{margin-top:0;}
+.mermaid{background:#fff;border:1px solid var(--line);padding:18px 10px;margin:20px 0 24px;display:flex;justify-content:center;overflow-x:auto;}
+.crosslink{background:var(--gold-soft);border:1px solid var(--line);border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;font-family:var(--sans);font-size:13px;color:var(--ink-soft);}
+.crosslink a{color:var(--flag);font-weight:700;text-decoration:underline;}
+footer{margin-top:44px;padding-top:16px;border-top:3px double var(--rule);font-family:var(--sans);font-size:11px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="masthead">
+  <div class="name">The Weber County Hive</div>
+  <div class="date">September 2026</div>
+</div>
+<div class="file-tag">Meta / Eagle Mountain / Utah County</div>
+
+<h1>The Deal That Started With a Fake Name</h1>
+<p class="dek">In 2018, Facebook negotiated its first Utah data center under the name "Stadion, LLC," while a school board that hadn't yet been told who it was dealing with was pressured into approving a tax break in under a week. Eight years, four expansions, and $3 billion later, the same parcel still carries that name on the city's own planning documents — and a 2018 side deal means the public still can't see how much water the facility actually uses without the city telling Meta first.</p>
+
+<div class="byline-row">
+  <span>Sources: <b>Data Center Dynamics, Deseret News, Salt Lake Tribune, Utah News Dispatch, Eagle Mountain city records</b></span>
+  <span>Method: <b>Public records and contemporary reporting only, no comment requested</b></span>
+</div>
+
+<blockquote>
+  <p>"I have serious concerns about the process that has gone on."</p>
+  <cite>Alpine School Board member Scott Carlson, on the five-day window his board was given to approve the original 2018 deal</cite>
+</blockquote>
+
+<p style="font-size:1.06rem;">Eagle Mountain's Meta campus is the anchor of a data-center corridor that now includes QTS ($6 billion, under construction), a Google-owned 300-acre parcel across the street, and a dedicated natural gas plant built specifically to power Meta's servers. The public record on how this corridor was built — who negotiated it, who was pressured, and what the public still isn't allowed to see — spans four separate news cycles and one still-active confidentiality agreement.</p>
+
+<div class="accordion" id="accordion">
+
+<div class="acc-item open">
+  <div class="acc-head"><h2>2018: The Deal Negotiated Under a Fake Name</h2><div class="acc-toggle">+</div></div>
+  <div class="acc-body"><div class="acc-inner">
+    <p>Facebook negotiated its original Eagle Mountain facility under the pseudonym "Stadion, LLC," a Delaware shell entity — the same shell-company practice the company had already used in Sarpy, Nebraska ("Raven Northbrook"). The parcel is still called "the Stadion parcel" in Eagle Mountain's own 2026 planning documents, eight years and several owners of public information later.</p>
+    <p>Alpine School Board members received a 50-plus-page incentive document on Friday, May 11, 2018, with a vote scheduled the following Tuesday. Board member Scott Carlson said members felt "bullied," and the board initially tried to cap the deal at $40 million per phase, $120 million total over 30 years — lower than what was ultimately adopted. Carlson said district administrators were being fed real-time information from a "promotion team" in live contact with the still-unnamed company, warning that the lower cap "would kill the deal." The board was talked out of its own proposed limit and approved a looser $150 million/35-year cap instead, 6-1 — while the identity of the company they were negotiating with still hadn't been made public.</p>
+    <p>Utah County Commission approved separately, conditioning the deal on $100–150 million in promised infrastructure improvements and a 40-year overall cap. Original terms: $150 million in tax breaks — 100% suspension of personal property taxes for 20 years, 80% reduction on real property taxes. Two years earlier, in 2016, a similar Facebook pitch had been rejected by Salt Lake County, the Salt Lake City Mayor, and the State School Board — Facebook took the project to New Mexico instead that round. Utah County said yes to a comparable deal where Salt Lake-area officials had said no.</p>
+  </div></div>
+</div>
+
+<div class="acc-item open">
+  <div class="acc-head"><h2>The Water Deal Nobody Can See</h2><div class="acc-toggle">+</div></div>
+  <div class="acc-body"><div class="acc-inner">
+    <p>Eagle Mountain entered a 2018 agreement with Meta to keep the facility's monthly water use confidential as "confidential business information" — and separately agreed to alert Meta whenever anyone requests those records, before releasing anything. City officials confirmed this directly to the Salt Lake Tribune in January 2026. Current Mayor Jared Gray said he wasn't aware the agreement existed when asked, and downplayed the facility's water use without apparent knowledge of the actual numbers.</p>
+    <p>Meta's own 2024 sustainability disclosures — the only figures the company will confirm, and only through its own PR channel — show the Eagle Mountain campus withdrew more than 35 million gallons of water in 2024, over double its 2021 usage, and used more than 1 million megawatt-hours of electricity, nearly five times its usage three years earlier. The Utah Division of Water Rights confirmed Meta doesn't hold its own water rights in the area — it buys water through the city, meaning the city itself controls the underlying data it has agreed not to release without warning Meta first.</p>
+    <p>Rep. Jill Koford has a pending bill requiring data centers to report water use to the state in aggregated, non-facility-specific form. Both Eagle Mountain and Meta have pushed back on it, per the Tribune's reporting.</p>
+  </div></div>
+</div>
+
+<div class="acc-item open">
+  <div class="acc-head"><h2>The Power Built Just For This Campus</h2><div class="acc-toggle">+</div></div>
+  <div class="acc-body"><div class="acc-inner">
+    <p>Meta's Eagle Mountain operation now draws from three separate power sources. Rocky Mountain Power supplies the public grid connection. A 20-year power purchase agreement draws from Faraday Solar — Utah's largest solar plant, 685 megawatts, operational since September 2025. And a dedicated natural gas plant, publicly named "Project Aquila" and built by Williams Companies specifically to serve Meta, runs "behind the meter" — its power goes directly from the turbines to Meta's servers, never touching the public grid Rocky Mountain Power customers pay into.</p>
+    <p>Per Williams' own Utah Public Service Commission filing: two generation sites, 200 megawatts each, 520 total, tied to a 12.5-year power purchase agreement with Meta, running through an 18.9-mile dedicated pipeline. Williams has committed $7.3 billion in similar behind-the-meter power projects nationally. Eagle Mountain's Planning Commission approved code exceptions for the plant in February 2026, including a noise limit nearly 10 decibels above the city's standard nighttime cap, described in the city's own agenda as "consistent with industrial noise limits in neighboring communities."</p>
+    <p>Both the Aquila plant and the Stadion parcel sit inside an Eagle Mountain "RTI overlay zone" — Research, Technology, and Industry — a zoning designation the city created specifically to streamline approvals for qualifying industrial and tech projects.</p>
+  </div></div>
+</div>
+
+<div class="acc-item open">
+  <div class="acc-head"><h2>QTS, Google, and a Corridor That Keeps Growing</h2><div class="acc-toggle">+</div></div>
+  <div class="acc-body"><div class="acc-inner">
+    <p>QTS Data Centers committed $6 billion to its own adjacent Eagle Mountain campus — 193 acres, under construction since fall 2025, three buildings between 579,000 and 592,000 square feet each. Projected permanent jobs once complete: 100, combining QTS employees, tenants, and contractors — a fraction of the roughly 2,000 construction workers the project employed at its peak. Google purchased a 300-acre parcel directly across the road from Meta's site in 2021 and has given no construction timeline since, saying only that it wants "the option to further grow" if demand requires it.</p>
+    <p>Mayor Gray's framing of the tradeoff has stayed consistent across his tenure: "It's literally what funds our general fund." Eagle Mountain's population has grown from 250 residents at incorporation in 1996 to nearly 77,000 by January 2026.</p>
+  </div></div>
+</div>
+
+<div class="acc-item open">
+  <div class="acc-head"><h2>The Tax Fight, and the September Expansion</h2><div class="acc-toggle">+</div></div>
+  <div class="acc-body"><div class="acc-inner">
+    <p>In August 2026, Eagle Mountain walked back a proposed 220.88% residential property tax increase to 183% — still roughly double the old rate — funding a Utah County Sheriff's Office contract for added deputies, at the same Truth in Taxation hearing where the city's data-center tax incentives were raised by residents as a point of comparison.</p>
+    <p>One month later, on September 14, 2026, Meta announced another Eagle Mountain expansion, pushing its cumulative Utah investment past $3 billion — a 4.5-million-square-foot campus across seven buildings, a 1.7-plus-gigawatt clean energy addition, and new donations to local schools and a public astronomy park. The announcement came four months after Utah's H.B. 507 took effect — a bill that eventually restricts new local incentives for data centers of exactly this scale, though not until May 2027, and this expansion clears every threshold in that bill by a wide margin. Fuller detail on how H.B. 507's own timeline and thresholds apply to this specific expansion is covered in that bill's own case file, linked below.</p>
+  </div></div>
+</div>
+
+<div class="acc-item open">
+  <div class="acc-head"><h2>Timeline</h2><div class="acc-toggle">+</div></div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="timeline">
+      <li class="tl-item clash"><span class="tl-date">May 2018</span><div class="tl-text">Alpine School Board given 5 days to review a 50-plus-page incentive document for a still-unnamed company ("Stadion, LLC"); approves 6-1 after being talked out of its own lower cap.</div></li>
+      <li class="tl-item"><span class="tl-date">Jul 2021</span><div class="tl-text">Phase 1 goes live, ~1.5 million sq ft.</div></li>
+      <li class="tl-item"><span class="tl-date">Oct 2021</span><div class="tl-text">Google purchases 300-acre parcel across the street.</div></li>
+      <li class="tl-item"><span class="tl-date">Sep 2022</span><div class="tl-text">Phase 3 announced; campus reaches 4.5M sq ft plan, $1.5B total investment.</div></li>
+      <li class="tl-item clash"><span class="tl-date">Jan 2026</span><div class="tl-text">Salt Lake Tribune reveals the 2018 water-confidentiality agreement and the alert-Meta-first clause.</div></li>
+      <li class="tl-item"><span class="tl-date">Feb 2026</span><div class="tl-text">Eagle Mountain Planning Commission approves noise/infrastructure exceptions for the "Project Aquila" gas plant.</div></li>
+      <li class="tl-item"><span class="tl-date">Apr 2026</span><div class="tl-text">QTS topping-out ceremony; $6B total investment confirmed.</div></li>
+      <li class="tl-item"><span class="tl-date">May 2026</span><div class="tl-text">Aquila Pipeline and Faraday Solar power arrangements detailed via PSC filing.</div></li>
+      <li class="tl-item clash"><span class="tl-date">Aug 2026</span><div class="tl-text">Eagle Mountain's 183% property tax increase passes, funding a sheriff's contract.</div></li>
+      <li class="tl-item clash"><span class="tl-date">Sep 14, 2026</span><div class="tl-text">Meta announces its latest expansion, cumulative investment past $3 billion.</div></li>
+    </div>
+    <div class="mermaid">
+flowchart TD
+A["2018: 'Stadion, LLC'<br/>secret negotiation"] --> B["Alpine School Board<br/>5 days, approves 6-1"]
+B --> C["2018 water-confidentiality<br/>deal signed same era"]
+C --> D["2021-2022: Phases 1-3<br/>4.5M sq ft, $1.5B"]
+D --> E["2025-2026: Aquila gas plant<br/>+ Faraday Solar built"]
+E --> F["Apr 2026: QTS $6B<br/>adjacent campus"]
+F --> G["Sep 2026: Meta expansion<br/>past $3B cumulative"]
+C -.->|"still in effect"| G
+    </div>
+  </div></div>
+</div>
+
+<div class="acc-item open">
+  <div class="acc-head"><h2>What's Confirmed, What Isn't</h2><div class="acc-toggle">+</div></div>
+  <div class="acc-body"><div class="acc-inner">
+    <div class="verdict-strip">
+      <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">2018 negotiation under the pseudonym "Stadion, LLC"</div></div>
+      <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">2018 water-confidentiality and alert-Meta-first agreement</div></div>
+      <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">Hemmco lists "Meta Data Centers" as a client, tied to this campus</div></div>
+      <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">Three separate power sources, including a dedicated gas plant</div></div>
+    </div>
+    <div class="verdict-strip">
+      <div class="verdict open"><div class="vlabel">Still open</div><div class="vtext">Whether Hemmco represented both Meta and Eagle Mountain city on the same incentive matter</div></div>
+      <div class="verdict open"><div class="vlabel">Likely resolved</div><div class="vtext">A claim that Eagle Mountain hired Hemmert to fight a bill called "SB 231" — no such bill found; most likely a misidentification of H.B. 507 itself</div></div>
+      <div class="verdict open"><div class="vlabel">Still open</div><div class="vtext">Whether any new incentive has been offered for the September 2026 expansion</div></div>
+    </div>
+    <div class="caveat caveat--first"><b>The through-line:</b> every stage of this campus's growth — the 2018 identity concealment, the school board pressure, the water secrecy, the behind-the-meter power plant, and the newest expansion — was built through mechanisms that keep the public one step behind the deal, confirmed at each stage only after the fact, by reporters, not by routine disclosure.</div>
+    <div class="crosslink">
+      <p><b>Cross-reference:</b> This expansion is measured directly against Utah's newest data-center incentive law in the <a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-hb507.html" target="_blank" rel="noopener">H.B. 507 case file</a> in the Bill-Tracker repo — including the exact thresholds this campus clears, the one-year window before the law's own restrictions apply, and a second live example, UIPA's Tooele Valley data center, in the UIPA repo.</p>
+    </div>
+  </div></div>
+</div>
+
+</div>
+
+<footer>
+  <span>The Weber County Hive</span>
+  <span>Built from Data Center Dynamics, Deseret News, Salt Lake Tribune, Utah News Dispatch — no comment requested</span>
+</footer>
+
+</div>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'base',
+  themeVariables: {
+    primaryColor: '#f4ecdc',
+    primaryTextColor: '#20241f',
+    primaryBorderColor: '#8a6a1f',
+    lineColor: '#8a8265',
+    secondaryColor: '#f4e2dc',
+    tertiaryColor: '#e2e8e0',
+    fontFamily: 'Helvetica Neue, Arial, sans-serif',
+    fontSize: '13px'
+  }
+});
+document.querySelectorAll('.acc-head').forEach(function(head){
+  head.addEventListener('click', function(){
+    head.parentElement.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
