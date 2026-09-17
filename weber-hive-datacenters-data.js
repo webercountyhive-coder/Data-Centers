@@ -45,5 +45,16 @@ const BILLS_DOCS = [
     tags: ["Meta", "Eagle Mountain", "Stadion", "water confidentiality", "QTS", "Project Aquila", "Hemmert", "2018-2026"],
     status: "live",
     page: "weber-hive-dc-meta-eagle-mountain.html"
+  },
+  {
+    id: "hb507-2026",
+    title: "H.B. 507 (2026) — The One-Year Gap",
+    presenter: "Rep. Calvin Roberts (chief sponsor) & Sen. Kirk A. Cullimore (Senate sponsor)",
+    date: "2026-05-06",
+    hearing: "2026 General Session",
+    summary: "H.B. 507 promises to restrict local tax incentives for the largest data centers in Utah — but its own restriction doesn't start until a full year after the law itself took effect, and any deal signed in that window is grandfathered permanently. Meta's latest Eagle Mountain expansion was announced squarely inside that gap.",
+    tags: ["HB 507", "RSDZ", "tax increment financing", "Roberts", "Cullimore", "large load data center", "2026"],
+    status: "live",
+    page: "weber-hive-dc-hb507.html"
   }
 ];
