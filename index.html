@@ -55,6 +55,8 @@
   .hub-stat-row { display: flex; gap: 18px; margin-bottom: 18px; }
   .hub-stat { font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
   .hub-stat strong { display: block; font-family: var(--serif); font-size: 20px; color: var(--rust); font-weight: 700; }
+  .hub-card.wide { grid-column: 1 / -1; }
+  .hub-new { display:inline-block; background: var(--rust); color: var(--paper); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; padding: 2px 7px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
   .hub-cta { font-family: var(--mono); font-size: 12px; color: var(--rust); }
 
   footer { padding: 36px 0 60px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
@@ -72,7 +74,7 @@
   <div class="wrap">
     <div class="eyebrow">The Weber County Hive &middot; Investigative Docket</div>
     <h1>Data Centers</h1>
-    <p class="dek">Two ongoing threads of reporting on Utah's data center boom — what officials and industry told a legislative committee in one afternoon, and the actual laws and deals that built the industry over the last six years.</p>
+    <p class="dek">Three threads of reporting on Utah's data center boom: what officials and industry told a legislative committee in one afternoon, the laws and deals that built the industry over six years, and the gas plant planned for Meta's Eagle Mountain campus.</p>
   </div>
 </header>
 
@@ -83,6 +85,18 @@
     </div>
 
     <div class="hub-grid">
+      <a class="hub-card wide" href="meta-eagle-mountain-gas-plant.html">
+        <div class="hub-eyebrow">Case File &middot; Meta Platforms &middot; Eagle Mountain<span class="hub-new">NEW</span></div>
+        <div class="hub-title">The Plant Not in the Announcement</div>
+        <div class="hub-desc">Meta says its Eagle Mountain data center runs on clean energy. City, air-quality and Public Service Commission filings show a Williams natural gas plant planned for Meta's land, separate from Rocky Mountain Power, with Meta guaranteeing the contract. The page covers the tax breaks, water rules, jobs and who decides next.</div>
+        <div class="hub-stat-row">
+          <div class="hub-stat"><strong>286 MW</strong>gas plant filed</div>
+          <div class="hub-stat"><strong>40 yrs</strong>city agreement</div>
+          <div class="hub-stat"><strong>On hold</strong>state approval</div>
+        </div>
+        <div class="hub-cta">Open this case file &rarr;</div>
+      </a>
+
       <a class="hub-card" href="weber-hive-datacenters-docket.html">
         <div class="hub-eyebrow">Committee Hearing</div>
         <div class="hub-title">Aug. 19, 2026 Hearing on Data Centers</div>
@@ -99,7 +113,7 @@
         <div class="hub-title">The Bills Behind Utah's Data Center Boom</div>
         <div class="hub-desc">Not hearing testimony — the actual laws. How Utah's tax code came to treat data centers differently from every other taxpayer, traced through bill text, vote records, and fiscal notes.</div>
         <div class="hub-stat-row">
-          <div class="hub-stat"><strong>3</strong>bills on file</div>
+          <div class="hub-stat"><strong>6</strong>case files</div>
           <div class="hub-stat"><strong>2020&ndash;26</strong>sessions</div>
         </div>
         <div class="hub-cta">Open this docket &rarr;</div>
