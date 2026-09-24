@@ -3,220 +3,697 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Deal That Started With a Fake Name — The Weber County Hive</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<title>Meta's Eagle Mountain Campus, Part 1 | The Weber County Hive</title>
+<meta name="description" content="Part 1 of the Meta Eagle Mountain case file: the 2018 deal negotiated as Stadion, LLC, the tax breaks, jobs, the water confidentiality agreement and the campus's 2024 power and water use, from public records.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
---paper:#f2ede2;
---ink:#20241f;
---ink-soft:#4a4f45;
---line:#c9c0a8;
---rule:#8a8265;
---flag:#8a2e1f;
---flag-soft:#f4e2dc;
---gold:#8a6a1f;
---gold-soft:#f4ecdc;
---serif:"Iowan Old Style","Georgia","Times New Roman",serif;
---sans:"Helvetica Neue",Arial,sans-serif;
---mono:"Courier New",Courier,monospace;
-}
-*{box-sizing:border-box;}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.6;}
-.sheet{max-width:760px;margin:0 auto;padding:56px 28px 120px;}
-.masthead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px double var(--rule);padding-bottom:14px;margin-bottom:6px;}
-.masthead .name{font-family:var(--sans);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;font-size:12px;color:var(--ink-soft);}
-.masthead .date{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--ink-soft);}
-.file-tag{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--gold);margin-top:18px;text-transform:uppercase;}
-h1{font-family:var(--serif);font-size:clamp(2rem, 5vw, 2.9rem);line-height:1.12;font-weight:400;margin:14px 0 6px;letter-spacing:-0.01em;}
-.dek{font-family:var(--sans);font-size:1.08rem;color:var(--ink-soft);max-width:58ch;margin:0 0 24px;}
-.byline-row{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:32px;}
-.byline-row span b{color:var(--ink);font-weight:700;}
-blockquote{margin:0 0 34px;border-left:3px solid var(--flag);background:var(--flag-soft);padding:16px 20px;}
-blockquote p{font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.5;margin:0 0 6px;color:var(--ink);}
-blockquote cite{font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);}
-.accordion{border-top:2px solid var(--gold);}
-.acc-item{border-bottom:1px solid var(--line);}
-.acc-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 2px;cursor:pointer;user-select:none;}
-.acc-head h2{margin:0;padding:0;border:none;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);}
-.acc-toggle{font-family:var(--mono);font-size:14px;color:var(--gold);flex-shrink:0;transition:transform .2s ease;}
-.acc-item.open .acc-toggle{transform:rotate(45deg);}
-.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
-.acc-item.open .acc-body{max-height:6000px;}
-.acc-inner{padding:0 2px 22px;}
-.acc-inner p{font-size:1.04rem;margin:0 0 18px;}
-.acc-inner p:last-child{margin-bottom:0;}
-.timeline{list-style:none;margin:16px 0;padding:0;border-left:2px solid var(--line);}
-.tl-item{position:relative;padding:2px 0 20px 22px;font-family:var(--sans);}
-.tl-item::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);}
-.tl-item.clash::before{background:var(--flag);}
-.tl-date{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:0.03em;display:block;margin-bottom:2px;}
-.tl-item.clash .tl-date{color:var(--flag);}
-.tl-text{font-size:14.5px;color:var(--ink);}
-.stat-strip{display:flex;gap:12px;margin:20px 0;flex-wrap:wrap;}
-.stat{flex:1;min-width:130px;border:1px solid var(--line);background:#fff;padding:14px 12px;text-align:center;}
-.stat .num{font-family:var(--serif);font-size:1.7rem;color:var(--gold);line-height:1;}
-.stat .label{font-family:var(--sans);font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px;}
-.verdict-strip{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0;}
-.verdict{flex:1;min-width:150px;border:1px solid var(--line);background:#fff;padding:12px 14px;}
-.verdict .vlabel{font-family:var(--mono);font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
-.verdict .vtext{font-family:var(--sans);font-size:12.5px;color:var(--ink);margin-top:4px;font-weight:700;}
-.verdict.confirmed{border-left:3px solid var(--gold);}
-.verdict.open{border-left:3px solid var(--flag);}
-.caveat{background:#eae4d4;border:1px solid var(--line);padding:18px 20px;margin:24px 0 0;font-family:var(--sans);font-size:13px;color:var(--ink-soft);}
-.caveat b{color:var(--ink);}
-.caveat.caveat--first{margin-top:0;}
-.mermaid{background:#fff;border:1px solid var(--line);padding:18px 10px;margin:20px 0 24px;display:flex;justify-content:center;overflow-x:auto;}
-.crosslink{background:var(--gold-soft);border:1px solid var(--line);border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;font-family:var(--sans);font-size:13px;color:var(--ink-soft);}
-.crosslink a{color:var(--flag);font-weight:700;text-decoration:underline;}
-footer{margin-top:44px;padding-top:16px;border-top:3px double var(--rule);font-family:var(--sans);font-size:11px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  :root{
+    --color-paper:#f4f0e6;
+    --color-paper-deep:#ece5d4;
+    --color-ink:#241a16;
+    --color-ink-soft:#5c534c;
+    --color-link:#c0572e;
+    --color-stat:#d9a441;
+    --color-burgundy-light:#5c1a2b;
+    --color-burgundy-deep:#3d0f1c;
+    --color-line:#d8cfbc;
+    --color-card:#fbf8f1;
+    --color-good:#4d7c5f;
+    --color-flag:#a5372a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--color-paper);color:var(--color-ink);font-family:'Source Serif 4', Georgia, serif;line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Playfair Display', Georgia, serif;font-weight:700;margin:0 0 .4em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.06em;color:var(--color-ink-soft);}
+  a{color:var(--color-link);}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  header.band{background:linear-gradient(135deg, var(--color-burgundy-light), var(--color-burgundy-deep));color:#f4ece6;padding:22px 0;}
+  header.band .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .brandmark{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:#f4ece6;text-decoration:none;}
+  nav.topnav a{color:#f4ece6cc;text-decoration:none;margin-left:22px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.03em;border-bottom:1px solid transparent;}
+  nav.topnav a:hover{border-bottom-color:#f4ece6cc;}
+
+  .hero{padding:56px 0 40px;border-bottom:1px solid var(--color-line);}
+  .hero .eyebrow{margin-bottom:14px;}
+  .hero h1{font-size:2.5rem;line-height:1.15;max-width:760px;}
+  .hero .dek{font-size:1.12rem;color:var(--color-ink-soft);max-width:660px;margin-top:14px;}
+  .hero-meta{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap;}
+  .hero-meta .stat-num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.7rem;color:var(--color-stat);}
+  .hero-meta .stat-label{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--color-ink-soft);letter-spacing:.02em;max-width:170px;}
+
+  section{padding:44px 0;border-bottom:1px solid var(--color-line);}
+  section:last-of-type{border-bottom:none;}
+  section h2{font-size:1.6rem;margin-bottom:6px;}
+  section .section-dek{color:var(--color-ink-soft);max-width:660px;margin-bottom:26px;font-size:1rem;}
+
+  .start-here{background:var(--color-card);border:1px solid var(--color-line);border-left:4px solid var(--color-stat);padding:20px 24px;}
+  .start-here ol{margin:8px 0 0;padding-left:20px;}
+  .start-here li{margin-bottom:8px;}
+
+  .record-card{background:var(--color-card);border:1px solid var(--color-line);border-radius:2px;padding:24px 26px;margin-bottom:18px;}
+  .record-card h3{font-size:1.15rem;margin-bottom:8px;}
+  .record-card p{margin:.6em 0;}
+  .record-card p:first-of-type{margin-top:0;}
+  .rc-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.03em;color:var(--color-link);border:1px solid var(--color-link);padding:3px 9px;border-radius:20px;margin:2px 6px 2px 0;text-decoration:none;}
+  a.rc-tag:hover{background:var(--color-link);color:#fff;}
+  .rc-flag{border-color:var(--color-flag);color:var(--color-flag);}
+  .rc-good{border-color:var(--color-good);color:var(--color-good);}
+
+  .quote-block{border-left:3px solid var(--color-stat);padding:4px 0 4px 18px;font-style:italic;color:var(--color-ink-soft);margin:14px 0;}
+
+  .fund-row{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;margin-bottom:20px;}
+  .fund-donut{width:150px;height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .fund-donut-center{width:96px;height:96px;background:var(--color-paper);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+  .fund-donut-center .num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.1rem;color:var(--color-ink);}
+  .fund-donut-center .lbl{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--color-ink-soft);}
+  .fund-donut-legend{list-style:none;padding:0;margin:8px 0 0;font-size:.92rem;}
+  .fund-donut-legend li{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .swatch{width:12px;height:12px;border-radius:2px;flex-shrink:0;}
+  .fund-bar-row{margin-bottom:10px;}
+  .fund-bar-row .bar-label{display:flex;justify-content:space-between;gap:12px;font-size:.86rem;margin-bottom:4px;}
+  .fund-bar-track{background:var(--color-paper-deep);border-radius:3px;height:8px;overflow:hidden;}
+  .fund-bar-fill{height:100%;background:var(--color-link);}
+  .fund-bar-fill.alt{background:var(--color-stat);}
+
+  .table-scroll{overflow-x:auto;}
+  .entity-table{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:4px;}
+  .entity-table th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.03em;color:var(--color-ink-soft);border-bottom:1px solid var(--color-line);padding:8px 10px;}
+  .entity-table td{padding:10px;border-bottom:1px solid var(--color-line);vertical-align:top;}
+  .entity-table td.num{font-family:'IBM Plex Mono',monospace;font-size:.85rem;white-space:nowrap;}
+  .status-pill{font-family:'IBM Plex Mono',monospace;font-size:.65rem;padding:3px 8px;border-radius:12px;white-space:nowrap;display:inline-block;}
+  .status-confirmed{background:#e2ede4;color:var(--color-good);}
+  .status-flag{background:#f3dedb;color:var(--color-flag);}
+  .status-unresolved{background:#f4ecd9;color:#8a6d1f;}
+
+  .timeline{border-left:2px solid var(--color-line);padding-left:22px;margin-left:6px;}
+  .timeline-item{position:relative;margin-bottom:22px;}
+  .timeline-item::before{content:"";position:absolute;left:-28px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--color-stat);}
+  .timeline-item.key::before{background:var(--color-flag);}
+  .timeline-item .t-date{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--color-ink-soft);}
+  .timeline-item h4{font-size:1rem;margin:.2em 0;}
+  .timeline-item p{margin:.2em 0;font-size:.95rem;color:var(--color-ink-soft);}
+
+  .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--color-line);background:var(--color-card);}
+  .vs-grid > div{padding:16px 20px;border-bottom:1px solid var(--color-line);}
+  .vs-grid > div:nth-child(odd){border-right:1px solid var(--color-line);}
+  .vs-grid .vs-head{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.04em;color:var(--color-ink-soft);background:var(--color-paper-deep);}
+  .vs-grid .said{font-style:italic;}
+
+  /* connections */
+  .hub{background:var(--color-burgundy-deep);color:#f4ece6;padding:22px 26px;border-radius:2px;margin-bottom:22px;}
+  .hub .eyebrow{color:#d9a441;}
+  .hub h3{color:#f4ece6;font-size:1.3rem;margin:6px 0 4px;}
+  .hub p{margin:0;color:#e8d9c8;font-size:.95rem;}
+  .conn-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .conn-card{background:var(--color-card);border:1px solid var(--color-line);border-top:4px solid var(--color-link);padding:18px 20px;}
+  .conn-card.doers{border-top-color:var(--color-burgundy-light);}
+  .conn-card.gold{border-top-color:var(--color-stat);}
+  .conn-card.unres{border-top-color:#b8952e;border-top-style:dashed;}
+  .conn-card .case{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.04em;color:var(--color-ink-soft);}
+  .conn-card h4{font-size:1.05rem;margin:4px 0 8px;}
+  .conn-card p{margin:.4em 0;font-size:.94rem;}
+  .conn-card ul{margin:.4em 0;padding-left:18px;font-size:.93rem;}
+  .conn-card li{margin-bottom:4px;}
+
+  details.sources{margin-top:6px;}
+  details.sources summary{cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:.8rem;letter-spacing:.05em;color:var(--color-burgundy-light);font-weight:600;}
+  details.sources ol{font-size:.9rem;color:var(--color-ink-soft);padding-left:22px;}
+  details.sources li{margin-bottom:7px;}
+
+  @media (max-width:680px){
+    .hero h1{font-size:1.9rem;}
+    .fund-row{flex-direction:column;}
+    .conn-grid{grid-template-columns:1fr;}
+    .vs-grid{grid-template-columns:1fr;}
+    .vs-grid > div:nth-child(odd){border-right:none;}
+    .vs-grid .vs-head:nth-child(2){display:none;}
+  }
+  footer{padding:40px 0 60px;text-align:center;color:var(--color-ink-soft);font-size:.85rem;}
+  footer a{color:var(--color-link);}
+  .jumpnav{background:var(--color-paper-deep);border-bottom:1px solid var(--color-line);padding:12px 0;position:sticky;top:0;z-index:5;}
+  .jumpnav .wrap{display:flex;flex-wrap:wrap;gap:6px 16px;}
+  .jumpnav a{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.03em;color:var(--color-ink);text-decoration:none;border-bottom:1px solid transparent;}
+  .jumpnav a:hover{border-bottom-color:var(--color-link);color:var(--color-link);}
+  section[id]{scroll-margin-top:60px;}
+  .race-strip{display:grid;grid-template-columns:repeat(8,1fr);margin-top:26px;border-top:1px solid var(--color-line);border-left:1px solid var(--color-line);background:var(--color-card);}
+  .race-strip > div{padding:12px 12px 14px;border-right:1px solid var(--color-line);border-bottom:1px solid var(--color-line);min-width:0;}
+  .race-strip .d{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--color-link);font-weight:600;white-space:nowrap;}
+  .race-strip .e{font-size:.84rem;line-height:1.35;margin-top:6px;hyphens:none;overflow-wrap:normal;}
+  .race-strip .future .d{color:var(--color-ink-soft);}
+  @media (max-width:1000px){.race-strip{grid-template-columns:repeat(4,1fr);}}
+  @media (max-width:560px){.race-strip{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:680px){.jumpnav{position:static;} .rubric-table td:first-child{width:auto;}}
+  .chart-card{background:var(--color-card);border:1px solid var(--color-line);padding:18px 20px;margin:22px 0;}
+  .chart-card h3{font-size:1.05rem;margin-bottom:4px;}
+  .chart-card .cap{font-size:.86rem;color:var(--color-ink-soft);margin:0 0 12px;}
+  .chart-box{position:relative;height:260px;}
+  .mermaid-wrap{background:var(--color-card);border:1px solid var(--color-line);padding:18px;margin:22px 0;overflow-x:auto;}
+  .mermaid-wrap .cap{font-size:.86rem;color:var(--color-ink-soft);margin:10px 0 0;}
+  .mermaid{text-align:center;}
+  details.ledger{background:var(--color-card);border:1px solid var(--color-line);padding:12px 18px;margin:12px 0;}
+  details.ledger summary{cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.04em;color:var(--color-burgundy-light);font-weight:600;}
+  details.ledger .table-scroll{max-height:460px;overflow:auto;margin-top:10px;}
+  .rubric-table{width:100%;border-collapse:collapse;font-size:.92rem;background:var(--color-card);border:1px solid var(--color-line);}
+  .rubric-table th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.03em;color:var(--color-ink-soft);border-bottom:1px solid var(--color-line);padding:10px;background:var(--color-paper-deep);}
+  .rubric-table td{padding:12px 10px;border-bottom:1px solid var(--color-line);vertical-align:top;}
+  .rubric-table td:first-child{font-weight:600;width:170px;}
+  .gl{display:inline-block;min-width:30px;text-align:center;font-family:'Playfair Display',serif;font-weight:800;font-size:1.05rem;color:#fff;border-radius:3px;padding:1px 6px;margin-right:6px;}
+  .g-a{background:#4a7c59;} .g-b{background:#5c8a6a;} .g-c{background:var(--color-stat);} .g-d{background:#b5652f;} .g-f{background:var(--color-burgundy-light);} .g-na{background:#9a9186;font-size:.8rem;}
+  .topic-head{font-family:'Playfair Display',serif;font-size:1.15rem;margin:26px 0 8px;}
+  .compare-table td.num{text-align:right;}
+
+  .flip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;}
+  @media (max-width:900px){.flip-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.flip-grid{grid-template-columns:1fr;}}
+  .flip{perspective:900px;background:none;border:0;padding:0;cursor:pointer;text-align:left;font:inherit;color:inherit;min-height:250px;}
+  .flip-inner{position:relative;width:100%;height:100%;min-height:250px;transition:transform .5s;transform-style:preserve-3d;}
+  .flip.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--color-card);border:1px solid var(--color-line);border-radius:3px;padding:20px 22px;display:flex;flex-direction:column;justify-content:center;}
+  .flip-front{text-align:center;}
+  .flip-front .num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;color:var(--color-link);}
+  .flip-front .label{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--color-ink-soft);letter-spacing:.03em;margin-top:4px;}
+  .flip-front .hint{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--color-ink-soft);margin-top:8px;opacity:.75;}
+  .flip-back{transform:rotateY(180deg);background:var(--color-burgundy-deep);color:#f4ece6;border-color:var(--color-burgundy-deep);font-size:.95rem;line-height:1.5;overflow:auto;}
+  .flip-back strong{color:var(--color-stat);}
+  .flip:focus-visible .flip-face{outline:2px solid var(--color-link);outline-offset:2px;}
+  header.band{background:linear-gradient(135deg,#2c4449,#1b2b2f);}
+  .plain{background:#fff8e8;border-left:4px solid var(--color-stat);padding:10px 16px;margin:4px 0 20px;font-size:1rem;max-width:760px;}
+  .plain b{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.05em;color:#8a6d1f;margin-right:6px;}
+  .g-pend{background:#7a8a8c;font-size:.72rem;}
+  .callout{background:#eef3f2;border:1px solid #c9d6d4;border-left:4px solid #2c4449;padding:16px 20px;margin:18px 0;font-size:.97rem;}
+  #plant .mermaid{text-align:left;}
+  #plant .mermaid svg{display:block;margin:0 auto;}
+  .does{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .does > div{background:var(--color-card);border:1px solid var(--color-line);padding:18px 20px;}
+  .does h3{font-size:1.1rem;}
+  .does .yes{border-top:4px solid var(--color-good);}
+  .does .no{border-top:4px solid var(--color-flag);}
+  .does ul{margin:.4em 0 0;padding-left:18px;font-size:.94rem;}
+  .does li{margin-bottom:8px;}
+  @media (max-width:680px){.does{grid-template-columns:1fr;}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+.series{background:#e9e2d0;border-bottom:1px solid #d6ccb4;}
+.series .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-top:10px;padding-bottom:10px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;}
+.series .lbl{letter-spacing:.08em;color:#5c534c;}
+.series a{color:#3d0f1c;text-decoration:none;border-bottom:1px dotted #c0572e;}
+.series .on{background:#2c4449;color:#f4f0e6;padding:3px 9px;border-radius:3px;border:0;}
+.nextpart{display:block;margin-top:14px;padding:18px 22px;border:2px solid #c0572e;border-radius:8px;background:#fbf8f0;color:inherit;text-decoration:none;}
+.nextpart:hover{background:#f6efe0;}
+.nextpart .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:#c0572e;}
+.nextpart .t{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin:.2em 0;}
 </style>
 </head>
 <body>
-<div class="sheet">
 
-<div class="masthead">
-  <div class="name">The Weber County Hive</div>
-  <div class="date">September 2026</div>
-</div>
-<div class="file-tag">Meta / Eagle Mountain / Utah County</div>
+<header class="band">
+  <div class="wrap">
+    <a class="brandmark" href="https://webercountyhive.substack.com">The Weber County Hive</a>
+    <nav class="topnav">
+      <a href="index.html">Docket</a>
+      <a href="https://webercountyhive.substack.com" target="_blank" rel="noopener">Substack</a>
+    </nav>
+  </div>
+</header>
 
-<h1>The Deal That Started With a Fake Name</h1>
-<p class="dek">In 2018, Facebook negotiated its first Utah data center under the name "Stadion, LLC," while a school board that hadn't yet been told who it was dealing with was pressured into approving a tax break in under a week. Eight years, four expansions, and $3 billion later, the same parcel still carries that name on the city's own planning documents — and a 2018 side deal means the public still can't see how much water the facility actually uses without the city telling Meta first.</p>
+<div class="series"><div class="wrap"><span class="lbl">META IN EAGLE MOUNTAIN · TWO-PART CASE FILE</span><a href="weber-hive-dc-meta-eagle-mountain.html" class="on">Part 1: The Campus, 2018–2026</a><a href="meta-eagle-mountain-gas-plant.html">Part 2: The Gas Plant</a></div></div>
 
-<div class="byline-row">
-  <span>Sources: <b>Data Center Dynamics, Deseret News, Salt Lake Tribune, Utah News Dispatch, Eagle Mountain city records</b></span>
-  <span>Method: <b>Public records and contemporary reporting only, no comment requested</b></span>
-</div>
-
-<blockquote>
-  <p>"I have serious concerns about the process that has gone on."</p>
-  <cite>Alpine School Board member Scott Carlson, on the five-day window his board was given to approve the original 2018 deal</cite>
-</blockquote>
-
-<p style="font-size:1.06rem;">Eagle Mountain's Meta campus is the anchor of a data-center corridor that now includes QTS ($6 billion, under construction), a Google-owned 300-acre parcel across the street, and a dedicated natural gas plant built specifically to power Meta's servers. The public record on how this corridor was built — who negotiated it, who was pressured, and what the public still isn't allowed to see — spans four separate news cycles and one still-active confidentiality agreement.</p>
-
-<div class="accordion" id="accordion">
-
-<div class="acc-item open">
-  <div class="acc-head"><h2>2018: The Deal Negotiated Under a Fake Name</h2><div class="acc-toggle">+</div></div>
-  <div class="acc-body"><div class="acc-inner">
-    <p>Facebook negotiated its original Eagle Mountain facility under the pseudonym "Stadion, LLC," a Delaware shell entity — the same shell-company practice the company had already used in Sarpy, Nebraska ("Raven Northbrook"). The parcel is still called "the Stadion parcel" in Eagle Mountain's own 2026 planning documents, eight years and several owners of public information later.</p>
-    <p>Alpine School Board members received a 50-plus-page incentive document on Friday, May 11, 2018, with a vote scheduled the following Tuesday. Board member Scott Carlson said members felt "bullied," and the board initially tried to cap the deal at $40 million per phase, $120 million total over 30 years — lower than what was ultimately adopted. Carlson said district administrators were being fed real-time information from a "promotion team" in live contact with the still-unnamed company, warning that the lower cap "would kill the deal." The board was talked out of its own proposed limit and approved a looser $150 million/35-year cap instead, 6-1 — while the identity of the company they were negotiating with still hadn't been made public.</p>
-    <p>Utah County Commission approved separately, conditioning the deal on $100–150 million in promised infrastructure improvements and a 40-year overall cap. Original terms: $150 million in tax breaks — 100% suspension of personal property taxes for 20 years, 80% reduction on real property taxes. Two years earlier, in 2016, a similar Facebook pitch had been rejected by Salt Lake County, the Salt Lake City Mayor, and the State School Board — Facebook took the project to New Mexico instead that round. Utah County said yes to a comparable deal where Salt Lake-area officials had said no.</p>
-  </div></div>
-</div>
-
-<div class="acc-item open">
-  <div class="acc-head"><h2>The Water Deal Nobody Can See</h2><div class="acc-toggle">+</div></div>
-  <div class="acc-body"><div class="acc-inner">
-    <p>Eagle Mountain entered a 2018 agreement with Meta to keep the facility's monthly water use confidential as "confidential business information" — and separately agreed to alert Meta whenever anyone requests those records, before releasing anything. City officials confirmed this directly to the Salt Lake Tribune in January 2026. Current Mayor Jared Gray said he wasn't aware the agreement existed when asked, and downplayed the facility's water use without apparent knowledge of the actual numbers.</p>
-    <p>Meta's own 2024 sustainability disclosures — the only figures the company will confirm, and only through its own PR channel — show the Eagle Mountain campus withdrew more than 35 million gallons of water in 2024, over double its 2021 usage, and used more than 1 million megawatt-hours of electricity, nearly five times its usage three years earlier. The Utah Division of Water Rights confirmed Meta doesn't hold its own water rights in the area — it buys water through the city, meaning the city itself controls the underlying data it has agreed not to release without warning Meta first.</p>
-    <p>Rep. Jill Koford has a pending bill requiring data centers to report water use to the state in aggregated, non-facility-specific form. Both Eagle Mountain and Meta have pushed back on it, per the Tribune's reporting.</p>
-  </div></div>
-</div>
-
-<div class="acc-item open">
-  <div class="acc-head"><h2>The Power Built Just For This Campus</h2><div class="acc-toggle">+</div></div>
-  <div class="acc-body"><div class="acc-inner">
-    <p>Meta's Eagle Mountain operation now draws from three separate power sources. Rocky Mountain Power supplies the public grid connection. A 20-year power purchase agreement draws from Faraday Solar — Utah's largest solar plant, 685 megawatts, operational since September 2025. And a dedicated natural gas plant, publicly named "Project Aquila" and built by Williams Companies specifically to serve Meta, runs "behind the meter" — its power goes directly from the turbines to Meta's servers, never touching the public grid Rocky Mountain Power customers pay into.</p>
-    <p>Per Williams' own Utah Public Service Commission filing: two generation sites, 200 megawatts each, 520 total, tied to a 12.5-year power purchase agreement with Meta, running through an 18.9-mile dedicated pipeline. Williams has committed $7.3 billion in similar behind-the-meter power projects nationally. Eagle Mountain's Planning Commission approved code exceptions for the plant in February 2026, including a noise limit nearly 10 decibels above the city's standard nighttime cap, described in the city's own agenda as "consistent with industrial noise limits in neighboring communities."</p>
-    <p>Both the Aquila plant and the Stadion parcel sit inside an Eagle Mountain "RTI overlay zone" — Research, Technology, and Industry — a zoning designation the city created specifically to streamline approvals for qualifying industrial and tech projects.</p>
-  </div></div>
-</div>
-
-<div class="acc-item open">
-  <div class="acc-head"><h2>QTS, Google, and a Corridor That Keeps Growing</h2><div class="acc-toggle">+</div></div>
-  <div class="acc-body"><div class="acc-inner">
-    <p>QTS Data Centers committed $6 billion to its own adjacent Eagle Mountain campus — 193 acres, under construction since fall 2025, three buildings between 579,000 and 592,000 square feet each. Projected permanent jobs once complete: 100, combining QTS employees, tenants, and contractors — a fraction of the roughly 2,000 construction workers the project employed at its peak. Google purchased a 300-acre parcel directly across the road from Meta's site in 2021 and has given no construction timeline since, saying only that it wants "the option to further grow" if demand requires it.</p>
-    <p>Mayor Gray's framing of the tradeoff has stayed consistent across his tenure: "It's literally what funds our general fund." Eagle Mountain's population has grown from 250 residents at incorporation in 1996 to nearly 77,000 by January 2026.</p>
-  </div></div>
-</div>
-
-<div class="acc-item open">
-  <div class="acc-head"><h2>The Tax Fight, and the September Expansion</h2><div class="acc-toggle">+</div></div>
-  <div class="acc-body"><div class="acc-inner">
-    <p>In August 2026, Eagle Mountain walked back a proposed 220.88% residential property tax increase to 183% — still roughly double the old rate — funding a Utah County Sheriff's Office contract for added deputies, at the same Truth in Taxation hearing where the city's data-center tax incentives were raised by residents as a point of comparison.</p>
-    <p>One month later, on September 14, 2026, Meta announced another Eagle Mountain expansion, pushing its cumulative Utah investment past $3 billion — a 4.5-million-square-foot campus across seven buildings, a 1.7-plus-gigawatt clean energy addition, and new donations to local schools and a public astronomy park. The announcement came four months after Utah's H.B. 507 took effect — a bill that eventually restricts new local incentives for data centers of exactly this scale, though not until May 2027, and this expansion clears every threshold in that bill by a wide margin. Fuller detail on how H.B. 507's own timeline and thresholds apply to this specific expansion is covered in that bill's own case file, linked below.</p>
-  </div></div>
-</div>
-
-<div class="acc-item open">
-  <div class="acc-head"><h2>Timeline</h2><div class="acc-toggle">+</div></div>
-  <div class="acc-body"><div class="acc-inner">
-    <div class="timeline">
-      <li class="tl-item clash"><span class="tl-date">May 2018</span><div class="tl-text">Alpine School Board given 5 days to review a 50-plus-page incentive document for a still-unnamed company ("Stadion, LLC"); approves 6-1 after being talked out of its own lower cap.</div></li>
-      <li class="tl-item"><span class="tl-date">Jul 2021</span><div class="tl-text">Phase 1 goes live, ~1.5 million sq ft.</div></li>
-      <li class="tl-item"><span class="tl-date">Oct 2021</span><div class="tl-text">Google purchases 300-acre parcel across the street.</div></li>
-      <li class="tl-item"><span class="tl-date">Sep 2022</span><div class="tl-text">Phase 3 announced; campus reaches 4.5M sq ft plan, $1.5B total investment.</div></li>
-      <li class="tl-item clash"><span class="tl-date">Jan 2026</span><div class="tl-text">Salt Lake Tribune reveals the 2018 water-confidentiality agreement and the alert-Meta-first clause.</div></li>
-      <li class="tl-item"><span class="tl-date">Feb 2026</span><div class="tl-text">Eagle Mountain Planning Commission approves noise/infrastructure exceptions for the "Project Aquila" gas plant.</div></li>
-      <li class="tl-item"><span class="tl-date">Apr 2026</span><div class="tl-text">QTS topping-out ceremony; $6B total investment confirmed.</div></li>
-      <li class="tl-item"><span class="tl-date">May 2026</span><div class="tl-text">Aquila Pipeline and Faraday Solar power arrangements detailed via PSC filing.</div></li>
-      <li class="tl-item clash"><span class="tl-date">Aug 2026</span><div class="tl-text">Eagle Mountain's 183% property tax increase passes, funding a sheriff's contract.</div></li>
-      <li class="tl-item clash"><span class="tl-date">Sep 14, 2026</span><div class="tl-text">Meta announces its latest expansion, cumulative investment past $3 billion.</div></li>
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">META PLATFORMS · EAGLE MOUNTAIN, UTAH COUNTY · PART 1: THE CAMPUS, 2018–2026</div>
+    <h1>The Deal That Started Under Another Name</h1>
+    <p class="dek">In May 2018, local taxing bodies approved tax breaks for a data center whose owner was listed only as "Stadion, LLC," a company created for the negotiation. It was Facebook. Eight years and several expansions later, the campus uses about 2.9% of Utah's electricity, a 2018 agreement keeps its monthly water use confidential, and the tax breaks run for decades. This part covers how the campus got here. <a href="meta-eagle-mountain-gas-plant.html" style="color:inherit;">Part 2</a> covers the gas plant planned for its expansion.</p>
+    <div class="hero-meta">
+      <div><div class="stat-num">6–1</div><div class="stat-label">ALPINE SCHOOL BOARD VOTE, MAY 23, 2018, BEFORE THE COMPANY WAS NAMED</div></div>
+      <div><div class="stat-num">$150M</div><div class="stat-label">ESTIMATED PHASE 1 PROPERTY TAX BREAK; UP TO $750M FOR ALL PHASES</div></div>
+      <div><div class="stat-num">$3B+</div><div class="stat-label">META'S STATED INVESTMENT IN EAGLE MOUNTAIN, SEPT. 2026</div></div>
+      <div><div class="stat-num">300+</div><div class="stat-label">PERMANENT JOBS, WHOLE CAMPUS (META'S FIGURE)</div></div>
+      <div><div class="stat-num">1M+ MWh</div><div class="stat-label">ELECTRICITY USED IN 2024, BY META'S OWN FIGURES</div></div>
     </div>
+  </div>
+</div>
+
+<nav class="jumpnav" aria-label="Sections"><div class="wrap">
+  <a href="#intro">Intro</a><a href="#recap">Words</a><a href="#y2018">2018 deal</a><a href="#grid">Power & tax breaks</a><a href="#community">Community $</a><a href="#jobs">Jobs vs. cost</a><a href="#water">Water rules</a><a href="#use2024">2024 use</a><a href="#corridor">2026</a><a href="#timeline">Timeline</a><a href="#wrap">Know / don't know</a><a href="#limits">Limits</a>
+</div></nav>
+
+<section id="intro">
+  <div class="wrap">
+    <div class="eyebrow">INTRODUCTION</div>
+    <h2>What This Page Is About</h2>
+    <div class="record-card">
+      <p>Meta has run a large data center in Eagle Mountain, in Utah County, since 2021. The deal that brought it there was negotiated in 2018 under the name "Stadion, LLC." Local taxing bodies approved large property tax breaks before the public knew the company was Facebook.</p>
+      <p>This is <strong>Part 1</strong>. It covers the 2018 deal, the tax breaks, the jobs, the water rules and how much power and water the campus used in 2024. <a href="meta-eagle-mountain-gas-plant.html">Part 2</a> covers the natural gas plant planned to power the campus's expansion.</p>
+      <p><strong>Why it matters outside Eagle Mountain:</strong> the same tax tools, and the same kind of confidential water deal, are available to any city. Data centers are now proposed across Utah, including in northern Utah.</p>
+      <p style="margin-bottom:0;"><strong>How it was made:</strong> from public records and published news reports only. No one was asked for comment. Quotes are checked against the original articles, and each one is cited.</p>
+    </div>
+  </div>
+</section>
+
+<section id="recap">
+  <div class="wrap">
+    <div class="eyebrow">QUICK RECAP</div>
+    <h2>Words Used on This Page</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Tap any card to see what the word means.</p>
+    <div class="flip-grid">
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Personal vs. real property</div><div class="label">TWO KINDS OF PROPERTY TAX</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div><strong>Personal property</strong> is equipment, like servers. <strong>Real property</strong> is land and buildings. Meta's 2018 break was 100% off the first and 80% off the second.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Taxing entity</div><div class="label">WHO COLLECTS PROPERTY TAX</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A government that gets a share of property tax: here, the city, Utah County, the Alpine School District and others. Each one had to agree to the tax break.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">CRA</div><div class="label">COMMUNITY REINVESTMENT AREA</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A zone where <strong>new property tax from growth</strong> goes to the city's redevelopment agency for a set time instead of to the usual taxing entities.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Tax increment</div><div class="label">THE "NEW" TAX</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>When land is built on, its property tax goes up. The <strong>extra tax</strong> above the old amount is the increment.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Megawatt-hour</div><div class="label">A UNIT OF ELECTRICITY USED</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>1 megawatt-hour (MWh) = 1,000 kilowatt-hours. An average Utah home uses about <strong>9,300 kWh a year</strong> (EIA, 2024).</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Acre-foot</div><div class="label">A UNIT OF WATER</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>About <strong>326,000 gallons</strong>, enough to cover a football field one foot deep.</div></div></div></button>
+    </div>
+  </div>
+</section>
+
+<section id="y2018">
+  <div class="wrap">
+    <div class="eyebrow">2018</div>
+    <h2>The Deal, Before the Company Had a Name</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>In 2018, three local governments voted on big tax breaks for a data center. The company was listed as "Stadion, LLC." The public, and some of the people voting, didn't know it was Facebook. Each vote happened in a public meeting.</p>
+    <div class="record-card">
+      <p><strong>The name.</strong> Data Center Dynamics reported (May 22, 2018) that city meeting records referred to the company as "Stadion, LLC," "a company created purely for this negotiation process." Stadion was based in Delaware and registered in Utah as a foreign (out-of-state) LLC.</p>
+      <p><strong>The school board's timeline.</strong> Alpine School Board members received a 50-plus-page document on Friday, May 11, 2018, with a vote hoped for the next Tuesday. The vote was delayed a week. On May 23 the board approved the deal 6–1, with member Wendy Hart voting no (Deseret News, May 23, 2018).</p>
+      <p><strong>The cap.</strong> The board tried to limit the real property tax break to $40 million per phase and $120 million total over 30 years. The company's counterproposal, relayed through district administrators, raised that to $150 million over 35 years. The board accepted it (Deseret News).</p>
+      <p style="margin-bottom:0;"><strong>Utah County.</strong> The County Commission approved the deal on May 22, 2018, with a 40-year limit and no dollar cap. The terms: 100% of taxes on the company's personal property (equipment) suspended and an 80% break on real property, about $150 million for the first two-building phase, with taxes waived up to 20 years per phase (Deseret News, May 22, 2018).</p>
+    </div>
+    <div class="quote-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0;">
+      <div class="record-card" style="margin:0;"><p style="margin:0;">"To make a decision with this potentiality, without knowing who this organization is, that's really hard for me to take on faith. But we weren't elected to trust you. We were elected to listen, to collaborate and to partner."</p><p class="cap" style="margin:.5em 0 0;">Wendy Hart, Alpine School Board (Data Center Dynamics, May 22, 2018)</p></div>
+      <div class="record-card" style="margin:0;"><p style="margin:0;">"I have serious concerns about the process that has gone on."</p><p class="cap" style="margin:.5em 0 0;">Scott Carlson, Alpine School Board, who voted yes (Deseret News, May 23, 2018)</p></div>
+      <div class="record-card" style="margin:0;"><p style="margin:0;">"There's great fear amongst those on the promoting team that if we approve the motion as stated, that the company will not come."</p><p class="cap" style="margin:.5em 0 0;">Carlson, describing messages during the debate (Deseret News, May 23, 2018)</p></div>
+    </div>
+    <div class="record-card">
+      <h3>Two years earlier: West Jordan said no</h3>
+      <p>In 2016, Facebook looked at West Jordan. Salt Lake County officials worried about "the size of the estimated $250 million, 20-year tax incentive and the nearly 5 million gallons of water per day that would be required." Mayor Ben McAdams said, "I firmly believe this was not the right opportunity and not a good deal for taxpayers." The Utah Board of Education also did not support it. Facebook chose Los Lunas, New Mexico (Deseret News, Sept. 14, 2016).</p>
+      <span class="rc-tag rc-good">Each taxing entity voted in a public meeting</span>
+      <span class="rc-tag rc-flag">The company was not named until after the votes</span>
+    </div>
+    <h3>How the campus grew</h3>
     <div class="mermaid">
-flowchart TD
-A["2018: 'Stadion, LLC'<br/>secret negotiation"] --> B["Alpine School Board<br/>5 days, approves 6-1"]
-B --> C["2018 water-confidentiality<br/>deal signed same era"]
-C --> D["2021-2022: Phases 1-3<br/>4.5M sq ft, $1.5B"]
-D --> E["2025-2026: Aquila gas plant<br/>+ Faraday Solar built"]
-E --> F["Apr 2026: QTS $6B<br/>adjacent campus"]
-F --> G["Sep 2026: Meta expansion<br/>past $3B cumulative"]
-C -.->|"still in effect"| G
+%%{init: {'themeVariables': {'fontSize': '17px'}, 'flowchart': {'useMaxWidth': true, 'nodeSpacing': 28, 'rankSpacing': 46}}}%%
+flowchart TB
+  A["2016: West Jordan deal ends;<br/>Facebook picks New Mexico"] --> B["May 2018: tax breaks approved<br/>for 'Stadion, LLC'"]
+  B --> C["2018: city agrees to keep<br/>monthly water use confidential"]
+  B --> D["2021–2022: first buildings open;<br/>plan grows to 4.5M sq ft"]
+  D --> E["Jan. 2026: Sweetwater #4 CRA plan<br/>asks for $778.5M in tax increment"]
+  D --> F["Sept. 2026: Meta says its investment<br/>is past $3 billion"]
+  F --> G["Part 2: a gas plant is planned<br/>for the expansion (not yet approved)"]
+  C -.->|"still in effect"| F
+  classDef p2 fill:#f4e3dc,stroke:#c0572e,color:#3d0f1c;
+  class G p2
     </div>
-  </div></div>
-</div>
+  </div>
+</section>
 
-<div class="acc-item open">
-  <div class="acc-head"><h2>What's Confirmed, What Isn't</h2><div class="acc-toggle">+</div></div>
-  <div class="acc-body"><div class="acc-inner">
-    <div class="verdict-strip">
-      <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">2018 negotiation under the pseudonym "Stadion, LLC"</div></div>
-      <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">2018 water-confidentiality and alert-Meta-first agreement</div></div>
-      <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">Hemmco lists "Meta Data Centers" as a client, tied to this campus</div></div>
-      <div class="verdict confirmed"><div class="vlabel">Confirmed</div><div class="vtext">Three separate power sources, including a dedicated gas plant</div></div>
+<section id="grid">
+  <div class="wrap">
+    <div class="eyebrow">THE OTHER POWER SYSTEM</div>
+    <h2>Meta's Grid Power and Its Tax Breaks</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Besides the gas plant, Meta buys power from Rocky Mountain Power, the regular power company. It also gets large property tax breaks from the city, county and schools.</p>
+    <div class="record-card">
+      <h3>The public grid side</h3>
+      <p>Eagle Mountain has no city power company; Rocky Mountain Power serves the city. In 2016 the Public Service Commission approved a "Renewable Energy Service Contract" between Rocky Mountain Power and Facebook under Schedule 34, Rocky Mountain Power's price plan for large customers who want renewable supply (Docket 16-035-27, approved Aug. 29, 2016). Facebook pays rates different from the standard large-business rate (Schedule 9); the details are confidential. The contract includes terms "to ensure customers are not adversely impacted." The PSC accepted the latest compliance report (a yearly check that the deal follows the rules) Sept. 24, 2025; the next is due June 30, 2027.</p>
+      <p>Renewable projects tied to Meta include Faraday Solar in Eagle Mountain (685.3 MW) and an earlier 120 MW Rocky Mountain Power solar project built for Facebook. Meta says it has added 1.7 GW of renewables and 600 MWh of batteries in Utah.</p>
+      <span class="rc-tag rc-good">Other customers protected by contract terms</span>
     </div>
-    <div class="verdict-strip">
-      <div class="verdict open"><div class="vlabel">Still open</div><div class="vtext">Whether Hemmco represented both Meta and Eagle Mountain city on the same incentive matter</div></div>
-      <div class="verdict open"><div class="vlabel">Likely resolved</div><div class="vtext">A claim that Eagle Mountain hired Hemmert to fight a bill called "SB 231" — no such bill found; most likely a misidentification of H.B. 507 itself</div></div>
-      <div class="verdict open"><div class="vlabel">Still open</div><div class="vtext">Whether any new incentive has been offered for the September 2026 expansion</div></div>
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th>Tax break</th><th>Terms</th><th>Source</th></tr>
+      <tr><td>Property tax, 2018 package</td><td>100% off personal property (servers, equipment) and 80% off real property, for 40 years, from four of five taxing entities</td><td>Deseret News, 2021 and 2022</td></tr>
+      <tr><td>Alpine School District</td><td>Capped its share at $150 million over 35 years. The board first proposed $40 million per phase and $120 million total over 30 years; the higher cap was the company's counterproposal.</td><td>Deseret News, May 23, 2018</td></tr>
+      <tr><td>Estimated value</td><td>About $150 million for Phase 1 over 20 years; up to $750 million if all five phases are built (city-commissioned study)</td><td>Deseret News</td></tr>
+      <tr><td>Sweetwater #4 CRA, 2026</td><td>$778,540,678 in property tax increment requested for the expansion area</td><td>Eagle Mountain RDA notice, Jan. 6, 2026</td></tr>
+      <tr><td>State sales tax exemption</td><td>S.B. 114 (2020, Sen. Kirk Cullimore, Rep. Mike Schultz) exempts qualifying data center equipment purchases from sales tax</td><td>le.utah.gov</td></tr>
+      <tr><td>The gas plant</td><td>No payment in lieu of taxes in the draft; the city agrees not to support new taxes on the plant or the data center industry for 40 years</td><td>Draft development agreement</td></tr>
+    </table>
     </div>
-    <div class="caveat caveat--first"><b>The through-line:</b> every stage of this campus's growth — the 2018 identity concealment, the school board pressure, the water secrecy, the behind-the-meter power plant, and the newest expansion — was built through mechanisms that keep the public one step behind the deal, confirmed at each stage only after the fact, by reporters, not by routine disclosure.</div>
-    <div class="crosslink">
-      <p><b>Cross-reference:</b> This expansion is measured directly against Utah's newest data-center incentive law in the <a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-hb507.html" target="_blank" rel="noopener">H.B. 507 case file</a> in the Bill-Tracker repo — including the exact thresholds this campus clears, the one-year window before the law's own restrictions apply, and a second live example, UIPA's Tooele Valley data center, in the UIPA repo.</p>
+    <div class="chart-card">
+      <h3>Public money tied to the Meta campus</h3>
+      <p class="cap">Dollar figures from public documents. They measure different things and should not be added together.</p>
+      <div class="chart-box"><canvas id="moneyChart" aria-label="Bar chart of public dollar figures tied to the Meta campus"></canvas></div>
     </div>
-  </div></div>
-</div>
+  </div>
+</section>
 
-</div>
+<section id="community">
+  <div class="wrap">
+    <div class="eyebrow">COMMUNITY MONEY</div>
+    <h2>Normal, and Not</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Companies pay some fees and give some gifts. Most are ordinary. A few things here are unusual, like a payment amount left blank.</p>
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th>Item</th><th>Amount or terms</th><th>Normal?</th></tr>
+      <tr><td>Walden Park astronomy park (Meta)</td><td>$450,000</td><td><span class="status-pill status-confirmed">Normal</span> A voluntary goodwill gift.</td></tr>
+      <tr><td>School land (Meta)</td><td>$600,000</td><td><span class="status-pill status-confirmed">Normal</span> Helpful, and small next to the school revenue given up.</td></tr>
+      <tr><td>Lake Mountain Education Foundation (Meta)</td><td>$1.5 million plus $50,000 a year</td><td><span class="status-pill status-confirmed">Normal</span> Voluntary, can change.</td></tr>
+      <tr><td>"Local infrastructure improvements" (Meta)</td><td>"$50+ million"</td><td><span class="status-pill status-unresolved">Normal, not a gift</span> Roads and utilities serving its own campus; the 2018 deal required $100–150 million in infrastructure as a condition.</td></tr>
+      <tr><td>Building permit, inspection, plan-check fees (Williams)</td><td>Charged as usual</td><td><span class="status-pill status-confirmed">Normal</span></td></tr>
+      <tr><td>Paying for its own water, sewer, street upgrades (Williams)</td><td>Company pays</td><td><span class="status-pill status-confirmed">Normal</span> Good for residents.</td></tr>
+      <tr><td>Impact fees (Williams)</td><td>"Governed by the Stadion Agreement"</td><td><span class="status-pill status-unresolved">Normal to have, unusual not to publish</span> The amounts are in an agreement not found publicly.</td></tr>
+      <tr><td>One-time payment to the city (Williams)</td><td>"$______," non-refundable</td><td><span class="status-pill status-flag">Not normal to leave blank</span> Still blank in the version the Planning Commission voted on.</td></tr>
+      <tr><td>City 6% energy tax</td><td>Applies to electricity users citywide</td><td><span class="status-pill status-confirmed">Normal</span> Whether it reaches power sold privately to Meta is not stated.</td></tr>
+      <tr><td>Payment in lieu of taxes (Williams)</td><td>None in the draft</td><td><span class="status-pill status-flag">Worth noting</span> Paired with a 40-year promise not to back new taxes on the plant or the data center industry.</td></tr>
+    </table>
+    </div>
+    <div class="vs-grid" style="margin-top:22px;">
+      <div class="vs-head">WHAT THE PUBLIC GIVES</div><div class="vs-head">WHAT THE PUBLIC GETS</div>
+      <div>Property tax relief estimated at $150 million to $750 million (2018 package)</div><div>300+ permanent jobs, per Meta (2026)</div>
+      <div>$778.5 million in tax increment requested (Sweetwater #4 CRA)</div><div>About $52.5 million in listed community money, most of it infrastructure for the campus</div>
+      <div>Sales tax exemption on data center equipment (S.B. 114)</div><div>City energy-tax revenue, "millions annually" per the city</div>
+      <div>40-year limits the city placed on itself in the gas plant agreement</div><div>Renewable projects Meta funds on Rocky Mountain Power's system</div>
+    </div>
+    <p class="cap" style="font-size:.86rem;color:var(--color-ink-soft);margin-top:10px;">The two columns measure different things and are not meant to be added up.</p>
+  </div>
+</section>
+
+<section id="jobs">
+  <div class="wrap">
+    <div class="eyebrow">JOBS VS. COST</div>
+    <h2>300 Jobs, 4.5 Million Square Feet</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>The data center is huge but employs few people once built. This section compares the jobs to the size and the tax breaks.</p>
+    <p class="section-dek">All figures come from public sources. The per-job numbers are simple division by Meta's stated 300 permanent jobs.</p>
+
+    <div class="flip-grid">
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">300+</div><div class="label">PERMANENT JOBS, WHOLE CAMPUS</div><div class="hint">tap for the detail</div></div>
+        <div class="flip-face flip-back"><div>Meta's Sept. 14, 2026 figure. In 2021 the Deseret News reported the campus would "support 200 jobs," with "a few dozen" employees needed to run it. Peak construction: <strong>1,200+</strong> temporary workers.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">$25K–$62.5K</div><div class="label">PUBLIC COST PER JOB, PER YEAR</div><div class="hint">tap for the math</div></div>
+        <div class="flip-face flip-back"><div>Phase 1 break: <strong>$150 million</strong> over 20 years ÷ 300 jobs = $25,000 a year each. All five phases (city's estimate): <strong>$750 million</strong> over 40 years ÷ 300 = $62,500 a year each.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">15,000 sq ft</div><div class="label">OF CAMPUS PER PERMANENT JOB</div><div class="hint">tap for the detail</div></div>
+        <div class="flip-face flip-back"><div>About <strong>4.5 million square feet</strong> when complete (Deseret News, 2022) ÷ 300 jobs. Roughly three football fields per job.</div></div></div></button>
+    </div>
+
+    <div class="chart-card">
+      <h3>Permanent jobs per $1 billion invested, Eagle Mountain</h3>
+      <p class="cap">Meta: $3 billion+, 300+ jobs. QTS: $6 billion, about 100 jobs. Tyson Foods plant: $300 million, 723 jobs (it closed five years into a ten-year incentive agreement).</p>
+      <div class="chart-box" style="height:200px;"><canvas id="jobsChart" aria-label="Bar chart of permanent jobs per billion dollars invested"></canvas></div>
+    </div>
+
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th>Tax break</th><th>Total</th><th>Per permanent job</th><th>Per job, per year</th></tr>
+      <tr><td>Phase 1 property tax break</td><td class="num">$150 million / 20 yrs</td><td class="num">$500,000</td><td class="num">$25,000</td></tr>
+      <tr><td>All five phases (city estimate)</td><td class="num">$750 million / 40 yrs</td><td class="num">$2.5 million</td><td class="num">$62,500</td></tr>
+      <tr><td>Sweetwater #4 increment request</td><td class="num">$778.5 million</td><td class="num">$2.6 million</td><td class="num">—</td></tr>
+    </table>
+    </div>
+    <p class="cap" style="font-size:.86rem;color:var(--color-ink-soft);">The three figures overlap and should not be added. Part of any CRA increment goes to housing and infrastructure by law, not to the company.</p>
+
+    <div class="record-card" style="margin-top:18px;">
+      <h3>The fair side</h3>
+      <p>Jobs are not the only return. Former Mayor Tom Westmoreland said the land brought in "$35 annually" in taxes before Meta, and "now it brings in millions even with that tax increment." Mayor Jared Gray told the Salt Lake Tribune data centers are "literally what funds our general fund." Meta still pays 20% of its real property tax and the city's 6% energy tax, and funds voluntary community projects. In 2024, by Meta's own figures, the campus used more than 1 million megawatt-hours of electricity and 35 million gallons of water.</p>
+      <span class="rc-tag rc-good">Steady revenue from a single property</span>
+      <span class="rc-tag rc-flag">Few permanent jobs for the size and the breaks</span>
+    </div>
+  </div>
+</section>
+
+<section id="water">
+  <div class="wrap">
+    <div class="eyebrow">WATER</div>
+    <h2>What Meta Has to Report, and What Stays Confidential</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>A new state law makes new data centers report their water use publicly. Meta's older buildings are not covered, and a 2018 city deal keeps their water use confidential.</p>
+    <div class="record-card">
+      <p><strong>The 2018 city deal:</strong> the Salt Lake Tribune reported Eagle Mountain agreed to keep Meta's monthly water use confidential and to alert Meta when anyone requests it.</p>
+      <p><strong>H.B. 76 (2026), Utah Code 73-5-8.3:</strong> a "new large data center," one that withdraws (takes from wells, rivers or the city system) 75 acre-feet a year or more (about 24 million gallons) and "begins operations on or after July 1, 2026," must report its water use to the Division of Water Rights before construction and every year. The state must publish each center's withdrawals by Sept. 1, "and not in the aggregate." Conservation and wastewater details can be kept confidential. Fines run up to $100 a day after notice.</p>
+      <p><strong>What that means here:</strong> Meta's original buildings, operating since 2021, are not covered. New expansion buildings that start operating after July 1, 2026 would be. The first public numbers would appear around Sept. 1, 2027.</p>
+      <span class="rc-tag rc-good">New buildings: per-facility public reporting</span>
+      <span class="rc-tag rc-flag">Existing buildings: still under the 2018 confidentiality deal</span>
+    </div>
+  </div>
+</section>
+
+<section id="use2024">
+  <div class="wrap">
+    <div class="eyebrow">2024 USE, IN PICTURES</div>
+    <h2>A Lot of Power, Not Much Water</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>In 2024 Meta says its Eagle Mountain campus used more than 1 million megawatt-hours of electricity and 35 million gallons of water. The electricity is a lot: about what 108,000 Utah homes use. The water is small for a place this size. The catch is that both numbers come from Meta, and no one checks them.</p>
+    <p class="section-dek">The 2024 figures are Meta's own, as reported by the Salt Lake Tribune (Jan. 14, 2026). The comparisons use U.S. Energy Information Administration (EIA) and Utah Division of Water Resources figures. The math is simple division, shown on each card.</p>
+
+    <div class="flip-grid">
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">~108,000</div><div class="label">UTAH HOMES' WORTH OF ELECTRICITY</div><div class="hint">tap for the math</div></div>
+        <div class="flip-face flip-back"><div>1 million megawatt-hours = <strong>1 billion kilowatt-hours</strong>. The average Utah home used 774 kWh a month in 2024 (EIA), or 9,288 a year. 1 billion ÷ 9,288 = about <strong>108,000 homes</strong>.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">~2.9%</div><div class="label">OF ALL ELECTRICITY SOLD IN UTAH</div><div class="hint">tap for the math</div></div>
+        <div class="flip-face flip-back"><div>Utah's total retail electricity sales in 2024 were <strong>34,688,083</strong> megawatt-hours (EIA). 1 million ÷ 34.7 million = about <strong>2.9%</strong>, from one campus.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">~114 MW</div><div class="label">AVERAGE DRAW, ALL YEAR LONG</div><div class="hint">tap for the math</div></div>
+        <div class="flip-face flip-back"><div>A year has 8,760 hours. 1 million MWh ÷ 8,760 = about <strong>114 MW</strong> running nonstop. The planned gas plant is filed at up to <strong>286 MW</strong>, about 2½ times that.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">~107</div><div class="label">ACRE-FEET OF WATER IN 2024</div><div class="hint">tap for the math</div></div>
+        <div class="flip-face flip-back"><div>One acre-foot is 325,851 gallons, enough to cover a football field about a foot deep. 35 million ÷ 325,851 = about <strong>107 acre-feet</strong>. That is over H.B. 76's <strong>75 acre-foot</strong> reporting line.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">~430</div><div class="label">UTAHNS' WORTH OF WATER</div><div class="hint">tap for the math</div></div>
+        <div class="flip-face flip-back"><div>Utah's 2019 statewide rate was <strong>223 gallons per person per day</strong>, counting all city water uses (homes, businesses, schools, parks). That's 81,395 gallons a person a year. 35 million ÷ 81,395 = about <strong>430 people</strong>.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">~1/14</div><div class="label">OF THE INDUSTRY'S AVERAGE WATER PER UNIT OF POWER</div><div class="hint">tap for the math</div></div>
+        <div class="flip-face flip-back"><div>35 million gallons ÷ 1 billion kWh = 0.035 gallons, about <strong>0.13 liters per kWh</strong>. The commonly cited industry average is <strong>1.9 liters per kWh</strong> (The Green Grid, via EESI). A rough comparison: the industry number counts only computer power.</div></div></div></button>
+    </div>
+
+    <div class="chart-card">
+      <h3>Meta's campus vs. all electricity sold in Utah, 2024</h3>
+      <p class="cap">One campus: about 1 million megawatt-hours. Everyone else in Utah (homes, businesses, factories): about 33.7 million.</p>
+      <div class="chart-box" style="height:260px;"><canvas id="shareChart" aria-label="Doughnut chart of Meta's share of Utah electricity sales"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <h3>2024 average use vs. the planned gas plant (megawatts)</h3>
+      <p class="cap">What the whole campus drew on average in 2024, next to the most the new plant is filed to make. The plant is for the expansion, so this shows scale, not a plan to replace grid power.</p>
+      <div class="chart-box" style="height:170px;"><canvas id="mwChart" aria-label="Bar chart comparing 114 MW average use with 286 MW plant size"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Water used per kilowatt-hour (liters)</h3>
+      <p class="cap">Lower is better. Meta's 2024 figure is its own and covers the whole campus; the industry average counts computer power only, so treat this as a rough comparison.</p>
+      <div class="chart-box" style="height:170px;"><canvas id="waterChart" aria-label="Bar chart of water per kilowatt-hour, Meta vs industry average"></canvas></div>
+    </div>
+
+    <h3>Does Meta's campus have to report water under H.B. 76?</h3>
+    <div class="mermaid">
+%%{init: {'themeVariables': {'fontSize': '17px'}, 'flowchart': {'useMaxWidth': true, 'nodeSpacing': 28, 'rankSpacing': 50}}}%%
+flowchart TB
+  A["A data center building<br/>on Meta's campus"] --> B{"Takes 75 acre-feet<br/>of water a year or more?"}
+  B -->|"No"| X["Not covered"]
+  B -->|"Yes (campus: about 107)"| C{"Started operating on or<br/>after July 1, 2026?"}
+  C -->|"No: original buildings,<br/>running since 2021"| D["Not covered.<br/>2018 city confidentiality<br/>deal still applies"]
+  C -->|"Yes: new expansion<br/>buildings"| E["Must report to the state<br/>before building and every year"]
+  E --> F["State posts each center's<br/>water use by Sept. 1<br/>(first: about Sept. 2027)"]
+  classDef no fill:#f4e3dc,stroke:#c0572e,color:#3d0f1c;
+  classDef yes fill:#e3ecdf,stroke:#4d7c5f,color:#1b2b2f;
+  class X,D no
+  class E,F yes
+    </div>
+
+    <div class="record-card" style="margin-top:18px;">
+      <h3>Good, bad or neutral?</h3>
+      <p><strong>The numbers themselves are neutral.</strong> They are measurements, not choices.</p>
+      <p><strong>On the good side:</strong> for a campus this size, the water use is low. Meta's number per unit of power is far below the commonly cited industry average.</p>
+      <p><strong>On the other side:</strong></p>
+      <ul style="margin:0 0 10px;padding-left:18px;">
+        <li>The electricity use is large, and it is why a gas plant, a private power contract and new tax questions are on the table.</li>
+        <li>Both numbers are self-reported, and the 2018 agreement keeps the monthly figures confidential.</li>
+        <li>The water figure does not count water used to make the electricity. A gas plant uses its own water, and the Williams agreement covers its wastewater.</li>
+        <li>Only new buildings will show up in the state's public water reports.</li>
+      </ul>
+      <span class="rc-tag rc-good">Low water per unit of power</span>
+      <span class="rc-tag rc-flag">Self-reported; existing buildings not covered by H.B. 76</span>
+    </div>
+  </div>
+</section>
+
+<section id="corridor">
+  <div class="wrap">
+    <div class="eyebrow">THE CORRIDOR AND 2026</div>
+    <h2>Neighbors, a Tax Increase and the September Expansion</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Other data center companies have bought land next to Meta. In 2026 the city raised its own property tax, and a month later Meta announced another expansion. These are separate decisions, shown together because they all affect what Eagle Mountain residents pay and get.</p>
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th>What</th><th>The record</th><th>Source</th></tr>
+      <tr><td>Google</td><td>Bought about 300 acres in Eagle Mountain in 2021 for a possible data center.</td><td>Salt Lake Tribune, Oct. 4, 2021</td></tr>
+      <tr><td>QTS</td><td>$6 billion campus, about 100 permanent jobs. In February 2026 it asked to rezone eight more parcels, 524 acres. The city said QTS "prefers to get power from the grid and uses on-site generation as a last resort."</td><td>Utah News Dispatch, April 17, 2026; Planning Commission minutes, Feb. 10, 2026</td></tr>
+      <tr><td>City property tax, 2026</td><td>Proposed as a 220.88% increase and first approved at 183%. After residents started a referendum, the council repealed it and adopted a <strong>69.81%</strong> increase (about $99 a year on a median home) to pay for a Utah County Sheriff's Office contract. A second referendum, against the 69.81% increase (Resolution R-62-2026), was found legally referable on Sept. 14, 2026. <a href="https://webercountyhive-coder.github.io/referendum/eagle-mountain-tax-referendum-2.html">Referendum Docket case file &rarr;</a></td><td>Daily Herald, Aug. 7 and Aug. 20, 2026; KSL; this site's Referendum Docket</td></tr>
+      <tr><td>Where city property tax goes</td><td>Eagle Mountain's audited financial statements show its Redevelopment Agency Fund taking a growing share of city-wide property tax: about 34% in FY2024 ($10.46 million) and 40% in FY2025 ($15.03 million). Two Sweetwater project areas, where the data centers sit, accounted for over 93% of the increment captured in tax year 2023 (Utah County Auditor). The Sweetwater #4 CRA plan for Meta's expansion would be a new area on top of those. <a href="https://webercountyhive-coder.github.io/referendum/eagle-mountain-finance-history.html">Finance history case file &rarr;</a></td><td>Eagle Mountain ACFRs, FY2024–FY2025; Utah County Auditor, 2023 Report 700; via this site's Referendum Docket</td></tr>
+      <tr><td>Meta, Sept. 14, 2026</td><td>New expansion; stated investment past $3 billion; 1.7 GW of clean and renewable energy and 600 MWh of batteries added in Utah; school and park donations.</td><td>Meta announcement</td></tr>
+      <tr><td>H.B. 507 (2026)</td><td>New limits on local incentives for the largest data centers. The <a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-hb507.html">H.B. 507 case file</a> covers when those limits start and how they apply to projects like this one.</td><td>le.utah.gov; Bill Tracker</td></tr>
+    </table>
+    </div>
+    <p class="callout"><b>Mayor Jared Gray</b> told the Salt Lake Tribune that data centers are "literally what funds our general fund." Former Mayor Tom Westmoreland said the land brought in "$35 annually" in taxes before Meta and "now it brings in millions even with that tax increment."</p>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="eyebrow">THE TIMELINE</div>
+    <h2>Eight Years in Order</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>The main dates, oldest first. Red dots are the big moments.</p>
+    <div class="timeline">
+      <div class="timeline-item"><div class="t-date">AUG–SEP 2016</div><h4>West Jordan deal ends</h4><p>Salt Lake County and the state school board don't support the incentive; Facebook picks Los Lunas, New Mexico.</p></div>
+      <div class="timeline-item"><div class="t-date">MAY 11, 2018</div><h4>School board gets the 50-page proposal</h4><p>For a company named only as "Stadion, LLC."</p></div>
+      <div class="timeline-item key"><div class="t-date">MAY 22–23, 2018</div><h4>County and school board approve</h4><p>Utah County with a 40-year limit; Alpine School Board 6–1 with a $150 million, 35-year cap.</p></div>
+      <div class="timeline-item"><div class="t-date">2018</div><h4>Water confidentiality agreement</h4><p>The city agrees to keep monthly water use confidential and alert Meta to records requests (reported Jan. 2026).</p></div>
+      <div class="timeline-item"><div class="t-date">2021</div><h4>First buildings open; Google buys land nearby</h4><p>Google's 300 acres reported Oct. 4, 2021.</p></div>
+      <div class="timeline-item"><div class="t-date">SEP 2022</div><h4>Campus plan reaches 4.5 million sq ft</h4><p>Deseret News.</p></div>
+      <div class="timeline-item"><div class="t-date">JAN 6, 2026</div><h4>Sweetwater #4 CRA plan</h4><p>$778.5 million in tax increment requested for the expansion area.</p></div>
+      <div class="timeline-item key"><div class="t-date">JAN 14, 2026</div><h4>Water agreement reported</h4><p>Salt Lake Tribune; Meta's 2024 figures: 1 million+ MWh and 35 million gallons.</p></div>
+      <div class="timeline-item"><div class="t-date">MAY 6, 2026</div><h4>H.B. 76 takes effect</h4><p>New data centers must report water use; the state publishes it per facility.</p></div>
+      <div class="timeline-item"><div class="t-date">AUG 2026</div><h4>City tax increase</h4><p>183% approved, then repealed; 69.81% adopted.</p></div>
+      <div class="timeline-item key"><div class="t-date">SEP 14, 2026</div><h4>Meta's latest expansion</h4><p>Investment past $3 billion. The gas plant planned for the expansion is covered in <a href="meta-eagle-mountain-gas-plant.html">Part 2</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="wrap">
+  <div class="wrap">
+    <div class="eyebrow">CONCLUSION</div>
+    <h2>What We Know, and What We Don't</h2>
+    <div class="conn-grid">
+      <div class="conn-card gold">
+        <div class="case">WHAT THE RECORDS SHOW</div>
+        <h4>Known</h4>
+        <ul>
+          <li>The 2018 tax breaks were approved in public votes before the company was publicly named.</li>
+          <li>The school board's own cap was raised after the company's counterproposal.</li>
+          <li>The breaks: 100% off equipment, 80% off land and buildings, 40-year limit; about $150 million for Phase 1, up to $750 million for all phases.</li>
+          <li>A 2018 agreement keeps monthly water use confidential and requires the city to alert Meta to records requests.</li>
+          <li>In 2024 the campus used about 2.9% of Utah's electricity and little water for its size (Meta's figures).</li>
+          <li>About 300 permanent jobs for a 4.5-million-square-foot campus.</li>
+        </ul>
+      </div>
+      <div class="conn-card unres">
+        <div class="case">NOT KNOWN YET</div>
+        <h4>Open</h4>
+        <ul>
+          <li>The campus's actual monthly water use; only Meta's yearly totals are public.</li>
+          <li>How much of the $778.5 million CRA request will be approved and spent.</li>
+          <li>Whether new expansion buildings will be reported under H.B. 76 (first reports due around Sept. 2027).</li>
+          <li>Whether any new incentive has been offered for the September 2026 expansion.</li>
+          <li>The text of the Oct. 21, 2025 Stadion development agreement.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="callout"><b>Bottom line:</b> each step followed a public process: meetings, votes, posted notices. What the records show is timing. The public learned who the company was, what the water deal said and how much power the campus uses only after the decisions were made, and mostly through news reports.</p>
+    <a class="nextpart" href="meta-eagle-mountain-gas-plant.html"><div class="k">CONTINUE TO PART 2</div><div class="t">The Plant Not in the Announcement</div><div>The Williams gas plant planned for Meta's expansion: the contract, the air permit, the state review and who decides next &rarr;</div></a>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap">
+    <div class="eyebrow">WHAT THIS DOESN'T SHOW</div>
+    <h2>Limits of the Record</h2>
+    <div class="record-card">
+      <ul style="margin:0;padding-left:18px;">
+        <li>The 2018 agreements themselves were not reviewed here; the terms come from news reports at the time.</li>
+        <li>The water and power figures are Meta's own and have not been independently checked.</li>
+        <li>The per-job figures are simple division and do not count construction jobs, contractors or the city's energy-tax revenue.</li>
+        <li>Nothing here suggests any rule was broken. The votes were held in public meetings.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <details class="sources">
+      <summary>View all sources (19)</summary>
+      <ol>
+        <li>Data Center Dynamics, "Unknown backer proposes large facility in Eagle Mountain, Utah," May 22, 2018</li>
+        <li>Deseret News, "Utah County approves deal to lure mystery data center to Eagle Mountain," May 22, 2018</li>
+        <li>Deseret News, "Final 2 agencies pass tax breaks for mystery data center in Utah County," May 23, 2018 (Art Raymond)</li>
+        <li>Deseret News, "West Jordan falls to New Mexico's sweetheart deal for Facebook data center," Sept. 14, 2016</li>
+        <li>Deseret News, Feb. 11, 2021; Oct. 4, 2021; Sept. 30, 2022 (tax breaks, campus size, jobs, Mayor Westmoreland)</li>
+        <li>Salt Lake Tribune, Oct. 4, 2021 (Google buys 300 acres)</li>
+        <li>Salt Lake Tribune / Grist, Jan. 14, 2026 (water confidentiality agreement; Mayor Gray; 2024 water and power use)</li>
+        <li>Rocky Mountain Power–Facebook Renewable Energy Service Contract, PSC Docket 16-035-27</li>
+        <li>Eagle Mountain RDA notice, Sweetwater #4 CRA amended plan, Jan. 6, 2026 (utah.gov/pmn)</li>
+        <li>S.B. 114 (2020), Sales and Use Tax Exemption Amendments; H.B. 76 (2026), Utah Code 73-5-8.3; H.B. 507 (2026) (le.utah.gov)</li>
+        <li>Meta, "Deepening Our Investment in Eagle Mountain, Utah," Sept. 14, 2026</li>
+        <li>Utah News Dispatch, April 17, 2026 (QTS); Eagle Mountain Planning Commission minutes, Feb. 10, 2026</li>
+        <li>Daily Herald, Aug. 7 and Aug. 20, 2026; KSL (Eagle Mountain property tax increase and referendum)</li>
+        <li>This site's Referendum Docket: "Eagle Mountain's Second Tax Referendum" and "Eagle Mountain's Balanced Budget" (Eagle Mountain ACFRs, FY2024–FY2025)</li>
+        <li>Excelsior Energy Capital, Faraday Solar announcement, Oct. 2025</li>
+        <li>U.S. Energy Information Administration, Utah Electricity Profile 2024 and Table 5A (2024 residential)</li>
+        <li>Utah Division of Water Resources, Open Water Data release (2019 statewide M&amp;I use)</li>
+        <li>Environmental and Energy Study Institute, "Data Centers and Water Consumption"</li>
+        <li>This site's Data-Centers research (Tyson Foods plant, 723 jobs)</li>
+      </ol>
+    </details>
+  </div>
+</section>
 
 <footer>
-  <span>The Weber County Hive</span>
-  <span>Built from Data Center Dynamics, Deseret News, Salt Lake Tribune, Utah News Dispatch — no comment requested</span>
+  <div class="wrap">
+    Compiled from news reports at the time, Eagle Mountain City public notices and minutes, state law and company announcements. Public records only · No comment requested.
+  </div>
 </footer>
 
-</div>
 <script>
-mermaid.initialize({
-  startOnLoad: true,
-  theme: 'base',
-  themeVariables: {
-    primaryColor: '#f4ecdc',
-    primaryTextColor: '#20241f',
-    primaryBorderColor: '#8a6a1f',
-    lineColor: '#8a8265',
-    secondaryColor: '#f4e2dc',
-    tertiaryColor: '#e2e8e0',
-    fontFamily: 'Helvetica Neue, Arial, sans-serif',
-    fontSize: '13px'
-  }
-});
-document.querySelectorAll('.acc-head').forEach(function(head){
-  head.addEventListener('click', function(){
-    head.parentElement.classList.toggle('open');
+document.querySelectorAll('.flip').forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('flipped');b.setAttribute('aria-pressed',b.classList.contains('flipped'));}));
+if (window.mermaid) { mermaid.initialize({ startOnLoad: true, theme: 'neutral', fontFamily: 'IBM Plex Mono, monospace', themeVariables: { fontSize: '19px' }, flowchart:{htmlLabels:true, curve:'basis', useMaxWidth:true, nodeSpacing:40, rankSpacing:70, padding:14} }); }
+if (window.Chart) {
+  Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
+  Chart.defaults.color = '#5c534c';
+  const money = v => '$' + Number(v).toLocaleString();
+  if (document.getElementById('moneyChart')) new Chart(document.getElementById('moneyChart'), {
+    type: 'bar',
+    data: { labels: ['Sweetwater #4 CRA tax increment requested (2026)', '2018 tax break, all 5 phases (city estimate)', 'Meta local infrastructure pledge (2026)', 'Meta PAC spending, 2026 primaries'],
+      datasets: [{ data: [778540678, 750000000, 50000000, 251446.36], backgroundColor: ['#c0572e','#d9a441','#4d7c5f','#5c1a2b'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => money(c.parsed.x) } } },
+      scales: { x: { ticks: { callback: v => '$' + (v/1e6) + 'M' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
   });
-});
+  if (document.getElementById('jobsChart')) new Chart(document.getElementById('jobsChart'), {
+    type: 'bar',
+    data: { labels: ['Tyson Foods plant', 'Meta data center', 'QTS data center'],
+      datasets: [{ data: [2410, 100, 16.7], backgroundColor: ['#4d7c5f','#3d0f1c','#c0572e'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => Math.round(c.parsed.x) + ' jobs per $1 billion' } } },
+      scales: { x: { grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+  });
+  if (document.getElementById('shareChart')) new Chart(document.getElementById('shareChart'), {
+    type: 'doughnut',
+    data: { labels: ['Meta Eagle Mountain campus (~2.9%)', 'Rest of Utah'],
+      datasets: [{ data: [1000000, 33688083], backgroundColor: ['#c0572e','#d8d0bd'], borderWidth: 0 }] },
+    options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { label: c => c.label + ': ' + Number(c.parsed).toLocaleString() + ' MWh' } } } }
+  });
+  if (document.getElementById('mwChart')) new Chart(document.getElementById('mwChart'), {
+    type: 'bar',
+    data: { labels: ['Campus average draw, 2024', 'Planned gas plant (filed)'],
+      datasets: [{ data: [114, 286], backgroundColor: ['#5c1a2b','#c0572e'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' MW' } } },
+      scales: { x: { ticks: { callback: v => v + ' MW' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+  });
+  if (document.getElementById('waterChart')) new Chart(document.getElementById('waterChart'), {
+    type: 'bar',
+    data: { labels: ['Meta Eagle Mountain, 2024', 'Industry average'],
+      datasets: [{ data: [0.13, 1.9], backgroundColor: ['#4d7c5f','#d9a441'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' liters per kWh' } } },
+      scales: { x: { ticks: { callback: v => v + ' L' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+  });
+  if (document.getElementById('plantChart')) new Chart(document.getElementById('plantChart'), {
+    type: 'bar',
+    data: { labels: ['Project Aquila (Meta, Eagle Mtn)', 'Novva (West Jordan)', 'Joule (Millard County)'],
+      datasets: [{ data: [286, 235.6, 174.6], backgroundColor: ['#3d0f1c','#c0572e','#d9a441'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' MW' } } },
+      scales: { x: { ticks: { callback: v => v + ' MW' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+  });
+}
 </script>
 </body>
 </html>

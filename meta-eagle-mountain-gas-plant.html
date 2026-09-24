@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta's Eagle Mountain Gas Plant | The Weber County Hive</title>
+<meta name="description" content="Meta says its Eagle Mountain data center is matched with 100% clean energy. Public filings show a Williams natural gas plant, guaranteed by Meta Platforms, being permitted on Meta's campus, off Rocky Mountain Power's grid.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-paper:#f4f0e6;
+    --color-paper-deep:#ece5d4;
+    --color-ink:#241a16;
+    --color-ink-soft:#5c534c;
+    --color-link:#c0572e;
+    --color-stat:#d9a441;
+    --color-burgundy-light:#5c1a2b;
+    --color-burgundy-deep:#3d0f1c;
+    --color-line:#d8cfbc;
+    --color-card:#fbf8f1;
+    --color-good:#4d7c5f;
+    --color-flag:#a5372a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--color-paper);color:var(--color-ink);font-family:'Source Serif 4', Georgia, serif;line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Playfair Display', Georgia, serif;font-weight:700;margin:0 0 .4em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.06em;color:var(--color-ink-soft);}
+  a{color:var(--color-link);}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  header.band{background:linear-gradient(135deg, var(--color-burgundy-light), var(--color-burgundy-deep));color:#f4ece6;padding:22px 0;}
+  header.band .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .brandmark{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:#f4ece6;text-decoration:none;}
+  nav.topnav a{color:#f4ece6cc;text-decoration:none;margin-left:22px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.03em;border-bottom:1px solid transparent;}
+  nav.topnav a:hover{border-bottom-color:#f4ece6cc;}
+
+  .hero{padding:56px 0 40px;border-bottom:1px solid var(--color-line);}
+  .hero .eyebrow{margin-bottom:14px;}
+  .hero h1{font-size:2.5rem;line-height:1.15;max-width:760px;}
+  .hero .dek{font-size:1.12rem;color:var(--color-ink-soft);max-width:660px;margin-top:14px;}
+  .hero-meta{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap;}
+  .hero-meta .stat-num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.7rem;color:var(--color-stat);}
+  .hero-meta .stat-label{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--color-ink-soft);letter-spacing:.02em;max-width:170px;}
+
+  section{padding:44px 0;border-bottom:1px solid var(--color-line);}
+  section:last-of-type{border-bottom:none;}
+  section h2{font-size:1.6rem;margin-bottom:6px;}
+  section .section-dek{color:var(--color-ink-soft);max-width:660px;margin-bottom:26px;font-size:1rem;}
+
+  .start-here{background:var(--color-card);border:1px solid var(--color-line);border-left:4px solid var(--color-stat);padding:20px 24px;}
+  .start-here ol{margin:8px 0 0;padding-left:20px;}
+  .start-here li{margin-bottom:8px;}
+
+  .record-card{background:var(--color-card);border:1px solid var(--color-line);border-radius:2px;padding:24px 26px;margin-bottom:18px;}
+  .record-card h3{font-size:1.15rem;margin-bottom:8px;}
+  .record-card p{margin:.6em 0;}
+  .record-card p:first-of-type{margin-top:0;}
+  .rc-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.03em;color:var(--color-link);border:1px solid var(--color-link);padding:3px 9px;border-radius:20px;margin:2px 6px 2px 0;text-decoration:none;}
+  a.rc-tag:hover{background:var(--color-link);color:#fff;}
+  .rc-flag{border-color:var(--color-flag);color:var(--color-flag);}
+  .rc-good{border-color:var(--color-good);color:var(--color-good);}
+
+  .quote-block{border-left:3px solid var(--color-stat);padding:4px 0 4px 18px;font-style:italic;color:var(--color-ink-soft);margin:14px 0;}
+
+  .fund-row{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;margin-bottom:20px;}
+  .fund-donut{width:150px;height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .fund-donut-center{width:96px;height:96px;background:var(--color-paper);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+  .fund-donut-center .num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.1rem;color:var(--color-ink);}
+  .fund-donut-center .lbl{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--color-ink-soft);}
+  .fund-donut-legend{list-style:none;padding:0;margin:8px 0 0;font-size:.92rem;}
+  .fund-donut-legend li{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .swatch{width:12px;height:12px;border-radius:2px;flex-shrink:0;}
+  .fund-bar-row{margin-bottom:10px;}
+  .fund-bar-row .bar-label{display:flex;justify-content:space-between;gap:12px;font-size:.86rem;margin-bottom:4px;}
+  .fund-bar-track{background:var(--color-paper-deep);border-radius:3px;height:8px;overflow:hidden;}
+  .fund-bar-fill{height:100%;background:var(--color-link);}
+  .fund-bar-fill.alt{background:var(--color-stat);}
+
+  .table-scroll{overflow-x:auto;}
+  .entity-table{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:4px;}
+  .entity-table th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.03em;color:var(--color-ink-soft);border-bottom:1px solid var(--color-line);padding:8px 10px;}
+  .entity-table td{padding:10px;border-bottom:1px solid var(--color-line);vertical-align:top;}
+  .entity-table td.num{font-family:'IBM Plex Mono',monospace;font-size:.85rem;white-space:nowrap;}
+  .status-pill{font-family:'IBM Plex Mono',monospace;font-size:.65rem;padding:3px 8px;border-radius:12px;white-space:nowrap;display:inline-block;}
+  .status-confirmed{background:#e2ede4;color:var(--color-good);}
+  .status-flag{background:#f3dedb;color:var(--color-flag);}
+  .status-unresolved{background:#f4ecd9;color:#8a6d1f;}
+
+  .timeline{border-left:2px solid var(--color-line);padding-left:22px;margin-left:6px;}
+  .timeline-item{position:relative;margin-bottom:22px;}
+  .timeline-item::before{content:"";position:absolute;left:-28px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--color-stat);}
+  .timeline-item.key::before{background:var(--color-flag);}
+  .timeline-item .t-date{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--color-ink-soft);}
+  .timeline-item h4{font-size:1rem;margin:.2em 0;}
+  .timeline-item p{margin:.2em 0;font-size:.95rem;color:var(--color-ink-soft);}
+
+  .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--color-line);background:var(--color-card);}
+  .vs-grid > div{padding:16px 20px;border-bottom:1px solid var(--color-line);}
+  .vs-grid > div:nth-child(odd){border-right:1px solid var(--color-line);}
+  .vs-grid .vs-head{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.04em;color:var(--color-ink-soft);background:var(--color-paper-deep);}
+  .vs-grid .said{font-style:italic;}
+
+  /* connections */
+  .hub{background:var(--color-burgundy-deep);color:#f4ece6;padding:22px 26px;border-radius:2px;margin-bottom:22px;}
+  .hub .eyebrow{color:#d9a441;}
+  .hub h3{color:#f4ece6;font-size:1.3rem;margin:6px 0 4px;}
+  .hub p{margin:0;color:#e8d9c8;font-size:.95rem;}
+  .conn-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .conn-card{background:var(--color-card);border:1px solid var(--color-line);border-top:4px solid var(--color-link);padding:18px 20px;}
+  .conn-card.doers{border-top-color:var(--color-burgundy-light);}
+  .conn-card.gold{border-top-color:var(--color-stat);}
+  .conn-card.unres{border-top-color:#b8952e;border-top-style:dashed;}
+  .conn-card .case{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.04em;color:var(--color-ink-soft);}
+  .conn-card h4{font-size:1.05rem;margin:4px 0 8px;}
+  .conn-card p{margin:.4em 0;font-size:.94rem;}
+  .conn-card ul{margin:.4em 0;padding-left:18px;font-size:.93rem;}
+  .conn-card li{margin-bottom:4px;}
+
+  details.sources{margin-top:6px;}
+  details.sources summary{cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:.8rem;letter-spacing:.05em;color:var(--color-burgundy-light);font-weight:600;}
+  details.sources ol{font-size:.9rem;color:var(--color-ink-soft);padding-left:22px;}
+  details.sources li{margin-bottom:7px;}
+
+  @media (max-width:680px){
+    .hero h1{font-size:1.9rem;}
+    .fund-row{flex-direction:column;}
+    .conn-grid{grid-template-columns:1fr;}
+    .vs-grid{grid-template-columns:1fr;}
+    .vs-grid > div:nth-child(odd){border-right:none;}
+    .vs-grid .vs-head:nth-child(2){display:none;}
+  }
+  footer{padding:40px 0 60px;text-align:center;color:var(--color-ink-soft);font-size:.85rem;}
+  footer a{color:var(--color-link);}
+  .jumpnav{background:var(--color-paper-deep);border-bottom:1px solid var(--color-line);padding:12px 0;position:sticky;top:0;z-index:5;}
+  .jumpnav .wrap{display:flex;flex-wrap:wrap;gap:6px 16px;}
+  .jumpnav a{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.03em;color:var(--color-ink);text-decoration:none;border-bottom:1px solid transparent;}
+  .jumpnav a:hover{border-bottom-color:var(--color-link);color:var(--color-link);}
+  section[id]{scroll-margin-top:60px;}
+  .race-strip{display:grid;grid-template-columns:repeat(8,1fr);margin-top:26px;border-top:1px solid var(--color-line);border-left:1px solid var(--color-line);background:var(--color-card);}
+  .race-strip > div{padding:12px 12px 14px;border-right:1px solid var(--color-line);border-bottom:1px solid var(--color-line);min-width:0;}
+  .race-strip .d{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--color-link);font-weight:600;white-space:nowrap;}
+  .race-strip .e{font-size:.84rem;line-height:1.35;margin-top:6px;hyphens:none;overflow-wrap:normal;}
+  .race-strip .future .d{color:var(--color-ink-soft);}
+  @media (max-width:1000px){.race-strip{grid-template-columns:repeat(4,1fr);}}
+  @media (max-width:560px){.race-strip{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:680px){.jumpnav{position:static;} .rubric-table td:first-child{width:auto;}}
+  .chart-card{background:var(--color-card);border:1px solid var(--color-line);padding:18px 20px;margin:22px 0;}
+  .chart-card h3{font-size:1.05rem;margin-bottom:4px;}
+  .chart-card .cap{font-size:.86rem;color:var(--color-ink-soft);margin:0 0 12px;}
+  .chart-box{position:relative;height:260px;}
+  .mermaid-wrap{background:var(--color-card);border:1px solid var(--color-line);padding:18px;margin:22px 0;overflow-x:auto;}
+  .mermaid-wrap .cap{font-size:.86rem;color:var(--color-ink-soft);margin:10px 0 0;}
+  .mermaid{text-align:center;}
+  details.ledger{background:var(--color-card);border:1px solid var(--color-line);padding:12px 18px;margin:12px 0;}
+  details.ledger summary{cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.04em;color:var(--color-burgundy-light);font-weight:600;}
+  details.ledger .table-scroll{max-height:460px;overflow:auto;margin-top:10px;}
+  .rubric-table{width:100%;border-collapse:collapse;font-size:.92rem;background:var(--color-card);border:1px solid var(--color-line);}
+  .rubric-table th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.03em;color:var(--color-ink-soft);border-bottom:1px solid var(--color-line);padding:10px;background:var(--color-paper-deep);}
+  .rubric-table td{padding:12px 10px;border-bottom:1px solid var(--color-line);vertical-align:top;}
+  .rubric-table td:first-child{font-weight:600;width:170px;}
+  .gl{display:inline-block;min-width:30px;text-align:center;font-family:'Playfair Display',serif;font-weight:800;font-size:1.05rem;color:#fff;border-radius:3px;padding:1px 6px;margin-right:6px;}
+  .g-a{background:#4a7c59;} .g-b{background:#5c8a6a;} .g-c{background:var(--color-stat);} .g-d{background:#b5652f;} .g-f{background:var(--color-burgundy-light);} .g-na{background:#9a9186;font-size:.8rem;}
+  .topic-head{font-family:'Playfair Display',serif;font-size:1.15rem;margin:26px 0 8px;}
+  .compare-table td.num{text-align:right;}
+
+  .flip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;}
+  @media (max-width:900px){.flip-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.flip-grid{grid-template-columns:1fr;}}
+  .flip{perspective:900px;background:none;border:0;padding:0;cursor:pointer;text-align:left;font:inherit;color:inherit;min-height:250px;}
+  .flip-inner{position:relative;width:100%;height:100%;min-height:250px;transition:transform .5s;transform-style:preserve-3d;}
+  .flip.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--color-card);border:1px solid var(--color-line);border-radius:3px;padding:20px 22px;display:flex;flex-direction:column;justify-content:center;}
+  .flip-front{text-align:center;}
+  .flip-front .num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;color:var(--color-link);}
+  .flip-front .label{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--color-ink-soft);letter-spacing:.03em;margin-top:4px;}
+  .flip-front .hint{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--color-ink-soft);margin-top:8px;opacity:.75;}
+  .flip-back{transform:rotateY(180deg);background:var(--color-burgundy-deep);color:#f4ece6;border-color:var(--color-burgundy-deep);font-size:.95rem;line-height:1.5;overflow:auto;}
+  .flip-back strong{color:var(--color-stat);}
+  .flip:focus-visible .flip-face{outline:2px solid var(--color-link);outline-offset:2px;}
+  header.band{background:linear-gradient(135deg,#2c4449,#1b2b2f);}
+  .plain{background:#fff8e8;border-left:4px solid var(--color-stat);padding:10px 16px;margin:4px 0 20px;font-size:1rem;max-width:760px;}
+  .plain b{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.05em;color:#8a6d1f;margin-right:6px;}
+  .g-pend{background:#7a8a8c;font-size:.72rem;}
+  .callout{background:#eef3f2;border:1px solid #c9d6d4;border-left:4px solid #2c4449;padding:16px 20px;margin:18px 0;font-size:.97rem;}
+  #plant .mermaid{text-align:left;}
+  #plant .mermaid svg{display:block;margin:0 auto;}
+  .does{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .does > div{background:var(--color-card);border:1px solid var(--color-line);padding:18px 20px;}
+  .does h3{font-size:1.1rem;}
+  .does .yes{border-top:4px solid var(--color-good);}
+  .does .no{border-top:4px solid var(--color-flag);}
+  .does ul{margin:.4em 0 0;padding-left:18px;font-size:.94rem;}
+  .does li{margin-bottom:8px;}
+  @media (max-width:680px){.does{grid-template-columns:1fr;}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+.series{background:#e9e2d0;border-bottom:1px solid #d6ccb4;}
+.series .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-top:10px;padding-bottom:10px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;}
+.series .lbl{letter-spacing:.08em;color:#5c534c;}
+.series a{color:#3d0f1c;text-decoration:none;border-bottom:1px dotted #c0572e;}
+.series .on{background:#2c4449;color:#f4f0e6;padding:3px 9px;border-radius:3px;border:0;}
+.nextpart{display:block;margin-top:14px;padding:18px 22px;border:2px solid #c0572e;border-radius:8px;background:#fbf8f0;color:inherit;text-decoration:none;}
+.nextpart:hover{background:#f6efe0;}
+.nextpart .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:#c0572e;}
+.nextpart .t{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin:.2em 0;}
+</style>
+</head>
+<body>
+
+<header class="band">
+  <div class="wrap">
+    <a class="brandmark" href="https://webercountyhive.substack.com">The Weber County Hive</a>
+    <nav class="topnav">
+      <a href="index.html">Docket</a>
+      <a href="https://webercountyhive.substack.com" target="_blank" rel="noopener">Substack</a>
+    </nav>
+  </div>
+</header>
+
+<div class="series"><div class="wrap"><span class="lbl">META IN EAGLE MOUNTAIN · TWO-PART CASE FILE</span><a href="weber-hive-dc-meta-eagle-mountain.html">Part 1: The Campus, 2018–2026</a><a href="meta-eagle-mountain-gas-plant.html" class="on">Part 2: The Gas Plant</a></div></div>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">META PLATFORMS · EAGLE MOUNTAIN, UTAH COUNTY · PART 2: "PROJECT AQUILA," THE GAS PLANT</div>
+    <h1>The Plant Not in the Announcement</h1>
+    <p class="dek">On Sept. 14, 2026, Meta said its Eagle Mountain data center "is matched with 100% clean and renewable energy." Public filings with the city, the state Division of Air Quality and the Public Service Commission show something the announcement doesn't mention: a Williams natural gas power plant planned on Meta's campus to serve Meta's expansion, set up to run separate from Rocky Mountain Power, with Meta Platforms, Inc. guaranteeing the power contract.</p>
+    <div class="hero-meta">
+      <div><div class="stat-num">286 MW</div><div class="stat-label">MOST THE GAS PLANT IS FILED TO MAKE (IF RUN NONSTOP, ABOUT WHAT 270,000 UTAH HOMES USE)</div></div>
+      <div><div class="stat-num">40 yrs</div><div class="stat-label">CITY DEVELOPMENT AGREEMENT TERM</div></div>
+      <div><div class="stat-num">75 dBA</div><div class="stat-label">NOISE ALLOWED, ABOUT A VACUUM CLEANER (CITY NIGHT LIMIT 65, A CONVERSATION)</div></div>
+      <div><div class="stat-num">$778.5M</div><div class="stat-label">NEW PROPERTY TAX REQUESTED FOR THE CITY'S REDEVELOPMENT FUND (CRA PLAN)</div></div>
+      <div><div class="stat-num">On hold</div><div class="stat-label">STATE APPROVAL OF THE PRIVATE POWER DEAL, PAUSED SINCE JULY 8 (PAPERWORK INCOMPLETE)</div></div>
+    </div>
+  </div>
+</div>
+
+<nav class="jumpnav" aria-label="Sections"><div class="wrap">
+  <a href="#intro">Intro</a><a href="#recap">Words</a><a href="#start">Start here</a><a href="#doing">Doing / not doing</a><a href="#plant">The plant</a><a href="#contract">Contract</a><a href="#timeline">Timeline</a><a href="#air">Air</a><a href="#psc">The state</a><a href="#taxes">Taxes</a><a href="#campus">Campus (Part 1)</a><a href="#others">Other plants</a><a href="#connections">Connections</a><a href="#who">Who decides next</a><a href="#questions">Open questions</a><a href="#rubric">Rubric</a><a href="#wrap">Know / don't know</a><a href="#limits">Limits</a>
+</div></nav>
+
+<section id="intro">
+  <div class="wrap">
+    <div class="eyebrow">INTRODUCTION</div>
+    <h2>What This Page Is About</h2>
+    <div class="record-card">
+      <p>Meta runs a large data center in Eagle Mountain, in Utah County. To power its expansion, a natural gas power plant is planned on Meta's land. Williams will own it, and Meta Platforms, Inc. guarantees the contract. Meta's Sept. 14, 2026 announcement did not mention the plant.</p>
+      <p>This is <strong>Part 2</strong>. It lays out what public filings show about the plant, its contracts, its air permit, how it may be taxed and who decides what happens next. <a href="weber-hive-dc-meta-eagle-mountain.html">Part 1</a> covers the campus itself: the 2018 deal, the tax breaks, jobs, water and 2024 energy use.</p>
+      <p><strong>Why it matters outside Eagle Mountain:</strong> the state law this plant is filed under (S.B. 132) applies everywhere in Utah. The tax, air and water decisions made here will set the pattern for the next data center, including the ones proposed in northern Utah, like Stratos in Box Elder County.</p>
+      <p style="margin-bottom:0;"><strong>How it was made:</strong> everything comes from public records: city, state and utility filings, campaign finance reports and published news. No one was asked for comment. Anything not yet decided is marked that way.</p>
+    </div>
+  </div>
+</section>
+
+<section id="recap">
+  <div class="wrap">
+    <div class="eyebrow">QUICK RECAP</div>
+    <h2>Words Used on This Page</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Tap any card to see what the word means. Every term used below is here.</p>
+    <div class="flip-grid">
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Behind the meter</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>Power made on site and sent straight to one customer. It never enters Rocky Mountain Power's grid, so regular customers neither pay for it nor use it.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">S.B. 132</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>The 2025 law (Sen. Scott Sandall) that lets a customer using <strong>100 MW or more</strong> buy power from its own private generator, fully separate from the utility.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">PPA</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div><strong>Power purchase agreement.</strong> The contract where a buyer agrees to purchase a generator's electricity for a set number of years.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">PSC</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>The <strong>Public Service Commission</strong>, three state commissioners who set utility rates and must approve private power contracts under S.B. 132.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">NOI / DAQ</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A <strong>Notice of Intent</strong> is the air permit application sent to the state <strong>Division of Air Quality</strong>. DAQ posts a draft for 30 days of public comment before approving.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">CRA</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A <strong>Community Reinvestment Area</strong>. New property tax from growth inside it goes to the city's redevelopment agency, often to pay incentives, instead of to schools and other taxing entities.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Megawatt (MW)</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A unit of power. Run nonstop for a year, 286 MW makes about what <strong>270,000 Utah homes</strong> use (286 × 8,760 hours ÷ 9,288 kWh per home). Here it all goes to one data center.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Decibels (dBA)</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>How loud something is. <strong>65</strong> is about a normal conversation, the city's nighttime limit. <strong>75</strong> is closer to a vacuum cleaner or busy traffic.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Guarantor</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A company that promises to <strong>pay if the buyer doesn't</strong>, like co-signing a loan. Meta Platforms is the guarantor here.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Tax increment</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>When land is built on, its property tax goes up. The <strong>extra tax</strong> is the "increment." In a CRA it goes to the city's redevelopment fund.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Vested right</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A promise <strong>locked in</strong> by contract, so future city rules generally can't take it away.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Impact fee</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A <strong>one-time charge</strong> new development pays toward roads, water, sewer and parks.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Payment in lieu of taxes</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A <strong>set yearly payment</strong> a company makes in place of, or on top of, property tax. None appears in the gas plant's draft agreement.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Nonattainment area</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A place that <strong>already has too much</strong> of a pollutant, like ozone smog, under federal standards. New polluters there face tighter rules.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Centrally assessed</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div><strong>The state</strong> sets the taxable value of big utilities. Everything else is valued by <strong>the county</strong>. Which one values this plant affects its tax bill.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Offsets</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>In a smoggy area, a new polluter must <strong>pay for pollution cuts somewhere else</strong> to make up for what it adds.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">Declaration</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>A <strong>signed statement</strong> from Rocky Mountain Power that the private plant is not connected to its lines. The state requires it. It is the missing piece that put this case on hold.</div></div></div></button>
+    </div>
+    <div class="callout"><strong>Why this matters here:</strong> Meta's Eagle Mountain campus will run on two separate power systems.<br><br><strong>1. The public grid.</strong> Rocky Mountain Power's lines, the same system that powers Eagle Mountain homes and businesses. Meta buys this power under a special 2016 renewable-energy contract approved by the Public Service Commission, and says it adds enough solar, wind and batteries to match what it uses.<br><br><strong>2. A private gas plant.</strong> Williams' Project Aquila, allowed by S.B. 132, wired only to Meta's expansion and never connected to the public grid.<br><br>Meta's Sept. 14 announcement describes only the first.</div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <div class="eyebrow">START HERE</div>
+    <h2>Five Things the Records Show</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Meta is getting a private gas power plant built next to its data center. Most of the public story is about Meta's clean energy, but city and state paperwork show the gas plant too.</p>
+    <div class="start-here">
+      <ol>
+        <li><strong>A gas plant is being permitted to power Meta's expansion.</strong> Williams told Eagle Mountain's Planning Commission it is a "286-megawatt generating facility" with "a half-mile overhead power delivery line to Meta's facility," "behind the meter, separated from Rocky Mountain Power" (wired straight to Meta, never using the public power lines).</li>
+        <li><strong>Meta guarantees the deal, and it was signed early.</strong> The power contract names "Meta Platforms, Inc., as Guarantor" (Meta promises to pay if its buyer company doesn't) and dates to Sept. 30, 2025, nearly four months before the plant first appeared on a public city agenda. The applicant asked state regulators to keep the customer's name confidential; the redacted contract still shows it.</li>
+        <li><strong>Meta's own announcement doesn't mention it.</strong> Meta's Sept. 14 post describes renewables and batteries and says the campus is "matched with 100% clean and renewable energy."</li>
+        <li><strong>The air permit and the state approval are both pending.</strong> The state Division of Air Quality has a notice of intent under review. The Public Service Commission has put the private power contract on hold because the application is incomplete.</li>
+        <li><strong>The city agreed to 40 years of limits on itself.</strong> In the draft agreement, the city won't support new taxes aimed at the plant "or the data center industry," won't apply future rule changes to it, and must alert the company to any public-records request about it. Only the company can end the deal early. The payment to the city is left blank.</li>
+      </ol>
+    </div>
+    <div class="race-strip" aria-label="Timeline">
+      <div><div class="d">SEP 30, 2025</div><div class="e">Power contract signed, months before any public hearing</div></div>
+      <div><div class="d">NOV 24, 2025</div><div class="e">Will-Power registers with the PSC, "up to 286 MW"</div></div>
+      <div><div class="d">JAN 6, 2026</div><div class="e">$778.5M Sweetwater #4 CRA plan</div></div>
+      <div><div class="d">FEB 24</div><div class="e">Planning Commission recommends, 3–1</div></div>
+      <div><div class="d">APR 17</div><div class="e">Master development agreement "Active"</div></div>
+      <div><div class="d">APR 23</div><div class="e">DAQ modeling review of air permit application</div></div>
+      <div><div class="d">JUL 8</div><div class="e">PSC puts the contract case on hold</div></div>
+      <div><div class="d">SEP 14</div><div class="e">Meta announcement: "100% clean and renewable"</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="doing">
+  <div class="wrap">
+    <div class="eyebrow">WHAT META IS DOING, AND NOT DOING</div>
+    <h2>From Meta's Words and the Filings</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Here is what the documents show Meta doing, and what they show it not doing or not saying.</p>
+    <p class="section-dek">Each item is from a public document linked in Sources. Meta is not the applicant in the state case; the power contract runs through Williams entities, with Meta as guarantor.</p>
+    <div class="does">
+      <div class="yes">
+        <h3>What the records show Meta doing</h3>
+        <ul>
+          <li><strong>Guaranteeing a gas power contract.</strong> "Parent Guaranty dated October 8, 2025, with Meta Platforms, Inc., as Guarantor."</li>
+          <li><strong>Hosting the plant on its campus.</strong> The city says natural gas power is "a permitted accessory use" under the Stadion (Meta) development agreement.</li>
+          <li><strong>Buying renewables through the utility.</strong> Meta says it has "added more than 1.7 GW of clean and renewable energy and 600MWh of battery storage" with retail partners.</li>
+          <li><strong>Receiving tax breaks.</strong> The 2018 Eagle Mountain package gave 100% relief on personal property (servers and equipment) and 80% on real property (land and buildings) for 40 years, as reported by the Deseret News. The Sweetwater #4 CRA plan requests $778.5 million in tax increment.</li>
+          <li><strong>Funding community projects.</strong> Meta lists $450,000 for an astronomy park, $600,000 for school land, $1.5 million to the Lake Mountain Education Foundation and "$50+ million in local infrastructure improvements."</li>
+          <li><strong>Spending in Utah elections.</strong> Its PAC (a political committee that spends in elections), Forge the Future Project, spent $251,446.36 on two 2026 primaries (Tami Tran and Logan Monson).</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>What the records show Meta not doing</h3>
+        <ul>
+          <li><strong>Not mentioning the gas plant</strong> in its Sept. 14, 2026 Eagle Mountain announcement.</li>
+          <li><strong>Not appearing by name as the buyer</strong> in the state filing. The applicant asked to keep "the name of the customer" confidential.</li>
+          <li><strong>Not a party</strong> to the Public Service Commission case. Williams' Will-Power UT is the applicant; Rocky Mountain Power intervened.</li>
+          <li><strong>Not relying on the public grid for backup.</strong> The filing says "Rocky Mountain Power will not provide backup power in the event of an outage."</li>
+          <li><strong>Not paying the plant's taxes directly.</strong> The contract puts "all Taxes… with respect to the Generation Facility" on the seller, Williams.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="record-card" style="margin-top:18px;">
+      <h3>The fair reading</h3>
+      <p>"Matched with 100% clean and renewable energy" describes an accounting match: Meta buys as much renewable power over a year as the campus uses. It does not mean every hour of power it uses is clean. It can be true at the same time a gas plant serves part of the campus. The records don't show how much of the expansion's power will come from gas versus the grid, and Meta's announcement doesn't say.</p>
+      <span class="rc-tag rc-good">Both statements can be accurate</span>
+      <span class="rc-tag rc-flag">The gas plant is missing from the public announcement</span>
+    </div>
+  </div>
+</section>
+
+<section id="plant">
+  <div class="wrap">
+    <div class="eyebrow">THE PLANT</div>
+    <h2>Project Aquila, as Filed</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>A gas company, Williams, is building a power plant on Meta's land. It burns natural gas to make electricity and sends all of it to Meta.</p>
+    <p class="section-dek">Owned and operated by Williams companies. Supplied by an 18.9-mile, 20-inch gas pipeline from the MountainWest Pipeline Goshen interconnect.</p>
+
+    <div class="flip-grid">
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">286 MW</div><div class="label">SIZE IN CITY AND STATE FILINGS</div><div class="hint">tap for the detail</div></div>
+        <div class="flip-face flip-back"><div>Will-Power's PSC registration: "up to <strong>286 megawatts</strong>." Trade press (Argus, Pipeline &amp; Gas Journal) reported Williams upsized Aquila to <strong>520 MW</strong> under a 12.5-year deal. The contract's capacity numbers are redacted. Unresolved.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">18.9 mi</div><div class="label">NEW 20-INCH GAS PIPELINE</div><div class="hint">tap for the detail</div></div>
+        <div class="flip-face flip-back"><div>Federal pipeline-safety notice, Feb. 4, 2026: "Build a new 18.9 mile, 20&quot; pipeline" from the MountainWest Goshen interconnect to Eagle Mountain, with a "Lake Mountain valve station."</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">17</div><div class="label">TURBINES (GAS-BURNING ENGINES) NAMED IN THE PERMIT LIST</div><div class="hint">tap for the detail</div></div>
+        <div class="flip-face flip-back"><div>The city permit list names phases for "GEV Turbines 1-9," "GEV Turbines 10-11" and "C250 Turbines 1-6," plus a giant battery, and an SCR stack and ammonia area (pollution-cleaning equipment that uses ammonia to cut smog-causing gases). The count is read from permit names, <strong>not a stated figure</strong>.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">$5.34B</div><div class="label">BLACKSTONE, AN INVESTMENT FIRM, BUYS IN</div><div class="hint">tap for the detail</div></div>
+        <div class="flip-face flip-back"><div>Williams, July 13, 2026: Blackstone takes 49% of five behind-the-meter power projects, "Socrates, Apollo, Aquila, Socrates the Younger, and Neo." Williams keeps 51% and "operational control."</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">No backup</div><div class="label">FROM ROCKY MOUNTAIN POWER</div><div class="hint">tap for the detail</div></div>
+        <div class="flip-face flip-back"><div>Will-Power's application: "Rocky Mountain Power has no duty to provide electric service" and "will not provide backup power in the event of an outage." Ratepayers don't pay the plant's fuel, and don't receive its power.</div></div></div></button>
+    </div>
+
+    <div class="mermaid-wrap">
+<div class="mermaid">
+%%{init: {'themeVariables': {'fontSize': '17px'}, 'flowchart': {'useMaxWidth': true, 'nodeSpacing': 28, 'rankSpacing': 60}}}%%
+flowchart TB
+    MW["Gas supply<br/>18.9-mile, 20-inch pipeline<br/>from MountainWest (Goshen)"]
+    MONEY(["Who backs it<br/>Meta Platforms: guarantees the contract<br/>Williams: builds, owns, sells power<br/>Blackstone: owns 49%"])
+    subgraph CAMPUS["Stadion parcel, Eagle Mountain"]
+      AQ["PROJECT AQUILA<br/>gas plant, 286 MW filed"]
+      DC["Meta data center<br/>expansion"]
+    end
+    RMP["Rocky Mountain Power<br/>public grid"]
+    DC2["Existing Meta<br/>campus"]
+    MW --> AQ
+    MONEY -.-> AQ
+    AQ -->|"half-mile line"| DC
+    RMP ~~~|"no connection,<br/>no backup"| DC
+    RMP ==>|"renewables<br/>+ batteries"| DC2
+    style AQ fill:#3d0f1c,color:#f4ece6,stroke:#3d0f1c
+    style MONEY fill:#fbf3e6,stroke:#d9a441
+    style RMP fill:#eef3f2,stroke:#4d7c5f
+    style CAMPUS fill:#fbf8f1,stroke:#c0572e
+</div>
+      <p class="cap">Solid arrows: gas or power flows described in the filings. Dotted arrow: money and ownership. The grid and the gas plant are not connected. How much of the campus each power source serves is not in the public record.</p>
+    </div>
+
+    <details class="ledger" open>
+      <summary>Every permit on Williams' own list (PSC Exhibit E, May 7, 2026)</summary>
+      <p style="font-size:.92rem;margin:10px 0 0;">The codes (UTRC, SWPP, EP, DC, PLGA) are the city's and state's permit numbers for dirt work, stormwater runoff, foundations, buildings and site plans. "Active" means issued; "Pending" means still waiting.</p>
+      <div class="table-scroll" style="max-height:none;">
+      <table class="entity-table">
+        <tr><th>Permit</th><th>Number</th><th>Agency</th><th>Status</th><th>Date</th></tr>
+<tr><td>Power Gen Air Permit (Site ID 16322)</td><td class="num">—</td><td>Utah DEQ</td><td><span class="status-pill status-unresolved">Pending</span></td><td class="num">—</td></tr>
+<tr><td>Stormwater General Permit</td><td class="num">UTRC11991</td><td>Utah DEQ</td><td><span class="status-pill status-confirmed">Active</span></td><td class="num">12/2/2025</td></tr>
+<tr><td>MS4 SWPPP approval</td><td class="num">SWPP-25-31</td><td>Eagle Mountain</td><td><span class="status-pill status-confirmed">Active</span></td><td class="num">12/9/2025</td></tr>
+<tr><td>Rough grading</td><td class="num">EP-25-112</td><td>Eagle Mountain Planning</td><td><span class="status-pill status-confirmed">Active</span></td><td class="num">11/25/2025</td></tr>
+<tr><td>Foundation work</td><td class="num">EP-26-17</td><td>Eagle Mountain Planning</td><td><span class="status-pill status-confirmed">Active</span></td><td class="num">2/20/2026</td></tr>
+<tr><td>Construction trailers</td><td class="num">TRLR-26-1, TRLR-26-2</td><td>Eagle Mountain Planning</td><td><span class="status-pill status-confirmed">Active</span></td><td class="num">3/23/2026</td></tr>
+<tr><td>Water agreement</td><td class="num">—</td><td>Eagle Mountain</td><td><span class="status-pill status-confirmed">Active</span></td><td class="num">3/26/2026</td></tr>
+<tr><td>Power Gen building permit (15 kV)</td><td class="num">DC-26-10</td><td>Eagle Mountain Building</td><td><span class="status-pill status-confirmed">Active</span></td><td class="num">4/10/2026</td></tr>
+<tr><td>Master development agreement</td><td class="num">—</td><td>Eagle Mountain</td><td><span class="status-pill status-confirmed">Active</span></td><td class="num">4/17/2026</td></tr>
+<tr><td>Site plan approval</td><td class="num">PLGA-26-15</td><td>Eagle Mountain Planning</td><td><span class="status-pill status-unresolved">Pending</span></td><td class="num">—</td></tr>
+<tr><td>Powerline</td><td class="num">TBD</td><td>Eagle Mountain Building</td><td><span class="status-pill status-unresolved">Pending</span></td><td class="num">—</td></tr>
+<tr><td>Phased building permits: turbines (GE Vernova 1–11, C250 1–6), SCR stack, ammonia area, fuel gas yard, battery (BESS), operations building, warehouse</td><td class="num">DC-26-15 and others</td><td>Eagle Mountain Building</td><td><span class="status-pill status-unresolved">Pending</span></td><td class="num">—</td></tr>
+      </table>
+      </div>
+    </details>
+
+    <details class="ledger" open>
+      <summary>The city's development agreement, key terms (draft in the Feb. 24 packet, "md edits 2-12-26")</summary>
+      <div class="table-scroll" style="max-height:none;">
+      <table class="entity-table">
+        <tr><th>Section</th><th>What the draft says</th></tr>
+        <tr><td>Parties</td><td>Eagle Mountain City and "[Will-Power UT, LLC, a Delaware limited liability company]." A drafting note says: "Confirm Will-Power UT, LLC is the correct entity."</td></tr>
+        <tr><td>Recital B</td><td>The plant site is part of the property under a Development Agreement "dated October 21, 2025, by and between the City and Stadion, LLC."</td></tr>
+        <tr><td>Art. III, payment</td><td>"$______" (blank), "non-refundable." The city "understands that the Company would not develop the Generation Project in the City without such benefits and assurances."</td></tr>
+        <tr><td>4.1 Taxes</td><td>The company may "protest, oppose and vote against any and all Taxes."</td></tr>
+        <tr><td>4.2 New taxes</td><td>The city "shall not during the Term recommend or support any new Taxes that are applicable solely and exclusively to the Generation Project, the Generation Property <strong>or the data center industry</strong>." "Taxes" includes public infrastructure districts and other special districts.</td></tr>
+        <tr><td>5.1 Vested right (locked-in promise)</td><td>The company may "maintain, remodel, renovate, rehabilitate, rebuild, replenish or replace" the plant "throughout the Term for any reason."</td></tr>
+        <tr><td>5.2(b) Noise</td><td>Up to 75 dBA at the property line. The city "may not revoke this approval based on any future approved uses adjacent or near."</td></tr>
+        <tr><td>5.2(d) Power lines</td><td>No duty to bury lines to Meta's property, except at street crossings.</td></tr>
+        <tr><td>5.3 Rule freeze</td><td>Later changes to city rules don't apply to the plant, except building and safety codes. The city will not change rules "in a manner that adversely affects… the data center industry." Staff won't support rezoning neighboring land to <strong>residential</strong> unless the rezone protects the plant's "noise, light, traffic or other activity."</td></tr>
+        <tr><td>5.4 Moratoria (temporary pauses)</td><td>A future moratorium applies only if it is needed for public health and safety <em>and</em> applies city-wide.</td></tr>
+        <tr><td>5.5–5.6 Speed</td><td>Target of 10 days per approval; a dedicated building inspector; the city acts within 10 business days and helps get other agencies' permits.</td></tr>
+        <tr><td>5.8 Added land</td><td>Any adjacent land the company later buys is automatically covered.</td></tr>
+        <tr><td>6.2 Water</td><td>The company buys its own water; effluent to the city capped at 800 mg/L dissolved solids.</td></tr>
+        <tr><td>Art. VIII Term</td><td>40 years. "The Company may at any time and for any reason terminate." The city can end it only after an uncured default (10.1). No renewal clause.</td></tr>
+        <tr><td>11.4–11.5 Transfers</td><td>Can be handed to affiliates or buyers; "shall run with the Generation Property" (stays attached to the land if sold).</td></tr>
+        <tr><td>11.13 Records</td><td>"All building plans shall be deemed Confidential Business Information." The city must send the company any public-records request within 2 business days and wait at least 10 business days so the company can contest release.</td></tr>
+        <tr><td>Not in the draft</td><td>Plant size; decommissioning or cleanup; the payment amount; acreage and parcel numbers.</td></tr>
+      </table>
+      </div>
+      <p class="cap" style="font-size:.86rem;color:var(--color-ink-soft);">This is the draft attached to the Feb. 24 Planning Commission packet. Williams' own permit list shows a master development agreement "Active" April 17, 2026; the signed version may differ.</p>
+    </details>
+  </div>
+</section>
+
+<section id="contract">
+  <div class="wrap">
+    <div class="eyebrow">THE CONTRACT ITSELF</div>
+    <h2>What the Unredacted Words Say</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Most of the contract is blacked out. These are the parts that aren't, and they show the deal is written as Meta making its own power.</p>
+    <p class="section-dek">From the redacted Amended and Restated Power Purchase Agreement (Eagle Mountain, Utah) filed with the Public Service Commission. Prices, sizes and terms are blacked out; these passages are not.</p>
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th>Topic</th><th>The contract's words</th><th>What it means</th></tr>
+      <tr><td>Whose power it is</td><td>"Buyer desires to self-generate Energy in quantities sufficient to power the Data Center Facilities."</td><td>The deal is written as the buyer's own generation, with Williams building and running it.</td></tr>
+      <tr><td>The turbines</td><td>"GE Equipment" is equipment transferred "from Buyer to Seller to be installed at the Generation Facility Site."</td><td>The buyer supplies the GE turbines.</td></tr>
+      <tr><td>Buying the plant</td><td>"Buyout Price" means the price "payable by Buyer to Seller for a Buyout."</td><td>The buyer can purchase the plant. The price formula (Exhibit I) is redacted.</td></tr>
+      <tr><td>Batteries</td><td>A battery system "anticipated to include [Tesla] battery megapacks," added through a design change.</td><td>Batteries were added when the contract was rewritten Feb. 6, 2026. (The filing spells it "Testa.")</td></tr>
+      <tr><td>The land</td><td>The plant site is "owned or to be owned by Seller" (Williams); the data center site is "owned by Buyer" (Meta's company).</td><td>The plant's land is transferred to Williams.</td></tr>
+      <tr><td>Extensions</td><td>The buyer may extend the term; gas prices then reset to "arm's-length market pricing" (regular market prices).</td><td>The deal can run longer than its initial term (length redacted).</td></tr>
+      <tr><td>Taxes</td><td>Seller pays "all Taxes… with respect to the Generation Facility"; the parties "shall reasonably cooperate to minimize each Party's Taxes."</td><td>Williams is responsible for the plant's taxes.</td></tr>
+    </table>
+    </div>
+    <div class="callout"><strong>Why "self-generate" matters:</strong> state law says a plant making power "solely for the producer's own use" is not a public utility, which bears on who assesses its property tax. H.B. 76 counts a data center's power equipment as part of the data center when the generation is "by the operator." The contract's wording could matter for both. Neither question has been decided.</div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="eyebrow">THE TIMELINE</div>
+    <h2>How It Moved Through Three Agencies</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>The city, the state air office and the state utility board each have a say. Here's the order things happened.</p>
+    <div class="timeline">
+      <div class="timeline-item"><div class="t-date">AUG 13, 2025</div><h4>Will-Power UT, LLC formed</h4><p>Utah certificate of existence, entity no. 14601038-0161.</p></div>
+      <div class="timeline-item key"><div class="t-date">SEP 30, 2025</div><h4>Original power contract signed</h4><p>The contract's own recitals: "Power Purchase Agreement dated as of September 30, 2025." This is before any public city agenda item on the plant.</p></div>
+      <div class="timeline-item"><div class="t-date">OCT 8–9, 2025</div><h4>Parent guaranties signed</h4><p>Meta Platforms, Inc. (Oct. 8) and The Williams Companies, Inc. (Oct. 9), per the contract's definitions.</p></div>
+      <div class="timeline-item"><div class="t-date">OCT 21, 2025</div><h4>New city agreement with Stadion, LLC (Meta)</h4><p>Named in the Williams draft as the "Stadion Development Agreement" that makes gas power a permitted use. Its text has not been found.</p></div>
+      <div class="timeline-item"><div class="t-date">NOV 20, 2025</div><h4>First amendment to the power contract</h4><p>Per the contract's recitals.</p></div>
+      <div class="timeline-item"><div class="t-date">NOV 24, 2025</div><h4>Registered as a Large-Scale Generation Provider</h4><p>The state's label for a company allowed to sell power privately to a big customer. Under S.B. 132 (2025), Utah Code 54-26. "Up to 286 megawatts." Grading permit issued Nov. 25.</p></div>
+      <div class="timeline-item"><div class="t-date">JAN 20, 2026</div><h4>City council presentation</h4><p>Agenda: "Energy Project for Meta in Coordination with Williams."</p></div>
+      <div class="timeline-item"><div class="t-date">FEB 6, 2026</div><h4>Amended and restated power contract signed</h4><p>Rewritten from scratch with changes. Effective as of Sept. 30, 2025. Seller: Williams Field Services Group, LLC. Buyer's name redacted.</p></div>
+      <div class="timeline-item key"><div class="t-date">FEB 24, 2026</div><h4>Planning Commission recommends approval, 3–1</h4><p>Allen, Hess, DeCoursey yes; Lane no. Four residents spoke; the minutes don't record what they said. The March 3 City Council vote has not been located.</p></div>
+      <div class="timeline-item"><div class="t-date">MAR 24, 2026</div><h4>Contract filed with the PSC</h4><p>Applicant asks to keep "the name of the customer" confidential.</p></div>
+      <div class="timeline-item"><div class="t-date">APR 10, 2026</div><h4>First application treated as withdrawn</h4><p>The state sent it back as incomplete. The 60-day deadline for a decision does not start.</p></div>
+      <div class="timeline-item"><div class="t-date">APR 17, 2026</div><h4>City master development agreement listed as "Active"</h4><p>Power-generation building permit issued April 10.</p></div>
+      <div class="timeline-item"><div class="t-date">APR 23, 2026</div><h4>DAQ modeling review</h4><p>Memo DAQE-MN163220001A-26 reviews the air impact analysis for Will-Power's Notice of Intent.</p></div>
+      <div class="timeline-item key"><div class="t-date">MAY 27 → JUL 8, 2026</div><h4>PSC: still incomplete, then on hold</h4><p>Missing the declaration (a signed statement) from Rocky Mountain Power confirming the plant is not connected to its lines. July 8: "no further action… until a party requests it."</p></div>
+      <div class="timeline-item"><div class="t-date">JUL 13, 2026</div><h4>Blackstone invests</h4><p>$5.34 billion joint venture covering Aquila and four other Williams projects.</p></div>
+      <div class="timeline-item"><div class="t-date">SEP 4, 2026</div><h4>Williams asks to drop the requirement</h4><p>In the rulemaking case, Will-Power "supports the deletion of the Declaration requirement," citing its "experience in working to obtain the Declaration."</p></div>
+      <div class="timeline-item key"><div class="t-date">SEP 14, 2026</div><h4>Meta's announcement</h4><p>"The electricity use is matched with 100% clean and renewable energy." No mention of the gas plant.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="air">
+  <div class="wrap">
+    <div class="eyebrow">THE AIR PERMIT</div>
+    <h2>Applied For, Not Yet Public for Comment</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Anything that pollutes the air needs a state permit. Williams has applied. The public gets 30 days to comment once the state posts a draft.</p>
+    <div class="record-card">
+      <p>Williams' filing says Will-Power "has applied for the requisite Power Gen Air Permit." A Division of Air Quality modeling memo dated April 23, 2026 (DAQE-MN163220001A-26) reviews the application and places the site in "a marginal nonattainment area" for ozone (the area already has too much smog, in the least-severe category) and a maintenance area for PM10 (it used to have too much dust and is being watched). It states: "This is not a Major Prevention of Significant Deterioration (PSD) Source," meaning it is below the size that triggers the strictest federal permit.</p>
+      <p>Williams' own summary says the plant "will not cause or contribute to any new air quality violations." The emissions figures in that exhibit are redacted.</p>
+      <p>When DAQ publishes its intent to approve, a 30-day public comment period opens. At two other Utah data center gas plants, Novva and Joule, DAQ recorded "No public comments" on the final permits.</p>
+      <span class="rc-tag rc-good">Process followed: notice of intent and state modeling review</span>
+      <span class="rc-tag rc-flag">Emission numbers redacted in the PSC copy</span>
+    </div>
+  </div>
+</section>
+
+<section id="psc">
+  <div class="wrap">
+    <div class="eyebrow">THE STATE</div>
+    <h2>The First Private Power Contract Utah Has Reviewed</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>A 2025 law lets big users buy power from their own private plant. The state must approve each deal. This one is stuck because a required form is missing.</p>
+    <p class="section-dek">S.B. 132 (2025) lets customers of 100 megawatts or more buy power from a private generator that is completely separate from the utility. The PSC must approve the contract and confirm ratepayers bear none of the cost.</p>
+    <div class="vs-grid">
+      <div class="vs-head">WHAT THE LAW REQUIRES</div><div class="vs-head">WHERE AQUILA STANDS</div>
+      <div>A declaration from the utility that the system "will operate with complete separation" (R746-318-601)</div><div>Not filed. The PSC called the application incomplete on May 27.</div>
+      <div>A decision within 60 days of a complete application (Utah Code 54-26-302)</div><div>The clock has never started.</div>
+      <div>Ratepayers "do not bear costs"</div><div>Rocky Mountain Power provides no service or backup. The PSC hired Charles River Associates to review.</div>
+      <div>Notice to the customer that "no backup power is available in the event of an outage"</div><div>Filed as Exhibit J.</div>
+    </div>
+  </div>
+</section>
+
+<section id="taxes">
+  <div class="wrap">
+    <div class="eyebrow">TAXES</div>
+    <h2>Who Taxes a Plant That Serves One Customer?</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Normal power plants are taxed by the state. A plant serving only one company might be taxed by the county instead. Nobody has decided which applies here.</p>
+    <div class="record-card">
+      <p>Utah's Tax Commission centrally assesses (the state sets the value of) "all property of public utilities." A utility, by law, serves "the public generally," and a plant generating "solely for the producer's own use" is not an electrical corporation. S.B. 132 exempts closed private systems from regulation "as a public utility." Read together, a plant like Aquila may fall to the Utah County assessor instead of the Tax Commission. No ruling or Tax Commission guidance found says either way; the Gardner Institute's August 2026 brief says power plants "may be centrally assessed."</p>
+      <p>The contract makes Williams responsible for the plant's taxes and says both sides "shall reasonably cooperate to minimize each Party's Taxes." The city's draft agreement bars it from supporting any new tax aimed solely at the plant "or the data center industry," and lets the company "protest, oppose and vote against any and all Taxes."</p>
+      <p>An AI-generated summary of a Nov. 26, 2025 Utah County Commission meeting quotes staff saying the power facility adds about $350 million in value and sits outside the CRA boundary. That has not been checked against the official minutes and is not used here as fact.</p>
+      <span class="rc-tag rc-flag">Open: state or county assessment</span>
+      <span class="rc-tag">Earliest tax roll likely Jan. 1, 2027</span>
+    </div>
+  </div>
+</section>
+
+<section id="campus">
+  <div class="wrap">
+    <div class="eyebrow">THE CAMPUS SIDE</div>
+    <h2>Tax Breaks, Jobs and Water Are in Part 1</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>This page is about the gas plant. The data center it will serve has its own story: how the 2018 deal was made, the tax breaks, the jobs, and how much power and water it uses. That is all in Part 1.</p>
+    <div class="flip-grid">
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">$150M</div><div class="label">EST. PHASE 1 PROPERTY TAX BREAK (2018)</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>100% off equipment and 80% off land and buildings. Up to <strong>$750 million</strong> if all five phases are built (city-commissioned study, Deseret News).</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">300+</div><div class="label">PERMANENT JOBS, WHOLE CAMPUS</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>Meta's 2026 figure. That works out to <strong>$25,000–$62,500</strong> in tax breaks per job, per year.</div></div></div></button>
+      <button class="flip" type="button" aria-pressed="false"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="num">~2.9%</div><div class="label">OF UTAH'S ELECTRICITY, 2024</div><div class="hint">tap to flip</div></div>
+        <div class="flip-face flip-back"><div>More than <strong>1 million megawatt-hours</strong> in 2024 by Meta's own figures, about what 108,000 Utah homes use. Water: about <strong>107 acre-feet</strong>.</div></div></div></button>
+    </div>
+    <a class="nextpart" href="weber-hive-dc-meta-eagle-mountain.html"><div class="k">READ PART 1</div><div class="t">The Deal That Started Under Another Name</div><div>The 2018 deal, the tax breaks, jobs vs. cost, water rules and 2024 energy use, with charts &rarr;</div></a>
+  </div>
+</section>
+
+<section id="others">
+  <div class="wrap">
+    <div class="eyebrow">NOT THE ONLY ONE</div>
+    <h2>Utah Data Center Gas Plants on the State's Books</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Meta isn't the only one. Other Utah data centers have state permits for their own gas power.</p>
+    <div class="chart-card">
+      <h3>Gas generation by project (megawatts)</h3>
+      <p class="cap">Aquila: registration filing. Novva and Joule: engine counts times unit ratings in their DAQ approval orders.</p>
+      <div class="chart-box" style="height:220px;"><canvas id="plantChart" aria-label="Bar chart of gas generation by data center project"></canvas></div>
+    </div>
+    <div class="record-card">
+      <h3>Next door: QTS</h3>
+      <p>At the Feb. 10, 2026 Planning Commission meeting, the city's Director of Legislative and Strategic Services said QTS's development agreement includes energy production but not nuclear, and that "QTS prefers to get power from the grid and uses on-site generation as a last resort." Grist reported QTS had received a 200 MW gas air permit and then secured Rocky Mountain Power service instead.</p>
+    </div>
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th>Project</th><th>Where</th><th>Air permit</th><th>Equipment</th><th>Public comments</th></tr>
+      <tr><td>Project Aquila (Williams, for Meta)</td><td>Eagle Mountain, ozone nonattainment</td><td>Notice of intent under review (Site 16322)</td><td>286 MW filed; turbines and battery</td><td>Not yet noticed</td></tr>
+      <tr><td>Novva</td><td>West Jordan, ozone / PM2.5 / SO2 nonattainment (already too polluted)</td><td>DAQE-AN160660003-24, 12/19/2024</td><td>72 gas engines; had to pay for 47 tons a year of smog-gas cuts elsewhere (offsets)</td><td>"No public comments were received"</td></tr>
+      <tr><td>Joule Capital Partners</td><td>Millard County, attainment</td><td>DAQE-AN162810001-26, 1/22/2026</td><td>69 gas engines + 69 diesel; 230 tons a year of NOx (smog-causing gas)</td><td>"No public comments were received"</td></tr>
+      <tr><td>Aligned</td><td>West Jordan</td><td>DAQE-NN162210002-25 notice, 11/16/2025</td><td>12 simple-cycle turbines</td><td>Comment period closed 12/16/2025</td></tr>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="connections">
+  <div class="wrap">
+    <div class="eyebrow">THE CONNECTIONS</div>
+    <h2>Where This Meets the Rest of the Hive's Files</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Some of the same people and groups show up in other stories on this site. A shared name is a link to follow, not proof of wrongdoing.</p>
+    <p class="section-dek">Each link below comes from this site's earlier research. A shared name is a connection, not an accusation.</p>
+    <div class="conn-grid">
+      <div class="conn-card doers">
+        <div class="case">CANDIDATES 2026 · CASE 21 · CASE 11</div>
+        <h4>Meta's lobbyist and the PAC treasurer</h4>
+        <ul>
+          <li>Hemmco, Dan Hemmert's firm, lists "Meta Data Centers" among its clients on its own website.</li>
+          <li>Hemmert is treasurer of All In For Utah PAC (Case 11), which gave Tami Tran $12,037.22 in in-kind advertising (Case 21) and Lili Bitner $319.13 (Case 22).</li>
+          <li>Meta's own PAC spent $152,503.46 for Tran on June 11, 2026.</li>
+        </ul>
+      </div>
+      <div class="conn-card gold">
+        <div class="case">CASE 21 · S.B. 132</div>
+        <h4>The law's sponsor</h4>
+        <p>Sen. Scott Sandall sponsored S.B. 132, the law Project Aquila is filed under. Sandall gave Tami Tran's Senate campaign $1,000 on July 28, 2026 (Case 21).</p>
+      </div>
+      <div class="conn-card">
+        <div class="case">"STADION" · 2018</div>
+        <h4>The same name, eight years later</h4>
+        <ul>
+          <li>In 2018, Facebook negotiated Eagle Mountain's incentives under the name "Stadion, LLC," a Delaware entity, before its identity was public (Data Center Dynamics).</li>
+          <li>Alpine School Board members got a 50-plus-page document on May 11, 2018, and voted 6–1 on May 23. Member Scott Carlson said, "I have serious concerns about the process that has gone on." The board's proposed cap was raised after the project's promotion team warned "the company will not come" (Deseret News).</li>
+          <li>"Stadion" is still the parcel's name in the 2026 city documents that host the gas plant.</li>
+        </ul>
+        <p style="margin:8px 0 0;"><a href="weber-hive-dc-meta-eagle-mountain.html">Part 1: The Deal That Started Under Another Name &rarr;</a></p>
+      </div>
+      <div class="conn-card">
+        <div class="case">WATER · H.B. 76 · CASE 16</div>
+        <h4>The water-use agreement</h4>
+        <ul>
+          <li>The Salt Lake Tribune reported (Jan. 14, 2026) that Eagle Mountain agreed in 2018 to keep Meta's monthly water use confidential and to alert Meta when anyone requests it.</li>
+          <li>Rep. Jill Koford (Case 16) told the Tribune that Eagle Mountain and Meta pushed back on her data center water-reporting bill, H.B. 76.</li>
+          <li>The Williams agreement caps plant effluent at 800 mg/L dissolved solids; the company buys its own water.</li>
+        </ul>
+      </div>
+      <div class="conn-card gold">
+        <div class="case">RENEWABLES · FAIRNESS</div>
+        <h4>The solar side is real</h4>
+        <p>Faraday Solar in Eagle Mountain, 685.3 MW, reached operation Sept. 30, 2025, and serves Meta under a 20-year contract through Rocky Mountain Power (Excelsior Energy Capital). Meta's renewable claims rest on projects like this one.</p>
+      </div>
+      <div class="conn-card">
+        <div class="case">NUCLEAR · STRATOS · QTS</div>
+        <h4>The bigger pattern</h4>
+        <ul>
+          <li>Meta signed with TerraPower in January 2026 for up to eight Natrium nuclear plants nationally.</li>
+          <li>Stratos (Box Elder County) plans its own gas generation under the same S.B. 132 framework.</li>
+          <li>QTS, next door in Eagle Mountain, reportedly received a 200 MW gas air permit before securing utility service.</li>
+        </ul>
+      </div>
+      <div class="conn-card unres">
+        <div class="case">CORRECTION TO EARLIER NOTES</div>
+        <h4>520 MW is not the filed number</h4>
+        <p>Earlier coverage, including a real estate blog and the first version of this site's Part 1, described Aquila as two 200 MW sites totaling 520 MW. Part 1 has been corrected. The PSC registration and the city minutes both say 286 MW. The 520 MW figure appears only in trade press and is not used here as fact.</p>
+      </div>
+    </div>
+    <h3 style="margin-top:26px;">Related case files on this site</h3>
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th>Case file</th><th>What it adds</th></tr>
+      <tr><td><a href="https://weber-county-hive.github.io/candidates2026/sd6-tran-neal.html">Candidates 2026, Case 21: Tran vs. Neal (SD-6)</a></td><td>Meta's PAC spending for Tran, All In For Utah's in-kind ads, Sen. Sandall's $1,000</td></tr>
+      <tr><td><a href="https://weber-county-hive.github.io/candidates2026/hd17-bitner-last.html">Case 22: Bitner vs. Last (HD-17)</a></td><td>All In For Utah PAC's $319.13 to Bitner</td></tr>
+      <tr><td><a href="https://weber-county-hive.github.io/candidates2026/luke-searle-hd59.html">Case 11: Searle (HD-59)</a></td><td>Who runs All In For Utah PAC</td></tr>
+      <tr><td><a href="https://weber-county-hive.github.io/candidates2026/sd5-koford-hernandez.html">Case 16: Koford vs. Hernandez (SD-5)</a></td><td>H.B. 76's primary sponsor, and the pushback she described</td></tr>
+      <tr><td><a href="weber-hive-dc-meta-eagle-mountain.html">Part 1: The Deal That Started Under Another Name</a></td><td>The 2018 Stadion negotiations and the water confidentiality agreement</td></tr>
+      <tr><td><a href="weber-hive-dc-oed-sb132.html">Data Centers &amp; S.B. 132</a></td><td>The law Project Aquila is filed under</td></tr>
+      <tr><td><a href="weber-hive-dc-sb114.html">S.B. 114 (2020)</a></td><td>The data center sales tax exemption</td></tr>
+      <tr><td><a href="weber-hive-dc-stratos-land.html">"Do You Have The Land?" Stratos</a></td><td>The other large S.B. 132 project, in Box Elder County</td></tr>
+      <tr><td><a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-hb507.html">H.B. 507 (2026), Bill Tracker</a></td><td>The new incentive rules and the Increment Authorization Committee</td></tr>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="eyebrow">WHO DECIDES NEXT</div>
+    <h2>The Rooms Where the Next Data Center Rules Get Made</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>The Legislature has set up several new groups that will shape how data centers and power plants get approved, taxed and powered. Most of their members are picked by legislative leaders or the governor, not elected to those seats. Whoever sits in the Legislature helps decide who serves on them and what rules come out of them.</p>
+    <p class="section-dek">Each group below was created or asked for in public legislative records. None of them has decided anything about Project Aquila. They matter because they will write or apply the rules for the next project like it.</p>
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th>Group</th><th>What it does</th><th>Who picks the members</th><th>Why it matters here</th></tr>
+      <tr><td>Increment Authorization Committee (H.B. 507, 2026)</td><td>Approves Regionally Significant Development Zones, which let new property tax growth be kept for a project instead of going to the usual taxing bodies</td><td>Two members picked by the Senate President, two by the House Speaker; for energy zones, the Office of Economic Development director and a governor's appointee</td><td>Large data centers and their power plants are the kind of project these zones can cover. Legislative leaders choose the lawmakers who vote.</td></tr>
+      <tr><td>"Large Data Center Amendments" (2027 bill request)</td><td>A bill file opened for the 2027 session on large data centers</td><td>Drafted for a sponsor; studied in the Economic Development and Workforce Services interim committee</td><td>The text is not public yet. It could change reporting, taxes or siting rules for campuses like Meta's.</td></tr>
+      <tr><td>Natural Resources, Agriculture and Environment interim committee</td><td>Studies energy, air and water bills between sessions</td><td>Legislative leadership assigns members</td><td>Rep. Logan Monson sits on it. Energy supply for data centers is in its subject area.</td></tr>
+      <tr><td>Environmental Policy Working Group (H.B. 373, 2026)</td><td>Meets monthly with the Department of Environmental Quality; its charge includes addressing "industry needs"</td><td>Set in the bill</td><td>The Division of Air Quality, which is reviewing Aquila's air permit, is part of DEQ.</td></tr>
+      <tr><td>Energy Infrastructure Service District Board (H.B. 514, 2026)</td><td>A new district for building energy infrastructure</td><td>Set in the bill</td><td>Could finance or site power lines and plants serving large users.</td></tr>
+      <tr><td>Nuclear Energy Consortium</td><td>Advises on nuclear power in Utah</td><td>Set in statute; Sen. Scott Sandall is involved</td><td>Meta signed with TerraPower for nuclear plants nationally; Sandall sponsored S.B. 132.</td></tr>
+    </table>
+    </div>
+    <h3>The two candidates Meta's PAC spent on</h3>
+    <p>Forge the Future Project, Meta's PAC, spent $251,446.36 in two 2026 primaries. The records show what each candidate's public roles are. They do not show why Meta chose them.</p>
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th></th><th>Tami Tran (Senate District 6)</th><th>Logan Monson (HD-69)</th></tr>
+      <tr><td>Meta PAC spending</td><td>$152,503.46 (June 11, 2026)</td><td>$98,942.90 (the rest of the $251,446.36)</td></tr>
+      <tr><td>Seat</td><td>Open seat; replacing Sen. Jerry Stevenson, a past Executive Appropriations co-chair. His leadership roles do not pass to whoever wins.</td><td>Incumbent</td></tr>
+      <tr><td>Public roles that touch this topic</td><td>Cyber Security Commission; owns a technology business</td><td>Natural Resources, Agriculture and Environment interim committee; voted no on S.B. 287; has written about data centers in his newsletter. His disclosure form lists a paid seat on the UAMPS board (a group of city-owned power systems) as a $5,000+ income source.</td></tr>
+      <tr><td>Other links in this site's files</td><td>All In For Utah PAC (treasurer Dan Hemmert, whose firm lists Meta as a client) gave $12,037.22 in-kind; Sen. Sandall gave $1,000 (<a href="https://weber-county-hive.github.io/candidates2026/sd6-tran-neal.html">Case 21</a>)</td><td>Shares nine donors with Tran, including All In For Utah PAC (<a href="https://weber-county-hive.github.io/candidates2026/sd6-tran-neal.html">Case 21</a>)</td></tr>
+    </table>
+    </div>
+    <p class="callout"><b>What is safe to say:</b> Meta's PAC filings do not say why it chose these two candidates. Meta's public statements say it backs candidates who support "AI progress." Spending in elections is legal and was reported as the law requires. No record here shows any promise, vote trade or agreement.</p>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="wrap">
+    <div class="eyebrow">OPEN QUESTIONS</div>
+    <h2>Questions the Record Hasn't Answered Yet</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>These are the big things nobody knows yet. Next to each one is the public place where the answer will show up once it's decided. Anyone can check those places. No request is needed.</p>
+    <div class="table-scroll">
+    <table class="entity-table">
+      <tr><th>#</th><th>The question</th><th>Who decides</th><th>Where the answer will show up</th></tr>
+      <tr><td>1</td><td>Will the state approve the private power contract, and will it drop the rule that Rocky Mountain Power must sign off?</td><td>Public Service Commission</td><td>PSC Docket 26-2660-01 (application) and rulemaking Docket 25-R318-01, psc.utah.gov</td></tr>
+      <tr><td>2</td><td>How much air pollution will the plant be allowed to release, and will the public get a comment period?</td><td>Division of Air Quality</td><td>DAQ public notices (intent to approve, Site 16322), deq.utah.gov</td></tr>
+      <tr><td>3</td><td>What does the signed city development agreement say, including the blank payment amount?</td><td>Eagle Mountain City Council</td><td>Council minutes for March 3, 2026 (item 20.B) and later agendas, eaglemountain.gov and utah.gov/pmn</td></tr>
+      <tr><td>4</td><td>How big will the plant end up: 286 MW, or more?</td><td>Will-Power UT / PSC / DAQ</td><td>The same PSC and DAQ files as questions 1 and 2</td></tr>
+      <tr><td>5</td><td>Who will value the plant for property tax: the state or Utah County?</td><td>Utah State Tax Commission / Utah County Assessor</td><td>Tax Commission property tax publications; Utah County parcel records</td></tr>
+      <tr><td>6</td><td>How much water will the new expansion buildings use?</td><td>Meta reports; Division of Water Rights publishes</td><td>Division of Water Rights website, by Sept. 1 each year (first likely 2027)</td></tr>
+      <tr><td>7</td><td>What will the 2027 "Large Data Center Amendments" bill say?</td><td>Legislature</td><td>le.utah.gov, once the bill is numbered and its text is released</td></tr>
+      <tr><td>8</td><td>Will any Meta or Williams project go before the new Increment Authorization Committee (H.B. 507)?</td><td>The committee</td><td>Committee meeting agendas, utah.gov/pmn</td></tr>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="rubric">
+  <div class="wrap">
+    <div class="eyebrow">THE RUBRIC</div>
+    <h2>Graded Topic by Topic</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Each topic gets a letter grade, A (best) to F (worst), on five questions: Does it check power? Can the public see it? Is it clear who pays? What does it do to air, water and land? Do the people affected get a real say? N/A means the question doesn't apply.</p>
+    <p class="section-dek">Power, transparency, financial accountability, environmental impact, community impact. Each topic graded separately. These grades judge the process and the record, not the company.</p>
+
+    <p class="plain"><b>HOW TO READ THESE</b>Grades judge only what has already happened: what was filed, said or voted on as of Sept. 23, 2026. <strong>PENDING</strong> means the decision hasn't been made yet, so there is nothing to grade. Those will be graded once the record exists.</p>
+
+    <div class="topic-head">1. Meta's public description of its power</div>
+    <div class="table-scroll"><table class="rubric-table">
+      <tr><th>Criterion</th><th>Grade and reason</th></tr>
+      <tr><td>Power</td><td><span class="gl g-na">N/A</span>A corporate announcement, not a public decision.</td></tr>
+      <tr><td>Transparency</td><td><span class="gl g-d">D</span>The Sept. 14 post lists renewables, batteries and grants, and omits a gas plant its parent company guarantees on the same campus.</td></tr>
+      <tr><td>Financial accountability</td><td><span class="gl g-c">C</span>Community payments are itemized; the tax breaks and the gas contract are not mentioned.</td></tr>
+      <tr><td>Environmental impact</td><td><span class="gl g-pend">PENDING</span>The renewable additions are real, but the gas plant's emissions are not public yet. Graded once the state posts the air permit.</td></tr>
+      <tr><td>Community impact</td><td><span class="gl g-c">C</span>Residents learn of the plant from city and state filings, not from Meta.</td></tr>
+    </table></div>
+
+    <div class="topic-head">2. Eagle Mountain's approval <span style="font-size:.8rem;color:var(--color-ink-soft);">(graded on the February draft; the signed version may differ)</span></div>
+    <div class="table-scroll"><table class="rubric-table">
+      <tr><th>Criterion</th><th>Grade and reason</th></tr>
+      <tr><td>Power</td><td><span class="gl g-d">D</span>A public hearing and recorded vote, but the draft binds the city for 40 years: no new taxes aimed at the plant or the data center industry, frozen rules, limits on nearby residential rezoning, and only the company may end it early.</td></tr>
+      <tr><td>Transparency</td><td><span class="gl g-d">D</span>The draft was posted, but its payment amount was blank, residents' comments were not summarized, all building plans are deemed confidential, and the city must alert the company to any records request.</td></tr>
+      <tr><td>Financial accountability</td><td><span class="gl g-c">C</span>The company buys its own water and pays for upgrades. No decommissioning terms were found.</td></tr>
+      <tr><td>Environmental impact</td><td><span class="gl g-pend">PENDING</span>The draft allows noise above the nighttime limit and sets an effluent cap. The air impact is up to the state and not yet decided.</td></tr>
+      <tr><td>Community impact</td><td><span class="gl g-c">C</span>Above-ground lines and 75 dBA at the property line affect neighbors; the plant is in an industrial zone.</td></tr>
+    </table></div>
+
+    <div class="topic-head">3. The state's private-contract review</div>
+    <div class="table-scroll"><table class="rubric-table">
+      <tr><th>Criterion</th><th>Grade and reason</th></tr>
+      <tr><td>Power</td><td><span class="gl g-pend">PENDING</span>No decision yet. So far the PSC has held the case until the required declaration is filed, and hired outside reviewers.</td></tr>
+      <tr><td>Transparency</td><td><span class="gl g-d">D</span>Customer name, capacity, price, term, emissions and emergency procedures are all redacted.</td></tr>
+      <tr><td>Financial accountability</td><td><span class="gl g-pend">PENDING</span>The law's test is that ratepayers bear no cost. The PSC hasn't ruled on whether this deal meets it.</td></tr>
+      <tr><td>Environmental impact</td><td><span class="gl g-na">N/A</span>Air permitting is DAQ's, not the PSC's.</td></tr>
+      <tr><td>Community impact</td><td><span class="gl g-pend">PENDING</span>No hearing has been held yet. Separately, the applicant has asked the PSC to drop the declaration requirement.</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<section id="wrap">
+  <div class="wrap">
+    <div class="eyebrow">CONCLUSION</div>
+    <h2>What We Know, and What We Don't</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>This is the whole page in two lists: what the records clearly show, and what is still undecided.</p>
+    <div class="conn-grid">
+      <div class="conn-card gold">
+        <div class="case">WHAT THE RECORDS SHOW</div>
+        <h4>Known</h4>
+        <ul>
+          <li>A Williams gas plant of up to 286 MW is filed for Meta's Eagle Mountain land, separate from Rocky Mountain Power.</li>
+          <li>Meta Platforms, Inc. guarantees the power contract.</li>
+          <li>Meta's Sept. 14, 2026 announcement did not mention the plant.</li>
+          <li>The city's draft agreement runs 40 years, allows 75 dBA of noise and freezes the rules; the company can end it at any time.</li>
+          <li>Meta's campus already gets large property tax breaks, and more tax growth is requested for the area's redevelopment fund.</li>
+          <li>The campus used about 2.9% of Utah's electricity in 2024, but little water for its size (Meta's figures).</li>
+          <li>Meta's PAC spent $251,446.36 in two 2026 legislative primaries.</li>
+          <li>The filings followed the required steps so far: the Planning Commission heard it in public, and the PSC flagged missing paperwork.</li>
+        </ul>
+      </div>
+      <div class="conn-card unres">
+        <div class="case">STILL UNDECIDED</div>
+        <h4>Not known yet</h4>
+        <ul>
+          <li>Whether the state approves the power contract, or drops the utility sign-off rule.</li>
+          <li>How much the plant may pollute, and whether the public can comment.</li>
+          <li>What the signed city agreement says, including the payment.</li>
+          <li>Who values the plant for taxes, and how much it will pay.</li>
+          <li>How much water the new buildings use.</li>
+          <li>What the 2027 data center bill and the new committees will do.</li>
+          <li>Why Meta's PAC chose the candidates it did. The filings don't say.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="callout"><b>Bottom line:</b> nothing in these records shows a rule was broken. What they show is a big energy decision being made in pieces, across a city, two state agencies and the Legislature, while the company's public announcement talks only about clean energy. The questions table above shows where each answer will appear.</p>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap">
+    <div class="eyebrow">WHAT THIS DOESN'T SHOW</div>
+    <h2>Limits of the Record</h2>
+    <p class="plain"><b>IN PLAIN WORDS</b>Here is what the documents don't tell us yet. Nothing on this page claims anyone broke a rule.</p>
+    <div class="record-card">
+      <ul style="margin:0;padding-left:18px;">
+        <li>The plant's final size: 286 MW in filings, 520 MW in trade press. The contract's numbers are redacted.</li>
+        <li>How much of the expansion's power will come from the gas plant versus Rocky Mountain Power.</li>
+        <li>The City Council's March 3, 2026 vote and the final signed agreement, including the payment amount.</li>
+        <li>The Oct. 21, 2025 Stadion Development Agreement, which sets the impact fees and allows gas power on Meta's land.</li>
+        <li>Whether the city's 6% energy tax applies to power sold privately to Meta.</li>
+        <li>The plant's emissions. DAQ's intent to approve has not been published.</li>
+        <li>Whether the Tax Commission or the Utah County assessor will value the plant.</li>
+        <li>Whether construction has begun on the generating units; the permit list shows grading and foundation permits issued and turbine permits pending.</li>
+        <li>Nothing here suggests any filing broke a rule. The customer-name redaction was requested under the PSC's confidentiality rules.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+    <details class="sources">
+      <summary>View all sources (37)</summary>
+      <ol>
+        <li>Meta, "Deepening Our Investment in Eagle Mountain, Utah," Sept. 14, 2026 (datacenters.atmeta.com)</li>
+        <li>Will-Power UT, LLC, Notice of Registration as a Large-Scale Generation Provider, Nov. 24, 2025, and Exhibits A–C, PSC Docket 25-2660-01</li>
+        <li>Will-Power UT, LLC, notice to PHMSA (pipeline), Feb. 4, 2026, PSC Docket 25-2660-01</li>
+        <li>Will-Power UT, LLC, Application for a Closed Private Generation Contract, March 24, 2026, and redacted Amended and Restated Power Purchase Agreement, PSC Docket 26-2660-01</li>
+        <li>Will-Power UT, LLC, Amendment to Application, May 7, 2026, with Exhibits A (redacted PPA), D, E (permits), F (air quality), G, H, I, J</li>
+        <li>PSC orders and notices, Docket 26-2660-01: April 10, April 14, May 15, May 27 and July 8, 2026</li>
+        <li>Rocky Mountain Power, Petition to Intervene, March 27, 2026; Appendix A certificates for Charles River Associates (PSC consultants), June 2026</li>
+        <li>Will-Power UT, LLC, Reply Comments, Sept. 4, 2026, PSC rulemaking Docket 25-R318-01</li>
+        <li>Utah Code 54-26 (S.B. 132, 2025) and proposed rule R746-318-601</li>
+        <li>Eagle Mountain City Council agenda, Jan. 20, 2026</li>
+        <li>Eagle Mountain Planning Commission packet (draft Williams Development Agreement) and approved minutes, Feb. 24, 2026</li>
+        <li>Eagle Mountain City Council agenda, March 3, 2026, item 20.B</li>
+        <li>Eagle Mountain RDA notice, Sweetwater #4 CRA amended plan, Jan. 6, 2026 (utah.gov/pmn)</li>
+        <li>Utah DAQ memo DAQE-MN163220001A-26, April 23, 2026 (in PSC Exhibit F)</li>
+        <li>Utah DAQ approval orders DAQE-AN160660003-24 (Novva) and DAQE-AN162810001-26 (Joule); notice DAQE-NN162210002-25 (Aligned)</li>
+        <li>Williams, "Williams Announces $5.34 Billion Investment in Power Innovation Joint Venture," July 13, 2026</li>
+        <li>Fortune, April 11, 2026; Argus Media; Pipeline &amp; Gas Journal, Feb. 2026 (capacity reports)</li>
+        <li>Deseret News, Sept. 30, 2022 (Meta Eagle Mountain tax incentives)</li>
+        <li>Utah Code 59-2-102, 59-2-201, 54-2-1; Kem C. Gardner Policy Institute, "Data Centers and Utah's Property Tax," Aug. 2026</li>
+        <li>Forge the Future Project, 2026 Primary Report and Statement of Organization (disclosures.utah.gov)</li>
+        <li>Hemmco website, client list (hemmco.com)</li>
+        <li>Data Center Dynamics, May 22, 2018 (Stadion, LLC negotiations); Deseret News, May 23, 2018 (Alpine School Board vote)</li>
+        <li>Salt Lake Tribune / Grist, Jan. 14, 2026 (Eagle Mountain water-use confidentiality agreement)</li>
+        <li>Excelsior Energy Capital, Faraday Solar announcement, Oct. 2025</li>
+        <li>This site's case files: Candidates 2026 Cases 11, 16, 21 and 22; Tech Money ledger</li>
+        <li>Rocky Mountain Power–Facebook Renewable Energy Service Contract, PSC Docket 16-035-27 (application June 21, 2016; PSC acknowledgment letter Sept. 24, 2025)</li>
+        <li>H.B. 76 (2026), Data Center Water Transparency Amendments, enrolled copy (Utah Code 73-5-8.3)</li>
+        <li>S.B. 114 (2020), Sales and Use Tax Exemption Amendments (le.utah.gov)</li>
+        <li>Deseret News, Feb. 11, 2021 (Facebook tax breaks)</li>
+        <li>Eagle Mountain City energy page (eaglemountain.gov/energy)</li>
+        <li>Eagle Mountain Planning Commission minutes, Feb. 10, 2026 (QTS rezone discussion)</li>
+        <li>Deseret News, Sept. 30, 2022 and Oct. 4, 2021 (campus size, jobs, Mayor Westmoreland); Salt Lake Tribune, Jan. 14, 2026 (Mayor Gray, 2024 water and power use)</li>
+        <li>Utah News Dispatch, April 17, 2026 (QTS: $6 billion, about 100 permanent jobs); this site's Data-Centers research (Tyson Foods plant, 723 jobs)</li>
+        <li>U.S. Energy Information Administration, Utah Electricity Profile 2024 (total retail sales 34,688,083 MWh) and 2024 Average Monthly Bill, Residential, Table 5A (Utah: 774 kWh)</li>
+        <li>Utah Division of Water Resources, "Latest water use numbers posted to revamped Open Water Data website" (2019 statewide M&amp;I use, 223 gallons per person per day)</li>
+        <li>Environmental and Energy Study Institute, "Data Centers and Water Consumption" (average WUE 1.9 L/kWh, citing The Green Grid)</li>
+        <li>H.B. 507 (2026), H.B. 373 (2026) and H.B. 514 (2026), enrolled copies; 2027 bill request "Large Data Center Amendments" and interim committee assignments (le.utah.gov)</li>
+      </ol>
+    </details>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    Compiled from Public Service Commission of Utah dockets, Utah Division of Air Quality records, Eagle Mountain City public notices and minutes, and company announcements. Public records only · No comment requested.
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.flip').forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('flipped');b.setAttribute('aria-pressed',b.classList.contains('flipped'));}));
+if (window.mermaid) { mermaid.initialize({ startOnLoad: true, theme: 'neutral', fontFamily: 'IBM Plex Mono, monospace', themeVariables: { fontSize: '19px' }, flowchart:{htmlLabels:true, curve:'basis', useMaxWidth:true, nodeSpacing:40, rankSpacing:70, padding:14} }); }
+if (window.Chart) {
+  Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
+  Chart.defaults.color = '#5c534c';
+  const money = v => '$' + Number(v).toLocaleString();
+  if (document.getElementById('moneyChart')) new Chart(document.getElementById('moneyChart'), {
+    type: 'bar',
+    data: { labels: ['Sweetwater #4 CRA tax increment requested (2026)', '2018 tax break, all 5 phases (city estimate)', 'Meta local infrastructure pledge (2026)', 'Meta PAC spending, 2026 primaries'],
+      datasets: [{ data: [778540678, 750000000, 50000000, 251446.36], backgroundColor: ['#c0572e','#d9a441','#4d7c5f','#5c1a2b'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => money(c.parsed.x) } } },
+      scales: { x: { ticks: { callback: v => '$' + (v/1e6) + 'M' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+  });
+  if (document.getElementById('jobsChart')) new Chart(document.getElementById('jobsChart'), {
+    type: 'bar',
+    data: { labels: ['Tyson Foods plant', 'Meta data center', 'QTS data center'],
+      datasets: [{ data: [2410, 100, 16.7], backgroundColor: ['#4d7c5f','#3d0f1c','#c0572e'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => Math.round(c.parsed.x) + ' jobs per $1 billion' } } },
+      scales: { x: { grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+  });
+  if (document.getElementById('shareChart')) new Chart(document.getElementById('shareChart'), {
+    type: 'doughnut',
+    data: { labels: ['Meta Eagle Mountain campus (~2.9%)', 'Rest of Utah'],
+      datasets: [{ data: [1000000, 33688083], backgroundColor: ['#c0572e','#d8d0bd'], borderWidth: 0 }] },
+    options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { label: c => c.label + ': ' + Number(c.parsed).toLocaleString() + ' MWh' } } } }
+  });
+  if (document.getElementById('mwChart')) new Chart(document.getElementById('mwChart'), {
+    type: 'bar',
+    data: { labels: ['Campus average draw, 2024', 'Planned gas plant (filed)'],
+      datasets: [{ data: [114, 286], backgroundColor: ['#5c1a2b','#c0572e'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' MW' } } },
+      scales: { x: { ticks: { callback: v => v + ' MW' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+  });
+  if (document.getElementById('waterChart')) new Chart(document.getElementById('waterChart'), {
+    type: 'bar',
+    data: { labels: ['Meta Eagle Mountain, 2024', 'Industry average'],
+      datasets: [{ data: [0.13, 1.9], backgroundColor: ['#4d7c5f','#d9a441'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' liters per kWh' } } },
+      scales: { x: { ticks: { callback: v => v + ' L' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+  });
+  if (document.getElementById('plantChart')) new Chart(document.getElementById('plantChart'), {
+    type: 'bar',
+    data: { labels: ['Project Aquila (Meta, Eagle Mtn)', 'Novva (West Jordan)', 'Joule (Millard County)'],
+      datasets: [{ data: [286, 235.6, 174.6], backgroundColor: ['#3d0f1c','#c0572e','#d9a441'], borderRadius: 3 }] },
+    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' MW' } } },
+      scales: { x: { ticks: { callback: v => v + ' MW' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+  });
+}
+</script>
+</body>
+</html>

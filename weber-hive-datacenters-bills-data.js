@@ -38,12 +38,12 @@ const BILLS_DOCS = [
   },
   {
     id: "meta-eagle-mountain-2026",
-    title: "The Deal That Started With a Fake Name — Meta's Eagle Mountain Campus",
-    presenter: "The Weber County Hive — Investigation",
-    date: "2026-09-14",
-    hearing: "Eagle Mountain City / Alpine School Board, 2018-2026",
-    summary: "Facebook negotiated its first Eagle Mountain data center in 2018 as 'Stadion, LLC,' before its name was public, and the Alpine School Board had about five days to review the incentive. Eight years, four expansions and $3 billion later, a 2018 agreement still requires the city to alert Meta before releasing the campus's water-use records.",
-    tags: ["Meta", "Eagle Mountain", "Stadion", "water confidentiality", "QTS", "Project Aquila", "Hemmert", "2018-2026"],
+    title: "Meta in Eagle Mountain, Part 1 — The Deal That Started Under Another Name",
+    presenter: "The Weber County Hive — Case File",
+    date: "2026-09-23",
+    hearing: "Eagle Mountain / Utah County / Alpine School Board, 2018–2026",
+    summary: "In May 2018, local taxing bodies approved property tax breaks for a data center listed only as 'Stadion, LLC.' It was Facebook. Part 1 covers that deal, the tax breaks (up to $750 million by the city's estimate), 300 jobs, the 2018 water confidentiality agreement and the campus's 2024 power and water use.",
+    tags: ["Meta", "Eagle Mountain", "Stadion", "tax breaks", "water confidentiality", "HB 76", "jobs", "2018-2026"],
     status: "live",
     page: "weber-hive-dc-meta-eagle-mountain.html"
   },
@@ -60,11 +60,11 @@ const BILLS_DOCS = [
   },
   {
     id: "meta-aquila-2026",
-    title: "The Plant Not in the Announcement — Meta's Eagle Mountain Gas Plant",
+    title: "Meta in Eagle Mountain, Part 2 — The Plant Not in the Announcement",
     presenter: "The Weber County Hive — Case File",
     date: "2026-09-23",
-    hearing: "PSC Docket 26-035-01 · on hold since July 8, 2026",
-    summary: "Meta says its Eagle Mountain campus is matched with 100% clean energy. City, air-quality and Public Service Commission filings show a Williams natural gas plant of up to 286 MW planned for Meta's land, separate from Rocky Mountain Power, with Meta guaranteeing the contract. Covers the tax breaks, water rules, jobs, 2024 energy use and who decides next.",
+    hearing: "PSC Docket 26-2660-01 · on hold since July 8, 2026",
+    summary: "Meta says its Eagle Mountain campus is matched with 100% clean energy. City, air-quality and Public Service Commission filings show a Williams natural gas plant of up to 286 MW planned for Meta's land, separate from Rocky Mountain Power, with Meta guaranteeing the contract. Covers the contract, the air permit, how the plant may be taxed and who decides next.",
     tags: ["Meta", "Project Aquila", "Williams", "SB 132", "PSC", "DAQ", "HB 76", "Eagle Mountain", "2026"],
     status: "live",
     page: "meta-eagle-mountain-gas-plant.html"
