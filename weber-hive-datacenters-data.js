@@ -1,60 +1,62 @@
-// Weber County Hive — Data Center Bills Docket data file
-// Add one object per bill. Bump the version query param in the docket HTML on every update.
+// Weber County Hive — Data Centers HEARING Docket data file (Aug. 19, 2026 EDWS interim hearing)
+// This file is ONLY for the hearing docket (weber-hive-datacenters-docket.html).
+// The bills docket uses a different file: weber-hive-datacenters-bills-data.js
+// Bump the version query param in the docket HTML on every update.
 
-const BILLS_DOCS = [
+const DATACENTERS_DOCS = [
   {
-    id: "sb114-2020",
-    title: "S.B. 114 (2020) — The Exemption With No Jobs Requirement",
-    presenter: "Sen. Kirk Cullimore (chief sponsor) & Rep. Mike Schultz (House sponsor)",
-    date: "2020-03-31",
-    hearing: "2020 General Session",
-    summary: "The sales tax exemption that built Utah's data center industry. No jobs, wage, or investment requirement to qualify — retroactive to 2016 — passed unanimously with a fiscal note that called the cost 'unknown' and required no performance tracking.",
-    tags: ["SB 114", "sales tax exemption", "no jobs required", "Cullimore", "Schultz", "2020"],
+    id: "oed-sb132",
+    title: "Data Centers & SB 132",
+    presenter: "Office of Energy Development",
+    date: "2026-08-19",
+    hearing: "EDWS Interim, Aug. 19, 2026 · Case file 1 of 5",
+    summary: "The Office of Energy Development's pitch to lawmakers: Utah is a national leader on data center policy, and SB 132 protects ratepayers. Here's what the slide says, and what the bill it's describing actually does.",
+    tags: ["OED", "SB 132", "PSC", "ratepayers", "2026"],
     status: "live",
-    page: "weber-hive-dc-sb114.html"
+    page: "weber-hive-dc-oed-sb132.html"
   },
   {
-    id: "hb77-2026",
-    title: "H.B. 77 (2026) — Two Thresholds for Two Kinds of Property",
-    presenter: "Rep. Steve Eliason (chief sponsor) & Sen. Daniel McCay (Senate sponsor)",
-    date: "2026-03-23",
-    hearing: "2026 General Session",
-    summary: "A floor amendment quietly widened the gap between when a home gets flagged for reassessment (150% value increase) and when any other property does (350%) — more than doubling the threshold for commercial property only, in a bill that started with both at the same level.",
-    tags: ["HB 77", "property tax", "reassessment threshold", "Eliason", "McCay", "2026"],
+    id: "deq-abundance",
+    title: "Abundance Accelerator Initiative",
+    presenter: "Dept. of Environmental Quality (Commissioner Tim Davis)",
+    date: "2026-08-19",
+    hearing: "EDWS Interim, Aug. 19, 2026 · Case file 2 of 5",
+    summary: "The Department of Environmental Quality's own map of who approves a data center in Utah, and its answer: no single agency does.",
+    tags: ["DEQ", "DAQ", "air permits", "water rights", "2026"],
     status: "live",
-    page: "weber-hive-dc-hb77.html"
+    page: "weber-hive-dc-deq-abundance.html"
   },
   {
-    id: "stratos-land-2026",
-    title: "\"Do You Have The Land?\" — Stratos, MIDA, and Who Owns What Nearby",
-    presenter: "The Weber County Hive — Investigation",
-    date: "2026-04-24",
-    hearing: "MIDA Board Approval, Apr 24, 2026",
-    summary: "MIDA's board unanimously approved the 40,000-acre Stratos data center — chaired by the same Senate President Kevin O'Leary says was in a room a year earlier being asked 'Do you have the land?' Speaker Schultz's 25,000+ acres sit ten miles away; Sen. Sandall's land sits four miles away; both sponsored or chaired the mechanisms that made it possible.",
-    tags: ["Stratos", "MIDA", "SB 132", "Schultz", "Sandall", "Adams", "land holdings", "2026"],
+    id: "goed-initiatives",
+    title: "Data Center Initiatives",
+    presenter: "Governor's Office of Economic Development",
+    date: "2026-08-19",
+    hearing: "EDWS Interim, Aug. 19, 2026 · Case file 3 of 5",
+    summary: "GOED's own posture: \"We aren't actively recruiting data centers. We work to match communities to projects.\" What its incentive tools offer, the one deal it's made, and where its 2026 Opportunity Zone map lands.",
+    tags: ["GOED", "incentives", "PID", "TIF", "Opportunity Zones", "2026"],
     status: "live",
-    page: "weber-hive-dc-stratos-land.html"
+    page: "weber-hive-dc-goed-initiatives.html"
   },
   {
-    id: "meta-eagle-mountain-2026",
-    title: "The Deal That Started With a Fake Name — Meta's Eagle Mountain Campus",
-    presenter: "The Weber County Hive — Investigation",
-    date: "2026-09-14",
-    hearing: "Eagle Mountain City / Alpine School Board, 2018-2026",
-    summary: "Facebook negotiated its first Eagle Mountain data center in 2018 under the pseudonym 'Stadion, LLC,' pressuring a school board into a five-day approval window. Eight years, four expansions, and $3 billion later, a 2018 side deal still requires the city to alert Meta before releasing its own water-use records — the same year a dedicated gas plant and Utah's largest solar farm were built just to power the site.",
-    tags: ["Meta", "Eagle Mountain", "Stadion", "water confidentiality", "QTS", "Project Aquila", "Hemmert", "2018-2026"],
+    id: "usc-summary",
+    title: "Data Center Growth: Policy Choices Facing Utah and Other States",
+    presenter: "Shon R. Hiatt, USC Marshall",
+    date: "2026-08-19",
+    hearing: "EDWS Interim, Aug. 19, 2026 · Case file 4 of 5",
+    summary: "The one presentation at this hearing that didn't come from a state agency: the moratorium wave hitting Utah counties, national cancellation numbers, and how Utah's incentives compare to its neighbors.",
+    tags: ["USC Marshall", "moratoriums", "incentives", "academic", "2026"],
     status: "live",
-    page: "weber-hive-dc-meta-eagle-mountain.html"
+    page: "weber-hive-dc-usc-summary.html"
   },
   {
-    id: "hb507-2026",
-    title: "H.B. 507 (2026) — The One-Year Gap",
-    presenter: "Rep. Calvin Roberts (chief sponsor) & Sen. Kirk A. Cullimore (Senate sponsor)",
-    date: "2026-05-06",
-    hearing: "2026 General Session",
-    summary: "H.B. 507 promises to restrict local tax incentives for the largest data centers in Utah — but its own restriction doesn't start until a full year after the law itself took effect, and any deal signed in that window is grandfathered permanently. Meta's latest Eagle Mountain expansion was announced squarely inside that gap.",
-    tags: ["HB 507", "RSDZ", "tax increment financing", "Roberts", "Cullimore", "large load data center", "2026"],
+    id: "usc-brief",
+    title: "Data Center Entry and U.S. Electricity Prices",
+    presenter: "Angela Ryu & Shon R. Hiatt, USC Marshall",
+    date: "2026-05-22",
+    hearing: "EDWS Interim, Aug. 19, 2026 · Case file 5 of 5",
+    summary: "The full academic study behind Case File 4's slides. Its headline finding: data centers raise electricity prices, but the effect falls almost entirely on electric cooperatives and municipal utilities, not investor-owned utilities like Rocky Mountain Power.",
+    tags: ["USC Marshall", "electricity prices", "co-ops", "study", "2026"],
     status: "live",
-    page: "weber-hive-dc-hb507.html"
+    page: "weber-hive-dc-usc-brief.html"
   }
 ];
