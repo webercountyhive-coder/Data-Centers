@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eagle Mountain's Balanced Budget: Where 16 Years of "No Tax Increase" Money Actually Went</title>
+<meta name="description" content="Eagle Mountain held its property tax rate flat for roughly 16 years before 2026 — but its own audited financial statements show a fast-growing amount of property tax going to redevelopment project areas instead of the General Fund.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16273f;
+    --navy-2: #1f3856;
+    --manila: #f4f0e6;
+    --paper: #fbf9f3;
+    --ink: #1c1c1c;
+    --ink-soft: #4a4a44;
+    --rust: #a8431f;
+    --amber: #c8912b;
+    --line: #d8d0bc;
+    --good: #3d6b46;
+    --bad: #a8431f;
+    --unclear: #8a7a3d;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--manila); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; line-height: 1.6; }
+  a { color: var(--navy-2); }
+  .topbar { background: var(--navy); color: var(--manila); font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; padding: 8px 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .topbar a { color: var(--manila); text-decoration: none; opacity: 0.85; }
+  .topbar a:hover { opacity: 1; text-decoration: underline; }
+  header.masthead { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); color: var(--manila); padding: 40px 20px 32px; }
+  .masthead-inner { max-width: 880px; margin: 0 auto; }
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; color: var(--amber); margin-bottom: 12px; }
+  h1 { font-family: 'Source Serif 4', serif; font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; margin: 0 0 14px; line-height: 1.2; }
+  .dek { font-family: 'Source Sans 3', sans-serif; font-size: 1.05rem; color: #d8dde5; max-width: 700px; margin: 0 0 18px; }
+  .meta-row { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: #b9c2cf; display: flex; flex-wrap: wrap; gap: 14px; }
+  .pub-date { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: #9fb0c4; margin-top: 10px; }
+  nav.jump { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; overflow-x: auto; white-space: nowrap; }
+  nav.jump .inner { max-width: 880px; margin: 0 auto; padding: 10px 20px; display: flex; gap: 18px; }
+  nav.jump a { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--navy); text-decoration: none; }
+  nav.jump a:hover { color: var(--rust); }
+  main { max-width: 880px; margin: 0 auto; padding: 32px 20px 60px; }
+  .newhere { background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--amber); padding: 18px 20px; margin: 0 0 32px; font-size: 0.98rem; }
+  .newhere strong { font-family: 'Source Sans 3', sans-serif; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--rust); display: block; margin-bottom: 8px; }
+  section { margin-bottom: 44px; }
+  h2 { font-family: 'Source Serif 4', serif; font-size: 1.5rem; border-bottom: 2px solid var(--navy); padding-bottom: 8px; margin: 0 0 18px; }
+  h3 { font-family: 'Source Sans 3', sans-serif; font-size: 1.05rem; color: var(--navy); margin: 24px 0 10px; }
+  p { margin: 0 0 14px; }
+  .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 20px 0; }
+  .stat-cell { background: var(--paper); border: 1px solid var(--line); padding: 14px 12px; text-align: center; }
+  .stat-cell .num { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 1.3rem; color: var(--rust); display: block; }
+  .stat-cell .lbl { font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); }
+  .quote { font-style: italic; border-left: 3px solid var(--navy); padding: 4px 0 4px 18px; margin: 16px 0; color: var(--ink-soft); }
+  .quote cite { display: block; font-style: normal; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; margin-top: 6px; color: var(--ink-soft); }
+  .statute-box { background: var(--paper); border: 1px solid var(--line); padding: 16px 18px; margin: 14px 0; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; line-height: 1.65; }
+  .statute-box .cite { color: var(--navy-2); font-weight: 600; display: block; margin-bottom: 8px; }
+  .callout { padding: 14px 18px; margin: 16px 0; border-left: 4px solid var(--rust); background: #fbeee6; font-size: 0.95rem; }
+  .callout.finding { border-left-color: var(--bad); background: #fbeee6; }
+  .callout.note { border-left-color: var(--unclear); background: #f7f1de; }
+  .callout.good { border-left-color: var(--good); background: #eaf1ea; }
+  .callout strong { display: block; font-family: 'Source Sans 3', sans-serif; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.06em; margin-bottom: 6px; }
+  table.compare { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+  table.compare th, table.compare td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+  table.compare th { background: var(--navy); color: var(--manila); font-family: 'Source Sans 3', sans-serif; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.compare tr:nth-child(even) td { background: var(--paper); }
+  table.compare td.num, table.compare th.num { text-align: right; font-family: 'IBM Plex Mono', monospace; }
+  .status-badge { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
+  .status-confirmed { background: #eaf1ea; color: var(--good); border: 1px solid var(--good); }
+  .status-disputed { background: #fbeee6; color: var(--bad); border: 1px solid var(--bad); }
+  .status-unverified { background: #f7f1de; color: var(--unclear); border: 1px solid var(--unclear); }
+  .timeline { list-style: none; padding: 0; margin: 16px 0; }
+  .timeline li { padding: 10px 0 10px 20px; border-left: 2px solid var(--line); position: relative; margin-left: 6px; }
+  .timeline li::before { content: ''; position: absolute; left: -6px; top: 16px; width: 10px; height: 10px; border-radius: 50%; background: var(--navy); }
+  .timeline .date { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--rust); display: block; margin-bottom: 3px; }
+  .flip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 16px 0; }
+  .flip-card { perspective: 1000px; height: 180px; cursor: pointer; }
+  .flip-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.5s; transform-style: preserve-3d; }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 16px; border: 1px solid var(--navy); font-family: 'Source Sans 3', sans-serif; overflow-y: auto; }
+  .flip-front { background: var(--navy); color: var(--manila); font-weight: 600; font-size: 1.05rem; }
+  .flip-back { background: var(--paper); color: var(--ink); transform: rotateY(180deg); font-size: 0.9rem; line-height: 1.5; }
+  details.sources { margin-top: 10px; }
+  details.sources summary { cursor: pointer; font-family: 'Source Sans 3', sans-serif; font-weight: 600; color: var(--navy); }
+  details.sources ol { padding-left: 20px; font-size: 0.86rem; }
+  details.sources li { margin-bottom: 10px; }
+  .qwa-list { list-style: none; padding: 0; }
+  .qwa-list li { background: var(--paper); border: 1px solid var(--line); padding: 12px 16px; margin-bottom: 10px; font-size: 0.95rem; }
+  .qwa-list b { color: var(--navy-2); }
+  footer.site-footer { background: var(--navy); color: #b9c2cf; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-align: center; padding: 24px 20px; }
+  footer.site-footer a { color: var(--amber); }
+
+  /* --- chart components --- */
+  .chart-block { margin: 20px 0 28px; }
+  .chart-title { font-family: 'Source Sans 3', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--navy); margin-bottom: 12px; }
+  .bar-row { display: grid; grid-template-columns: 190px 1fr 100px; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .bar-row .bar-label { font-family: 'Source Sans 3', sans-serif; font-size: 0.82rem; color: var(--ink-soft); text-align: right; }
+  .bar-track { background: var(--paper); border: 1px solid var(--line); height: 26px; position: relative; }
+  .bar-fill { height: 100%; display: flex; align-items: center; }
+  .bar-row .bar-value { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+  .stack-bar { display: flex; height: 34px; border: 1px solid var(--line); overflow: hidden; }
+  .stack-seg { display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; font-weight: 600; color: #fff; }
+  .legend-row { display: flex; gap: 20px; margin-top: 10px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-family: 'Source Sans 3', sans-serif; font-size: 0.82rem; color: var(--ink-soft); }
+  .legend-swatch { width: 12px; height: 12px; display: inline-block; border-radius: 2px; }
+  .timeline-viz { position: relative; height: 4px; margin: 80px 12px 70px; border-top: 3px solid var(--line); }
+  .tl-point { position: absolute; top: -3px; width: 14px; height: 14px; border-radius: 50%; transform: translateX(-50%); border: 2px solid var(--paper); z-index: 2; }
+  .tl-point.allowed { background: var(--good); }
+  .tl-point.blocked { background: var(--bad); }
+  .tl-point.today { background: var(--navy); }
+  .tl-label { position: absolute; transform: translateX(-50%); font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; text-align: center; width: 150px; line-height: 1.5; }
+  .tl-label.above { top: -66px; }
+  .tl-label.below { top: 16px; }
+  .tl-label .tl-date { display: block; font-weight: 600; color: var(--ink); }
+  .tl-label .tl-tag { display: block; margin-top: 2px; }
+  .tl-label.allowed .tl-tag { color: var(--good); }
+  .tl-label.blocked .tl-tag { color: var(--bad); }
+  .mermaid-wrap { background: var(--paper); border: 1px solid var(--line); padding: 16px; margin: 16px 0; overflow-x: auto; }
+  .mermaid-wrap svg{max-width:100%!important;height:auto;display:block;margin:0 auto;}
+  .diagram-caption { font-family: 'Source Sans 3', sans-serif; font-size: 1rem; color: var(--ink); margin: 18px 0 6px; }
+
+  /* --- gap/waterfall chart --- */
+  .gap-chart { margin: 16px 0; }
+  .gap-year { margin-bottom: 22px; }
+  .gap-year .gy-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .gap-bar { display: flex; height: 40px; border: 1px solid var(--line); overflow: hidden; }
+  .gap-seg { display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; font-weight: 600; color: #fff; }
+  .gap-seg.gf { background: var(--navy); }
+  .gap-seg.rda { background: var(--rust); }
+
+  /* --- tier cards --- */
+  .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+  .tier-card { border: 1px solid var(--line); border-top: 6px solid var(--unclear); background: var(--paper); padding: 16px 18px; }
+  .tier-card.tier1 { border-top-color: var(--amber); }
+  .tier-card.tier2 { border-top-color: var(--unclear); }
+  .tier-card.tier3 { border-top-color: var(--bad); }
+  .tier-card h4 { margin: 0 0 8px; font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; color: var(--navy); }
+  .tier-card p { font-size: 0.88rem; margin: 0 0 8px; }
+  .tier-card .tier-eg { font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; color: var(--ink-soft); }
+
+  @media (max-width: 640px) {
+    .bar-row { grid-template-columns: 110px 1fr 78px; }
+    .bar-row .bar-label { font-size: 0.72rem; }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  .locator { margin: 0 0 36px; }
+  .locator h2 { font-size: 1.3rem; }
+  #locmap { height: 380px; border: 1px solid var(--line); background: #eef1f4; }
+  .locator .loc-foot { font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; margin-top: 8px; }
+  .county-label{background:none;border:none;}
+  .county-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#14213D;opacity:.7;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
+  .city-label{background:none;border:none;}
+  .city-label.key span{font-weight:600;font-size:11.5px;color:#14213D;}
+  .city-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#4a2f55;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
+  .loc-pin{background:none;border:none;}
+  .loc-pin span{display:block;width:22px;height:22px;border-radius:50%;background:#a8431f;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.5);transform:translate(-50%,-50%);}
+  @media (max-width:640px){ #locmap{height:300px;} }
+</style>
+<style>
+  @media (max-width: 640px) {
+    table.compare, table.compare tbody, table.compare tr, table.compare td { display: block; width: 100%; }
+    table.compare tr:first-child:has(th) { display: none; }
+    table.compare tr { border: 1px solid var(--line); margin-bottom: 12px; background: var(--paper); }
+    table.compare td { border: none; border-bottom: 1px dashed var(--line); }
+    table.compare td[data-label]::before { content: attr(data-label); display: block; font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); margin-bottom: 2px; }
+    table.compare th { display: block; }
+    .timeline-viz { margin-left: 56px; margin-right: 56px; }
+  }
+  pre.mermaid, .mermaid-wrap .nodeLabel, .mermaid-wrap .edgeLabel, .mermaid-wrap foreignObject div { font-family: 'Source Sans 3', Arial, sans-serif !important; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>THE WEBER COUNTY HIVE &middot; REFERENDUM DOCKET</span>
+  <a href="index.html">&larr; All referendums tracked</a>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="eyebrow">Eagle Mountain, Utah County &middot; Finance History</div>
+    <h1>The "No Tax Increase Since 2010" City Was Sending $10&ndash;15 Million a Year to Redevelopment Areas Before the Rate Ever Moved</h1>
+    <p class="dek">Eagle Mountain held its property-tax rate flat for roughly sixteen years &mdash; a fact the city cites often. But its own audited financial statements show a fast-growing amount of the property tax it collects never reaches the General Fund at all. It goes to redevelopment project areas first.</p>
+    <div class="meta-row">
+      <span>FY2022&ndash;FY2025 CONFIRMED</span>
+      <span>5 KNOWN CRA/RDA PROJECT AREAS</span>
+      <span>COMPANION TO THE R-62-2026 CASE FILE</span>
+    </div>
+    <div class="pub-date">Published Sept. 17, 2026 &middot; Updated Oct. 1, 2026: added a large-print diagram of how property tax splits, corrected the chart labels to "all city taxes" (the totals include sales and franchise tax), a "People in this record" table, and links for every source</div>
+  </div>
+</header>
+
+<nav class="jump">
+  <div class="inner">
+    <a href="#new-here">Start Here</a>
+    <a href="#the-rate">The Rate</a>
+    <a href="#revenue-mix">Revenue Mix</a>
+    <a href="#the-gap">The Gap</a>
+    <a href="#project-areas">Project Areas</a>
+    <a href="#tiers">Three-Tier Risk</a>
+    <a href="#gaps">What's Missing</a>
+    <a href="#people">People</a>
+    <a href="#questions">Questions</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="flip-grid" id="glossary">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">CRA / RDA</div>
+        <div class="flip-back">Community Reinvestment Area / Redevelopment Agency &mdash; a city-controlled entity that can capture the growth in property-tax revenue ("increment") inside a defined project area for a set number of years, instead of sending it to the General Fund and other taxing entities.</div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">Tax Increment</div>
+        <div class="flip-back">The difference between a property's taxed value before a project area was created (the "base year") and its value afterward. Only the growth &mdash; the increment &mdash; gets captured; the base-year amount still flows to normal taxing entities.</div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">Certified Rate</div>
+        <div class="flip-back">The property-tax rate that raises the same total revenue as last year, before new growth. A city can hold this rate flat for years while new development still grows total collections &mdash; that's normal. Sending a rising share of that growth to redevelopment areas instead of the General Fund is a separate question.</div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">Report 700</div>
+        <div class="flip-back">The Utah County Auditor's annual accounting of exactly how much increment each taxing entity (city, school district, water district, fire service) had captured from it by every RDA/CRA project area in the county that year.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newhere" id="new-here">
+    <strong>New Here? The Short Version</strong>
+    <p style="margin:0;">Eagle Mountain officials point to roughly sixteen years without a Truth-in-Taxation rate increase as proof of fiscal restraint &mdash; right up until this year's 69.81% hike. That's true of the <em>rate</em>. But the city's own audited financial statements show something the rate history doesn't capture: a Redevelopment Agency fund that pulled in $10.5 million in FY2024 and $15.0 million in FY2025 &mdash; property tax increment captured from redevelopment project areas before it ever reaches the General Fund, the budget that pays for police, roads, and parks. That's not a hidden tax increase; it's money the city, the school district, the water district, and the fire service would otherwise have received, redirected instead to fund development inside specific project areas. It's legal, disclosed in public filings, and growing fast &mdash; and it's part of the answer to "why does this city need more money now."</p>
+  </div>
+
+  <section class="locator" id="where">
+    <h2>Where This Is</h2>
+    <p style="margin:0 0 8px;">Eagle Mountain, in western Utah County. The gold line is the state; dark lines are counties; the highlighted county is outlined in gold; dashed purple lines are city limits. Zoom in for more labels.</p>
+    <div id="locmap" role="region" aria-label="Map: Eagle Mountain, in western Utah County"></div>
+    <p class="loc-foot">See every Utah referendum the Hive tracks on <a href="https://weber-county-hive.github.io/utah-maps/citizen-referendums.html" target="_blank" rel="noopener">MAP 006: Citizen Referendums &rarr;</a></p>
+  </section>
+
+  <section id="the-rate">
+    <h2>1. The Rate That Stayed Flat</h2>
+    <p>Eagle Mountain's certified property-tax rate sat near 0.00053&ndash;0.00056 for years before 2026's Resolution R-62-2026 (covered in the <a href="eagle-mountain-tax-referendum-2.html">companion referendum case file</a>). The city's own documents don't agree on exactly how long: its FY2023 and FY2024 audited financial reports say the rate hadn't gone through Truth in Taxation "since FY2005," while its FY2025 report and its own Truth-in-Taxation web page say "since 2010." <strong>That five-year discrepancy appears in the city's own official filings and is unresolved</strong> &mdash; worth a direct question to the Finance Department.</p>
+
+    <div class="stat-strip">
+      <div class="stat-cell"><span class="num">0.000530</span><span class="lbl">Certified rate, 2025 &amp; 2026</span></div>
+      <div class="stat-cell"><span class="num">0.000900</span><span class="lbl">Adopted rate, 2026 (+69.81%)</span></div>
+      <div class="stat-cell"><span class="num">2005 or 2010</span><span class="lbl">City's own conflicting "last increase" dates</span></div>
+    </div>
+
+    <table class="compare">
+      <tr><th>Fiscal Year</th><th>Certified rate</th><th>Adopted rate</th><th>Increase over certified</th></tr>
+      <tr><td>2022</td><td class="num">0.000541 (implied)</td><td class="num">0.000541</td><td class="num">0%</td></tr>
+      <tr><td>2023</td><td class="num">0.000541 (implied)</td><td class="num">0.000541</td><td class="num">0%</td></tr>
+      <tr><td>2024</td><td class="num">0.000561 (implied)</td><td class="num">0.000561</td><td class="num">0%</td></tr>
+      <tr><td>2025</td><td class="num">0.000530</td><td class="num">0.000530&ndash;0.000534</td><td class="num">~0%</td></tr>
+      <tr><td>2026</td><td class="num">0.000530</td><td class="num"><strong>0.000900</strong></td><td class="num"><strong>+69.81%</strong></td></tr>
+    </table>
+    <p style="font-size:0.85rem; color:var(--ink-soft);">Table sourced to Eagle Mountain's own ACFRs (FY2022&ndash;FY2025) and its Aug. 2026 Truth-in-Taxation filing. Total taxable value was only confirmed for FY2022 ($4,028,518,573); later years' statistical tables could not be retrieved in this research pass &mdash; see <a href="#gaps">What's Missing</a>.</p>
+
+    <div class="callout good">
+      <strong>What's fair to the city here</strong>
+      A flat certified rate for over a decade is real, and it's the metric Truth in Taxation is built around. The story below isn't that the rate history is false &mdash; it's that a flat rate and a growing General Fund can coexist with a separate, fast-growing diversion of that same growth into redevelopment project areas. Both things are true at once.
+    </div>
+  </section>
+
+  <section id="revenue-mix">
+    <h2>2. Where General Fund Money Actually Comes From</h2>
+    <p>The General Fund's own revenue statement doesn't break "Taxes" into property vs. sales vs. franchise &mdash; that split only shows up at the city-wide (all-funds) level. Both views matter for different reasons, so both are shown here.</p>
+
+    <div class="chart-block">
+      <div class="chart-title">General Fund total revenue, FY2022&ndash;FY2025</div>
+      <div class="bar-row">
+        <span class="bar-label">FY2022</span>
+        <div class="bar-track"><div class="bar-fill" style="width:83.7%; background:#a9bdd6;"></div></div>
+        <span class="bar-value">$30.95M</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">FY2023</span>
+        <div class="bar-track"><div class="bar-fill" style="width:76.2%; background:#7d9ac0;"></div></div>
+        <span class="bar-value">$28.17M</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">FY2024</span>
+        <div class="bar-track"><div class="bar-fill" style="width:94.3%; background:#4d6f9c;"></div></div>
+        <span class="bar-value">$34.87M</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">FY2025</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--navy);"></div></div>
+        <span class="bar-value">$36.96M</span>
+      </div>
+      <p style="font-size:0.82rem; color:var(--ink-soft); margin-top:8px;">Total General Fund revenue, all sources combined. Source: Eagle Mountain ACFRs, Statement of Revenues, Expenditures, and Changes in Fund Balances &mdash; Governmental Funds.</p>
+    </div>
+
+    <div class="chart-block">
+      <div class="chart-title">City-wide tax mix, FY2023 vs. FY2024 (property, sales &amp; franchise tax only)</div>
+      <div class="stack-bar">
+        <div class="stack-seg" style="width:40.7%; background:var(--navy);">Property $10.26M</div>
+        <div class="stack-seg" style="width:40.0%; background:var(--amber);">Sales $10.09M</div>
+        <div class="stack-seg" style="width:18.4%; background:var(--rust);">Franchise $4.63M</div>
+      </div>
+      <p style="font-size:0.78rem; color:var(--ink-soft); margin:4px 0 14px;">FY2023 &mdash; total $24.99M</p>
+      <div class="stack-bar">
+        <div class="stack-seg" style="width:42.9%; background:var(--navy);">Property $13.18M</div>
+        <div class="stack-seg" style="width:36.3%; background:var(--amber);">Sales $11.12M</div>
+        <div class="stack-seg" style="width:20.7%; background:var(--rust);">Franchise $6.35M</div>
+      </div>
+      <p style="font-size:0.78rem; color:var(--ink-soft); margin:4px 0 0;">FY2024 &mdash; total $30.65M</p>
+      <div class="legend-row">
+        <span class="legend-item"><span class="legend-swatch" style="background:var(--navy);"></span>Property tax</span>
+        <span class="legend-item"><span class="legend-swatch" style="background:var(--amber);"></span>Sales &amp; use tax</span>
+        <span class="legend-item"><span class="legend-swatch" style="background:var(--rust);"></span>Franchise tax</span>
+      </div>
+      <p style="font-size:0.82rem; color:var(--ink-soft); margin-top:10px;">Sales tax is nearly as large a revenue source as property tax citywide, and franchise tax &mdash; the fastest-growing of the three &mdash; is now more than half the size of sales tax. Source: Eagle Mountain ACFR FY2024 MD&amp;A.</p>
+    </div>
+  </section>
+
+  <section id="the-gap">
+    <h2>3. The Gap Between "City-Wide" and "General Fund"</h2>
+    <p>This is the central finding of this piece. Eagle Mountain's audited financial statements report two totals each year that belong side by side: the city's total tax revenue across every fund (property, sales and franchise tax together), and the property tax that specifically lands in the Redevelopment Agency (RDA) Fund &mdash; increment captured from CRA/RDA project areas before it reaches the General Fund. The RDA amount is property tax the General Fund, Alpine School District, the water district, and the fire service never see.</p>
+
+    <div class="chart-block gap-chart">
+      <div class="chart-title">All city taxes (property, sales &amp; franchise) vs. RDA Fund capture</div>
+      <div class="gap-year">
+        <div class="gy-label">FY2024 &mdash; ~$30.67M in all city taxes</div>
+        <div class="gap-bar">
+          <div class="gap-seg gf" style="width:65.9%;">General Fund &amp; other &mdash; 66%</div>
+          <div class="gap-seg rda" style="width:34.1%;">RDA Fund &mdash; $10.46M (34%)</div>
+        </div>
+      </div>
+      <div class="gap-year">
+        <div class="gy-label">FY2025 &mdash; $37.53M in all city taxes</div>
+        <div class="gap-bar">
+          <div class="gap-seg gf" style="width:60.0%;">General Fund &amp; other &mdash; 60%</div>
+          <div class="gap-seg rda" style="width:40.0%;">RDA Fund &mdash; $15.03M (40%)</div>
+        </div>
+      </div>
+      <p style="font-size:0.82rem; color:var(--ink-soft); margin-top:10px;">Both the RDA Fund's tax revenue ($10,457,606 in FY2024; $15,025,376 in FY2025) and the all-funds "Taxes" totals are stated directly in Eagle Mountain's own ACFRs &mdash; not estimated. The RDA Fund's share grew from roughly 34% to roughly 40% of <em>all</em> city tax revenue in a single year. Measured against property tax alone, its share would be larger.</p>
+    </div>
+
+    <p class="diagram-caption"><strong>How it works:</strong> where a property-tax dollar goes, depending on whether the property sits inside a project area.</p>
+    <div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+  A["Owner pays<br/>property tax"] --> B{"Inside a CRA/RDA<br/>project area?"}
+  B -- "No, or the<br/>base-year part" --> C["Normal split:<br/>city General Fund,<br/>schools, water, fire"]
+  B -- "Yes: growth<br/>since base year" --> H["City RDA Fund<br/>$10.46M FY2024<br/>$15.03M FY2025"]
+</pre></div>
+
+    <p class="diagram-caption"><strong>FY2025 in one picture:</strong> the city's total "Taxes" line, split between the two funds that received it.</p>
+    <div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+  T["All city taxes<br/>FY2025: $37.53M"] --> GF["General Fund<br/>and other:<br/>about 60%"]
+  T --> R["RDA Fund:<br/>$15.03M,<br/>about 40%"]
+</pre></div>
+
+    <div class="callout note">
+      <strong>Correction and reading note (Oct. 1, 2026)</strong>
+      In Eagle Mountain's audited statements, the $30.67M (FY2024) and $37.53M (FY2025) totals are the "Taxes" line for all governmental funds. That line combines property, sales, and franchise taxes &mdash; the FY2024 property, sales, and franchise figures in Section 2 ($13.18M + $11.12M + $6.35M) add up to about the same $30.65M. So the 34% and 40% shares above are shares of <em>all</em> city tax revenue, not of property tax alone. An earlier version of this page labeled them as shares of property tax; the labels were corrected Oct. 1, 2026. The dollar amounts did not change. The ACFR's own notes say tax increment "revenues are recorded as revenues of the RDA," so the RDA money is property tax. Measured against property tax alone, the RDA's share would be larger, not smaller. How this was read: the FY2024 and FY2025 ACFR PDFs on eaglemountain.gov, read by text extraction, not rendered pages.
+    </div>
+
+    <div class="callout finding">
+      <strong>Finding</strong>
+      The RDA Fund's tax-increment capture grew 44% in one year &mdash; from $10.46M in FY2024 to $15.03M in FY2025 &mdash; while the council was simultaneously telling residents the city needed a 69.81% property-tax increase to cover a sheriff's contract. Both can be true (the RDA money is earmarked for specific project-area obligations, not general spending) but the scale and growth rate of the diversion is directly relevant context the city hasn't volunteered in its own public messaging about the rate increase.
+    </div>
+
+    <h3>An independent cross-check</h3>
+    <p>Utah County's own Report 700 for tax year 2023 &mdash; a separate, county-administered accounting, not produced by Eagle Mountain itself &mdash; sums the increment captured by <em>all</em> taxing entities (city, Alpine School District, Central Utah Water Conservancy District, fire service) across Eagle Mountain's five known project areas to roughly <strong>$10.44 million</strong> for that tax year. That lines up closely with the ACFR's $10,457,606 RDA Fund figure for the following fiscal year &mdash; independent corroboration from a different government office, using a different accounting method, of the same order of magnitude.</p>
+  </section>
+
+  <section id="project-areas">
+    <h2>4. The Five Known Project Areas</h2>
+    <p>These are the CRA/RDA project areas identified in Utah County Auditor's 2023 Report 700 for Eagle Mountain. Figures are tax-year 2023, the only year located in this research pass.</p>
+    <table class="compare">
+      <tr><th>Project Area</th><th class="num">Base value</th><th class="num">Increment value</th><th class="num">All-entity increment captured, TY2023</th></tr>
+      <tr><td>Parkside Community Development Area</td><td class="num">~$28.45M</td><td class="num">~$7.04M</td><td class="num">$17,950.95</td></tr>
+      <tr><td>Pole Canyon COM</td><td class="num">~$0.57M</td><td class="num">~$0.31M</td><td class="num">$2,448.96</td></tr>
+      <tr><td>Sweetwater #1 CRA</td><td class="num">~$441.0M</td><td class="num">~$441.0M</td><td class="num">$3,295,343.53</td></tr>
+      <tr><td>Sweetwater #1 Phase 2 (Building Only)</td><td class="num">~$809.3M</td><td class="num">~$809.3M</td><td class="num">$6,433,032.99</td></tr>
+      <tr><td>Pole Canyon CRA</td><td class="num">~$142.4M</td><td class="num">~$84.75M</td><td class="num">$691,079.06</td></tr>
+      <tr><td><strong>Total, all five areas, all entities</strong></td><td></td><td></td><td class="num"><strong>~$10,439,855</strong></td></tr>
+    </table>
+    <p style="font-size:0.85rem; color:var(--ink-soft);">Source: Utah County Auditor, 2023 Report 700 &mdash; Eagle Mountain. Sweetwater #1 and #1 Phase 2 alone account for over 93% of all increment captured across the five areas, driven largely by data-center development.</p>
+
+    <div class="callout note">
+      <strong>Not yet confirmed</strong>
+      A "Sweetwater CRA #2" has been referenced in prior reporting on this city but could not be independently confirmed or quantified in this research pass. A newly surfaced Planning Commission agenda item, "Corrigan Farms" &mdash; a proposed data-center and natural-gas-power-plant rezoning heard Sept. 22, 2026 &mdash; may represent a sixth project area in formation; it is too early in the process to have Report 700 figures.
+    </div>
+  </section>
+
+  <section id="tiers">
+    <h2>5. Risk Framework: What Kind of Exposure Is This?</h2>
+    <p>Not every tax-increment mechanism carries the same kind of risk to city finances. Sorting them matters more than treating "there's a CRA" as an alarm by itself.</p>
+    <div class="tier-grid">
+      <div class="tier-card tier1">
+        <h4>Tier 1 &mdash; Redirects money indirectly</h4>
+        <p>Confirmed, real, ongoing revenue loss to the General Fund and other taxing entities &mdash; but no direct bond obligation sits on the city's own books. This is not "protected" or risk-free; it is money the public services budget does not get, every year, by design.</p>
+        <p class="tier-eg">Applies to: all five known project areas. $10.4M&ndash;$15.0M/year and growing.</p>
+      </div>
+      <div class="tier-card tier2">
+        <h4>Tier 2 &mdash; Untested</h4>
+        <p>No public document answers what happens to city obligations if the underlying development declines in value, changes ownership, or a private financing arrangement secured against future increment defaults.</p>
+        <p class="tier-eg">Applies to: Sweetwater #1 / #1 Phase 2 and Pole Canyon CRA, given ~$1.39B in combined increment value; also the $220M Water &amp; Sewer Revenue Bond, Series 2026 (likely non-recourse to the General Fund by structure, but the bond resolution itself wasn't obtained to confirm it).</p>
+      </div>
+      <div class="tier-card tier3">
+        <h4>Tier 3 &mdash; Confirmed direct risk</h4>
+        <p>An official has stated, on the record, that a specific city fund is pledged or serves as fallback for a CRA/RDA/PID bond. This is the only tier that would mean General Fund tax dollars are directly on the hook.</p>
+        <p class="tier-eg">No Tier 3 finding as of this research (Sept. 17, 2026). That reflects the absence of documents located &mdash; EMMA/MSRB bond disclosure filings and RDA interlocal agreements were not yet checked &mdash; not a confirmed absence of risk.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gaps">
+    <h2>6. What's Missing &mdash; Said Plainly</h2>
+    <ul class="qwa-list">
+      <li>Report 700 for Eagle Mountain was only located for tax year 2023. 2022, 2024, and 2025 versions could not be found at the expected URL pattern, and the county's online redevelopment portal appears to require selecting the agency from a form rather than a direct link. <em>Update, Oct. 1, 2026:</em> the 2022 report was since located at a different address (linked in Sources); 2024 and 2025 are still not located.</li>
+      <li>Each ACFR's statistical section &mdash; the 10-year tables of taxable value and tax rates that would settle the FY2023&ndash;FY2025 taxable-value question outright &mdash; exists in the table of contents but could not be retrieved in full.</li>
+      <li>The actual text of Resolution R-62-2026 was not obtained directly; its terms are corroborated by the city's own Truth-in-Taxation page and independent reporting, but the source document itself should be requested from the City Recorder or pulled from the city's CivicClerk portal.</li>
+      <li>"Sweetwater CRA #2" is referenced elsewhere but unconfirmed here.</li>
+      <li>EMMA/MSRB bond disclosure filings for any Eagle Mountain or Eagle Mountain RDA bonds were not checked &mdash; this is the correct place to look to settle the Tier 3 question one way or the other.</li>
+    </ul>
+  </section>
+
+  <section id="people">
+    <h2>People in this record</h2>
+    <p>These are the public officials named in the city's own audited reports and public notices that this page relies on. Being listed here means only that a person's name and title appear on those documents. It does not mean they did anything wrong.</p>
+    <table class="compare">
+      <tr><th>Person</th><th>Role in this record</th><th>Why they're connected</th><th>Also in the Hive</th></tr>
+      <tr><td>Tom Westmoreland</td><td>Mayor, listed in the FY2022&ndash;FY2025 ACFRs</td><td>Mayor during all four fiscal years whose audited figures appear on this page.</td><td>Quoted as mayor (later "former mayor") on property tax from Eagle Mountain's data-center and Tyson sites: <a href="https://webercountyhive-coder.github.io/Data-Centers/weber-hive-dc-meta-eagle-mountain.html" target="_blank" rel="noopener">Meta's Eagle Mountain Campus, Part 1</a>; <a href="https://weber-county-hive.github.io/Transparency/tyson-eagle-mountain-closure.html" target="_blank" rel="noopener">Tyson Leaves Eagle Mountain</a></td></tr>
+      <tr><td>Jared Gray</td><td>City Council member in the FY2022&ndash;FY2025 ACFRs; Mayor on the city's 2026 Truth-in-Taxation page</td><td>Sat on the council in the years shown here and is mayor during the 2026 rate increase.</td><td>Quoted as mayor saying data centers are "literally what funds our general fund": <a href="https://webercountyhive-coder.github.io/Data-Centers/weber-hive-dc-meta-eagle-mountain.html" target="_blank" rel="noopener">Meta's Eagle Mountain Campus, Part 1</a>; <a href="https://webercountyhive-coder.github.io/UIPA/weber-hive-dc-meta-eagle-mountain.html" target="_blank" rel="noopener">The Deal That Started With a Fake Name</a></td></tr>
+      <tr><td>Donna Burnham</td><td>City Council member, FY2022&ndash;FY2025 ACFRs</td><td>Council member in all four years shown.</td><td>None found</td></tr>
+      <tr><td>Brett Wright</td><td>City Council member, FY2022&ndash;FY2025 ACFRs</td><td>Council member in all four years shown.</td><td>A contributor listed as Brett Wright of Eagle Mountain gave $2,000 to a state senate candidate: <a href="https://weber-county-hive.github.io/candidates2026/sd11-buss-benson.html" target="_blank" rel="noopener">SD-11: Buss vs. Benson</a> (name and city match only; not confirmed as the same person)</td></tr>
+      <tr><td>Melissa Clark</td><td>City Council member, FY2024 and FY2025 ACFRs</td><td>Council member in the two years when RDA capture reached $10.46M and $15.03M.</td><td>Listed as a sitting Eagle Mountain council member on a Doers Network county board: <a href="https://weber-county-hive.github.io/candidates2026/doers-network.html" target="_blank" rel="noopener">Doers Network: The Endorsement List</a></td></tr>
+      <tr><td>Rich Wood</td><td>City Council member, FY2024 and FY2025 ACFRs</td><td>Council member in FY2024 and FY2025.</td><td>None found</td></tr>
+      <tr><td>Carolyn Love</td><td>City Council member, FY2022 and FY2023 ACFRs</td><td>Council member in FY2022 and FY2023.</td><td>None found</td></tr>
+      <tr><td>Colby Curtis</td><td>City Council member, FY2022 and FY2023 ACFRs</td><td>Council member in FY2022 and FY2023.</td><td>None found</td></tr>
+      <tr><td>Kimberly Ruesch</td><td>Finance Director (FY2022 ACFR); Administrative Services Director (FY2023&ndash;FY2025 ACFRs and Aug. 18, 2026 agenda)</td><td>Senior finance official over the reports that hold the figures on this page.</td><td>None found</td></tr>
+      <tr><td>Paul Jerome</td><td>City Administrator, FY2022 and FY2023 ACFRs</td><td>Top staff official in FY2022 and FY2023.</td><td>None found</td></tr>
+      <tr><td>Steve Mumford</td><td>Interim City Manager, FY2024 ACFR</td><td>Top staff official listed in the FY2024 report.</td><td>None found</td></tr>
+      <tr><td>Benjamin Reeves</td><td>City Manager, FY2025 ACFR</td><td>Top staff official listed in the FY2025 report.</td><td>None found</td></tr>
+      <tr><td>Alejandro Palacios</td><td>Finance Manager, FY2023 and FY2024 ACFRs</td><td>Finance staff named in those reports.</td><td>None found</td></tr>
+      <tr><td>Jeret Shaffer</td><td>Finance Manager, FY2025 ACFR</td><td>Finance staff named in the FY2025 report.</td><td>None found</td></tr>
+      <tr><td>Lacie Messerly</td><td>City Recorder</td><td>Signed the Feb. 17, 2026 notice for up to $220M in Water and Sewer Revenue Bonds; listed on the Aug. 18, 2026 council agenda.</td><td>None found</td></tr>
+      <tr><td>David Stroud</td><td>Senior Planner</td><td>Presented the Corrigan Farms rezone to the Planning Commission (May 12, 2026 minutes); listed on the Sept. 22, 2026 agenda.</td><td>None found</td></tr>
+    </table>
+    <p style="font-size:0.85rem; color:var(--ink-soft);">"None found" means a search of the Hive's own published case-file repositories on Oct. 1, 2026 turned up no other page naming that person. Officials' names were read from the reports' transmittal letters and lists of principal officials, by text extraction.</p>
+  </section>
+
+  <section id="questions">
+    <h2>Questions Worth Asking</h2>
+    <ul class="qwa-list">
+      <li><b>Ask the Eagle Mountain Finance Department (Administrative Services Director):</b> which is correct &mdash; that the rate hasn't gone through Truth in Taxation since 2005, or since 2010? The city's own audited reports say both in different years.</li>
+      <li><b>Ask the Eagle Mountain RDA board or the Administrative Services Director:</b> how does the RDA Fund's $10.46M (FY2024) / $15.03M (FY2025) tax revenue reconcile with Report 700's per-entity increment figures? Is the ACFR figure the sum captured across all taxing entities, or the city's own share plus something else?</li>
+      <li><b>Ask the Eagle Mountain City Recorder's office:</b> does "Sweetwater CRA #2" exist, and if so, what is its base year, term, and increment capture to date?</li>
+      <li><b>Ask the Eagle Mountain Administrative Services Director or the City Attorney's office:</b> is any city fund pledged, or does it serve as a fallback, for any CRA/RDA/PID-related bond currently outstanding?</li>
+    </ul>
+  </section>
+
+  <div class="callout good" id="send-updates">
+    <strong>Have an update? Send it to us</strong>
+    Know about a referendum in your city or county, or have news on one listed here &mdash; a petition filing, a signature count, a clerk's notice, or a court ruling? Email <a href="mailto:webercountyhive@gmail.com">webercountyhive@gmail.com</a>. The Hive reports from public records, so please include a link to the document or a copy of it if you have one.
+  </div>
+
+  <details class="sources" id="sources">
+    <summary>Sources (click to expand)</summary>
+    <ol>
+      <li><a href="https://eaglemountain.gov/wp-content/uploads/2024/10/finance-ACFR-2022.pdf" target="_blank" rel="noopener">Eagle Mountain City, Annual Comprehensive Financial Report (ACFR), FY2022</a> (year ended June 30, 2022).</li>
+      <li><a href="https://eaglemountain.gov/wp-content/uploads/2024/10/finance-ACFR-2023.pdf" target="_blank" rel="noopener">Eagle Mountain City, Annual Comprehensive Financial Report (ACFR), FY2023</a> (year ended June 30, 2023).</li>
+      <li><a href="https://eaglemountain.gov/wp-content/uploads/2025/01/2024-ACFR-Web-Version.pdf" target="_blank" rel="noopener">Eagle Mountain City, Annual Comprehensive Financial Report (ACFR), FY2024</a>, including Management's Discussion &amp; Analysis (year ended June 30, 2024).</li>
+      <li><a href="https://eaglemountain.gov/wp-content/uploads/2026/09/2025-ACFR-Final.pdf" target="_blank" rel="noopener">Eagle Mountain City, Annual Comprehensive Financial Report (ACFR), FY2025</a> (year ended June 30, 2025).</li>
+      <li><a href="https://eaglemountain.gov/truth-in-taxation" target="_blank" rel="noopener">Eagle Mountain City, "Truth in Taxation | Property Tax" page</a>, eaglemountain.gov.</li>
+      <li><a href="https://www.utahcounty.gov/Dept/Auditor/TaxAdmin/Forms/2023%20Report%20700%20-%20Eagle%20Mountain.pdf" target="_blank" rel="noopener">Utah County Auditor, 2023 Report 700 &mdash; Eagle Mountain</a> (Year-End 2023 Project Increment Paid by Entity), utahcounty.gov. An earlier <a href="https://www.utahcounty.gov/Dept/Auditor/docs/Distribution/2022/2022Rpt700EagleMtn.pdf" target="_blank" rel="noopener">2022 Report 700 for Eagle Mountain</a> was located on Oct. 1, 2026 at a different web address; its figures have not yet been added to this page.</li>
+      <li><a href="https://www.utah.gov/pmn/files/1474645.pdf" target="_blank" rel="noopener">Eagle Mountain City Council agenda, Aug. 18, 2026</a>, Utah Public Notice Website, items 13.A and 13.B (repealing and approving property tax increases above the certified rate for FY2026&ndash;2027). The agenda does not print the resolution number R-62-2026.</li>
+      <li><a href="https://www.utah.gov/pmn/files/1393137.pdf" target="_blank" rel="noopener">Eagle Mountain City, Notice of Public Hearing and Bonds to be Issued, Water and Sewer Revenue Bonds, Series 2026</a>, Utah Public Notice Website (resolution adopted Feb. 17, 2026; hearing March 5, 2026; not more than $220,000,000).</li>
+      <li><a href="https://www.utah.gov/pmn/sitemap/notice/1109515.html" target="_blank" rel="noopener">Eagle Mountain Planning Commission meeting notice and agenda, Sept. 22, 2026</a>, Utah Public Notice Website, items 7.C and 7.D ("Corrigan Farms" rezoning and development agreement).</li>
+      <li><a href="https://www.utah.gov/pmn/files/1436739.pdf" target="_blank" rel="noopener">Eagle Mountain Planning Commission, May 12, 2026 minutes (with May 26, 2026 agenda)</a>, Utah Public Notice Website &mdash; Corrigan Farms Rezone discussion item (used for the "People in this record" table).</li>
+      <li>Companion piece: <a href="eagle-mountain-tax-referendum-2.html">Eagle Mountain's Second Tax Referendum</a>, this docket.</li>
+    </ol>
+  </details>
+
+</main>
+
+<footer class="site-footer">
+  The Weber County Hive &middot; Referendum Docket &middot; Reporting from public records only &mdash; no outreach to city officials or referendum subjects.<br>
+  <a href="index.html">Back to all referendums tracked</a>
+</footer>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: false, theme: 'base',
+    flowchart: { htmlLabels: true, useMaxWidth: false, diagramPadding: 12, nodeSpacing: 30, rankSpacing: 40, wrappingWidth: 300 },
+    themeVariables: { primaryColor: '#fbf9f3', primaryTextColor: '#1c1c1c', primaryBorderColor: '#16273f', lineColor: '#16273f', fontFamily: '"Source Sans 3", Arial, sans-serif', fontSize: '22px' } });
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function(){ mermaid.run({ querySelector: 'pre.mermaid' }); });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="utah-geo.js"></script>
+<script>
+(function(){
+  if (!window.L || typeof addUtahOutlines !== 'function') return;
+  var PINS = [{"n": "Eagle Mountain", "lat": 40.314, "lng": -112.006, "t": "Eagle Mountain tax referendum (not on the Nov. 3 ballot)", "u": "eagle-mountain-tax-referendum-2.html"}];
+  var map = L.map('locmap', { scrollWheelZoom: false, zoomSnap: 0.25 });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+  addUtahOutlines(map, { highlightCounty: "Utah", alwaysLabel: ["Eagle Mountain"] });
+  var pts = [];
+  PINS.forEach(function(p){
+    var m = L.marker([p.lat, p.lng], { icon: L.divIcon({ className: 'loc-pin', html: '<span></span>', iconSize: null }), title: p.t }).addTo(map);
+    m.bindPopup('<b>' + p.t + '</b><br><a href="' + p.u + '">Open the case file</a>');
+    pts.push([p.lat, p.lng]);
+  });
+  var hi = "Utah";
+  if (hi) {
+    var f = UTAH_GEO.counties.features.filter(function(x){ return x.properties.n === hi; })[0];
+    map.fitBounds(L.geoJSON(f).getBounds(), { padding: [20, 20] });
+  } else if (pts.length > 1) {
+    map.fitBounds(L.latLngBounds(pts).pad(0.35));
+  }
+  if (PINS.length === 5) map.fitBounds(L.geoJSON(UTAH_GEO.state).getBounds());
+})();
+</script>
+<script>
+document.querySelectorAll('table.compare').forEach(function(t){
+  var head = t.querySelector('tr');
+  if (!head || !head.querySelector('th')) return;
+  var labels = [].map.call(head.children, function(c){ return c.textContent.trim(); });
+  [].forEach.call(t.querySelectorAll('tr'), function(r, i){ if (i === 0) return;
+    [].forEach.call(r.children, function(c, j){ if (labels[j]) c.setAttribute('data-label', labels[j]); }); });
+});
+</script>
+</body>
+</html>

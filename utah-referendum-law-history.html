@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Rules Keep Changing: How Utah's Referendum Law Got Harder to Use</title>
+<meta name="description" content="A legislative history of Utah Code Title 20A, Chapter 7 — the bills that raised signature thresholds, added geographic distribution rules, tightened petition procedure, and extended two-thirds immunity, plus the ones that would have made referendums easier and died.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16273f; --navy-2: #1f3856; --manila: #f4f0e6; --paper: #fbf9f3;
+    --ink: #1c1c1c; --ink-soft: #4a4a44; --rust: #a8431f; --amber: #c8912b; --line: #d8d0bc;
+    --good: #3d6b46; --bad: #a8431f; --unclear: #8a7a3d;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--manila); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; line-height: 1.6; }
+  a { color: var(--navy-2); }
+  .topbar { background: var(--navy); color: var(--manila); font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; padding: 8px 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .topbar a { color: var(--manila); text-decoration: none; opacity: 0.85; }
+  .topbar a:hover { opacity: 1; text-decoration: underline; }
+  header.masthead { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); color: var(--manila); padding: 40px 20px 32px; }
+  .masthead-inner { max-width: 880px; margin: 0 auto; }
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; color: var(--amber); margin-bottom: 12px; }
+  h1 { font-family: 'Source Serif 4', serif; font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; margin: 0 0 14px; line-height: 1.2; }
+  .dek { font-family: 'Source Sans 3', sans-serif; font-size: 1.05rem; color: #d8dde5; max-width: 700px; margin: 0 0 18px; }
+  .meta-row { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: #b9c2cf; display: flex; flex-wrap: wrap; gap: 14px; }
+  .pub-date { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: #9fb0c4; margin-top: 10px; }
+  nav.jump { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; overflow-x: auto; white-space: nowrap; }
+  nav.jump .inner { max-width: 880px; margin: 0 auto; padding: 10px 20px; display: flex; gap: 18px; }
+  nav.jump a { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--navy); text-decoration: none; }
+  nav.jump a:hover { color: var(--rust); }
+  main { max-width: 880px; margin: 0 auto; padding: 32px 20px 60px; }
+  .newhere { background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--amber); padding: 18px 20px; margin: 0 0 32px; font-size: 0.98rem; }
+  .newhere strong { font-family: 'Source Sans 3', sans-serif; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--rust); display: block; margin-bottom: 8px; }
+  section { margin-bottom: 44px; }
+  h2 { font-family: 'Source Serif 4', serif; font-size: 1.5rem; border-bottom: 2px solid var(--navy); padding-bottom: 8px; margin: 0 0 18px; }
+  h3 { font-family: 'Source Sans 3', sans-serif; font-size: 1.05rem; color: var(--navy); margin: 24px 0 10px; }
+  p { margin: 0 0 14px; }
+  .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 20px 0; }
+  .stat-cell { background: var(--paper); border: 1px solid var(--line); padding: 14px 12px; text-align: center; }
+  .stat-cell .num { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 1.2rem; color: var(--rust); display: block; }
+  .stat-cell .lbl { font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); }
+  .quote { font-style: italic; border-left: 3px solid var(--navy); padding: 4px 0 4px 18px; margin: 16px 0; color: var(--ink-soft); }
+  .quote cite { display: block; font-style: normal; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; margin-top: 6px; color: var(--ink-soft); }
+  .callout { padding: 14px 18px; margin: 16px 0; border-left: 4px solid var(--rust); background: #fbeee6; font-size: 0.95rem; }
+  .callout.finding { border-left-color: var(--bad); background: #fbeee6; }
+  .callout.note { border-left-color: var(--unclear); background: #f7f1de; }
+  .callout.good { border-left-color: var(--good); background: #eaf1ea; }
+  .callout strong { display: block; font-family: 'Source Sans 3', sans-serif; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.06em; margin-bottom: 6px; }
+  table.compare { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+  table.compare th, table.compare td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+  table.compare th { background: var(--navy); color: var(--manila); font-family: 'Source Sans 3', sans-serif; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.compare tr:nth-child(even) td { background: var(--paper); }
+  .status-badge { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
+  .status-confirmed { background: #eaf1ea; color: var(--good); border: 1px solid var(--good); }
+  .status-disputed { background: #fbeee6; color: var(--bad); border: 1px solid var(--bad); }
+  .status-unverified { background: #f7f1de; color: var(--unclear); border: 1px solid var(--unclear); }
+  .timeline { list-style: none; padding: 0; margin: 16px 0; }
+  .timeline li { padding: 10px 0 10px 20px; border-left: 2px solid var(--line); position: relative; margin-left: 6px; }
+  .timeline li::before { content: ''; position: absolute; left: -6px; top: 16px; width: 10px; height: 10px; border-radius: 50%; background: var(--navy); }
+  .timeline li.tighten::before { background: var(--bad); }
+  .timeline li.expand::before { background: var(--good); }
+  .timeline li.died::before { background: var(--unclear); }
+  .timeline .date { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--rust); display: block; margin-bottom: 3px; }
+  .flip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 16px 0; }
+  .flip-card { perspective: 1000px; height: 180px; cursor: pointer; }
+  .flip-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.5s; transform-style: preserve-3d; }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 16px; border: 1px solid var(--navy); font-family: 'Source Sans 3', sans-serif; overflow-y: auto; }
+  .flip-front { background: var(--navy); color: var(--manila); font-weight: 600; font-size: 1.05rem; }
+  .flip-back { background: var(--paper); color: var(--ink); transform: rotateY(180deg); font-size: 0.88rem; line-height: 1.5; }
+  details.sources { margin-top: 10px; }
+  details.sources summary { cursor: pointer; font-family: 'Source Sans 3', sans-serif; font-weight: 600; color: var(--navy); }
+  details.sources ol { padding-left: 20px; font-size: 0.86rem; }
+  details.sources li { margin-bottom: 10px; }
+  .qwa-list { list-style: none; padding: 0; }
+  .qwa-list li { background: var(--paper); border: 1px solid var(--line); padding: 12px 16px; margin-bottom: 10px; font-size: 0.95rem; }
+  .qwa-list b { color: var(--navy-2); }
+  footer.site-footer { background: var(--navy); color: #b9c2cf; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-align: center; padding: 24px 20px; }
+  footer.site-footer a { color: var(--amber); }
+
+  .chart-block { margin: 20px 0 28px; }
+  .chart-title { font-family: 'Source Sans 3', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--navy); margin-bottom: 12px; }
+  .bar-row { display: grid; grid-template-columns: 190px 1fr 90px; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .bar-row .bar-label { font-family: 'Source Sans 3', sans-serif; font-size: 0.82rem; color: var(--ink-soft); text-align: right; }
+  .bar-track { background: var(--paper); border: 1px solid var(--line); height: 26px; position: relative; }
+  .bar-fill { height: 100%; display: flex; align-items: center; }
+  .bar-row .bar-value { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+  .legend-row { display: flex; gap: 20px; margin-top: 10px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-family: 'Source Sans 3', sans-serif; font-size: 0.82rem; color: var(--ink-soft); }
+  .legend-swatch { width: 12px; height: 12px; display: inline-block; border-radius: 2px; }
+
+  .bill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 16px 0; }
+  .bill-card { border: 1px solid var(--line); border-top: 6px solid var(--unclear); background: var(--paper); padding: 16px 18px; }
+  .bill-card.tighten { border-top-color: var(--bad); }
+  .bill-card.expand { border-top-color: var(--good); }
+  .bill-card.died { border-top-color: var(--unclear); }
+  .bill-card h4 { margin: 0 0 4px; font-family: 'Source Sans 3', sans-serif; font-size: 0.98rem; color: var(--navy); }
+  .bill-card .bill-tag { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 7px; border-radius: 3px; margin-bottom: 8px; }
+  .bill-card.tighten .bill-tag { background: #fbeee6; color: var(--bad); border: 1px solid var(--bad); }
+  .bill-card.expand .bill-tag { background: #eaf1ea; color: var(--good); border: 1px solid var(--good); }
+  .bill-card.died .bill-tag { background: #f7f1de; color: var(--unclear); border: 1px solid var(--unclear); }
+  .bill-card p { font-size: 0.87rem; margin: 0 0 8px; }
+  .bill-card .bill-meta { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--ink-soft); }
+
+  .mermaid-wrap { background: var(--paper); border: 1px solid var(--line); padding: 14px 10px; margin: 12px 0 18px; }
+  .mermaid-wrap svg{max-width:100%!important;height:auto;display:block;margin:0 auto;}
+  .diagram-caption { font-family: 'Source Sans 3', sans-serif; font-size: 1rem; color: var(--ink); margin: 0 0 6px; }
+  .ballot-q { background: var(--paper); border: 2px solid var(--navy); padding: 16px 18px; margin: 16px 0; font-family: 'Source Sans 3', sans-serif; font-size: 1.12rem; line-height: 1.5; }
+  .ballot-q .bq-label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--rust); margin-bottom: 6px; }
+  .table-scroll { overflow-x: auto; }
+
+  @media (max-width: 640px) {
+    .bar-row { grid-template-columns: 100px 1fr 70px; }
+    .bar-row .bar-label { font-size: 0.7rem; }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  .locator { margin: 0 0 36px; }
+  .locator h2 { font-size: 1.3rem; }
+  #locmap { height: 380px; border: 1px solid var(--line); background: #eef1f4; }
+  .locator .loc-foot { font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; margin-top: 8px; }
+  .county-label{background:none;border:none;}
+  .county-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#14213D;opacity:.7;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
+  .city-label{background:none;border:none;}
+  .city-label.key span{font-weight:600;font-size:11.5px;color:#14213D;}
+  .city-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#4a2f55;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
+  .loc-pin{background:none;border:none;}
+  .loc-pin span{display:block;width:22px;height:22px;border-radius:50%;background:#a8431f;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.5);transform:translate(-50%,-50%);}
+  @media (max-width:640px){ #locmap{height:300px;} }
+</style>
+<style>
+  @media (max-width: 640px) {
+    table.compare, table.compare tbody, table.compare tr, table.compare td { display: block; width: 100%; }
+    table.compare tr:first-child:has(th) { display: none; }
+    table.compare tr { border: 1px solid var(--line); margin-bottom: 12px; background: var(--paper); }
+    table.compare td { border: none; border-bottom: 1px dashed var(--line); }
+    table.compare td[data-label]::before { content: attr(data-label); display: block; font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); margin-bottom: 2px; }
+    table.compare th { display: block; }
+    .timeline-viz { margin-left: 56px; margin-right: 56px; }
+  }
+  pre.mermaid, .mermaid-wrap .nodeLabel, .mermaid-wrap .edgeLabel, .mermaid-wrap foreignObject div { font-family: 'Source Sans 3', Arial, sans-serif !important; }
+  .sig{background:#fff;color:#1F1B16;border-top:4px solid #14213D;padding:18px 18px 22px;}
+  .sig-inner{max-width:1200px;margin:0 auto;padding:24px 20px 26px;}
+  .sig h2{font-size:clamp(24px,3.4vw,34px);margin:0 0 10px;line-height:1.15;}
+  .sig h3{font-size:21px;margin:22px 0 10px;}
+  .sig-lede{font-size:18px;line-height:1.55;max-width:72ch;margin:0 0 16px;}
+  .srow{display:grid;grid-template-columns:minmax(150px,300px) 1fr 140px;gap:12px;align-items:center;margin-bottom:12px;}
+  .sl{font-size:17px;font-weight:600;} .sv{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:600;}
+  .st2{height:34px;background:#ece6d6;border:1px solid #B7AC91;position:relative;}
+  .sf{position:absolute;left:0;top:0;bottom:0;} .sf.c{background:#2F5A8F;} .sf.p{background:#A5301E;}
+  .sig-table-wrap{overflow-x:auto;margin:14px 0;}
+  .sig-table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.5;}
+  .sig-table th,.sig-table td{border:1px solid #B7AC91;padding:10px 12px;text-align:left;vertical-align:top;}
+  .sig-table th{background:#14213D;color:#F5F1E6;font-size:14px;letter-spacing:.04em;text-transform:uppercase;}
+  .sig-facts{padding-left:22px;margin:0;font-size:17px;line-height:1.6;} .sig-facts li{margin-bottom:10px;}
+  .sig-note{font-size:14.5px;color:#4A443A;background:#f7f1de;border-left:4px solid #8a7a3d;padding:10px 14px;margin:14px 0 0;line-height:1.55;}
+  .sig a{color:#A5301E;font-weight:600;}
+  @media(max-width:700px){.srow{grid-template-columns:1fr;gap:4px;} .sig-table,.sig-table tbody,.sig-table tr,.sig-table td{display:block;width:100%;} .sig-table tr:first-child{display:none;} .sig-table tr{border:1px solid #B7AC91;margin-bottom:10px;} .sig-table td{border:none;border-bottom:1px dashed #B7AC91;} .sig-table td:nth-child(2)::before{content:"Candidates: ";font-weight:700;} .sig-table td:nth-child(3)::before{content:"Citizens: ";font-weight:700;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>THE WEBER COUNTY HIVE &middot; REFERENDUM DOCKET</span>
+  <a href="index.html">&larr; All referendums tracked</a>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="eyebrow">Statewide &middot; Legislative History</div>
+    <h1>The Rules Keep Changing: How Utah's Referendum Law Got Harder to Use</h1>
+    <p class="dek">Utah was the second state in the nation to adopt citizen referendum, in 1900. Over the last two decades, and especially since 2019, the Legislature has repeatedly rewritten the rules for using it — raising signature thresholds, adding geographic distribution requirements, tightening petition procedure, and extending two-thirds immunity to more kinds of decisions. Bills that would have made referendums easier to use have generally died.</p>
+    <div class="meta-row">
+      <span>UTAH CODE TITLE 20A, CHAPTER 7</span>
+      <span>KEY CHANGES: 2019, 2022, 2023</span>
+    </div>
+    <div class="pub-date">Published Sept. 18, 2026 &middot; Updated Oct. 1, 2026: added a large-print diagram of today's local referendum hurdles, a section on 2026 Constitutional Amendment B, a "People in this record" table, source links, a corrected official title for H.B. 119, and a "Two Kinds of Ballot Signatures" section.</div>
+  </div>
+</header>
+
+<nav class="jump">
+  <div class="inner">
+    <a href="#new-here">Start Here</a>
+    <a href="#how-it-works">How It Works Today</a>
+    <a href="#2019-overhaul">2019 Overhaul</a>
+    <a href="#petition-procedure">Petition Procedure</a>
+    <a href="#gatherer-fraud">When Gatherers Were Charged</a>
+    <a href="#immunity">Two-Thirds Immunity</a>
+    <a href="#doctrine">The Judicial Backdrop</a>
+    <a href="#died-vs-passed">What Died, What Passed</a>
+    <a href="#rubric">Graded: Good for the Public?</a>
+    <a href="#timeline">Full Timeline</a>
+    <a href="#amendment-b">2026: Amendment B</a>
+    <a href="#signatures">Two Kinds of Signatures</a>
+    <a href="#people">People</a>
+    <a href="#questions">Questions</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="flip-grid" id="glossary">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">Active Voters</div>
+        <div class="flip-back">Registered voters who have voted or updated their registration recently — the base Utah now uses to calculate signature thresholds, replacing the old method (a percentage of the last presidential-election vote count).</div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">Voter Participation Area (VPA)</div>
+        <div class="flip-back">A geographic sub-district created by 2019's HB 119. Larger jurisdictions must be divided into VPAs, and referendum signatures must come from at least 75% of them — not just a citywide or countywide raw total.</div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">Two-Thirds Immunity</div>
+        <div class="flip-back">A provision, dating to Utah's 1900 constitutional amendment creating the referendum right, exempting any law passed by a two-thirds vote of each legislative chamber from being referred to voters at all.</div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">Administrative vs. Legislative</div>
+        <div class="flip-back">A court-made distinction (not originally a statute): only "legislative" acts — new laws of general applicability — can be referred to voters. "Administrative" acts, applying existing policy to a specific case, generally cannot.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newhere" id="new-here">
+    <strong>New Here? The Short Version</strong>
+    <p style="margin:0;">Utah's citizen referendum right is old — written into the state constitution in 1900. How easy it is to actually use has changed a lot more recently, and the record is one-sided. In 2019, the Legislature overhauled the local referendum process, creating a separate and much higher signature threshold for land-use referendums specifically, plus a new geographic-distribution rule. In 2022 and 2023, follow-up bills tightened petition-packet procedure and extended a two-thirds-vote immunity rule to certain local land-use decisions. All of those passed. Meanwhile, every bill found in this record that would have made a referendum easier to use or more effective — a 2006 and a 2013 bill that would have stayed a challenged law while its referendum was pending, a 2022 bill that would have lowered the 2019 thresholds, and a 2025 bill that would have created a brand-new referendum right over school-board tax decisions — died. Three of those four died the same specific way: the Senate or House struck its own enacting clause rather than holding a recorded floor vote on the substance. This piece lays out the record, bill by bill.</p>
+  </div>
+
+  <section class="locator" id="where">
+    <h2>Where This Is</h2>
+    <p style="margin:0 0 8px;">Every referendum on the Hive docket. The gold line is the state; dark lines are counties; dashed purple lines are city limits. Zoom in for more labels.</p>
+    <div id="locmap" role="region" aria-label="Map: Every referendum on the Hive docket"></div>
+    <p class="loc-foot"><a href="eagle-mountain-tax-referendum-2.html">Eagle Mountain tax referendum (not on the Nov. 3 ballot)</a> &middot; <a href="roy-prop-10-tax-referendum.html">Roy Prop 10 (on the Nov. 3 sample ballot)</a> &middot; <a href="uintah-prop-9-form-of-government.html">Uintah County Prop 9 (on the Nov. 3 ballot)</a> &middot; <a href="pid-mida-referendums-blocked.html#box-elder">Box Elder County: Stratos referendum (in court)</a> &middot; <a href="pid-mida-referendums-blocked.html#summit-county">Summit County: Kimball Junction referendum (closed)</a><br>See every Utah referendum the Hive tracks on <a href="https://weber-county-hive.github.io/utah-maps/citizen-referendums.html" target="_blank" rel="noopener">MAP 006: Citizen Referendums &rarr;</a></p>
+  </section>
+
+  <section id="how-it-works">
+    <h2>How a Local Referendum Works Today</h2>
+    <p>A referendum is when voters ask to undo a law their city or county already passed. Here are the hurdles a local land-use referendum faces today, and the bill (or court rulings) that put each one there. The order is simplified; every step comes from the sections below.</p>
+    <p class="diagram-caption">Each box is one hurdle. The bill that added it is in the box.</p>
+    <div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+  A["Council passes<br/>a law"] --> B{"Land-use law,<br/>unanimous or 2/3<br/>(transit area)?"}
+  B -->|Yes| X["No referendum<br/>allowed<br/>S.B. 199 (2023)"]
+  B -->|No| C{"Legislative, not<br/>administrative?<br/>(court rulings)"}
+  C -->|No| X
+  C -->|Yes| D["10-day notice;<br/>numbered, bound<br/>packets<br/>H.B. 38 (2023)"]
+  D --> E["Signers must be<br/>registered first<br/>H.B. 218 (2022)"]
+  E --> F["Higher land-use<br/>signature bar,<br/>spread by area<br/>H.B. 119 (2019)"]
+  F --> G["Law goes to<br/>the voters"]
+</pre></div>
+    <p style="font-size:0.88rem; color:var(--ink-soft);">The two-thirds and unanimous paths are in Utah Code 20A-7-602.8 (Section 4). The "legislative vs. administrative" test comes from court cases, not a bill (Section 5). The signature bar is 16% of active voters for first-class counties and up to 40% for towns, with signatures spread across at least 75% of voter participation areas in larger places (Section 1).</p>
+  </section>
+
+  <section id="2019-overhaul">
+    <h2>1. The 2019 Overhaul: H.B. 119</h2>
+    <p>H.B. 119 ("Initiatives, Referenda, and Other Political Activities," primary sponsor Rep. Brad Daw, Senate sponsor Sen. Curtis Bramble) is the single biggest rewrite of local referendum law in this record. Before it, signature thresholds were calculated as a percentage of the prior presidential-election vote count. The bill switched the base to "active voters" as of a fixed date set annually by the Lieutenant Governor's office — and, more consequentially, created an entirely separate, higher threshold specifically for referendums against land-use decisions.</p>
+
+    <div class="chart-block">
+      <div class="chart-title">Signature threshold, first-class counties: general law vs. land-use law</div>
+      <div class="bar-row">
+        <span class="bar-label">General-law referendum</span>
+        <div class="bar-track"><div class="bar-fill" style="width:47%; background:var(--navy);"></div></div>
+        <span class="bar-value">7.5&ndash;7.75%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Land-use referendum</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--rust);"></div></div>
+        <span class="bar-value">16%</span>
+      </div>
+      <p style="font-size:0.82rem; color:var(--ink-soft); margin-top:8px;">For towns, the gap is even wider: up to 40% of active voters for a land-use referendum vs. 35% for a general-law one. Source: HB 119 (2019), le.utah.gov.</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat-cell"><span class="num">64&ndash;7&ndash;4</span><span class="lbl">House 3rd reading, 3/5/2019</span></div>
+      <div class="stat-cell"><span class="num">21&ndash;1&ndash;7</span><span class="lbl">Senate 2nd/3rd reading, 3/14/2019</span></div>
+      <div class="stat-cell"><span class="num">59&ndash;12&ndash;4</span><span class="lbl">House concurrence, 3/14/2019</span></div>
+      <div class="stat-cell"><span class="num">Ch. 203</span><span class="lbl">Signed 3/25/2019 &middot; effective 5/14/2019</span></div>
+    </div>
+    <p style="font-size:0.85rem; color:var(--ink-soft);">H.B. 119 passed both chambers by lopsided margins in every recorded vote &mdash; this was not a close or contested floor fight, whatever friction it caused afterward among referendum sponsors dealing with the new thresholds.</p>
+
+    <div class="callout note">
+      <strong>Why land use specifically</strong>
+      Contemporaneous reporting (Deseret News, March 2019) traces the bill to two specific fights: the Provo-Orem bus rapid transit project and the Cottonwood Mall housing redevelopment controversy. Both were land-use disputes where opponents had used or threatened a referendum.
+    </div>
+
+    <p>The same bill created the Voter Participation Area (VPA) system: jurisdictions above a population threshold must be divided into 8 (or 4, for mid-size jurisdictions) contiguous areas, and referendum signatures must be distributed across at least 75% of those areas — not just added up citywide. A raw signature total large enough to clear the percentage threshold can still fail if it's concentrated in too few VPAs.</p>
+
+    <div class="callout finding">
+      <strong>Direct line to a live case</strong>
+      This VPA requirement is the same "street-level boundary information" sponsors of Eagle Mountain's 2026 tax referendum have been requesting from the city and say they haven't received in an updated form — see the <a href="eagle-mountain-tax-referendum-2.html">Eagle Mountain case file</a>, Section 3.
+    </div>
+  </section>
+
+  <section id="petition-procedure">
+    <h2>2. Locking Down the Petition Process: H.B. 218 (2022) &amp; H.B. 38 (2023)</h2>
+    <p>Two follow-up bills tightened the mechanics of running a signature drive, on top of the 2019 thresholds.</p>
+    <table class="compare">
+      <tr><th>Bill</th><th>What it changed</th><th>Vote</th></tr>
+      <tr><td>H.B. 218 (2022)<br>"Ballot Measure Amendments"<br>Rep. Jordan Teuscher / Sen. Jerry Stevenson</td><td>Added electronic signature-gathering as an option, but also tightened voter eligibility — removed the option for signers who merely intended to register before certification (must now be currently registered) — and expanded public posting of signer data.</td><td>House 68-0-7 (3rd reading, 2/15/2022); Senate 28-0-1 (2nd/3rd reading, 3/2/2022); House concurrence 71-0-4 (3/3/2022); signed 3/24/2022; Chapter 325, eff. 1/1/2023</td></tr>
+      <tr><td>H.B. 38 (2023)<br>"Initiative and Referendum Modifications"<br>Rep. Calvin Musselman / Sen. David Buxton</td><td>Lengthened required public-hearing notice from 3 to 10 days; required sponsors to submit hearing video/audio/minutes before receiving signature sheets; formalized a sponsor-signed packet-numbering agreement — the administrative predicate for the strict packet-binding rules.</td><td>70-0-5 (House), 25-0-4 (Senate)</td></tr>
+    </table>
+    <div class="callout finding">
+      <strong>Direct line to a live case</strong>
+      The packet-binding formality this framework created is the same kind of rule that disqualified most of the petition packets in Summit County's 2025 Kimball Junction referendum — organizers gathered over 6,000 signatures, well above the 4,554 required, but a binding-format issue left only about 3,214 certified as valid. See the <a href="pid-mida-referendums-blocked.html#summit-county">companion piece</a> for the full sequence.
+    </div>
+
+    <div class="callout note">
+      <strong>A different kind of committee record</strong>
+      H.B. 218 started life titled "Citizen Petition Amendments" before its name changed. Confirmed directly against both committee minutes: it passed the House Political Subdivisions Committee 10-0-0 and the Senate Government Operations and Political Subdivisions Committee 5-0-2, with every witness who spoke — a county sheriff, the Lt. Governor's Elections Director, and Weber County Clerk/Auditor Ricky Hatch (chair of the Clerks Legislative Committee) — speaking in favor, not against. No opposition testimony is recorded for this bill in either chamber, unlike H.B. 408 (2025) below.
+    </div>
+  </section>
+
+  <section id="gatherer-fraud">
+    <h2>3. When Signature Gatherers Were Charged or Accused of Fraud</h2>
+    <p>The petition-procedure tightening covered above (H.B. 218, H.B. 38) is usually framed around protecting the process from outside interference. But the criminal charges and fraud allegations filed in Utah in recent years have involved people working inside the paid-signature-gathering industry itself — companies hired by campaigns and committees to collect the signatures that get a candidate on the ballot or a measure in front of voters.</p>
+
+    <div class="bill-grid">
+      <div class="bill-card tighten">
+        <span class="bill-tag">Charged, March 2025</span>
+        <h4>Gathering Inc.</h4>
+        <p>Hired by 2024 candidate campaigns, including Gov. Spencer Cox&rsquo;s. News reports also named U.S. Senate candidate Brad Wilson and state Sen. Don Ipson among its 2024 clients. Most charging documents do not say which candidate each defendant was gathering for. The Utah Attorney General's Office charged 11 people who worked as circulators for the firm with forgery, communication fraud, and breach of certificate-of-nomination procedures. According to the charging documents, one circulator had 2,146 of 2,243 submitted signatures rejected; another had an 80% invalidation rate; and investigators wrote that several told them they let spouses sign for each other or signed names themselves to increase their per-signature pay. County clerks flagged the packets during verification.</p>
+        <p class="bill-meta">Utah AG charges filed 3/10/2025 &middot; 11 defendants</p>
+      </div>
+      <div class="bill-card tighten">
+        <span class="bill-tag">Charged</span>
+        <h4>Battleground USA LLC</h4>
+        <p>A separate case tied to the 2022 2nd Congressional District signature-gathering effort for candidate Bruce Hough. Owner Daniel Jacob McWilliams was paid over $58,000 for the contract; 13 people were charged. Prosecutors alleged circulators used Nevada residents despite Utah residency requirements, falsified verification forms, and created false lease documents and text messages before the packets were submitted to the Lieutenant Governor's office.</p>
+        <p class="bill-meta">13 defendants charged</p>
+      </div>
+      <div class="bill-card tighten">
+        <span class="bill-tag">Alleged, Feb. 2026 &mdash; deadline missed</span>
+        <h4>Patriot Grassroots</h4>
+        <p>A Wyoming-based firm paid over $4.3 million to gather signatures for the 2026 effort to repeal Proposition 4 (Utah's 2018 voter-approved anti-gerrymandering law), on behalf of Utahns for Representative Government, the Republican-backed committee chaired by state GOP chairman Rob Axson. Donald Trump Jr. publicly promoted the firm and urged followers to sign on as gatherers. Utah County Clerk Aaron Davidson called the resulting packets "probably the most extensive fraud that we've seen," citing fabricated names and addresses, duplicate signers, and packets missing the required initiative text; 27 packets were referred for criminal investigation. Axson's committee terminated Patriot Grassroots' contract, but the campaign fell far short of the ~140,679 signatures required and missed its Feb. 15, 2026 deadline.</p>
+        <p class="bill-meta">Utah County referred 27 packets for investigation &middot; campaign missed deadline</p>
+      </div>
+    </div>
+
+    <div class="callout note">
+      <strong>Charged is not convicted</strong>
+      All three cases above reflect charges filed or fraud alleged by county/state officials, not final court judgments; check current docket status before describing any of these as a conviction. One defendant in the Gathering Inc. case is reported to have accepted a plea deal, but the terms weren't independently confirmed in this research.
+    </div>
+
+    <div class="callout finding">
+      <strong>A name worth watching</strong>
+      Gathering Inc. is a signature-gathering company documented elsewhere in this outlet's reporting as controlled by Casey Hill, a registered Utah lobbyist and co-founder of Lincoln Hill Partners/PAC with a long client roster spanning both major statewide campaigns and corporate lobbying work. That prior reporting is a separate research thread from this piece and should be independently re-confirmed against the corporate registry before the two are linked in print.
+    </div>
+  </section>
+
+  <section id="immunity">
+    <h2>4. Two-Thirds Immunity: 1900 to Now</h2>
+    <p>The rule that a law passed by a two-thirds vote of each legislative chamber cannot be referred to voters at all is not new — it's in Utah Constitution Article VI, Section 1, part of the original 1900 amendment that created the referendum right in the first place. It survived a full rewrite of Article VI in 1972 and a renumbering in 2000 without substantive change.</p>
+    <p>What is new: extending a version of that immunity down to the local level. <strong>S.B. 199 (2023)</strong>, "Local Land Use Amendments" (Sen. Mike McKell), amended Utah Code 20A-7-602.8 to exempt a "transit area land use law" passed by a two-thirds vote from local referendum. McKell said in press coverage that referendums had been "weaponized" against housing developers. Confirmed directly against the current statutory text (20A-7-602.8): the two-thirds carve-out is exactly that narrow, scoped to transit area land use law — but the same section contains a <em>second</em>, separate immunity mechanism that earlier coverage of this bill didn't flag: a "municipal land use law" is independently exempt from local referendum if it passes by a <strong>unanimous</strong> vote of the local legislative body, with no "transit area" limitation. That is a lower bar to invoke procedurally (any council can vote unanimously on an uncontroversial-seeming item) even though it requires full agreement rather than two-thirds.</p>
+    <div class="stat-strip">
+      <div class="stat-cell"><span class="num">1900</span><span class="lbl">Two-thirds immunity written into the state constitution</span></div>
+      <div class="stat-cell"><span class="num">2023</span><span class="lbl">S.B. 199 adds two local-level immunity paths under 20A-7-602.8</span></div>
+    </div>
+    <div class="callout finding">
+      <strong>Two separate local immunity paths, not one</strong>
+      20A-7-602.8 now exempts local land-use law from referendum two different ways: (1) a <em>transit area land use law</em> passed by a two-thirds vote, and (2) a <em>municipal land use law</em> passed by a <strong>unanimous</strong> vote. Neither requires the underlying project to be small or uncontroversial — only that the council reach the specified vote margin. A unanimous council vote is arguably easier to engineer on a fast-tracked item than a two-thirds vote on a genuinely contested one, which makes the unanimous-vote path worth watching in any project where a council moves quickly and without dissent.
+    </div>
+  </section>
+
+  <section id="doctrine">
+    <h2>5. The Judicial Backdrop: "Administrative" vs. "Legislative"</h2>
+    <p>Separately from anything the Legislature has passed, Utah courts have long held that only a local government's "legislative" acts — new laws of general applicability — can be sent to voters by referendum. Its "administrative" acts, applying existing policy to a specific situation, generally cannot. This distinction comes from case law, not statute, though the Legislature has since cross-referenced categories of it in Utah Code 20A-7-102 and 20A-7-602.8.</p>
+    <ul class="timeline">
+      <li><span class="date">1936&ndash;39</span><em>Keigley v. Bench</em> &mdash; an early case holding bond authorization "legislative," and therefore referable.</li>
+      <li><span class="date">1964 / 1982</span><em>Bird v. Sorenson</em>; <em>Wilson v. Manning</em> &mdash; held single-lot rezones "administrative," not referable.</li>
+      <li><span class="date">2002</span><em>Low v. Monticello</em> &mdash; a council's exercise of a contract option held "administrative."</li>
+      <li><span class="date">2008</span><em>Sevier Power Co. v. Board of Sevier County Commissioners</em>, 2008 UT 72 &mdash; the Utah Supreme Court struck down a legislative attempt to categorically bar land-use-ordinance referendums.</li>
+      <li><span class="date">2012</span><em>Carter v. Lehi City</em>, 2012 UT 2 &mdash; the controlling modern framework: an act is "legislative" (referable) if it promulgates laws of general applicability or involves weighing competing policy considerations, replacing the older case-by-case approach.</li>
+      <li><span class="date">2013</span><em>Krejci v. Saratoga Springs</em>, 2013 UT 74 &mdash; applying <em>Carter</em>, held site-specific rezoning is legislative (referable), reversing the older line of cases.</li>
+      <li><span class="date">2018</span><em>Baker v. Carlson</em>, 2018 UT 59 &mdash; clarified that a development plan can be legislative while a development agreement covering the same project may be administrative.</li>
+      <li class="tighten"><span class="date">2026 (pending)</span>Box Elder County's attorney rejects B.E.A.R.'s referendum against the Stratos/MIDA project resolutions as "administrative" &mdash; the doctrine's newest live test, now on appeal. See the <a href="pid-mida-referendums-blocked.html#box-elder">companion piece</a>.</li>
+    </ul>
+  </section>
+
+  <section id="died-vs-passed">
+    <h2>6. What Died, What Passed</h2>
+    <p>Presented fairly, and checked directly against each bill's actual floor and committee vote record: every bill in this record that would have made a referendum easier to use or more effective died. Every bill that made the process harder passed.</p>
+    <div class="bill-grid">
+      <div class="bill-card tighten">
+        <span class="bill-tag">Tightened &amp; passed</span>
+        <h4>H.B. 119 (2019)</h4>
+        <p>Created the land-use-specific higher threshold and the VPA distribution requirement.</p>
+        <p class="bill-meta">Rep. Brad Daw &middot; Enacted</p>
+      </div>
+      <div class="bill-card tighten">
+        <span class="bill-tag">Tightened &amp; passed</span>
+        <h4>S.B. 199 (2023)</h4>
+        <p>Extended a version of two-thirds referendum immunity to transit area land use law at the local level.</p>
+        <p class="bill-meta">Sen. Mike McKell &middot; Enacted, eff. 5/3/2023</p>
+      </div>
+      <div class="bill-card tighten">
+        <span class="bill-tag">Tightened &amp; passed</span>
+        <h4>H.B. 38 (2023)</h4>
+        <p>Lengthened hearing-notice requirements and formalized the packet-binding/numbering procedure.</p>
+        <p class="bill-meta">Rep. Calvin Musselman &middot; 70-0-5 / 25-0-4</p>
+      </div>
+      <div class="bill-card died">
+        <span class="bill-tag">Would have eased &mdash; died</span>
+        <h4>H.B. 185 (2022)</h4>
+        <p>Would have lowered the 2019 land-use thresholds (e.g., 16% &rarr; 13% for counties). Passed committee 7-4, then the House struck its own enacting clause.</p>
+        <p class="bill-meta">Rep. Adam Robertson &middot; Died 3/4/2022</p>
+      </div>
+      <div class="bill-card died">
+        <span class="bill-tag">Would have eased &mdash; died</span>
+        <h4>S.B. 66 (2013)</h4>
+        <p>Would have stayed a challenged local law while its referendum was pending, instead of letting it take effect immediately. Passed the Senate 27-1; the House struck the enacting clause with no floor vote.</p>
+        <p class="bill-meta">Sen. Stuart Reid &middot; Died</p>
+      </div>
+      <div class="bill-card died">
+        <span class="bill-tag">Would have eased &mdash; died</span>
+        <h4>H.B. 120 (2006)</h4>
+        <p>The same substantive fix as S.B. 66, seven years earlier. Died 27-46 on the House floor with no recorded debate.</p>
+        <p class="bill-meta">Rep. David Hogue &middot; Died</p>
+      </div>
+      <div class="bill-card died">
+        <span class="bill-tag">Would have eased (partly) &mdash; died</span>
+        <h4>H.B. 408 (2025)</h4>
+        <p>Would have created a new referendum right over school-board tax and legislative decisions where none existed &mdash; but its own text (confirmed directly against the bill, Section 7, amending 20A-7-102(4)) also built in a supermajority immunity carve-out: a school board vote of 4 of 5, 5 of 7, or 7 of 9 members in favor &mdash; roughly 71&ndash;80% &mdash; would have exempted that tax or law from referendum entirely, the same device used against the public elsewhere in this record. Passed the House 40-33-2; failed a Senate committee recommendation 3-4-0; the Senate struck its own enacting clause on March 7, 2025.</p>
+        <p class="bill-meta">Rep. Rex Shipp / Sen. Brady Brammer &middot; Died</p>
+      </div>
+    </div>
+
+    <div class="callout finding">
+      <strong>Who testified against giving the public more say</strong>
+      In both House and Senate committee hearings, H.B. 408 was opposed by Lexi Cunningham &mdash; who holds the Executive Director title at <em>both</em> the Utah School Superintendents Association and the Utah School Boards Association &mdash; and by Granite School District Superintendent Ben Horsley, who testified against it twice. These are the associations representing the exact officials whose tax and legislative decisions the bill would have made referable. Supporting the bill in committee: several individual residents and members of the Utah Eagle Forum. No county clerk association took a position either way; Weber County Clerk/Auditor Ricky Hatch, chair of the Clerks Legislative Committee, addressed the House committee without stating support or opposition, per the committee minutes.
+    </div>
+  </section>
+
+  <section id="rubric">
+    <h2>7. Graded: Was Any of This Good for the Public?</h2>
+    <p>Each bill graded on five standing criteria, independent of who sponsored it or what else that person has done: <strong>Power</strong> (does it add or remove a public check?), <strong>Transparency</strong> (can the public actually see the process?), <strong>Financial Accountability</strong> (does it change who pays or who's disclosed?), <strong>Environmental Impact</strong> (effect on water/wetlands/wildlife), and <strong>Community Impact</strong> (did the people who bear the cost get real standing?). A bill that died is graded on its content only, since it never took effect &mdash; marked accordingly. "N/A" means the criterion doesn't apply to that bill's subject matter, not a passing or failing score.</p>
+
+    <table class="compare">
+      <tr><th>Bill</th><th>Power</th><th>Transparency</th><th>Financial Acct.</th><th>Environmental</th><th>Community</th><th>Overall</th></tr>
+      <tr><td>H.B. 119 (2019)</td><td>D</td><td>C</td><td>N/A</td><td>N/A</td><td>D</td><td><strong>D</strong></td></tr>
+      <tr><td>H.B. 218 (2022)</td><td>C</td><td>C</td><td>N/A</td><td>N/A</td><td>C</td><td><strong>C</strong></td></tr>
+      <tr><td>H.B. 38 (2023)</td><td>C</td><td>B</td><td>N/A</td><td>N/A</td><td>D</td><td><strong>C&minus;</strong></td></tr>
+      <tr><td>S.B. 199 (2023)</td><td>D</td><td>B</td><td>N/A</td><td>N/A</td><td>D</td><td><strong>D</strong></td></tr>
+      <tr><td>H.B. 120 (2006) &amp; S.B. 66 (2013)<br><span style="font-size:0.78rem; color:var(--ink-soft);">content-only &mdash; both died</span></td><td>B+</td><td>B</td><td>N/A</td><td>N/A</td><td>A</td><td><strong>B</strong></td></tr>
+      <tr><td>H.B. 185 (2022)<br><span style="font-size:0.78rem; color:var(--ink-soft);">content-only &mdash; died</span></td><td>B</td><td>N/A</td><td>N/A</td><td>N/A</td><td>B</td><td><strong>B&minus;</strong></td></tr>
+      <tr><td>H.B. 408 (2025)<br><span style="font-size:0.78rem; color:var(--ink-soft);">content-only &mdash; died</span></td><td>B</td><td>B&minus;</td><td>B</td><td>N/A</td><td>B</td><td><strong>B</strong></td></tr>
+    </table>
+
+    <h3>Why each grade</h3>
+    <div class="bill-grid">
+      <div class="bill-card tighten">
+        <span class="bill-tag">D overall</span>
+        <h4>H.B. 119 (2019)</h4>
+        <p>Sets a substantially higher, land-use-specific bar than any other category of local law, and does so for exactly the kind of large development fight (transit, mall redevelopment) where residents most often reach for a referendum. The rules themselves are public, but the VPA distribution requirement is technical enough that it functions as a soft barrier in practice, not just a threshold number.</p>
+      </div>
+      <div class="bill-card died">
+        <span class="bill-tag">C overall</span>
+        <h4>H.B. 218 (2022)</h4>
+        <p>A wash: electronic signature-gathering genuinely eases collection, but tighter signer eligibility and expanded public posting of signer identity work the other way &mdash; the latter risks a chilling effect on people who don't want their name publicly tied to opposing a powerful local developer or official.</p>
+      </div>
+      <div class="bill-card tighten">
+        <span class="bill-tag">C&minus; overall</span>
+        <h4>H.B. 38 (2023)</h4>
+        <p>The 10-day hearing notice is a real, if minor, transparency gain. But its packet-binding formalization is the same rule that, per the Summit County case in the companion piece, threw out a majority of otherwise-valid signatures over a formatting issue unrelated to whether the signers were real, registered voters.</p>
+      </div>
+      <div class="bill-card tighten">
+        <span class="bill-tag">D overall</span>
+        <h4>S.B. 199 (2023)</h4>
+        <p>Removes the referendum check entirely for a category of land-use law passed by supermajority &mdash; not a transparency problem (hearings still happen) but a direct removal of the public's final say, aimed, per the sponsor's own stated reasoning, at referendums used against developers specifically.</p>
+      </div>
+      <div class="bill-card died">
+        <span class="bill-tag">B overall &middot; content-only</span>
+        <h4>H.B. 120 (2006) &amp; S.B. 66 (2013)</h4>
+        <p>Would have stayed a challenged local law while its referendum was pending, instead of letting it take effect regardless &mdash; the single most protective fix in this whole record for making a referendum's outcome actually matter. Both died on procedural floor moves rather than a recorded vote on the substance.</p>
+      </div>
+      <div class="bill-card died">
+        <span class="bill-tag">B&minus; overall &middot; content-only</span>
+        <h4>H.B. 185 (2022)</h4>
+        <p>Would have partially reversed 2019's threshold hike. A real, if partial, restoration of public leverage &mdash; killed by the House striking its own enacting clause rather than a floor vote on the merits.</p>
+      </div>
+      <div class="bill-card died">
+        <span class="bill-tag">B overall &middot; content-only, died</span>
+        <h4>H.B. 408 (2025)</h4>
+        <p>Would have created a genuinely new referendum right over school-board tax and legislative decisions where none existed &mdash; the only bill in this record that would have expanded rather than narrowed the public's reach. But its own text (confirmed directly against the bill, Section 7) also built in a supermajority carve-out: a school board vote of 4-of-5, 5-of-7, or 7-of-9 members in favor would have exempted that tax or law from referendum entirely &mdash; the same immunity device used against the public everywhere else in this record. Passed the House 40-33-2, then died when the Senate struck its own enacting clause on March 7, 2025, the same procedural move that killed H.B. 185 (2022) and S.B. 66 (2013).</p>
+      </div>
+    </div>
+
+    <div class="callout note">
+      <strong>A note on this rubric</strong>
+      These grades assess each bill's structural effect on the public's ability to check a government decision &mdash; not the motives of any sponsor, and not whether the underlying development or policy each bill touched was itself good or bad. A bill can score poorly here while still reflecting a real, defensible policy judgment (for instance, that referendums were slowing needed housing); this rubric doesn't weigh in on that judgment, only on what each bill did to the public's own tools for having a say.
+    </div>
+
+    <h3>What Could Have Helped the Public Instead</h3>
+    <p>Each low-graded bill had a real problem behind it &mdash; slow development timelines, disorganized petition packets, referendums used as a delay tactic. None of that required removing the public's check entirely. Paired here: the problem the bill was responding to, and a narrower fix that would have solved it without taking the vote away.</p>
+
+    <div class="bill-grid">
+      <div class="bill-card tighten">
+        <span class="bill-tag">Problem &rarr; Bill's fix (D)</span>
+        <h4>H.B. 119's land-use carve-out</h4>
+        <p><strong>Problem cited:</strong> large land-use fights (transit, mall redevelopment) were drawing referendum attempts developers saw as unpredictable.</p>
+        <p><strong>What would have helped instead:</strong> keep one uniform signature threshold across all local referendum types, and pair any geographic-distribution requirement (VPA) with a public, address-lookup map showing petition circulators exactly which area a signer counts toward &mdash; so the distribution rule is a real organizing tool, not a hidden trap only lawyers understand.</p>
+      </div>
+      <div class="bill-card tighten">
+        <span class="bill-tag">Problem &rarr; Bill's fix (C)</span>
+        <h4>H.B. 218's signer-data posting</h4>
+        <p><strong>Problem cited:</strong> verifying signatures required some public record of who signed.</p>
+        <p><strong>What would have helped instead:</strong> verify signatures against voter rolls using an internal, non-public match (as several other states do), rather than posting signer identity publicly &mdash; keeping verification intact without exposing residents who sign a petition against a powerful local developer or official to retaliation or a chilling effect.</p>
+      </div>
+      <div class="bill-card tighten">
+        <span class="bill-tag">Problem &rarr; Bill's fix (C&minus;)</span>
+        <h4>H.B. 38's packet-binding rule</h4>
+        <p><strong>Problem cited:</strong> loose or disorganized petition packets made signature verification harder for county clerks.</p>
+        <p><strong>What would have helped instead:</strong> the 10-day hearing notice extension was a genuine improvement and worth keeping on its own. But the binding rule needed a built-in cure period &mdash; giving sponsors a short window to correct a formatting defect before packets are disqualified in bulk, rather than the all-or-nothing outcome that cost Summit County's petition roughly 2,800 otherwise-uncounted signatures.</p>
+      </div>
+      <div class="bill-card tighten">
+        <span class="bill-tag">Problem &rarr; Bill's fix (D)</span>
+        <h4>S.B. 199's immunity extension</h4>
+        <p><strong>Problem cited (per sponsor):</strong> referendums were being "weaponized" to delay or block housing/transit development after a supermajority of the legislative body had already approved it.</p>
+        <p><strong>What would have helped instead:</strong> a faster, time-boxed referendum and court-review process specifically for transit-area land use (so a developer isn't left in limbo for years, as happened in Summit County) &mdash; rather than removing the referendum option itself. Speed and certainty were the stated problem; removing the public's vote was a broader fix than the stated problem required.</p>
+      </div>
+    </div>
+
+    <div class="callout note">
+      <strong>Every one of these ideas already exists in this record — and every one died</strong>
+      H.B. 120/S.B. 66's stay-pending-referendum fix, H.B. 185's threshold rollback, and H.B. 408's new school-board referendum right (even with its own carve-out) are all real bills the Legislature already wrote and considered. None needed to be invented for this piece. All four died, three of them via the same procedural move: a chamber striking its own enacting clause rather than holding a recorded floor vote on the substance. Reviving any of them &mdash; or extending H.B. 408's model to other tax-and-spend bodies, like CRA/RDA boards, that currently sit outside ordinary referendum reach &mdash; would not require new policy invention, just a different outcome the next time one comes up for a vote.
+    </div>
+  </section>
+
+  <section id="timeline">
+    <h2>8. Full Timeline</h2>
+    <ul class="timeline">
+      <li><span class="date">1900</span>Utah constitutional amendment creates the citizen referendum right, including the two-thirds-vote immunity provision, still in force today.</li>
+      <li class="died"><span class="date">2006</span>H.B. 120 (would stay a referred law pending the vote) dies 27-46 on the House floor.</li>
+      <li class="died"><span class="date">2013</span>S.B. 66 (same fix) passes the Senate 27-1, then dies when the House strikes its enacting clause.</li>
+      <li class="tighten"><span class="date">2019</span>H.B. 119 overhauls local referendum law: switches to an "active voters" base, creates a separate higher threshold for land-use referendums, and creates the VPA geographic-distribution requirement.</li>
+      <li class="tighten"><span class="date">2022</span>H.B. 218 (originally "Citizen Petition Amendments") passes House committee 10-0-0 and Senate committee 5-0-2 with only supportive testimony, then the full House 68-0-7 and Senate 28-0-1: adds electronic signature-gathering but tightens signer eligibility and expands public posting of signer data.</li>
+      <li class="died"><span class="date">2022</span>H.B. 185 (would lower the 2019 thresholds) dies when the House strikes its own enacting clause.</li>
+      <li class="tighten"><span class="date">2023</span>H.B. 38 lengthens hearing-notice requirements and formalizes petition-packet procedure.</li>
+      <li class="tighten"><span class="date">2023</span>S.B. 199 extends a version of two-thirds immunity to transit area land use law at the local level.</li>
+      <li class="died"><span class="date">March 2025</span>Utah AG charges 11 circulators, at least five of whom worked for Gathering Inc., with forgery and fraud-related counts tied to 2024 primary candidate petitions. Gathering Inc.&rsquo;s 2024 clients included Gov. Cox&rsquo;s campaign.</li>
+      <li class="died"><span class="date">Feb. 2026</span>Utah County Clerk Aaron Davidson flags what he calls the most extensive signature fraud he's seen in the Patriot Grassroots-run Prop 4 repeal effort; the campaign misses its Feb. 15 deadline well short of the required signatures.</li>
+      <li class="died"><span class="date">2025</span>H.B. 408 (would create a new referendum right over school-board tax decisions, with its own carve-out) clears House committee 7-3-3 on Feb. 19 over opposition testimony from Lexi Cunningham (Executive Director of both the Utah School Superintendents Association and the Utah School Boards Association) and Granite School District Superintendent Ben Horsley. Passes the full House 40-33-2 on Feb. 25. In Senate committee on March 3, Horsley again testifies against it, joined this time by residents and Utah Eagle Forum members testifying in favor; the committee fails to recommend it, 3-4-0. The Senate strikes its own enacting clause on March 7.</li>
+      <li class="tighten"><span class="date">2026</span>Box Elder County's attorney invokes the "administrative vs. legislative" doctrine to reject B.E.A.R.'s referendum against the Stratos/MIDA project &mdash; now on appeal.</li>
+    </ul>
+  </section>
+
+  <section id="amendment-b">
+    <h2>9. 2026: Amendment B on the Ballot</h2>
+    <p>Utah voters will see a constitutional amendment about citizen lawmaking on the Nov. 3, 2026 ballot. It is called <strong>Constitutional Amendment B</strong>. The official ballot question, as certified by Lt. Gov. Deidre Henderson on Aug. 28, 2026, reads:</p>
+    <div class="ballot-q">
+      <span class="bq-label">Constitutional Amendment B &mdash; official ballot wording</span>
+      &ldquo;Shall the Utah Constitution be amended to require that citizen-proposed laws that increase taxes compared to existing law be approved by at least 60% of voters, instead of a simple majority?&rdquo;
+    </div>
+    <p><strong>Where it came from.</strong> The Legislature passed it in 2025 as S.J.R. 2, &ldquo;Proposal to Amend Utah Constitution &ndash; Statewide Initiatives.&rdquo; The primary sponsor was Sen. Lincoln Fillmore. The House sponsor was Rep. Jason B. Kyle. A joint resolution like this does not go to the governor; it goes straight to voters.</p>
+    <p><strong>What it would change.</strong> It amends Article VI, Section 1 of the Utah Constitution &mdash; the same section that holds the referendum right and the two-thirds rule described above. Under the resolution's text, a citizen-proposed law voted on after Nov. 1, 2026 would need at least 60% of the vote, instead of more than half, if it would:</p>
+    <ul>
+      <li>create a new tax;</li>
+      <li>expand an existing tax to cover more items or transactions;</li>
+      <li>raise an existing tax rate; or</li>
+      <li>for property tax, change the rate so it goes down less than it would under current law.</li>
+    </ul>
+    <p>If voters approve it, the resolution says it takes effect Nov. 23, 2026.</p>
+
+    <div class="callout note">
+      <strong>Plainly: this is about initiatives, not referendums</strong>
+      An <em>initiative</em> is when citizens write a new law and put it on the ballot. A <em>referendum</em> &mdash; the subject of this page &mdash; is when citizens ask voters to undo a law the government already passed. Amendment B's text changes only the rule for citizen <em>initiatives</em> (&ldquo;initiated legislation&rdquo;). It does not change how a referendum works or how many votes a referendum needs. It also covers <strong>statewide</strong> initiatives only: the part of Article VI, Section 1 for county, city and town initiatives keeps its simple-majority rule. It is included here because it amends the same section of the constitution and is on the 2026 ballot.
+    </div>
+
+    <p><strong>How it got here.</strong> Per Ballotpedia's summary of the vote record, the Senate passed S.J.R. 2 21&ndash;8 on Feb. 5, 2025, and the House passed it 55&ndash;17 on March 6, 2025. In that coverage, Sen. Fillmore framed the question for voters as &ldquo;How easy do you want it to be to raise taxes on your neighbors,&rdquo; and Sen. Kathleen Riebe, who voted no, called it &ldquo;an onerous threshold for the public to speak.&rdquo; (Final votes confirmed Oct. 1, 2026 from the state&rsquo;s official 2026 amendments document on le.utah.gov: Senate 21&ndash;8&ndash;0, House 55&ndash;17&ndash;3. Dates and floor quotes are from Ballotpedia&rsquo;s coverage.)</p>
+    <p style="font-size:0.9rem; color:var(--ink-soft);">See Amendment B side by side with every local measure on <a href="https://weber-county-hive.github.io/utah-maps/utah-ballot-measures-2026.html" target="_blank" rel="noopener">MAP 009: What&rsquo;s on Utah&rsquo;s Nov. 3 Ballot</a>. This page takes no position on how to vote on Amendment B. The official ballot wording and the full resolution text are linked in the sources below so readers can read them for themselves.</p>
+
+    <div class="callout note">
+      <strong>Related reading, different subject</strong>
+      H.B. 356 (2025), &ldquo;County Governance Amendments&rdquo; (primary sponsor Rep. Jordan Teuscher, Senate sponsor Sen. Michael McKell; the third substitute was offered by Sen. Brady Brammer), is sometimes mentioned alongside referendum law, but it is not about referendums. It deals with county forms of government &mdash; study committees, optional plans, and how council members are elected. For how it played out in one county, see <a href="uintah-prop-9-form-of-government.html">Uintah County Prop 9: Commission or Council-Manager?</a>
+    </div>
+  </section>
+
+  <section id="signatures" class="sig">
+    <h2>10. Two Kinds of Ballot Signatures</h2>
+    <p class="diagram-caption"><strong>Two paths to the ballot:</strong> candidates and citizens both gather signatures, under different rules.</p>
+    <div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+  C["Candidate<br/>(example: governor)"] --> C1["28,000<br/>signatures"]
+  C1 --> C2["On the<br/>primary ballot"]
+  P["Citizens<br/>(statewide petition)"] --> P1["About 140,748<br/>signatures across<br/>26 of 29 districts"]
+  P1 --> P2["On the<br/>general ballot"]
+  P2 --> P3["Simple majority today;<br/>60% for tax initiatives<br/>if Amendment B passes"]
+</pre></div>
+    <p class="sig-lede">Signatures are how anything gets onto a Utah ballot. Candidates use them to put their own names on the primary ballot. Citizens use them to put a law, or a government decision, to a public vote. The rules are not the same.</p>
+    <div class="sig-bars" role="img" aria-label="A statewide candidate such as governor needs 28,000 signatures. A 2026 statewide citizen petition needs about 140,748.">
+      <div class="srow"><span class="sl">Candidate for governor (to reach the primary)</span><span class="st2"><span class="sf c" style="width:19.9%"></span></span><span class="sv">28,000</span></div>
+      <div class="srow"><span class="sl">Statewide citizen petition, 2026</span><span class="st2"><span class="sf p" style="width:100%"></span></span><span class="sv">about 140,748</span></div>
+    </div>
+    <div class="sig-table-wrap"><table class="sig-table">
+      <tr><th></th><th>Candidates</th><th>Citizens</th></tr>
+      <tr><td><b>What the signatures do</b></td><td>Put a candidate on the primary ballot without winning the party convention</td><td>Put a new law (initiative) or a government decision (referendum) to a public vote</td></tr>
+      <tr><td><b>Where the rule came from</b></td><td>S.B. 54 (2014), the Count My Vote compromise</td><td>Utah Constitution, Article VI, plus state statute</td></tr>
+      <tr><td><b>How many, statewide</b></td><td>28,000 for governor</td><td>About 140,748 (8% of active voters), spread across 26 of 29 Senate districts</td></tr>
+      <tr><td><b>Vote needed to win</b></td><td>The most votes in the primary</td><td>A simple majority today. Statewide tax initiatives would need 60% if Amendment B passes.</td></tr>
+    </table></div>
+
+    <h3>The company that gathered the governor's signatures</h3>
+    <ul class="sig-facts">
+      <li><b>Gathering, Inc.</b> was incorporated in 2015 &ldquo;to gather signatures, voter registration and other campaign related activities.&rdquo; Its 2015 articles list Tanner Leatham, <b>Casey Hill</b> and <b>Spencer Stokes</b> as officers, and the current state record lists the same three. Its original registered agent was McCauley &amp; Associates PC.</li>
+      <li><b>Gov. Spencer Cox's 2024 campaign used Gathering, Inc.</b> and turned in more than the 28,000 signatures required. Cox lost the 2024 Republican convention and reached the primary through signatures.</li>
+      <li>In March 2025, the <b>Attorney General's office charged 11 signature gatherers</b> with forgery, communications fraud or violating nomination procedures for petitions circulated January&ndash;March 2024. Charging documents say at least five worked for Gathering, Inc. County clerks flagged the suspect packets during verification; in one case, 84 of 2,243 signatures matched voter records.</li>
+      <li><b>The Attorney General then was Derek Brown,</b> who co-founded the lobbying firm Lincoln Hill Partners with Casey Hill and is a listed director of Lincoln Hill PAC. Lincoln Hill PAC's treasurer, Mike McCauley, runs an accounting firm with the same name as Gathering, Inc.'s original registered agent.</li>
+      <li>After the 2024 primary, <b>Phil Lyman sued</b> over how Cox's signatures were verified, noting that the verifying office belongs to Lt. Gov. Deidre Henderson, Cox's running mate. The <b>State Auditor</b> later reported it was &ldquo;statistically likely&rdquo; Cox had enough valid signatures.</li>
+    </ul>
+    <p class="sig-note">Charges are accusations, not convictions; anyone charged is presumed innocent unless proven guilty. These are documented relationships and dates. The records do not show that any official acted improperly, and the 2025 prosecution went forward. How the records were read: the 2015 Articles of Incorporation from a screenshot of the state filing; the current Utah Division of Corporations record (entity #9637579-0142) from pasted text; news reports as linked. Not yet confirmed: that McCauley &amp; Associates PC is the same firm as Mike McCauley's (the 2015 filing lists it at Gathering's own address, later filings at 420 E. South Temple).</p>
+    <p style="margin:14px 0 0;">See it alongside every Nov. 3 ballot measure on <a href="https://weber-county-hive.github.io/utah-maps/utah-ballot-measures-2026.html" target="_blank" rel="noopener">MAP 009 &rarr;</a></p>
+  </section>
+
+  <section id="people">
+    <h2>People in This Record</h2>
+    <p>The legislators named on this page as bill sponsors. &ldquo;Also in the Hive&rdquo; links only where another Hive page names the same person in the same public role. A blank there means no other Hive page was found, not that there is nothing to find.</p>
+    <div class="table-scroll">
+    <table class="compare">
+      <tr><th>Person</th><th>Role in this record</th><th>Why they're connected</th><th>Also in the Hive</th></tr>
+      <tr><td>Rep. Brad Daw</td><td>Primary sponsor, H.B. 119 (2019)</td><td>Wrote the land-use signature bar and voter participation areas</td><td><a href="https://weber-county-hive.github.io/candidates2026/sd21-brammer-smith-myers-woodfield.html" target="_blank" rel="noopener">SD-21 case file</a> (listed as Rep. Bradley Daw, an officer of Central Utah GOP House PAC)</td></tr>
+      <tr><td>Sen. Curtis Bramble</td><td>Senate sponsor, H.B. 119 (2019)</td><td>Carried H.B. 119 in the Senate</td><td><a href="https://weber-county-hive.github.io/candidates2026/hd27-loubet-oates.html" target="_blank" rel="noopener">HD-27 case file</a> (as primary sponsor of S.B. 231, 2023)</td></tr>
+      <tr><td>Rep. Jordan Teuscher</td><td>Primary sponsor, H.B. 218 (2022); primary sponsor, H.B. 356 (2025)</td><td>Petition-procedure changes; county-governance bill noted as related reading</td><td><a href="https://weber-county-hive.github.io/Transparency/utah-judicial-oversight.html" target="_blank" rel="noopener">Behind the Bench</a>; <a href="https://weber-county-hive.github.io/Unelected-Power/jefferson-moss.html" target="_blank" rel="noopener">Jefferson Moss</a> (Point of the Mountain board co-chair); <a href="https://weber-county-hive.github.io/candidates2026/doers-network.html" target="_blank" rel="noopener">Doers Network</a></td></tr>
+      <tr><td>Sen. Jerry Stevenson</td><td>Senate sponsor, H.B. 218 (2022)</td><td>Carried H.B. 218 in the Senate</td><td><a href="https://weber-county-hive.github.io/candidates2026/sd6-tran-neal.html" target="_blank" rel="noopener">SD-6: Tran vs. Neal</a> (his open seat); <a href="https://weber-county-hive.github.io/Unelected-Power/jed-stevenson.html" target="_blank" rel="noopener">Jed Stevenson</a></td></tr>
+      <tr><td>Rep. Calvin Musselman</td><td>Primary sponsor, H.B. 38 (2023)</td><td>Hearing-notice and packet rules</td><td><a href="https://weber-county-hive.github.io/committees/weber-hive-committee-alpr-oversight.html" target="_blank" rel="noopener">ALPR oversight committees</a> (now Sen. Calvin R. Musselman, SD-4); <a href="https://weber-county-hive.github.io/candidates2026/sd5-koford-hernandez.html" target="_blank" rel="noopener">SD-5 case file</a></td></tr>
+      <tr><td>Sen. David Buxton</td><td>Senate sponsor, H.B. 38 (2023)</td><td>Carried H.B. 38 in the Senate</td><td>Appears only in a vote list on <a href="https://weber-county-hive.github.io/Transparency/weber-hive-bait-and-switch.html" target="_blank" rel="noopener">Bills That Did the Opposite</a></td></tr>
+      <tr><td>Sen. Mike McKell</td><td>Primary sponsor, S.B. 199 (2023); Senate sponsor, H.B. 356 (2025)</td><td>Local two-thirds and unanimous-vote paths</td><td><a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-hb286.html" target="_blank" rel="noopener">H.B. 286, AI Transparency Act</a> (Senate sponsor); <a href="https://weber-county-hive.github.io/candidates2026/sd21-brammer-smith-myers-woodfield.html" target="_blank" rel="noopener">SD-21 case file</a> (PAC treasurer)</td></tr>
+      <tr><td>Rep. Mike Schultz</td><td>House floor sponsor, S.B. 199 (2023), per le.utah.gov</td><td>Carried S.B. 199 in the House</td><td><a href="https://weber-county-hive.github.io/candidates2026/hd12-graff-schultz.html" target="_blank" rel="noopener">HD-12: Graff vs. Schultz</a> (now Speaker of the House)</td></tr>
+      <tr><td>Rep. Adam Robertson</td><td>Primary sponsor, H.B. 185 (2022)</td><td>Would have lowered the 2019 thresholds; died</td><td>None found. (An &ldquo;Adam Robertson&rdquo; on an investment committee in the Jefferson Moss file is a name match only; not confirmed as the same person.)</td></tr>
+      <tr><td>Sen. Stuart Reid</td><td>Primary sponsor, S.B. 66 (2013)</td><td>Stay-pending-referendum fix; died</td><td><a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-good-bills-died.html" target="_blank" rel="noopener">The Ones That Didn't Make It</a> (same bill)</td></tr>
+      <tr><td>Rep. Don Ipson</td><td>House floor sponsor, S.B. 66 (2013), per le.utah.gov</td><td>Carried S.B. 66 in the House</td><td><a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-good-bills-died.html" target="_blank" rel="noopener">The Ones That Didn't Make It</a> (same bill)</td></tr>
+      <tr><td>Rep. David Hogue</td><td>Primary sponsor, H.B. 120 (2006)</td><td>Same fix as S.B. 66; died</td><td><a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-good-bills-died.html" target="_blank" rel="noopener">The Ones That Didn't Make It</a> (same bill)</td></tr>
+      <tr><td>Rep. Rex Shipp</td><td>Primary sponsor, H.B. 408 (2025)</td><td>School-board referendum bill; died</td><td><a href="https://weber-county-hive.github.io/Bill-Tracker/water-land-property-rights-local-power-bills.html" target="_blank" rel="noopener">Water, Land, Property Rights &amp; Local Power</a> (H.B. 125, 2026)</td></tr>
+      <tr><td>Sen. Brady Brammer</td><td>Senate sponsor, H.B. 408 (2025); offered H.B. 356's third substitute</td><td>School-board referendum bill; county-governance bill</td><td><a href="https://weber-county-hive.github.io/candidates2026/sd21-brammer-smith-myers-woodfield.html" target="_blank" rel="noopener">SD-21 case file</a> (his 2026 race); <a href="https://weber-county-hive.github.io/Transparency/utah-judicial-oversight.html" target="_blank" rel="noopener">Behind the Bench</a></td></tr>
+      <tr><td>Sen. Lincoln Fillmore</td><td>Primary sponsor, S.J.R. 2 (2025) &mdash; Amendment B</td><td>Wrote the 60% rule for tax initiatives</td><td><a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-hb37.html" target="_blank" rel="noopener">The Threshold Nobody Noticed</a> (H.B. 37 floor sponsor)</td></tr>
+      <tr><td>Rep. Jason B. Kyle</td><td>House sponsor, S.J.R. 2 (2025) &mdash; Amendment B</td><td>Carried Amendment B in the House</td><td><a href="https://weber-county-hive.github.io/candidates2026/jason-kyle-hd8.html" target="_blank" rel="noopener">Kyle vs. James vs. Shelton</a> (his 2026 race)</td></tr>
+    </table>
+    </div>
+    <p style="font-size:0.85rem; color:var(--ink-soft);">Public officials named elsewhere on this page in non-sponsor roles (for example, county clerks, testifying superintendents, and people charged in the signature cases) are not listed here. Charged is not convicted.</p>
+  </section>
+
+  <section id="questions">
+    <h2>Questions Worth Asking</h2>
+    <ul class="qwa-list">
+      <li><b>Ask legislative sponsors (Daw, McKell, Musselman):</b> what specific referendum fights motivated each bill, beyond the general "housing/development friction" framing given in press coverage at the time?</li>
+      <li><b>Ask your county clerk's elections office:</b> whether the H.B. 38 (2023) packet-binding procedure has produced other disqualifications beyond the Summit County case, in the two years since.</li>
+      <li><b>Ask the city recorder or county clerk of any municipality that has used the unanimous-vote path under 20A-7-602.8:</b> whether any council has knowingly used a unanimous vote on a land-use item specifically to foreclose a referendum, versus reaching unanimity for unrelated reasons.</li>
+      <li><b>Ask your own state representative and state senator (find them at le.utah.gov):</b> whether reviving H.B. 120/S.B. 66's stay-pending-referendum fix, or H.B. 185's threshold rollback, has been considered again since each died.</li>
+      <li><b>Ask the Lieutenant Governor's Office of Elections (vote.utah.gov):</b> where to find the official voter information pamphlet text for Amendment B, including the arguments for and against, so you can read both sides before voting.</li>
+      <li><b>Ask your county clerk:</b> when a referendum against a local land-use law is filed, how the office decides whether the law was passed by a unanimous or two-thirds vote that blocks a referendum under 20A-7-602.8 &mdash; and whether that decision is posted publicly.</li>
+      <li><b>Ask the Utah AG's office and Utah County Attorney:</b> for current docket status on the Gathering Inc. and Patriot Grassroots-linked cases, and whether any defendant has been convicted rather than merely charged.</li>
+    </ul>
+  </section>
+
+  <div class="callout good" id="send-updates">
+    <strong>Have an update? Send it to us</strong>
+    Know about a referendum in your city or county, or have news on one listed here &mdash; a petition filing, a signature count, a clerk's notice, or a court ruling? Email <a href="mailto:webercountyhive@gmail.com">webercountyhive@gmail.com</a>. The Hive reports from public records, so please include a link to the document or a copy of it if you have one.
+  </div>
+
+  <details class="sources" id="sources">
+    <summary>Sources (click to expand)</summary>
+    <ol>
+      <li>Utah Division of Corporations: Gathering, Inc. Articles of Incorporation (signed Nov. 19, 2015) and current entity record #9637579-0142 (search by name) <a href="https://businessregistration.utah.gov/" target="_blank" rel="noopener">Link</a></li>
+      <li>Utah News Dispatch, March 2025: Eleven people charged with forging signatures (Cox campaign hired Gathering Inc.; 28,000 requirement) <a href="https://utahnewsdispatch.com/?p=9224" target="_blank" rel="noopener">Link</a></li>
+      <li>KSL, March 2025: 11 signature gatherers charged <a href="https://www.ksl.com/article/51271985/11-signature-gatherers-charged-with-forging-signatures-for-utah-candidates" target="_blank" rel="noopener">Link</a></li>
+      <li>Utah News Dispatch, Aug. 2, 2024: Lyman lawsuit over primary results <a href="https://utahnewsdispatch.com/2024/08/02/lyman-lawsuit-annul-primary-results-remove-cox-henderson/" target="_blank" rel="noopener">Link</a></li>
+      <li>Office of the State Auditor letter on Cox signature verification (2024) <a href="https://vote.utah.gov/wp-content/uploads/2024/09/Letter-from-Office-of-the-State-Auditor.pdf" target="_blank" rel="noopener">Link</a></li>
+      <li>Ballotpedia News: 2026 statewide petition threshold of 140,748 signatures <a href="https://news.ballotpedia.org/2025/05/13/referendum-to-repeal-utah-bill-prohibiting-public-sector-collective-bargaining-clears-signature-threshold-for-2026-ballot/" target="_blank" rel="noopener">Link</a></li>
+      <li>Utah News Dispatch: S.B. 54 still stands after 10 years <a href="https://utahnewsdispatch.com/?p=7973" target="_blank" rel="noopener">Link</a></li>
+      <li>2026 Proposed Constitutional Amendments (H.J.R. 10 and S.J.R. 2 full text and final votes), le.utah.gov. <a href="https://le.utah.gov/constitutionalAmendment/2026/constitutionalamendments.pdf" target="_blank" rel="noopener">Link</a></li>
+      <li>H.B. 119 (2019), "Initiatives, Referenda, and Other Political Activities," primary sponsor Rep. Brad M. Daw, Senate sponsor Sen. Curtis S. Bramble &mdash; <a href="https://le.utah.gov/~2019/bills/static/HB0119.html" target="_blank" rel="noopener">bill page and status</a>; <a href="https://le.utah.gov/~2019/bills/hbillint/HB0119S04.htm" target="_blank" rel="noopener">4th substitute text</a>. Final vote history (House 3rd reading 64-7-4, 3/5/2019; Senate 2nd/3rd reading 21-1-7, 3/14/2019; House concurrence 59-12-4, 3/14/2019; signed 3/25/2019; effective 5/14/2019; Session Laws of Utah 2019, Chapter 203).</li>
+      <li>Deseret News, "Utah bill setting new requirements for local referendums passes House committee," March 4, 2019 (no public link located).</li>
+      <li>H.B. 185 (2022), "Initiative and Referendum Amendments," Rep. Adam Robertson &mdash; <a href="https://le.utah.gov/~2022/bills/static/HB0185.html" target="_blank" rel="noopener">le.utah.gov bill page</a> (enacting clause struck, 3/4/2022).</li>
+      <li>H.B. 38 (2023), "Initiative and Referendum Modifications," Rep. Calvin R. Musselman / Sen. David G. Buxton &mdash; <a href="https://le.utah.gov/~2023/bills/hbillenr/HB0038.pdf" target="_blank" rel="noopener">enrolled text</a>; <a href="https://le.utah.gov/~2023/bills/static/HB0038.html" target="_blank" rel="noopener">bill page and status</a>.</li>
+      <li>H.B. 218 (2022), originally "Citizen Petition Amendments," enrolled as "Ballot Measure Amendments," Rep. Jordan D. Teuscher / Sen. Jerry W. Stevenson &mdash; <a href="https://le.utah.gov/~2022/bills/hbillenr/HB0218.pdf" target="_blank" rel="noopener">enrolled text</a>; <a href="https://le.utah.gov/~2022/bills/static/HB0218.html" target="_blank" rel="noopener">bill status/vote history</a> (House 68-0-7, 2/15/2022; Senate 28-0-1, 3/2/2022; House concurrence 71-0-4, 3/3/2022; signed 3/24/2022; Chapter 325, eff. 1/1/2023); <a href="https://le.utah.gov/interim/2022/html/00001759.htm" target="_blank" rel="noopener">House Political Subdivisions Committee minutes, Feb. 11, 2022</a> (10-0-0); <a href="https://le.utah.gov/interim/2022/html/00002006.htm" target="_blank" rel="noopener">Senate Government Operations and Political Subdivisions Committee minutes, Feb. 28, 2022</a> (5-0-2).</li>
+      <li>S.B. 199 (2023), "Local Land Use Amendments," Sen. Michael K. McKell (House floor sponsor Rep. Mike Schultz) &mdash; <a href="https://le.utah.gov/~2023/bills/static/SB0199.html" target="_blank" rel="noopener">le.utah.gov bill page</a>; Deseret News, Feb. 14, 2023 (no public link located); Utah Code 20A-7-602.8, "Referability to voters of local land use law," current text &mdash; <a href="https://le.utah.gov/xcode/Title20A/Chapter7/C20A-7-P6_1800010118000101.pdf" target="_blank" rel="noopener">le.utah.gov (Part 6 PDF)</a> and <a href="https://codes.findlaw.com/ut/title-20a-election-code/ut-code-sect-20a-7-602-8/" target="_blank" rel="noopener">FindLaw copy</a>.</li>
+      <li>H.B. 408 S2 (2025), "School Board Referendum Amendments," Rep. Rex Shipp / Sen. Brady Brammer &mdash; <a href="https://le.utah.gov/~2025/bills/static/HB0408.html" target="_blank" rel="noopener">le.utah.gov bill page</a>, including House Government Operations Committee vote (7-3-3, 2/19/2025), House floor passage (40-33-2, 2/25/2025), Senate Government Operations and Political Subdivisions Committee recommendation failure (3-4-0, 3/3/2025), and Senate striking the enacting clause (3/7/2025).</li>
+      <li>House Government Operations Standing Committee minutes, Feb. 19, 2025, le.utah.gov (no direct public link located; listed under the H.B. 408 bill page above).</li>
+      <li>Senate Government Operations and Political Subdivisions Standing Committee minutes, March 3, 2025, le.utah.gov (no direct public link located; listed under the H.B. 408 bill page above).</li>
+      <li>H.B. 120 (2006), "Election and Referendum Procedures," Rep. David L. Hogue &mdash; <a href="https://le.utah.gov/~2006/bills/static/HB0120.html" target="_blank" rel="noopener">bill page</a> (failed House 3rd reading 27-46-2, 2/13/2006). S.B. 66 (2013), "Referendum Revisions," Sen. Stuart C. Reid / Rep. Don L. Ipson &mdash; <a href="https://le.utah.gov/~2013/bills/static/SB0066.html" target="_blank" rel="noopener">bill page</a> (House struck enacting clause, 3/14/2013).</li>
+      <li>Utah Constitution, Article VI, Section 1 (referendum right and two-thirds immunity) &mdash; <a href="https://le.utah.gov/xcode/ArticleVI/UC_AVI_S1_1800010118000101.pdf" target="_blank" rel="noopener">le.utah.gov current text (PDF)</a>.</li>
+      <li><a href="https://hallapproved.com/ut/cases/supreme/2008/2514595/" target="_blank" rel="noopener"><em>Sevier Power Co. v. Board of Sevier County Commissioners</em>, 2008 UT 72</a>; <em>Carter v. Lehi City</em>, 2012 UT 2 (no public link located); <a href="https://hallapproved.com/ut/cases/supreme/2013/5344454/" target="_blank" rel="noopener"><em>Krejci v. Saratoga Springs</em>, 2013 UT 74</a>; <a href="https://realestatepropertylawopinions.justia.com/2018/11/29/baker-v-carlson" target="_blank" rel="noopener"><em>Baker v. Carlson</em>, 2018 UT 59 (Justia summary)</a>.</li>
+      <li>Ballotpedia, <a href="https://ballotpedia.org/History_of_Initiative_%26_Referendum_in_Utah" target="_blank" rel="noopener">"History of Initiative &amp; Referendum in Utah"</a> and <a href="https://ballotpedia.org/Signature_requirements_for_ballot_measures_in_Utah" target="_blank" rel="noopener">"Signature requirements for ballot measures in Utah."</a></li>
+      <li>Companion pieces, this docket: <a href="pid-mida-referendums-blocked.html">Two Referendums, Zero Votes</a>, <a href="eagle-mountain-tax-referendum-2.html">Eagle Mountain's Second Tax Referendum</a>, <a href="uintah-prop-9-form-of-government.html">Uintah County Prop 9: Commission or Council-Manager?</a></li>
+      <li>Utah Attorney General's Office, charges filed 3/10/2025 against 11 defendants (Gathering Inc. circulators); Deseret News, <a href="https://www.yahoo.com/news/utah-attorney-general-office-charges-012334352.html" target="_blank" rel="noopener">"Utah Attorney General's Office charges 11 defendants in signature gathering case"</a> (Yahoo News syndication); KSL.com, <a href="https://www.ksl.com/article/51271985/11-signature-gatherers-charged-with-forging-signatures-for-utah-candidates" target="_blank" rel="noopener">"11 signature gatherers charged with forging signatures for Utah candidates," 3/10/2025</a>.</li>
+      <li>KSL.com, <a href="https://www.ksl.com/article/news/utah/police-and-courts/13-charged-in-fraud-case-tied-to-2nd-district-election-signature-gathering/50972648" target="_blank" rel="noopener">"13 charged in fraud case tied to 2nd District election signature-gathering," 4/5/2024</a> (Battleground USA LLC / Daniel Jacob McWilliams).</li>
+      <li>Utah News Dispatch, <a href="https://utahnewsdispatch.com/2026/02/05/signature-gathering-utah-fight-over-prop-4-is-getting-ugly/" target="_blank" rel="noopener">"Misleading tactics, fraudulent signatures, assaults: Utah's fight over Prop 4 is getting ugly," Feb. 5, 2026</a>; KSL.com, "Utah County investigating potential signature fraud as Prop 4 repeal deadline looms" (no public link located); Salt Lake Tribune, <a href="https://www.sltrib.com/news/politics/2026/02/07/prop-4-utah-county-clerk-alleges" target="_blank" rel="noopener">Utah County clerk alleges fraudulent signatures in Prop 4 repeal effort, 2/7/2026</a>; Democracy Docket, <a href="https://www.democracydocket.com/news-alerts/utah-gop-push-to-repeal-anti-gerrymander-law-falters-amid-fraud-allegations/" target="_blank" rel="noopener">"Utah GOP push to repeal anti-gerrymander law falters amid fraud allegations tied to firm backed by Trump Jr.," 2/9/2026</a> (Patriot Grassroots).</li>
+      <li>Lt. Gov. Deidre M. Henderson, <a href="https://www.utah.gov/pmn/files/1482453.pdf" target="_blank" rel="noopener">2026 General Election Certification, Aug. 28, 2026</a> (Utah Public Notice Website copy) &mdash; source of the official Amendment B ballot wording.</li>
+      <li>Utah Legislature, <a href="https://le.utah.gov/constitutionalAmendment/2026/constitutionalamendments.pdf" target="_blank" rel="noopener">2026 proposed constitutional amendments</a> (Amendment A = H.J.R. 10; Amendment B = S.J.R. 2).</li>
+      <li>S.J.R. 2 (2025), "Proposal to Amend Utah Constitution &ndash; Statewide Initiatives," primary sponsor Sen. Lincoln Fillmore, House sponsor Rep. Jason B. Kyle &mdash; <a href="https://le.utah.gov/Session/2025/bills/enrolled/SJR002.pdf" target="_blank" rel="noopener">enrolled text</a>; <a href="https://le.utah.gov/~2025/bills/static/SJR002.html" target="_blank" rel="noopener">bill page</a>.</li>
+      <li>Ballotpedia News, <a href="https://news.ballotpedia.org/2025/03/10/utah-legislature-refers-a-constitutional-amendment-to-2026-ballot-that-would-require-initiatives-making-tax-changes-to-receive-a-60-vote-of-approval/" target="_blank" rel="noopener">"Utah Legislature refers a constitutional amendment to 2026 ballot that would require initiatives making tax changes to receive a 60% vote of approval," March 10, 2025</a> (S.J.R. 2 vote counts and floor quotes).</li>
+      <li>H.B. 356 (2025), "County Governance Amendments," primary sponsor Rep. Jordan D. Teuscher, Senate sponsor Sen. Michael K. McKell &mdash; <a href="https://le.utah.gov/Session/2025/bills/enrolled/HB0356.pdf" target="_blank" rel="noopener">enrolled text</a>; <a href="https://le.utah.gov/Session/2025/bills/introduced/HB0356S03.pdf" target="_blank" rel="noopener">3rd substitute, offered by Sen. Brady Brammer</a>.</li>
+      <li>Cross-references in "People in this record": Weber County Hive pages on weber-county-hive.github.io (candidates2026, Bill-Tracker, Transparency, Unelected-Power, committees), each linked in the table above.</li>
+    </ol>
+  </details>
+
+</main>
+
+<footer class="site-footer">
+  The Weber County Hive &middot; Referendum Docket &middot; Reporting from public records only &mdash; no outreach to referendum subjects.<br>
+  <a href="index.html">Back to all referendums tracked</a>
+</footer>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: false, theme: 'base',
+    flowchart: { htmlLabels: true, useMaxWidth: false, diagramPadding: 12, nodeSpacing: 30, rankSpacing: 40, wrappingWidth: 300 },
+    themeVariables: { primaryColor: '#fbf9f3', primaryTextColor: '#1c1c1c', primaryBorderColor: '#16273f', lineColor: '#16273f', fontFamily: '"Source Sans 3", Arial, sans-serif', fontSize: '22px' } });
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function(){ mermaid.run({ querySelector: 'pre.mermaid' }); });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="utah-geo.js"></script>
+<script>
+(function(){
+  if (!window.L || typeof addUtahOutlines !== 'function') return;
+  var PINS = [{"n": "Eagle Mountain", "lat": 40.314, "lng": -112.006, "t": "Eagle Mountain tax referendum (not on the Nov. 3 ballot)", "u": "eagle-mountain-tax-referendum-2.html"}, {"n": "Roy", "lat": 41.161, "lng": -112.026, "t": "Roy Prop 10 (on the Nov. 3 sample ballot)", "u": "roy-prop-10-tax-referendum.html"}, {"n": "Vernal", "lat": 40.455, "lng": -109.528, "t": "Uintah County Prop 9 (on the Nov. 3 ballot)", "u": "uintah-prop-9-form-of-government.html"}, {"n": "Brigham City", "lat": 41.51, "lng": -112.015, "t": "Box Elder County: Stratos referendum (in court)", "u": "pid-mida-referendums-blocked.html#box-elder"}, {"n": "Park City", "lat": 40.723, "lng": -111.541, "t": "Summit County: Kimball Junction referendum (closed)", "u": "pid-mida-referendums-blocked.html#summit-county"}];
+  var map = L.map('locmap', { scrollWheelZoom: false, zoomSnap: 0.25 });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+  addUtahOutlines(map, { highlightCounty: null, alwaysLabel: ["Eagle Mountain", "Roy", "Vernal", "Brigham City", "Park City"] });
+  var pts = [];
+  PINS.forEach(function(p){
+    var m = L.marker([p.lat, p.lng], { icon: L.divIcon({ className: 'loc-pin', html: '<span></span>', iconSize: null }), title: p.t }).addTo(map);
+    m.bindPopup('<b>' + p.t + '</b><br><a href="' + p.u + '">Open the case file</a>');
+    pts.push([p.lat, p.lng]);
+  });
+  var hi = null;
+  if (hi) {
+    var f = UTAH_GEO.counties.features.filter(function(x){ return x.properties.n === hi; })[0];
+    map.fitBounds(L.geoJSON(f).getBounds(), { padding: [20, 20] });
+  } else if (pts.length > 1) {
+    map.fitBounds(L.latLngBounds(pts).pad(0.35));
+  }
+  if (PINS.length === 5) map.fitBounds(L.geoJSON(UTAH_GEO.state).getBounds());
+})();
+</script>
+<script>
+document.querySelectorAll('table.compare').forEach(function(t){
+  var head = t.querySelector('tr');
+  if (!head || !head.querySelector('th')) return;
+  var labels = [].map.call(head.children, function(c){ return c.textContent.trim(); });
+  [].forEach.call(t.querySelectorAll('tr'), function(r, i){ if (i === 0) return;
+    [].forEach.call(r.children, function(c, j){ if (labels[j]) c.setAttribute('data-label', labels[j]); }); });
+});
+</script>
+</body>
+</html>

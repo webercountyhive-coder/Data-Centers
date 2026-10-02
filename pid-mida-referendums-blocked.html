@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Referendums, Zero Votes: How Utah's Biggest Development Deals Have Escaped the Ballot</title>
+<meta name="description" content="Citizen referendums against a MIDA-approved data center in Box Elder County and a state-overridden rezone in Summit County never reached voters — not because they lost, but because of procedural rulings and a legislative override.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16273f; --navy-2: #1f3856; --manila: #f4f0e6; --paper: #fbf9f3;
+    --ink: #1c1c1c; --ink-soft: #4a4a44; --rust: #a8431f; --amber: #c8912b; --line: #d8d0bc;
+    --good: #3d6b46; --bad: #a8431f; --unclear: #8a7a3d;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--manila); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; line-height: 1.6; }
+  a { color: var(--navy-2); }
+  .topbar { background: var(--navy); color: var(--manila); font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; padding: 8px 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .topbar a { color: var(--manila); text-decoration: none; opacity: 0.85; }
+  .topbar a:hover { opacity: 1; text-decoration: underline; }
+  header.masthead { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); color: var(--manila); padding: 40px 20px 32px; }
+  .masthead-inner { max-width: 880px; margin: 0 auto; }
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; color: var(--amber); margin-bottom: 12px; }
+  h1 { font-family: 'Source Serif 4', serif; font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; margin: 0 0 14px; line-height: 1.2; }
+  .dek { font-family: 'Source Sans 3', sans-serif; font-size: 1.05rem; color: #d8dde5; max-width: 700px; margin: 0 0 18px; }
+  .meta-row { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: #b9c2cf; display: flex; flex-wrap: wrap; gap: 14px; }
+  .pub-date { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: #9fb0c4; margin-top: 10px; }
+  nav.jump { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; overflow-x: auto; white-space: nowrap; }
+  nav.jump .inner { max-width: 880px; margin: 0 auto; padding: 10px 20px; display: flex; gap: 18px; }
+  nav.jump a { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--navy); text-decoration: none; }
+  nav.jump a:hover { color: var(--rust); }
+  main { max-width: 880px; margin: 0 auto; padding: 32px 20px 60px; }
+  .newhere { background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--amber); padding: 18px 20px; margin: 0 0 32px; font-size: 0.98rem; }
+  .newhere strong { font-family: 'Source Sans 3', sans-serif; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--rust); display: block; margin-bottom: 8px; }
+  section { margin-bottom: 44px; }
+  h2 { font-family: 'Source Serif 4', serif; font-size: 1.5rem; border-bottom: 2px solid var(--navy); padding-bottom: 8px; margin: 0 0 18px; }
+  h3 { font-family: 'Source Sans 3', sans-serif; font-size: 1.05rem; color: var(--navy); margin: 24px 0 10px; }
+  p { margin: 0 0 14px; }
+  .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 20px 0; }
+  .stat-cell { background: var(--paper); border: 1px solid var(--line); padding: 14px 12px; text-align: center; }
+  .stat-cell .num { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 1.25rem; color: var(--rust); display: block; }
+  .stat-cell .lbl { font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); }
+  .quote { font-style: italic; border-left: 3px solid var(--navy); padding: 4px 0 4px 18px; margin: 16px 0; color: var(--ink-soft); }
+  .quote cite { display: block; font-style: normal; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; margin-top: 6px; color: var(--ink-soft); }
+  .callout { padding: 14px 18px; margin: 16px 0; border-left: 4px solid var(--rust); background: #fbeee6; font-size: 0.95rem; }
+  .callout.finding { border-left-color: var(--bad); background: #fbeee6; }
+  .callout.note { border-left-color: var(--unclear); background: #f7f1de; }
+  .callout.good { border-left-color: var(--good); background: #eaf1ea; }
+  .callout strong { display: block; font-family: 'Source Sans 3', sans-serif; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.06em; margin-bottom: 6px; }
+  table.compare { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+  table.compare th, table.compare td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+  table.compare th { background: var(--navy); color: var(--manila); font-family: 'Source Sans 3', sans-serif; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.compare tr:nth-child(even) td { background: var(--paper); }
+  .status-badge { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
+  .status-confirmed { background: #eaf1ea; color: var(--good); border: 1px solid var(--good); }
+  .status-disputed { background: #fbeee6; color: var(--bad); border: 1px solid var(--bad); }
+  .status-unverified { background: #f7f1de; color: var(--unclear); border: 1px solid var(--unclear); }
+  .timeline { list-style: none; padding: 0; margin: 16px 0; }
+  .timeline li { padding: 10px 0 10px 20px; border-left: 2px solid var(--line); position: relative; margin-left: 6px; }
+  .timeline li::before { content: ''; position: absolute; left: -6px; top: 16px; width: 10px; height: 10px; border-radius: 50%; background: var(--navy); }
+  .timeline li.blocked::before { background: var(--bad); }
+  .timeline .date { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--rust); display: block; margin-bottom: 3px; }
+  .flip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 16px 0; }
+  .flip-card { perspective: 1000px; height: 180px; cursor: pointer; }
+  .flip-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.5s; transform-style: preserve-3d; }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 16px; border: 1px solid var(--navy); font-family: 'Source Sans 3', sans-serif; overflow-y: auto; }
+  .flip-front { background: var(--navy); color: var(--manila); font-weight: 600; font-size: 1.05rem; }
+  .flip-back { background: var(--paper); color: var(--ink); transform: rotateY(180deg); font-size: 0.9rem; line-height: 1.5; }
+  details.sources { margin-top: 10px; }
+  details.sources summary { cursor: pointer; font-family: 'Source Sans 3', sans-serif; font-weight: 600; color: var(--navy); }
+  details.sources ol { padding-left: 20px; font-size: 0.86rem; }
+  details.sources li { margin-bottom: 10px; }
+  .qwa-list { list-style: none; padding: 0; }
+  .qwa-list li { background: var(--paper); border: 1px solid var(--line); padding: 12px 16px; margin-bottom: 10px; font-size: 0.95rem; }
+  .qwa-list b { color: var(--navy-2); }
+  footer.site-footer { background: var(--navy); color: #b9c2cf; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-align: center; padding: 24px 20px; }
+  footer.site-footer a { color: var(--amber); }
+
+  .chart-block { margin: 20px 0 28px; }
+  .chart-title { font-family: 'Source Sans 3', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--navy); margin-bottom: 12px; }
+  .bar-row { display: grid; grid-template-columns: 190px 1fr 100px; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .bar-row .bar-label { font-family: 'Source Sans 3', sans-serif; font-size: 0.82rem; color: var(--ink-soft); text-align: right; }
+  .bar-track { background: var(--paper); border: 1px solid var(--line); height: 26px; position: relative; }
+  .bar-fill { height: 100%; display: flex; align-items: center; }
+  .bar-row .bar-value { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+
+  /* funnel chart */
+  .funnel { margin: 16px 0; }
+  .funnel-step { display: grid; grid-template-columns: 1fr 90px; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .funnel-bar { height: 38px; display: flex; align-items: center; padding: 0 14px; font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; color: #fff; }
+  .funnel-val { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; font-weight: 600; text-align: right; }
+  .funnel-arrow { text-align: center; color: var(--ink-soft); font-size: 0.8rem; margin: 2px 0; }
+
+  .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+  .tier-card { border: 1px solid var(--line); border-top: 6px solid var(--unclear); background: var(--paper); padding: 16px 18px; }
+  .tier-card h4 { margin: 0 0 8px; font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; color: var(--navy); }
+  .tier-card p { font-size: 0.88rem; margin: 0 0 8px; }
+  .tier-card .tier-eg { font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; color: var(--ink-soft); }
+
+  .mermaid-wrap { background: var(--paper); border: 1px solid var(--line); padding: 16px 10px; margin: 12px 0 20px; text-align: center; }
+  .mermaid-wrap svg{max-width:100%!important;height:auto;display:block;margin:0 auto;}
+  .diagram-caption { font-family: 'Source Sans 3', sans-serif; font-size: 1rem; color: var(--ink-soft); margin: 18px 0 6px; }
+  .people-table td:first-child { font-weight: 600; white-space: nowrap; }
+  .table-scroll { overflow-x: auto; }
+
+  @media (max-width: 640px) {
+    .bar-row { grid-template-columns: 110px 1fr 78px; }
+    .bar-row .bar-label { font-size: 0.72rem; }
+    .funnel-step { grid-template-columns: 1fr 70px; }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  .locator { margin: 0 0 36px; }
+  .locator h2 { font-size: 1.3rem; }
+  #locmap { height: 380px; border: 1px solid var(--line); background: #eef1f4; }
+  .locator .loc-foot { font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; margin-top: 8px; }
+  .county-label{background:none;border:none;}
+  .county-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#14213D;opacity:.7;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
+  .city-label{background:none;border:none;}
+  .city-label.key span{font-weight:600;font-size:11.5px;color:#14213D;}
+  .city-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#4a2f55;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
+  .loc-pin{background:none;border:none;}
+  .loc-pin span{display:block;width:22px;height:22px;border-radius:50%;background:#a8431f;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.5);transform:translate(-50%,-50%);}
+  @media (max-width:640px){ #locmap{height:300px;} }
+</style>
+<style>
+  @media (max-width: 640px) {
+    table.compare, table.compare tbody, table.compare tr, table.compare td { display: block; width: 100%; }
+    table.compare tr:first-child:has(th) { display: none; }
+    table.compare tr { border: 1px solid var(--line); margin-bottom: 12px; background: var(--paper); }
+    table.compare td { border: none; border-bottom: 1px dashed var(--line); }
+    table.compare td[data-label]::before { content: attr(data-label); display: block; font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); margin-bottom: 2px; }
+    table.compare th { display: block; }
+    .timeline-viz { margin-left: 56px; margin-right: 56px; }
+  }
+  pre.mermaid, .mermaid-wrap .nodeLabel, .mermaid-wrap .edgeLabel, .mermaid-wrap foreignObject div { font-family: 'Source Sans 3', Arial, sans-serif !important; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>THE WEBER COUNTY HIVE &middot; REFERENDUM DOCKET</span>
+  <a href="index.html">&larr; All referendums tracked</a>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="eyebrow">Box Elder County &amp; Summit County &middot; Statewide Pattern</div>
+    <h1>Two Referendums, Zero Votes: How Utah's Biggest Development Deals Have Escaped the Ballot</h1>
+    <p class="dek">In Box Elder County, a citizen referendum against a MIDA-approved data center never got its signature-gathering window to open. In Summit County, a referendum against a state-overridden rezone gathered signatures &mdash; then lost most of them to a binding technicality, and the lawsuit over it was later declared moot after the Legislature stepped in and approved the project anyway. Neither reached a public vote.</p>
+    <div class="meta-row">
+      <span>BOX ELDER: PENDING IN COURT</span>
+      <span>SUMMIT COUNTY: CLOSED, LITIGATION DISMISSED</span>
+    </div>
+    <div class="pub-date">Published Sept. 17, 2026</div>
+    <div class="pub-date">Updated Oct. 1, 2026 &mdash; added a large-print diagram of the referendum path, a &ldquo;People in this record&rdquo; section, the Lt. Governor&rsquo;s listing of the two Summit County filings, and working links for every source.</div>
+  </div>
+</header>
+
+<nav class="jump">
+  <div class="inner">
+    <a href="#new-here">Start Here</a>
+    <a href="#box-elder">Box Elder / Stratos</a>
+    <a href="#summit-county">Summit County / Kimball Junction</a>
+    <a href="#pattern">The Common Pattern</a>
+    <a href="#eagle-mountain">Where Eagle Mountain Fits</a>
+    <a href="#people">People</a>
+    <a href="#questions">Questions</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="flip-grid" id="glossary">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">Administrative vs. Legislative</div>
+        <div class="flip-back">Utah referendum law only allows a public vote on "legislative" acts (setting new policy). A body's own "administrative" acts &mdash; applying existing policy &mdash; generally cannot be referred to voters. Which category a given resolution falls into is often the whole fight.</div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">MIDA</div>
+        <div class="flip-back">Military Installation Development Authority &mdash; a state entity with its own board that can approve project areas and tax-increment structures, sometimes independent of the county or city where the project sits.</div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">HTRZ</div>
+        <div class="flip-back">Housing and Transit Reinvestment Zone &mdash; a state-approved (GOEO) tax-increment tool similar to a CRA/RDA, tied to transit-oriented development.</div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">Mootness</div>
+        <div class="flip-back">A legal doctrine: if the thing being fought over has already been resolved by other means (here, a new state law), a court can dismiss the case as having no remaining practical effect &mdash; without ever ruling on who was right.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newhere" id="new-here">
+    <strong>New Here? The Short Version</strong>
+    <p style="margin:0;">Utah residents have twice tried, in the last two years, to force a public vote on a major tax-increment-financed development &mdash; a data center in Box Elder County and a mixed-use rezone in Summit County. In both cases, the referendum never reached voters. In Box Elder, the county attorney ruled the underlying vote wasn't the kind of decision residents are allowed to refer to the ballot, and that ruling is still working through the courts. In Summit County, organizers gathered signatures, but a majority of their petition packets were disqualified over a binding-format technicality &mdash; and when they sued, the state Legislature passed a separate law approving the same project anyway, so the court dismissed the case as moot before ever reaching the merits. Neither community got to vote on the project itself.</p>
+  </div>
+
+  <section class="locator" id="where">
+    <h2>Where This Is</h2>
+    <p style="margin:0 0 8px;">Box Elder County and Summit County. The gold line is the state; dark lines are counties; dashed purple lines are city limits. Zoom in for more labels.</p>
+    <div id="locmap" role="region" aria-label="Map: Box Elder County and Summit County"></div>
+    <p class="loc-foot"><a href="pid-mida-referendums-blocked.html#box-elder">Box Elder County: Stratos referendum (in court)</a> &middot; <a href="pid-mida-referendums-blocked.html#summit-county">Summit County: Kimball Junction referendum (closed)</a><br>See every Utah referendum the Hive tracks on <a href="https://weber-county-hive.github.io/utah-maps/citizen-referendums.html" target="_blank" rel="noopener">MAP 006: Citizen Referendums &rarr;</a></p>
+  </section>
+
+  <section id="box-elder">
+    <h2>1. Box Elder County: The Referendum That Never Got a Signature Sheet</h2>
+    <p>On May 4, 2026, the Box Elder County Commission approved Resolutions 26-11 and 26-12, authorizing a project agreement with MIDA for the "Stratos" data-center project. Residents organizing as the Box Elder Accountability Referendum (B.E.A.R.), led by Brenna Williams, filed referendum applications on May 8 and May 11, 2026.</p>
+
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-bar" style="width:100%; background:var(--navy);">Resolutions 26-11 &amp; 26-12 approved (May 4, 2026)</div>
+        <div class="funnel-val"></div>
+      </div>
+      <div class="funnel-arrow">&darr;</div>
+      <div class="funnel-step">
+        <div class="funnel-bar" style="width:92%; background:var(--navy-2);">Referendum applications filed (May 8 &amp; 11)</div>
+        <div class="funnel-val"></div>
+      </div>
+      <div class="funnel-arrow">&darr;</div>
+      <div class="funnel-step">
+        <div class="funnel-bar" style="width:70%; background:var(--rust);">County Attorney rejects both as "administrative," not referable (May 28)</div>
+        <div class="funnel-val"></div>
+      </div>
+      <div class="funnel-arrow">&darr;</div>
+      <div class="funnel-step">
+        <div class="funnel-bar" style="width:50%; background:var(--unclear);">Signature-gathering window: NEVER OPENED</div>
+        <div class="funnel-val"></div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat-cell"><span class="num">~5,422&ndash;5,500</span><span class="lbl">Signatures that would have been required</span></div>
+      <div class="stat-cell"><span class="num">0</span><span class="lbl">Signatures officially collected (window never opened)</span></div>
+      <div class="stat-cell"><span class="num">Pending</span><span class="lbl">1st District Court status, Sept. 2026</span></div>
+    </div>
+
+    <div class="quote">
+      "I am legally bound to reject the applications for referenda of these resolutions."
+      <cite>&mdash; Box Elder County Attorney Stephen R. Hadfield, May 28, 2026</cite>
+    </div>
+
+    <ul class="timeline">
+      <li><span class="date">May 4, 2026</span>County Commission approves Resolutions 26-11 and 26-12, the MIDA/Stratos project agreement.</li>
+      <li><span class="date">May 8 &amp; 11, 2026</span>B.E.A.R. files two referendum applications with the County Attorney.</li>
+      <li class="blocked"><span class="date">May 28, 2026</span>County Attorney rejects both applications, ruling the resolutions are administrative acts, not legislative ones eligible for referendum.</li>
+      <li><span class="date">June 4, 2026</span>B.E.A.R. appeals the rejection to Utah's 1st District Court in Brigham City.</li>
+      <li><span class="date">July 30&ndash;31, 2026</span>Box Elder County and project investor Kevin O'Leary move to dismiss, arguing only the Utah Supreme Court can review the matter; B.E.A.R. separately asks the court to also weigh whether the commission violated the Open and Public Meetings Act. <em>(See editor's note below.)</em></li>
+      <li><span class="date">Sept. 15, 2026</span>Salt Lake Tribune reports the case remains open, turning on the administrative-vs-legislative question. No ruling yet.</li>
+    </ul>
+    <div class="callout note">
+      <strong>Editor's note &middot; Oct. 1, 2026</strong>
+      The Hive has not yet confirmed from the court filings that the July 2026 motions argued only the Utah Supreme Court can review this matter. FOX 13's Aug. 3, 2026 report describes the county arguing there was no Open and Public Meetings Act violation, and neither FOX 13 nor the Deseret News confirms the July 30&ndash;31 dates. The entry stays as first reported until the filings themselves can be read. If you have a copy of the motions or the court's docket, please send it (see below).
+    </div>
+
+    <div class="callout note">
+      <strong>Worth flagging</strong>
+      A figure of roughly 29,000 signatures for B.E.A.R. has circulated, but that number could not be confirmed in any court filing or news account reviewed for this piece. Because the county attorney rejected the referendum applications before an official signature-gathering window ever opened, any signatures collected were on an independent or informal petition, not a county-certified referendum drive. Treat the 29,000 figure as unverified until a primary document surfaces.
+    </div>
+  </section>
+
+  <section id="summit-county">
+    <h2>2. Summit County: Signatures Gathered, Then a Technicality &mdash; Then Moot</h2>
+    <p>Summit County's fight traces back to 2023's S.B. 84 (sponsored by Sen. Wayne Harper), which let developer Dakota Pacific's Kimball Junction project bypass the county's own zoning approval. In January 2025, seven residents filed a referendum against Ordinance No. 987, the county measure implementing that override.</p>
+
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-bar" style="width:100%; background:var(--navy);">6,000+ signatures submitted across 77 packets (by March 3, 2025)</div>
+        <div class="funnel-val"></div>
+      </div>
+      <div class="funnel-arrow">&darr;</div>
+      <div class="funnel-step">
+        <div class="funnel-bar" style="width:54%; background:var(--rust);">~3,214 signatures certified valid, after packets disqualified for binding-format non-compliance</div>
+        <div class="funnel-val"></div>
+      </div>
+      <div class="funnel-arrow">&darr;</div>
+      <div class="funnel-step">
+        <div class="funnel-bar" style="width:76%; background:var(--unclear);">4,554 valid signatures required &mdash; fell ~1,340 short</div>
+        <div class="funnel-val"></div>
+      </div>
+      <div class="funnel-arrow">&darr;</div>
+      <div class="funnel-step">
+        <div class="funnel-bar" style="width:40%; background:var(--bad);">Lawsuit over the rejection later dismissed as MOOT</div>
+        <div class="funnel-val"></div>
+      </div>
+    </div>
+
+    <ul class="timeline">
+      <li><span class="date">2023</span>S.B. 84 (Sen. Wayne Harper) lets Dakota Pacific's Kimball Junction project bypass Summit County zoning approval.</li>
+      <li><span class="date">Jan. 2025</span>Seven residents file a referendum against Ordinance No. 987, the county measure enacting the project. Days later, Dakota Pacific executives Marc Stanworth, Steve Borup, and Scott Swallow form a group called Wasatch Back Future that urges residents not to sign, or to withdraw signatures from, the petition.</li>
+      <li><span class="date">By March 3, 2025</span>Sponsors submit 6,000+ signatures across 77 packets against a 4,554-signature threshold.</li>
+      <li class="blocked"><span class="date">June 23, 2025</span>Summit County Clerk Eve Furse disqualifies a large share of the packets for failing the Election Code's physical-binding requirements, certifying only ~3,214 valid signatures &mdash; short of the threshold and short in 3 of 4 required precinct areas. The referendum is declared insufficient.</li>
+      <li><span class="date">July 2025</span>Referendum sponsors sue the Clerk's office, seeking to revive the rejected signatures.</li>
+      <li><span class="date">March 2025 (concurrent)</span>The Legislature passes S.B. 26, independently codifying the same zoning changes at the state level.</li>
+      <li class="blocked"><span class="date">Aug. 26, 2025</span>3rd District Judge Richard Mrazik rules the case moot: S.B. 26 already granted the disputed changes regardless of the referendum's outcome, so "neither the court's decision nor the referendum will have any practical effect."</li>
+      <li><span class="date">Sept. 2025</span>Summit County Council repeals the now-moot Ordinance 987.</li>
+      <li><span class="date">Oct. 23, 2025</span>All related litigation dismissed by consent of the parties. <em>(See editor's note below.)</em></li>
+      <li><span class="date">March 23, 2026</span>The rebranded project ("Altus," developer "Six Ridge Partners") receives Housing and Transit Reinvestment Zone approval from the state (GOEO).</li>
+    </ul>
+    <div class="callout note">
+      <strong>Editor's note &middot; Oct. 1, 2026</strong>
+      KPCW reports that the Oct. 23, 2025 dismissals covered a 2023 county lawsuit and a 2024 residents' challenge. The Hive has not confirmed whether "all related litigation" also included the referendum lawsuit itself, which the Park Record reported was dismissed as moot in August 2025. The entry stays as first reported until the court records can be read. If you have the dismissal orders, please send them (see below).
+    </div>
+
+    <div class="callout note">
+      <strong>What the state's official list shows</strong>
+      The Lt. Governor&rsquo;s Initiatives &amp; Referenda page lists two Summit County filings on this ordinance: &ldquo;Hole-punched Referendum Ordinance 987 Park City Junction DA&rdquo; and &ldquo;Referendum Ordinance 987 Park City Junction Development Agreement.&rdquo; Both are marked &ldquo;Insufficient.&rdquo; The list does not give dates, sponsor names, or a reason for the two separate entries. (Read Oct. 1, 2026, from the page&rsquo;s text.)
+    </div>
+
+    <div class="quote">
+      "[Neither] the court's decision nor the referendum will have any practical effect."
+      <cite>&mdash; 3rd District Judge Richard Mrazik, Aug. 26, 2025, dismissing the case as moot</cite>
+    </div>
+
+    <div class="callout note">
+      <strong>Worth flagging</strong>
+      A previously reported figure of $94,435.50 in spending by Wasatch Back Future through a vendor called "In the Field LLC" could not be independently confirmed in news coverage reviewed for this piece. That figure would need to be pulled directly from Utah's campaign finance disclosure database (disclosures.utah.gov) before being republished as confirmed. What is confirmed: Wasatch Back Future was formed by Dakota Pacific's own executives specifically to discourage referendum signatures and encourage withdrawals, per contemporaneous reporting.
+    </div>
+  </section>
+
+  <section id="pattern">
+    <h2>3. The Common Pattern: Neither Vote Happened, and Neither Failed on the Merits</h2>
+    <p>These are two different legal mechanisms producing the same outcome. Neither community's referendum was rejected by voters &mdash; both were stopped before a vote could happen, through separate procedural routes.</p>
+
+    <p class="diagram-caption">The five steps a local referendum must pass to reach the ballot &mdash; and the step where each effort stopped.</p>
+    <div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+  A["1. Sponsors file<br/>an application"] --> B["2. County attorney:<br/>can voters<br/>refer it?"]
+  B --> C["3. Sponsors gather<br/>signatures"]
+  C --> D["4. Clerk verifies<br/>signatures"]
+  D --> E["5. Question goes<br/>on the ballot"]
+  BE["BOX ELDER<br/>stopped here<br/>(May 2026)"] -.-> B
+  SC["SUMMIT<br/>stopped here<br/>(June 2025)"] -.-> D
+  classDef stop fill:#fbeee6,stroke:#a8431f,stroke-width:2px,color:#1c1c1c;
+  classDef never fill:#eeeeee,stroke:#8a8a8a,stroke-dasharray:5,color:#4a4a44;
+  class BE,SC stop;
+  class E never;
+</pre></div>
+    <p style="font-size:0.92rem;color:var(--ink-soft);">Neither effort reached Step 5. Box Elder never got to Step 3, because the county attorney ruled the resolutions were &ldquo;administrative.&rdquo; Summit County passed Steps 1 through 3 but fell short at Step 4 after packets were disqualified over binding rules; a judge later ruled the lawsuit over that decision moot because S.B. 26 had already approved the project.</p>
+    <table class="compare">
+      <tr><th>Where</th><th>What stopped the vote</th><th>Who made that call</th><th>Reached voters?</th></tr>
+      <tr><td>Box Elder / Stratos</td><td>Classification of the resolution as "administrative," not "legislative" &mdash; ruled not eligible for referendum at all</td><td>County Attorney (now under court review)</td><td><span class="status-badge status-disputed">No &mdash; case still pending</span></td></tr>
+      <tr><td>Summit County / Kimball Junction</td><td>Signature-packet binding-format technicality disqualified enough packets to fall short of the threshold; the subsequent lawsuit was dismissed as moot after the Legislature passed a separate law approving the project</td><td>County Clerk, then a District Court judge</td><td><span class="status-badge status-disputed">No &mdash; declared insufficient, then moot</span></td></tr>
+    </table>
+
+    <div class="tier-grid">
+      <div class="tier-card">
+        <h4>Obstacle type: Classification</h4>
+        <p>A government body's own attorney decides whether its own decision counts as the kind residents are allowed to challenge. If it's ruled "administrative," the referendum right may not apply at all &mdash; before a single signature is collected.</p>
+        <p class="tier-eg">Box Elder / Stratos</p>
+      </div>
+      <div class="tier-card">
+        <h4>Obstacle type: Technical disqualification</h4>
+        <p>Utah's signature-packet binding and formatting rules are strict. A packet that collects real, valid signatures can still be thrown out in bulk for a paperwork format issue, unrelated to whether the signers were real registered voters.</p>
+        <p class="tier-eg">Summit County / Kimball Junction</p>
+      </div>
+      <div class="tier-card">
+        <h4>Obstacle type: Legislative override</h4>
+        <p>Even if a referendum clears every local hurdle, the state Legislature can pass a separate law independently authorizing the same project &mdash; which can moot the entire fight in court without ever ruling on whether the original local process was fair.</p>
+        <p class="tier-eg">Summit County / Kimball Junction (S.B. 26)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="eagle-mountain">
+    <h2>4. Where Eagle Mountain's Referendum Fits &mdash; and Where It Doesn't</h2>
+    <p>Eagle Mountain's ongoing referendum fight against Resolution R-62-2026 (see the <a href="eagle-mountain-tax-referendum-2.html">companion case file</a>) is a related but genuinely different animal. It targets a straightforward property-tax rate increase, not a MIDA project agreement or a zoning override tied to tax-increment financing &mdash; and unlike the two cases above, Eagle Mountain's city attorney has already determined the referendum <em>is</em> legally referable. Its unresolved fight is over whether the city is providing required materials and using a lawful election date, not over whether residents have the right to a vote at all.</p>
+    <p>The connection worth watching: Eagle Mountain's own <a href="eagle-mountain-finance-history.html">CRA/RDA finance history</a> shows the same tax-increment mechanism at the center of the Box Elder and Summit County fights &mdash; sending a fast-growing amount of property tax to redevelopment project areas. If a future Eagle Mountain referendum ever targeted one of those CRA/RDA resolutions directly, rather than the general tax rate, the administrative-vs-legislative fight seen in Box Elder could become directly relevant here too.</p>
+  </section>
+
+  <section id="people">
+    <h2>People in this record</h2>
+    <p>Everyone below is named in this page&rsquo;s sources. &ldquo;Also in the Hive&rdquo; links only to other Hive case files where the same person appears, checked by reading the other page and matching role and place. Being listed here does not suggest wrongdoing.</p>
+    <div class="table-scroll">
+    <table class="compare people-table">
+      <tr><th>Person</th><th>Role in this record</th><th>Why they&rsquo;re connected</th><th>Also in the Hive</th></tr>
+      <tr><td>Stephen R. Hadfield</td><td>Box Elder County Attorney</td><td>Reviewed B.E.A.R.&rsquo;s two referendum applications and, on May 28, 2026, rejected both as &ldquo;administrative&rdquo; acts not referable to voters.</td><td>No other Hive case file found.</td></tr>
+      <tr><td>Brenna Williams</td><td>Organizer, Box Elder Accountability Referendum (B.E.A.R.) &mdash; private citizen</td><td>Led the resident group that filed the referendum applications against Resolutions 26-11 and 26-12.</td><td>Named in <a href="https://weber-county-hive.github.io/candidates2026/box-elder-seat-a-smith-williams.html" target="_blank" rel="noopener">Twenty Dollars In, Thirteen Thousand Out</a> (Box Elder Commission Seat A) as a Stratos referendum organizer and the spouse of unaffiliated candidate Alan Williams.</td></tr>
+      <tr><td>Kevin O&rsquo;Leary</td><td>Investor behind the Stratos project (O&rsquo;Leary Digital)</td><td>Joined Box Elder County in asking the 1st District Court to dismiss B.E.A.R.&rsquo;s appeal.</td><td><a href="https://webercountyhive-coder.github.io/Data-Centers/weber-hive-dc-stratos-land.html" target="_blank" rel="noopener">Do You Have The Land?</a> (Data Centers); <a href="https://weber-county-hive.github.io/PIDS-Utah/stratos-ruby-pipeline-mida.html" target="_blank" rel="noopener">Stratos, the Ruby Pipeline, and MIDA</a> (PIDS-Utah); <a href="https://weber-county-hive.github.io/committees/weberhivecommitteemidaprojectareas.html" target="_blank" rel="noopener">Eight Project Areas</a> (committees).</td></tr>
+      <tr><td>Sen. Wayne Harper</td><td>Utah state senator; primary sponsor of S.B. 84 (2023)</td><td>His bill let the Kimball Junction project bypass Summit County&rsquo;s own zoning approval.</td><td><a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-sb197.html" target="_blank" rel="noopener">S.B. 197 (2026)</a> as primary sponsor (Bill-Tracker); also listed in the <a href="https://weber-county-hive.github.io/Bill-Tracker/water-land-property-rights-local-power-bills.html" target="_blank" rel="noopener">Water, Land, Property Rights &amp; Local Power</a> bill tracker.</td></tr>
+      <tr><td>Marc Stanworth</td><td>CEO, Dakota Pacific Real Estate</td><td>Listed as an organizing officer of Wasatch Back Future, the issues committee that urged residents not to sign, or to withdraw from, the referendum.</td><td>No other Hive case file names him. (The company, Dakota Pacific Real Estate, appears in the <a href="https://weber-county-hive.github.io/Unelected-Power/dan-hemmert.html" target="_blank" rel="noopener">Dan Hemmert</a> profile as a 2023&ndash;2026 lobbying client.)</td></tr>
+      <tr><td>Steve Borup</td><td>Director of Commercial Development, Dakota Pacific</td><td>Listed as an organizing officer of Wasatch Back Future.</td><td>No other Hive case file found.</td></tr>
+      <tr><td>Scott Swallow</td><td>Director of Acquisitions &amp; Development / General Counsel, Dakota Pacific</td><td>Listed as an organizing officer of Wasatch Back Future.</td><td>No other Hive case file found.</td></tr>
+      <tr><td>Eve Furse</td><td>Summit County Clerk</td><td>On June 23, 2025, disqualified packets over binding rules and declared the referendum insufficient (about 3,214 valid of 4,554 needed).</td><td><a href="https://weber-county-hive.github.io/candidates2026/sd20-winterton-mcrae.html" target="_blank" rel="noopener">SD-20: Winterton vs. McRae</a> &mdash; listed among Summit County officials who spoke against S.B. 266 (2026) in committee.</td></tr>
+      <tr><td>Judge Richard Mrazik</td><td>3rd District Court judge</td><td>Ruled the sponsors&rsquo; lawsuit moot on Aug. 26, 2025, because S.B. 26 had already granted the zoning changes.</td><td>No other Hive case file found.</td></tr>
+    </table>
+    </div>
+    <p style="font-size:0.85rem;color:var(--ink-soft);">How this was checked: each name was searched across local copies of the Hive&rsquo;s repos (candidates2026, committees, PIDS-Utah, followthedeed, Public-Lands, Data-Centers, Bill-Tracker, Unelected-Power, Transparency and others) on Oct. 1, 2026, and each match was read in context. The seven Summit County residents who filed the referendum are not named on this page.</p>
+  </section>
+
+  <section id="questions">
+    <h2>Questions Worth Asking</h2>
+    <ul class="qwa-list">
+      <li><b>Ask Box Elder County or B.E.A.R.'s counsel:</b> what is the current docket status of the 1st District Court appeal, and when is a ruling expected?</li>
+      <li><b>Ask Utah's campaign finance disclosure office (disclosures.utah.gov):</b> pull Wasatch Back Future's actual itemized expenditures directly to confirm or correct the previously reported $94,435.50/"In the Field LLC" figures before republishing them.</li>
+      <li><b>Ask Summit County Clerk's office:</b> for the specific binding-format requirement that disqualified the Kimball Junction referendum packets, and whether that requirement has since been clarified or changed for future petitioners.</li>
+      <li><b>Ask B.E.A.R. organizers:</b> to confirm or correct the ~29,000-signature figure that has circulated publicly, and clarify whether it refers to a formal or informal petition.</li>
+      <li><b>Ask the Summit County Clerk&rsquo;s office:</b> why the Lt. Governor&rsquo;s referenda list shows two separate Ordinance 987 entries (one titled &ldquo;Hole-punched&rdquo;), and what each one was.</li>
+      <li><b>Ask the Box Elder County Attorney&rsquo;s office:</b> what written test it used to decide Resolutions 26-11 and 26-12 were &ldquo;administrative,&rdquo; and whether that analysis is posted with the county&rsquo;s referendum page.</li>
+    </ul>
+  </section>
+
+  <div class="callout good" id="send-updates">
+    <strong>Have an update? Send it to us</strong>
+    Know about a referendum in your city or county, or have news on one listed here &mdash; a petition filing, a signature count, a clerk's notice, or a court ruling? Email <a href="mailto:webercountyhive@gmail.com">webercountyhive@gmail.com</a>. The Hive reports from public records, so please include a link to the document or a copy of it if you have one.
+  </div>
+
+  <details class="sources" id="sources">
+    <summary>Sources (click to expand)</summary>
+    <ol>
+      <li>Utah News Dispatch, <a href="https://utahnewsdispatch.com/2026/05/14/box-elder-county-group-wants-referendum-on-proposed-data-center/" target="_blank" rel="noopener">&ldquo;A Box Elder County group wants voters there to decide proposed data center&rsquo;s fate&rdquo;</a>, May 14, 2026.</li>
+      <li>Utah News Dispatch, <a href="https://utahnewsdispatch.com/2026/05/28/box-elder-county-data-center-referendum-denied/" target="_blank" rel="noopener">&ldquo;Box Elder County residents won&rsquo;t get to vote on data center referendum, county attorney says&rdquo;</a>, May 28, 2026.</li>
+      <li>Utah News Dispatch, <a href="https://utahnewsdispatch.com/2026/06/04/stratos-data-center-referendum-group-appeal-to-a-judge/" target="_blank" rel="noopener">&ldquo;Trying to get the Stratos data center on the ballot, locals are now appealing to a judge&rdquo;</a>, June 4, 2026.</li>
+      <li>ABC4, <a href="https://www.abc4.com/news/box-elder-county-kevin-oleary-dismiss-suit-referendum-data-center/" target="_blank" rel="noopener">&ldquo;Box Elder County, Kevin O&rsquo;Leary ask court to dismiss lawsuit over data center citizen referendum rejection&rdquo;</a>.</li>
+      <li>Salt Lake Tribune, <a href="https://www.sltrib.com/news/2026/09/15/mida-law-key-arguments-against-box/" target="_blank" rel="noopener">&ldquo;A fight over one word could help decide whether Box Elder voters get a say on Stratos data center complex&rdquo;</a>, Sept. 15, 2026.</li>
+      <li>Box Elder County, <a href="https://www.boxeldercountyut.gov/666/Stratos-Project-Referendum" target="_blank" rel="noopener">&ldquo;Stratos Project Referendum&rdquo; official information page</a>, boxeldercountyut.gov.</li>
+      <li>Cache Valley Daily, <a href="https://www.cachevalleydaily.com/news/data-center-opponents-to-gather-voter-signatures-at-rally-in-brigham-city-on-may-27/article_baec5f5c-4f9c-4427-8fff-d243971974e7.html" target="_blank" rel="noopener">&ldquo;Data center opponents to gather voter signatures at rally in Brigham City on May 27&rdquo;</a>, May 2026.</li>
+      <li>TownLift, <a href="https://townlift.com/2025/06/summit-county-clerk-declares-ordinance-987-referendum-petition-insufficient-after-signature-review/" target="_blank" rel="noopener">&ldquo;Summit County Clerk declares Ordinance 987 referendum petition insufficient after signature review&rdquo;</a>, June 2025.</li>
+      <li>Park Record, <a href="https://www.parkrecord.com/2025/08/26/dakota-pacific-referendum-lawsuit-declared-moot-judge-rules/" target="_blank" rel="noopener">&ldquo;Dakota Pacific referendum lawsuit declared moot, judge rules&rdquo;</a>, Aug. 26, 2025.</li>
+      <li>KPCW, <a href="https://www.kpcw.org/summit-county/2025-11-04/lawsuits-over-dakota-pacific-project-dismissed-public-hearing-scheduled" target="_blank" rel="noopener">&ldquo;Lawsuits over Dakota Pacific project dismissed, public hearing scheduled&rdquo;</a>, Nov. 4, 2025.</li>
+      <li>Park Record, <a href="https://www.parkrecord.com/2025/12/30/top-5-stories-in-2025-in-summit-county-dakota-pacific-referendum-west-hills-and-districted-county-council-seats/" target="_blank" rel="noopener">&ldquo;Top 5 stories in 2025 in Summit County: Dakota Pacific referendum, West Hills and districted County Council seats&rdquo;</a>, Dec. 30, 2025.</li>
+      <li>TownLift, <a href="https://townlift.com/2025/02/anonymous-group-urging-referendum-signature-withdrawal-formed-by-dakota-pacific-executives/" target="_blank" rel="noopener">&ldquo;Anonymous group urging referendum signature withdrawal formed by Dakota Pacific executives&rdquo;</a>, Feb. 2025.</li>
+      <li>KPCW, <a href="https://www.kpcw.org/summit-county/2026-03-26/state-grants-financing-for-summit-countys-development-with-dakota-pacific" target="_blank" rel="noopener">&ldquo;State grants financing for Summit County&rsquo;s development with Dakota Pacific&rdquo;</a>, March 26, 2026.</li>
+      <li>TownLift, <a href="https://townlift.com/2026/04/six-ridge-emerges-as-new-name-for-dakota-pacific-kimball-junction-project-now-called-altus-park-city/" target="_blank" rel="noopener">&ldquo;Dakota Pacific rebrands as Six Ridge in Kimball Junction project update&rdquo;</a>, April 2026.</li>
+      <li>Utah Lt. Governor&rsquo;s Office, <a href="https://vote.utah.gov/initiatives-and-referenda" target="_blank" rel="noopener">Initiatives &amp; Referenda</a> (local referenda list; two Summit County Ordinance 987 entries marked &ldquo;Insufficient&rdquo;), read Oct. 1, 2026.</li>
+      <li>Companion pieces, this docket: <a href="eagle-mountain-tax-referendum-2.html">Eagle Mountain's Second Tax Referendum</a> and <a href="eagle-mountain-finance-history.html">Eagle Mountain's Balanced Budget</a>.</li>
+    </ol>
+  </details>
+
+</main>
+
+<footer class="site-footer">
+  The Weber County Hive &middot; Referendum Docket &middot; Reporting from public records only &mdash; no outreach to referendum subjects.<br>
+  <a href="index.html">Back to all referendums tracked</a>
+</footer>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: false, theme: 'base',
+    flowchart: { htmlLabels: true, useMaxWidth: false, diagramPadding: 12, nodeSpacing: 30, rankSpacing: 40, wrappingWidth: 300 },
+    themeVariables: { primaryColor: '#fbf9f3', primaryTextColor: '#1c1c1c', primaryBorderColor: '#16273f', lineColor: '#16273f', fontFamily: '"Source Sans 3", Arial, sans-serif', fontSize: '22px' } });
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function(){ mermaid.run({ querySelector: 'pre.mermaid' }); });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="utah-geo.js"></script>
+<script>
+(function(){
+  if (!window.L || typeof addUtahOutlines !== 'function') return;
+  var PINS = [{"n": "Brigham City", "lat": 41.51, "lng": -112.015, "t": "Box Elder County: Stratos referendum (in court)", "u": "pid-mida-referendums-blocked.html#box-elder"}, {"n": "Park City", "lat": 40.723, "lng": -111.541, "t": "Summit County: Kimball Junction referendum (closed)", "u": "pid-mida-referendums-blocked.html#summit-county"}];
+  var map = L.map('locmap', { scrollWheelZoom: false, zoomSnap: 0.25 });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+  addUtahOutlines(map, { highlightCounty: null, alwaysLabel: ["Brigham City", "Park City"] });
+  var pts = [];
+  PINS.forEach(function(p){
+    var m = L.marker([p.lat, p.lng], { icon: L.divIcon({ className: 'loc-pin', html: '<span></span>', iconSize: null }), title: p.t }).addTo(map);
+    m.bindPopup('<b>' + p.t + '</b><br><a href="' + p.u + '">Open the case file</a>');
+    pts.push([p.lat, p.lng]);
+  });
+  var hi = null;
+  if (hi) {
+    var f = UTAH_GEO.counties.features.filter(function(x){ return x.properties.n === hi; })[0];
+    map.fitBounds(L.geoJSON(f).getBounds(), { padding: [20, 20] });
+  } else if (pts.length > 1) {
+    map.fitBounds(L.latLngBounds(pts).pad(0.35));
+  }
+  if (PINS.length === 5) map.fitBounds(L.geoJSON(UTAH_GEO.state).getBounds());
+})();
+</script>
+<script>
+document.querySelectorAll('table.compare').forEach(function(t){
+  var head = t.querySelector('tr');
+  if (!head || !head.querySelector('th')) return;
+  var labels = [].map.call(head.children, function(c){ return c.textContent.trim(); });
+  [].forEach.call(t.querySelectorAll('tr'), function(r, i){ if (i === 0) return;
+    [].forEach.call(r.children, function(c, j){ if (labels[j]) c.setAttribute('data-label', labels[j]); }); });
+});
+</script>
+</body>
+</html>
