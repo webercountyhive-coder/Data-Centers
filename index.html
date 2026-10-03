@@ -3,128 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Utah Referendum Docket</title>
-<meta name="description" content="Tracking citizen referendum efforts against local government actions across Utah — filings, legal deadlines, and disputes over required materials.">
+<title>Data Centers — The Weber County Hive</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;0,8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #16273f; --navy-2: #1f3856; --manila: #f4f0e6; --paper: #fbf9f3;
-    --ink: #1c1c1c; --ink-soft: #4a4a44; --rust: #a8431f; --amber: #c8912b; --line: #d8d0bc;
+    --paper: #f4f0e6;
+    --paper-card: #faf7ef;
+    --ink: #1c1c1a;
+    --ink-dim: #5b5850;
+    --ink-dimmer: #8c8878;
+    --header-bg: #142a2c;
+    --header-bg-2: #1c3a3a;
+    --header-text: #f4f0e6;
+    --header-dim: #9fb0ac;
+    --rust: #c0572e;
+    --amber: #d9a441;
+    --teal: #2e5f5a;
+    --border: #ddd6c4;
+    --border-dark: rgba(244, 240, 230, 0.16);
+    --serif: 'Playfair Display', Georgia, serif;
+    --serif-body: 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
   }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--manila); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; }
-  header.masthead { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); color: var(--manila); padding: 40px 20px 32px; }
-  .masthead-inner { max-width: 960px; margin: 0 auto; }
-  .eyebrow { font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; color: var(--amber); margin-bottom: 12px; }
-  h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); margin: 0 0 12px; }
-  .dek { font-family: 'Source Sans 3', sans-serif; font-size: 1rem; color: #d8dde5; max-width: 680px; margin: 0; }
-  main { max-width: 960px; margin: 0 auto; padding: 28px 20px 60px; }
-  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 28px; }
-  .stat-cell { background: var(--paper); border: 1px solid var(--line); padding: 14px; text-align: center; }
-  .stat-cell .num { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 1.4rem; color: var(--rust); display: block; }
-  .stat-cell .lbl { font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem; text-transform: uppercase; color: var(--ink-soft); }
-  #search { width: 100%; padding: 12px 14px; font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; border: 1px solid var(--line); margin-bottom: 14px; background: var(--paper); }
-  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-  .tag-chip { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; padding: 5px 10px; border: 1px solid var(--navy); border-radius: 3px; cursor: pointer; background: var(--paper); color: var(--navy); }
-  .tag-chip.active { background: var(--navy); color: var(--manila); }
-  .card { background: var(--paper); border: 1px solid var(--line); padding: 20px; margin-bottom: 16px; }
-  .card a.title-link { text-decoration: none; color: var(--navy); font-size: 1.2rem; font-weight: 700; }
-  .card a.title-link:hover { color: var(--rust); }
-  .card .loc { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
-  .card .summary { font-family: 'Source Sans 3', sans-serif; font-size: 0.92rem; color: var(--ink-soft); margin: 10px 0; }
-  .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-  .card .tags span { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; background: var(--manila); border: 1px solid var(--line); padding: 3px 8px; border-radius: 3px; }
-  .card .dates { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--ink-soft); margin-top: 8px; }
-  .card .keyfig { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--rust); font-weight: 600; margin-top: 8px; }
-  .status-badge { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.03em; margin-left: 8px; vertical-align: middle; }
-  .status-confirmed { background: #eaf1ea; color: #3d6b46; border: 1px solid #3d6b46; }
-  .status-disputed { background: #fbeee6; color: var(--rust); border: 1px solid var(--rust); }
-  .status-unverified { background: #f7f1de; color: #8a7a3d; border: 1px solid #8a7a3d; }
-  footer.site-footer { background: var(--navy); color: #b9c2cf; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-align: center; padding: 24px 20px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--rust); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
+
+  header { background: linear-gradient(155deg, var(--header-bg), var(--header-bg-2)); padding: 60px 0 48px; border-bottom: 3px solid var(--rust); }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 18px; text-align: center; }
+  h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(34px, 5vw, 54px); line-height: 1.08; letter-spacing: -0.01em; color: var(--header-text); text-align: center; margin-bottom: 18px; }
+  .dek { font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--header-dim); max-width: 640px; margin: 0 auto; text-align: center; }
+
+  main { padding: 60px 0 80px; }
+
+  .context-box { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 22px 26px; font-family: var(--serif-body); font-size: 15.5px; color: var(--ink-dim); margin-bottom: 48px; }
+  .context-box strong { color: var(--ink); font-weight: 600; }
+
+  .hub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+
+  .hub-card { display: block; background: var(--paper-card); border: 2px solid var(--border); border-radius: 10px; padding: 32px 30px; color: inherit; text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
+  .hub-card:hover { border-color: var(--rust); transform: translateY(-3px); text-decoration: none; }
+
+  .hub-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .hub-title { font-family: var(--serif); font-weight: 800; font-size: 24px; color: var(--ink); margin-bottom: 12px; line-height: 1.2; }
+  .hub-desc { font-family: var(--serif-body); font-size: 15px; color: var(--ink-dim); margin-bottom: 18px; }
+  .hub-stat-row { display: flex; gap: 18px; margin-bottom: 18px; }
+  .hub-stat { font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
+  .hub-stat strong { display: block; font-family: var(--serif); font-size: 20px; color: var(--rust); font-weight: 700; }
+  .hub-card.wide { grid-column: 1 / -1; }
+  .hub-new { display:inline-block; background: var(--rust); color: var(--paper); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; padding: 2px 7px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+  .hub-cta { font-family: var(--mono); font-size: 12px; color: var(--rust); }
+
+  footer { padding: 36px 0 60px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
+
+  @media (max-width: 700px) {
+    header { padding: 44px 0 34px; }
+    .hub-grid { grid-template-columns: 1fr; }
+    .hub-card { padding: 26px 24px; }
+  }
 </style>
 </head>
 <body>
 
-<header class="masthead">
-  <div class="masthead-inner">
-    <div class="eyebrow">The Weber County Hive &middot; Statewide Docket</div>
-    <h1>Utah Referendum Docket</h1>
-    <p class="dek">Tracking citizen referendum efforts against city and county government actions across Utah — filings, legal deadlines, and disputes over the materials officials are required to provide.</p>
-    <p class="dek" style="margin-top:10px;"><a href="https://weber-county-hive.github.io/utah-maps/citizen-referendums.html" target="_blank" rel="noopener" style="color:#e8c37a;font-weight:600;">See every referendum on the map: MAP 006, Citizen Referendums &rarr;</a></p>
-    <p class="dek" style="margin-top:10px;font-size:0.98rem;">Know about a referendum, or have an update on one listed here? Email <a href="mailto:webercountyhive@gmail.com" style="color:#e8c37a;">webercountyhive@gmail.com</a> &mdash; a link to the petition, clerk's notice or court filing helps.</p>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">The Weber County Hive &middot; Investigative Docket</div>
+    <h1>Data Centers</h1>
+    <p class="dek">Four threads of reporting on Utah's data center boom: what officials and industry told a legislative committee in one afternoon, the laws and deals that built the industry over six years, a two-part case file on Meta's Eagle Mountain campus and the gas plant planned for it, and the national math behind Utah's biggest proposals, including who works there.</p>
   </div>
 </header>
 
 <main>
-  <div class="stat-row">
-    <div class="stat-cell"><span class="num" id="stat-count">0</span><span class="lbl">Referendums tracked</span></div>
-    <div class="stat-cell"><span class="num" id="stat-counties">0</span><span class="lbl">Counties</span></div>
-    <div class="stat-cell" id="stat-updated-cell"><span class="num" id="stat-updated">&mdash;</span><span class="lbl">Last updated</span></div>
-  </div>
+  <div class="wrap">
+    <div class="context-box">
+      <strong>Why this hub exists.</strong> Public records only — no interviews, no comment requests. Each docket below reads its source material on its own terms first, then checks it against primary sources: bill text, committee minutes, fiscal notes, and public filings. This is public record. We report it. You decide what it means.
+    </div>
 
-  <input type="text" id="search" placeholder="Search by city, resolution, or keyword...">
-  <div class="tag-row" id="tag-row"></div>
-  <div id="cards"></div>
+    <div class="hub-grid">
+      <a class="hub-card wide" href="weber-hive-dc-meta-eagle-mountain.html">
+        <div class="hub-eyebrow">Two-Part Case File &middot; Meta Platforms &middot; Eagle Mountain<span class="hub-new">NEW</span></div>
+        <div class="hub-title">Meta in Eagle Mountain</div>
+        <div class="hub-desc"><strong>Part 1, The Deal That Started Under Another Name:</strong> the 2018 tax breaks approved for "Stadion, LLC," jobs, water and 2024 energy use. <strong>Part 2, The Plant Not in the Announcement:</strong> the Williams gas plant planned for Meta's expansion, the contract Meta guarantees and who decides next.</div>
+        <div class="hub-stat-row">
+          <div class="hub-stat"><strong>2</strong>parts</div>
+          <div class="hub-stat"><strong>286 MW</strong>gas plant filed</div>
+          <div class="hub-stat"><strong>On hold</strong>state approval</div>
+        </div>
+        <div class="hub-cta">Start with Part 1 &rarr;</div>
+      </a>
+
+      <a class="hub-card wide" href="weber-hive-dc-national-math.html">
+        <div class="hub-eyebrow">Case File &middot; Jobs &amp; the AI Buildout<span class="hub-new">NEW</span></div>
+        <div class="hub-title">The National Math Behind Utah's Data Center Bets &mdash; and Who Works There</div>
+        <div class="hub-desc">Bain says the AI buildout needs about $6 trillion a year in revenue by 2031, much of it from markets that don't exist yet. Utah's proposed campuses are sized at the top of that curve. How many permanent jobs they bring, and whether any record shows how many go to Utahns.</div>
+        <div class="hub-stat-row">
+          <div class="hub-stat"><strong>~29 GW</strong>proposed in Utah</div>
+          <div class="hub-stat"><strong>2,000&ndash;3,250</strong>permanent jobs by 2030</div>
+          <div class="hub-stat"><strong>0</strong>records on local hires</div>
+        </div>
+        <div class="hub-cta">Open this case file &rarr;</div>
+      </a>
+      <a class="hub-card" href="weber-hive-datacenters-docket.html">
+        <div class="hub-eyebrow">Committee Hearing</div>
+        <div class="hub-title">Aug. 19, 2026 Hearing on Data Centers</div>
+        <div class="hub-desc">Five presentations delivered the same day to Utah's Economic Development and Workforce Services Interim Committee — from a state agency's promotional pitch to an independent academic study.</div>
+        <div class="hub-stat-row">
+          <div class="hub-stat"><strong>5</strong>documents</div>
+          <div class="hub-stat"><strong>1</strong>hearing day</div>
+        </div>
+        <div class="hub-cta">Open this docket &rarr;</div>
+      </a>
+
+      <a class="hub-card" href="weber-hive-datacenters-bills-docket.html">
+        <div class="hub-eyebrow">Bill History</div>
+        <div class="hub-title">The Bills Behind Utah's Data Center Boom</div>
+        <div class="hub-desc">Not hearing testimony — the actual laws. How Utah's tax code came to treat data centers differently from every other taxpayer, traced through bill text, vote records, and fiscal notes.</div>
+        <div class="hub-stat-row">
+          <div class="hub-stat"><strong>7</strong>case files</div>
+          <div class="hub-stat"><strong>2020&ndash;26</strong>sessions</div>
+        </div>
+        <div class="hub-cta">Open this docket &rarr;</div>
+      </a>
+    </div>
+  </div>
 </main>
 
-<footer class="site-footer">
-  The Weber County Hive &middot; Referendum Docket &middot; Reporting from public records only &mdash; no outreach to referendum subjects.
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <span>&copy; 2026 The Weber County Hive</span>
+    <span><a href="https://webercountyhive.substack.com" target="_blank" rel="noopener">webercountyhive.substack.com</a></span>
+  </div>
 </footer>
-
-<script src="referendums-data.js"></script>
-<script>
-  const cardsEl = document.getElementById('cards');
-  const searchEl = document.getElementById('search');
-  const tagRowEl = document.getElementById('tag-row');
-  let activeTag = null;
-
-  function allTags() {
-    const t = new Set();
-    REFERENDUMS.forEach(r => r.tags.forEach(x => t.add(x)));
-    return [...t].sort();
-  }
-
-  function renderTags() {
-    tagRowEl.innerHTML = '';
-    allTags().forEach(tag => {
-      const chip = document.createElement('span');
-      chip.className = 'tag-chip' + (activeTag === tag ? ' active' : '');
-      chip.textContent = tag;
-      chip.onclick = () => { activeTag = (activeTag === tag) ? null : tag; renderTags(); render(); };
-      tagRowEl.appendChild(chip);
-    });
-  }
-
-  function render() {
-    const q = searchEl.value.toLowerCase();
-    const filtered = REFERENDUMS.filter(r => {
-      const matchesQ = !q || (r.city + r.title + r.resolution + r.summary).toLowerCase().includes(q);
-      const matchesTag = !activeTag || r.tags.includes(activeTag);
-      return matchesQ && matchesTag;
-    });
-    cardsEl.innerHTML = filtered.map(r => `
-      <div class="card">
-        <div class="loc">${r.city}, ${r.county}</div>
-        <a class="title-link" href="${r.link}">${r.title}</a><span class="status-badge status-${r.status}">${r.status}</span>
-        <div class="summary">${r.summary}</div>
-        <div class="keyfig">${r.keyFigure}</div>
-        <div class="dates">${r.filedDate !== 'N/A' ? `Filed ${r.filedDate} &middot; Referable ${r.referableDate} &middot; ` : ''}Updated ${r.lastUpdated}</div>
-        <div class="tags">${r.tags.map(t => `<span>${t}</span>`).join('')}</div>
-      </div>
-    `).join('') || '<p>No referendums match that search.</p>';
-
-    document.getElementById('stat-count').textContent = REFERENDUMS.length;
-    document.getElementById('stat-counties').textContent = new Set(REFERENDUMS.map(r => r.county)).size;
-    const latest = REFERENDUMS.map(r => r.lastUpdated).sort().reverse()[0];
-    document.getElementById('stat-updated').textContent = latest || '—';
-  }
-
-  searchEl.addEventListener('input', render);
-  renderTags();
-  render();
-</script>
 
 </body>
 </html>
