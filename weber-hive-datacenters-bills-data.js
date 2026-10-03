@@ -68,5 +68,16 @@ const BILLS_DOCS = [
     tags: ["Meta", "Project Aquila", "Williams", "SB 132", "PSC", "DAQ", "HB 76", "Eagle Mountain", "2026"],
     status: "live",
     page: "meta-eagle-mountain-gas-plant.html"
+    },
+  {
+    id: "national-math-jobs-2026",
+    title: "The National Math Behind Utah's Data Center Bets — and Who Works There",
+    presenter: "The Weber County Hive — Case File",
+    date: "2026-10-03",
+    hearing: "Bain & Company Technology Report 2026 · GOED, EDWS Interim, Aug. 19, 2026",
+    summary: "Bain says the AI buildout needs about $6 trillion a year in revenue by 2031, much of it from markets that don't exist yet. Utah's proposed campuses are sized at the top of that curve. GOED forecasts 2,000 to 3,250 permanent data center jobs statewide by 2030, and no Utah record reviewed reports how many of those workers are local.",
+    tags: ["Bain", "jobs", "local hiring", "Stratos", "Creekstone", "QTS", "Meta", "SB 114", "EDTIF", "2026"],
+    status: "live",
+    page: "weber-hive-dc-national-math.html"
   }
 ];

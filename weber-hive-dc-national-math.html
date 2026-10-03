@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utah's Data Center Bets — Who Works There | The Weber County Hive</title>
+<meta name="description" content="A national forecast says the AI buildout is ahead of demand. Utah's campuses are among the biggest proposed. What the public record shows about jobs, local hiring, and who carries the risk.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --bg:#ffffff; --panel:#f4f7fc; --ink:#14213d; --ink-soft:#3d4a66; --blue:#1f5fbf; --blue-soft:#e3ecfa;
+  --gold:#b8901c; --line:#d5deec; --warn:#fff6dc; --warn-line:#e2c35a;
+}
+*{box-sizing:border-box}
+html{font-size:19px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.6}
+a{color:var(--blue)}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header.mast{background:var(--ink);color:#fff;padding:14px 0}
+header.mast a{color:#fff;text-decoration:none;font-family:Arial,sans-serif;font-size:.85rem;letter-spacing:.04em}
+.hero{padding:36px 0 18px;border-bottom:4px solid var(--blue)}
+.eyebrow{font-family:Arial,sans-serif;font-size:.78rem;letter-spacing:.12em;font-weight:700;color:var(--blue);text-transform:uppercase}
+h1{font-size:2.1rem;line-height:1.2;margin:.3em 0}
+h2{font-size:1.55rem;margin:1.8em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}
+h3{font-size:1.2rem;margin:1.2em 0 .4em}
+.dek{font-size:1.15rem;color:var(--ink-soft)}
+.tag{font-family:Arial,sans-serif;font-size:.8rem;color:var(--ink-soft)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:24px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat .n{font-family:Arial,sans-serif;font-size:1.7rem;font-weight:700;color:var(--blue)}
+.stat .n.money{color:var(--gold)}
+.stat .l{font-size:.9rem;color:var(--ink-soft)}
+.table-scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:560px}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{background:var(--ink);color:#fff;font-family:Arial,sans-serif;font-size:.85rem}
+tr:nth-child(even) td{background:var(--panel)}
+tr.total td{background:var(--blue-soft);font-weight:700}
+.cap{font-size:.85rem;color:var(--ink-soft)}
+.box{background:var(--panel);border-left:5px solid var(--blue);padding:14px 16px;margin:18px 0;border-radius:4px}
+.box.warn{background:var(--warn);border-left-color:var(--warn-line)}
+.box.fair{background:#eef7ee;border-left-color:#3c8a4a}
+.box h3{margin-top:0}
+#map{height:460px;border:1px solid var(--line);border-radius:8px;margin:12px 0}
+.chart-box{position:relative;height:380px;margin:14px 0}
+.mermaid{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0;text-align:center}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.tile{perspective:900px;height:190px;cursor:pointer;border:none;background:none;padding:0;font:inherit;color:inherit;text-align:left}
+.tile .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.tile.flip .in{transform:rotateY(180deg)}
+.tile .f,.tile .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;padding:16px;display:flex;flex-direction:column;justify-content:center}
+.tile .f{background:var(--ink);color:#fff}
+.tile .f strong{font-size:1.3rem}
+.tile .f span{font-family:Arial,sans-serif;font-size:.78rem;opacity:.8;margin-top:8px}
+.tile .b{background:var(--blue-soft);transform:rotateY(180deg);font-size:.92rem}
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.picker button{font:inherit;font-size:.9rem;padding:8px 14px;border:2px solid var(--blue);background:#fff;color:var(--blue);border-radius:20px;cursor:pointer}
+.picker button.on{background:var(--blue);color:#fff}
+#pick-out{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;min-height:80px}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.person{border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.person b{display:block}
+.q{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0}
+.q .who{font-family:Arial,sans-serif;font-size:.8rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+details{border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:24px 0}
+summary{cursor:pointer;font-weight:700;font-size:1.1rem}
+details li{margin:6px 0;font-size:.9rem}
+footer{border-top:4px solid var(--blue);margin-top:40px;padding:20px 0 40px;font-size:.85rem;color:var(--ink-soft)}
+@media (max-width:600px){html{font-size:17px}h1{font-size:1.65rem}#map{height:360px}}
+</style>
+</head>
+<body>
+
+<header class="mast"><div class="wrap"><a href="index.html">← THE WEBER COUNTY HIVE · DATA CENTERS</a></div></header>
+
+<div class="wrap">
+<section class="hero">
+  <div class="eyebrow">Data Centers · Case File · Oct. 3, 2026</div>
+  <h1>The National Math Behind Utah's Data Center Bets — and Who Works There</h1>
+  <p class="dek">A global consulting firm says the AI building boom is running ahead of the money needed to pay for it. Utah's proposed campuses are among the largest in the country. Here is what the public record shows about their size, the risk, and the people who will work inside them.</p>
+  <p class="tag">The Weber County Hive — We report public records. You decide.</p>
+  <div class="stats">
+    <div class="stat"><div class="n money">$4.2 trillion</div><div class="l">yearly AI revenue Bain says must come from markets that don't exist yet</div></div>
+    <div class="stat"><div class="n">~29 GW</div><div class="l">proposed and under-construction data center campuses in Utah, at full planned size</div></div>
+    <div class="stat"><div class="n">2,000–3,250</div><div class="l">permanent data center jobs the state forecasts for all of Utah by 2030</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Utah records found that report how many of those workers are local</div></div>
+  </div>
+</section>
+
+<h2>Words to know</h2>
+<p class="cap">Tap or click a card to flip it.</p>
+<div class="tiles">
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Gigawatt (GW)</strong><span>tap to flip</span></div><div class="b">A billion watts of power. One gigawatt can run roughly 750,000 homes. Utah's largest proposed campuses are listed at 4 to 10+ gigawatts.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Hyperscale</strong><span>tap to flip</span></div><div class="b">The largest kind of data center, built by or for giant tech companies like Meta, Google or Amazon. These campuses cover hundreds or thousands of acres.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Permanent job</strong><span>tap to flip</span></div><div class="b">A job that lasts after the buildings are finished: technicians, security, managers. This is the number that stays in the community.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Construction job</strong><span>tap to flip</span></div><div class="b">A job that lasts while the buildings go up, usually a year or two per phase. The crews then move on to the next project.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>S.B. 114 (2020)</strong><span>tap to flip</span></div><div class="b">Utah's sales tax exemption for large data centers. It has no jobs, wage or investment requirement. <a href="weber-hive-dc-sb114.html">Full case file →</a></div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>EDTIF</strong><span>tap to flip</span></div><div class="b">A Utah tax credit paid only after a company creates jobs at set wage levels. It is tied to jobs and pay, not to where workers live.</div></div></button>
+</div>
+
+<h2>The national math</h2>
+<p>On Sept. 29, 2026, Bain &amp; Company published a report on what it will take to pay for the artificial intelligence building boom. In plain terms:</p>
+<ul>
+  <li>The five biggest tech spenders (Microsoft, Google, Amazon, Meta and Oracle) could spend about <strong>$780 billion</strong> on buildout in 2026, nearly five times what they spent three years earlier.</li>
+  <li>The largest AI data centers today are near <strong>1 gigawatt</strong>. Bain expects 2-gigawatt facilities by 2027 and <strong>9-gigawatt campuses</strong> by about 2030.</li>
+  <li>To support that spending, Bain estimates the industry needs about <strong>$6 trillion a year</strong> in revenue by 2031. Today's products could bring in $1.2 to $1.8 trillion.</li>
+</ul>
+<div class="mermaid">
+flowchart LR
+  A["Revenue Bain says is needed<br/><b>$6 trillion a year</b>"] --> B["From products that exist today<br/><b>$1.2 – 1.8 trillion</b>"]
+  A --> C["From markets not built yet<br/><b>about $4.2 trillion</b>"]
+  C --> D["AI search ads<br/>Self-driving vehicles<br/>Robots and factories<br/>New products"]
+</div>
+<div class="box warn"><h3>Read this as a forecast</h3>Bain is a consulting firm that sells AI services. Its numbers are estimates built on its own assumptions, including that spending equals about 25% of industry revenue. Bain's own conclusion is that the buildings are going up ahead of demand, and whether new uses arrive in time to pay for them is an open question.</div>
+
+<h2>Where Utah sits on that curve</h2>
+<p>Bain describes 9 gigawatts as the size of the very largest campuses expected by the end of the decade. Utah already has proposals at that scale.</p>
+<div id="map" role="img" aria-label="Map of major Utah data center projects"></div>
+<p class="cap">Pins are approximate, placed at the town or valley named in public records. Click a pin for details.</p>
+<div class="table-scroll"><table>
+  <tr><th>Project</th><th>Location</th><th>Size listed</th><th>Status</th></tr>
+  <tr><td>Creekstone Delta Gigasite</td><td>Delta, Millard County</td><td>more than 10 GW</td><td>Under construction</td></tr>
+  <tr><td>Stratos Project</td><td>Hansel Valley, Box Elder County</td><td>7.5 GW (9 GW at full build-out per the Sierra Club)</td><td>Proposed</td></tr>
+  <tr><td>Joule campus</td><td>Holden, Millard County</td><td>4 GW</td><td>Under construction</td></tr>
+  <tr><td>Tract Pole Canyon</td><td>Eagle Mountain</td><td>1.7 GW</td><td>Proposed</td></tr>
+  <tr><td>Antelope Data Campus / Red Butte</td><td>Iron County</td><td>1.5 GW each</td><td>Proposed</td></tr>
+</table></div>
+<p class="cap">Source: Salt Lake Tribune data center map, Sept. 25, 2026.</p>
+<p>The Governor's Office of Economic Development (GOED), presenting to the Legislature's Economic Development and Workforce Services Interim Committee on Aug. 19, 2026, reported that Utah has <strong>48 operating data centers with more than 1 gigawatt of capacity</strong>, and that projects under construction will add <strong>2.6 gigawatts</strong>. The Tribune's table, which lists each campus at its full planned size, adds up to roughly <strong>29 gigawatts</strong>. Those figures measure different things (current construction phases versus full build-out), but both point the same direction.</p>
+
+<h2>Who carries the risk if demand doesn't arrive</h2>
+<p>Bain is writing for investors. In Utah, some of the tools used to build these projects are public ones.</p>
+<ul>
+  <li><strong>Stratos.</strong> The Master Development Agreement allows the developer to ask MIDA to form public infrastructure districts that could use the developer's 80% share of payments as security for bonds (§13). Neither party may terminate the agreement (§15). MIDA's own document page says the agreement is still a draft and unsigned. <a href="weber-hive-dc-stratos-land.html">Stratos case file →</a></li>
+  <li><strong>Tooele Valley.</strong> The Utah Inland Port Authority approved a $4.875 million short-term loan to Zenith Bolinder, the data center developer, with listed uses that include a power plant. That loan has been paid off.</li>
+  <li><strong>Sales tax.</strong> Utah's data center sales tax exemption (S.B. 114) applies regardless of how the project performs.</li>
+</ul>
+<p>None of this shows anyone did anything wrong. It shows where public money and public tools sit if a national forecast turns out to be too optimistic.</p>
+
+<h2>Who works there?</h2>
+<div class="chart-box"><canvas id="jobsChart" aria-label="Bar chart comparing construction workers and permanent jobs at Meta, QTS and Stratos"></canvas></div>
+<p class="cap">Stratos shows the lowest construction figure given (4,000). Another spokesperson figure was 10,000. Stratos's 2,000 permanent jobs is a claim; no tenant has been announced.</p>
+
+<h3>Pick a project</h3>
+<div class="picker" id="picker">
+  <button type="button" data-k="meta" class="on">Meta</button>
+  <button type="button" data-k="qts">QTS</button>
+  <button type="button" data-k="stratos">Stratos</button>
+  <button type="button" data-k="creek">Creekstone</button>
+  <button type="button" data-k="joule">Joule</button>
+  <button type="button" data-k="utah">All of Utah</button>
+</div>
+<div id="pick-out" aria-live="polite"></div>
+
+<div class="table-scroll"><table>
+  <tr><th>Project</th><th>Construction workers</th><th>Permanent jobs after</th><th>Who said it</th></tr>
+  <tr><td>Meta, Eagle Mountain</td><td>1,200+ at peak</td><td>200 "supported"; a few dozen employees to run it (2021). Stated as 300+ for the expanded campus (2026)</td><td>Meta, via Deseret News</td></tr>
+  <tr><td>QTS, Eagle Mountain ($6 billion)</td><td>2,000+</td><td>about 100, counting employees, tenants and contractors</td><td>QTS</td></tr>
+  <tr><td>Stratos, Box Elder County</td><td>4,000 to 10,000</td><td>2,000 claimed; no tenant announced</td><td>Project spokespeople</td></tr>
+  <tr><td>Creekstone, Delta</td><td>"thousands"</td><td>106</td><td>GOED presentation, Aug. 19, 2026</td></tr>
+  <tr><td>Joule, Holden</td><td>not disclosed</td><td>not disclosed</td><td>—</td></tr>
+  <tr class="total"><td>All of Utah</td><td>—</td><td>2,000 to 3,250 by 2030</td><td>GOED presentation, Aug. 19, 2026</td></tr>
+</table></div>
+
+<ul>
+  <li><strong>Stratos's figures have varied.</strong> The Tribune reported 4,000 construction jobs on May 8, 2026; Forbes reported 10,000 on June 9. O'Leary Ventures CEO Paul Palandjian later described about 4,000 workers over 10 to 15 years and said the numbers change daily. A University of Southern California analysis cited by TechRepublic estimated the permanent figure closer to 1,350.</li>
+  <li><strong>Nationally, the permanent number is small by design.</strong> A Brookings study of about 1,500 U.S. data centers (Bahar and Wright, updated Aug. 10, 2026) found roughly 100 to 200 jobs created per county that gets its first major data center. Wages did not change. Home prices rose 2% to 5%.</li>
+  <li><strong>Forecasts get revised.</strong> Georgia's state audit first projected 5,471 data center operations jobs. A January 2026 revision cut that to 1,641, and construction jobs from 28,350 to 8,505. Georgia's exemption cost $474 million in the fiscal year ending July 2025.</li>
+</ul>
+
+<h2>Are the workers local?</h2>
+<div class="box"><h3>The short answer</h3>No Utah record reviewed for this case file reports how many data center workers are local, or even Utah residents.</div>
+<div class="mermaid">
+flowchart TD
+  A["S.B. 114 sales tax exemption"] --> A1["Requires no jobs at all"]
+  B["EDTIF / REDTIF credits"] --> B1["Require jobs at set pay levels"]
+  C["Stratos interlocal agreement<br/>(draft)"] --> C1["Yearly employee count to county<br/>may be marked confidential"]
+  A1 --> Q["Where workers live:<br/><b>not reported anywhere</b>"]
+  B1 --> Q
+  C1 --> Q
+</div>
+<ul>
+  <li><strong>The main state tax break requires no jobs at all.</strong> S.B. 114 (2020), with Sen. Kirk Cullimore as primary sponsor and Rep. Mike Schultz as House sponsor, set no jobs, wage or investment requirement. It passed unanimously, and its fiscal note listed the cost as "unknown." In July 2026, State Auditor Tina Cannon said Utah still has no system to calculate what it costs.</li>
+  <li><strong>The state's jobs-based incentive measures pay, not residence.</strong> GOED's Aug. 19 slides list wage standards for EDTIF (110% of the county's average wage) and REDTIF (100%). They list no residency standard. The one data center GOED has given a state credit to, Creekstone near Delta, gets 50% of new state tax revenue back for 20 years on a projected $17 billion+ investment and 106 permanent jobs, according to GOED's slide 9. <a href="weber-hive-dc-goed-initiatives.html">GOED case file →</a></li>
+  <li><strong>Stratos's documents plan for workers who don't live nearby.</strong> The draft interlocal agreement bans housing in the project area except "temporary housing for construction workers." The Development Standards allow lodging for employees and RV parks in the mixed-use zone, and hotel rooms are capped at 150 for the entire 40,000 acres. A project spokesperson told the Tribune construction workers would be housed on site.</li>
+  <li><strong>The contractors' trade group expects outside hiring.</strong> An Associated General Contractors of America analyst told KUTV that contractors often turn to outside firms and unions because local labor pools are small in places like Box Elder County.</li>
+  <li><strong>Millard County had 13,437 residents in 2023.</strong> Two of the largest proposed campuses in the country are planned there.</li>
+</ul>
+
+<h2>When jobs are the condition</h2>
+<div class="mermaid">
+flowchart LR
+  A["Company promises jobs"] --> B["State pays credits<br/>after jobs exist"]
+  B --> C["Tyson: 723 jobs,<br/>up to $5.26 million"]
+  C --> D["Plant closes Oct. 12, 2026<br/>5 years into a 10-year deal"]
+  D --> E["Credits stop.<br/>Recovery of past credits:<br/><b>not established</b>"]
+</div>
+<p>Utah does have an incentive tied to jobs. Tyson Foods received a state tax-credit agreement worth up to $5.26 million for its Eagle Mountain plant. The plant is closing five years into a ten-year agreement, with 723 jobs lost. Credits stop when the jobs stop. Whether any credits already paid can be recovered has not been established in the records reviewed.</p>
+
+<div class="box fair"><h3>The other side</h3>
+<ul>
+  <li><strong>Some counties prefer few jobs.</strong> Millard County Commissioner Bill Wright told Utah Business that data centers are preferable to an employer that brings hundreds of new residents who need houses and schools.</li>
+  <li><strong>Utah companies get work.</strong> QTS built with Utah-based Layton Construction and steel suppliers from Cedar City.</li>
+  <li><strong>The tax money is real.</strong> Former Eagle Mountain Mayor Tom Westmoreland said the Meta land brought in "$35 annually" in taxes before the project. Current Mayor Jared Gray told the Tribune data centers are "literally what funds our general fund." <a href="weber-hive-dc-meta-eagle-mountain.html">Meta case file →</a></li>
+</ul></div>
+
+<h2>What the record shows</h2>
+<p>Bain's report says the national buildout is running ahead of proven demand. Utah's proposed campuses are sized at the top of that curve. The state's own forecast is a few thousand permanent jobs statewide. And no Utah record reviewed shows how many of those jobs, or the thousands of construction jobs before them, go to Utahns.</p>
+
+<h2>People in this record</h2>
+<div class="people">
+  <div class="person"><b>Sen. Kirk Cullimore</b>Primary sponsor of S.B. 114 (2020), the data center sales tax exemption with no jobs requirement. <a href="weber-hive-dc-sb114.html">S.B. 114 →</a> · <a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-hb507.html">H.B. 507 →</a></div>
+  <div class="person"><b>Rep. Mike Schultz</b>House sponsor of S.B. 114. Holds land near the Stratos site. <a href="weber-hive-dc-sb114.html">S.B. 114 →</a> · <a href="weber-hive-dc-stratos-land.html">Stratos land →</a></div>
+  <div class="person"><b>Kevin O'Leary</b>Investor behind Stratos; public source of the 10,000 construction / 2,000 permanent jobs figures. <a href="weber-hive-dc-stratos-land.html">Stratos →</a></div>
+  <div class="person"><b>Paul Palandjian</b>O'Leary Ventures CEO; described about 4,000 construction workers over 10 to 15 years.</div>
+  <div class="person"><b>Tina Cannon</b>Utah State Auditor; said in July 2026 the state cannot calculate what the S.B. 114 exemption costs. <a href="weber-hive-dc-sb114.html">S.B. 114 →</a></div>
+  <div class="person"><b>Bill Wright</b>Millard County Commissioner; prefers data centers to employers that bring large population growth.</div>
+  <div class="person"><b>Jared Gray &amp; Tom Westmoreland</b>Current and former Eagle Mountain mayors; on record about data center tax revenue. <a href="weber-hive-dc-meta-eagle-mountain.html">Meta →</a></div>
+</div>
+
+<h2>Questions to ask, and whom to ask</h2>
+<div class="q"><div class="who">Box Elder County Commission</div>Will Stratos's yearly employee reports be public, or marked confidential?</div>
+<div class="q"><div class="who">Governor's Office of Economic Development (GOED)</div>GOED's 2,000-to-3,250 jobs forecast cites the Gardner Policy Institute. Does it count Utah residents, or everyone working on site?</div>
+<div class="q"><div class="who">Millard County Commission</div>How many workers on the Creekstone and Joule sites live in Millard County?</div>
+<div class="q"><div class="who">Eagle Mountain City Council</div>How many of Meta's and QTS's permanent staff live in Eagle Mountain?</div>
+<div class="q"><div class="who">Your state legislators</div>Should Utah's data center tax exemption carry a jobs or local-hire requirement?</div>
+
+<details>
+<summary>Sources and how they were read</summary>
+<ul>
+  <li>Bain &amp; Company, <em>Technology Report 2026</em>, "New Innovation Is Required to Fund AI's $6 Trillion Buildout," Crawford, Tagawa, Boles &amp; Quinn, Sept. 29, 2026 — <a href="https://www.bain.com/insights/new-innovation-is-required-to-fund-ais-6-trillion-buildout-technology-report-2026/">bain.com</a>. Read in full from the page text.</li>
+  <li>Governor's Office of Economic Development, "Data Center Initiatives," presented to the EDWS Interim Committee, Aug. 19, 2026 — <a href="https://le.utah.gov/interim/2026/pdf/00003149.pdf">le.utah.gov</a>. Jobs forecast (slide 11, citing the Gardner Policy Institute, March 2026) and Creekstone figures (slide 9) checked against the PDF text and the Hive's <a href="weber-hive-dc-goed-initiatives.html">GOED case file</a>.</li>
+  <li>Salt Lake Tribune, "Utah data center map: Track new developments across the state," Harkins &amp; Larsen, Sept. 25, 2026. Table pages 1–7 read from pasted capture; GW total is this publication's sum of listed figures.</li>
+  <li>Brookings, "New evidence on data center employment effects," Bahar &amp; Wright, updated Aug. 10, 2026 — <a href="https://www.brookings.edu/articles/new-evidence-on-data-center-employment-effects/">brookings.edu</a></li>
+  <li>The Current GA / Capitol Beat, revised Georgia audit, Jan. 15, 2026 — <a href="https://thecurrentga.org/2026/01/15/revised-audit-reveals-georgia-data-centers-economic-impact-overstated/">thecurrentga.org</a></li>
+  <li>KUTV, "Experts question job projections for massive Utah data center," May 11, 2026 — <a href="https://kutv.com/news/local/experts-question-job-projections-for-massive-utah-data-center">kutv.com</a></li>
+  <li>TechRepublic, "Kevin O'Leary's 'Wonder Valley' Data Center Advances as Job Estimates Shift" — <a href="https://www.techrepublic.com/article/news-kevin-oleary-wonder-valley-utah-job-estimates/">techrepublic.com</a></li>
+  <li>Trade &amp; Industry Development, QTS Eagle Mountain — <a href="https://www.tradeandindustrydev.com/region/utah/news/ut-eagle-mountain-data-center-campus-delivers-35771">tradeandindustrydev.com</a></li>
+  <li>Utah Business, "Rural Utah's data center boom," Nov. 5, 2025 — <a href="https://www.utahbusiness.com/industry/2025/11/05/data-center-creekstone-energy-joule-capital-partners-millard-county-fillmore/">utahbusiness.com</a></li>
+  <li>KSL, "723 jobs being lost as Tyson Foods closes Eagle Mountain facility," Aug. 14, 2026 — <a href="https://www.ksl.com/article/51609885/723-jobs-being-lost-as-tyson-foods-closes-eagle-mountain-facility">ksl.com</a></li>
+  <li>Utah Legislature, S.B. 114 (2020) — <a href="https://le.utah.gov/~2020/bills/static/SB0114.html">le.utah.gov</a></li>
+  <li>MIDA, Stratos Master Development Agreement, Interlocal Cooperation Agreement and Development Standards — draft and unsigned as posted by MIDA; read in full or relevant part Sept. 4, 2026.</li>
+  <li>UIPA, "Who Qualifies for AIB Loans" and 2024 Annual Report (Zenith Bolinder loan) — inlandportauthority.utah.gov</li>
+  <li>Deseret News, Art Raymond, Oct. 4, 2021 and Sept. 30, 2022; Salt Lake Tribune, May 8, 2026 and Jan. 14, 2026; Forbes, June 9, 2026.</li>
+</ul>
+</details>
+
+</div>
+
+<footer><div class="wrap">The Weber County Hive · webercountyhive.substack.com · Tips and corrections: webercountyhive@gmail.com</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{fontSize:"22px",fontFamily:"Georgia, serif",primaryColor:"#e3ecfa",primaryBorderColor:"#1f5fbf",primaryTextColor:"#14213d",lineColor:"#1f5fbf"}});
+</script>
+<script>
+// Flip tiles
+document.querySelectorAll('.tile').forEach(function(t){t.addEventListener('click',function(e){if(e.target.tagName==='A')return;t.classList.toggle('flip');});});
+
+// Map
+(function(){
+  if(typeof L==='undefined')return;
+  var map=L.map('map',{scrollWheelZoom:false}).setView([39.9,-112.4],7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'© OpenStreetMap contributors'}).addTo(map);
+  var pins=[
+    [41.85,-112.55,'Stratos Project','Hansel Valley, Box Elder County · 7.5 GW · Proposed<br>Jobs claimed: 4,000–10,000 construction; 2,000 permanent (no tenant announced)'],
+    [40.314,-112.01,'Meta and QTS','Eagle Mountain · Operating / under construction<br>Meta: 1,200+ construction, 300+ permanent stated<br>QTS: 2,000+ construction, ~100 permanent'],
+    [39.352,-112.577,'Creekstone Delta Gigasite','Delta, Millard County · >10 GW · Under construction<br>106 permanent jobs projected'],
+    [39.10,-112.27,'Joule campus','Holden, Millard County · 4 GW · Under construction<br>Jobs: not disclosed'],
+    [40.72,-112.37,'Tooele Valley Project Area','Northern Tooele County · 500 MW · Proposed (paused)<br>Jobs: no figure found'],
+    [37.85,-113.25,'Antelope / Red Butte','Iron County · 1.5 GW each · Proposed<br>Jobs: no figure found']
+  ];
+  pins.forEach(function(p){L.marker([p[0],p[1]]).addTo(map).bindPopup('<b>'+p[2]+'</b><br>'+p[3]);});
+})();
+
+// Chart
+(function(){
+  if(typeof Chart==='undefined')return;
+  Chart.defaults.font.size=16;Chart.defaults.color='#14213d';
+  new Chart(document.getElementById('jobsChart'),{type:'bar',
+    data:{labels:['Meta','QTS','Stratos (claimed)'],
+      datasets:[{label:'Construction workers',data:[1200,2000,4000],backgroundColor:'#9db8e3'},
+                {label:'Permanent jobs after',data:[300,100,2000],backgroundColor:'#1f5fbf'}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'},title:{display:true,text:'Construction vs. permanent jobs',font:{size:18}}},
+      scales:{y:{beginAtZero:true,ticks:{callback:function(v){return v.toLocaleString();}}}}}});
+})();
+
+// Picker
+(function(){
+  var d={
+    meta:'<b>Meta, Eagle Mountain.</b> 1,200+ construction workers at peak. In 2021 Meta said the campus would support 200 jobs, with a few dozen employees to run it. Meta stated 300+ permanent jobs for the expanded campus in 2026.',
+    qts:'<b>QTS, Eagle Mountain.</b> $6 billion campus. 2,000+ construction workers. About 100 permanent jobs, counting employees, tenants and contractors.',
+    stratos:'<b>Stratos, Box Elder County.</b> Construction figures from project spokespeople range from 4,000 to 10,000. 2,000 permanent jobs claimed. No tenant has been announced. A USC analysis estimated closer to 1,350 permanent.',
+    creek:'<b>Creekstone, Delta.</b> "Thousands" of construction jobs and 106 permanent jobs, per the GOED presentation, Aug. 19, 2026.',
+    joule:'<b>Joule, Holden.</b> No job figures have been made public.',
+    utah:'<b>All of Utah.</b> The state forecasts 2,000 to 3,250 permanent data center jobs by 2030. No record reports how many will be Utah residents.'
+  };
+  var out=document.getElementById('pick-out'),btns=document.querySelectorAll('#picker button');
+  function show(k){out.innerHTML=d[k];btns.forEach(function(b){b.classList.toggle('on',b.dataset.k===k);});}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.k);});});
+  show('meta');
+})();
+</script>
+</body>
+</html>
