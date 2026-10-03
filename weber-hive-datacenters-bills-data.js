@@ -9,7 +9,7 @@ const BILLS_DOCS = [
     presenter: "Sen. Kirk Cullimore (primary sponsor) & Rep. Mike Schultz (House sponsor)",
     date: "2020-03-31",
     hearing: "2020 General Session",
-    summary: "The sales tax exemption that built Utah's data center industry. No jobs, wage, or investment requirement to qualify — retroactive to 2016 — passed unanimously with a fiscal note that called the cost 'unknown' and required no performance tracking.",
+    summary: "S.B. 114 rewrote Utah's 2016 data center sales tax exemption and extended it to tenants who lease space inside a qualifying data center. No jobs, wage, or investment requirement to qualify. Passed unanimously, with a fiscal note listing the cost as 'an unknown amount' and no performance note.",
     tags: ["SB 114", "sales tax exemption", "no jobs required", "Cullimore", "Schultz", "2020"],
     status: "live",
     page: "weber-hive-dc-sb114.html"
