@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stratos: Everything We've Reported — The Weber County Hive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;0,8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f0e6;
+    --paper-card: #faf7ef;
+    --ink: #1c1c1a;
+    --ink-dim: #5b5850;
+    --ink-dimmer: #8c8878;
+    --header-bg: #142a2c;
+    --header-bg-2: #1c3a3a;
+    --header-text: #f4f0e6;
+    --header-dim: #9fb0ac;
+    --rust: #c0572e;
+    --amber: #d9a441;
+    --teal: #2e5f5a;
+    --border: #ddd6c4;
+    --border-dark: rgba(244, 240, 230, 0.16);
+    --serif: 'Playfair Display', Georgia, serif;
+    --serif-body: 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--rust); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
+
+  header { background: linear-gradient(155deg, var(--header-bg), var(--header-bg-2)); padding: 60px 0 48px; border-bottom: 3px solid var(--rust); }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 18px; text-align: center; }
+  h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(34px, 5vw, 54px); line-height: 1.08; letter-spacing: -0.01em; color: var(--header-text); text-align: center; margin-bottom: 18px; }
+  .dek { font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--header-dim); max-width: 640px; margin: 0 auto; text-align: center; }
+
+  main { padding: 60px 0 80px; }
+
+  .context-box { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 22px 26px; font-family: var(--serif-body); font-size: 15.5px; color: var(--ink-dim); margin-bottom: 48px; }
+  .context-box strong { color: var(--ink); font-weight: 600; }
+
+  .hub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+
+  .hub-card { display: block; background: var(--paper-card); border: 2px solid var(--border); border-radius: 10px; padding: 32px 30px; color: inherit; text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
+  .hub-card:hover { border-color: var(--rust); transform: translateY(-3px); text-decoration: none; }
+
+  .hub-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .hub-title { font-family: var(--serif); font-weight: 800; font-size: 24px; color: var(--ink); margin-bottom: 12px; line-height: 1.2; }
+  .hub-desc { font-family: var(--serif-body); font-size: 15px; color: var(--ink-dim); margin-bottom: 18px; }
+  .hub-stat-row { display: flex; gap: 18px; margin-bottom: 18px; }
+  .hub-stat { font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
+  .hub-stat strong { display: block; font-family: var(--serif); font-size: 20px; color: var(--rust); font-weight: 700; }
+  .hub-card.wide { grid-column: 1 / -1; }
+  .hub-new { display:inline-block; background: var(--rust); color: var(--paper); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; padding: 2px 7px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+  .hub-cta { font-family: var(--mono); font-size: 12px; color: var(--rust); }
+
+  footer { padding: 36px 0 60px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
+
+  @media (max-width: 700px) {
+    header { padding: 44px 0 34px; }
+    .hub-grid { grid-template-columns: 1fr; }
+    .hub-card { padding: 26px 24px; }
+  }
+
+  .section-label { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); margin: 56px 0 8px; }
+  .section-title { font-family: var(--serif); font-weight: 800; font-size: 30px; line-height: 1.2; margin-bottom: 10px; }
+  .section-dek { font-family: var(--serif-body); font-size: 17px; color: var(--ink-dim); margin-bottom: 22px; max-width: 760px; }
+  .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .link-card { display: block; background: var(--paper-card); border: 2px solid var(--border); border-left: 6px solid var(--teal); border-radius: 8px; padding: 18px 20px; color: inherit; transition: border-color .15s ease; }
+  .link-card:hover { border-color: var(--rust); text-decoration: none; }
+  .link-repo { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-dimmer); margin-bottom: 6px; }
+  .link-title { font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--ink); line-height: 1.25; margin-bottom: 6px; }
+  .link-desc { font-family: var(--serif-body); font-size: 16px; color: var(--ink-dim); }
+  .facts { background: var(--paper-card); border: 2px solid var(--border); border-radius: 10px; padding: 24px 28px; font-family: var(--serif-body); font-size: 17px; }
+  .facts li { margin: 8px 0 8px 20px; }
+  .facts .note { font-size: 15px; color: var(--ink-dim); margin-top: 12px; }
+  .back { font-family: var(--mono); font-size: 13px; color: var(--header-dim); display:inline-block; margin-bottom: 18px; }
+  @media (max-width: 700px) { .link-grid { grid-template-columns: 1fr; } .section-title { font-size: 25px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Data Centers hub</a>
+    <div class="eyebrow">The Weber County Hive &middot; Box Elder County &middot; Topic Index</div>
+    <h1>Stratos: Everything We've Reported</h1>
+    <p class="dek">Utah's largest proposed data center shows up across many of our repos: the approval, the taxes, the water, the referendum and the 2026 races. Every page is here in one place.</p>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <div class="facts">
+      <strong>Stratos in brief, from the public record</strong>
+      <ul>
+        <li>About <strong>40,000 acres</strong> of private land plus about <strong>1,279 acres</strong> of military and state land in Hansel Valley, Box Elder County.</li>
+        <li>MIDA's board approved the project area <strong>unanimously on April 24, 2026</strong>.</li>
+        <li>Listed at <strong>7.5 gigawatts</strong> (Salt Lake Tribune), and <strong>9 gigawatts</strong> at full build-out per the Sierra Club.</li>
+        <li>Master developer: O'Leary Digital Utah Development Co, LLC. The project is branded &ldquo;Wonder Valley.&rdquo;</li>
+        <li>MIDA's 0.5% energy tax in the project area begins <strong>Oct. 1, 2026</strong> (Ordinance 2026-01).</li>
+        <li>A citizen referendum against it is <strong>in court</strong>.</li>
+      </ul>
+      <p class="note">MIDA's development agreement, interlocal agreement and development standards for Stratos are posted as drafts and are unsigned, according to MIDA's own document page.</p>
+    </div>
+    <div class="section-label">The project and MIDA</div>
+    <h2 class="section-title">How Stratos was approved</h2>
+    <p class="section-dek">Who approved it, what the documents say, and who owns land nearby.</p>
+    <div class="link-grid">
+      <a class="link-card" href="weber-hive-dc-stratos-land.html">
+        <div class="link-repo">Data Centers</div>
+        <div class="link-title">&ldquo;Do You Have The Land?&rdquo;</div>
+        <div class="link-desc">MIDA approved the 40,000-acre project in April 2026. The House Speaker's 25,000+ acres sit ten miles away, and a senator's land sits nearby. What the record shows about who knew what, and when.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/PIDS-Utah/stratos-ruby-pipeline-mida.html">
+        <div class="link-repo">PIDS-Utah</div>
+        <div class="link-title">Stratos, the Ruby Pipeline, and MIDA</div>
+        <div class="link-desc">How a data center was approved with an energy supply that may not be there yet, and how MIDA's process worked.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/committees/weberhivecommitteemidaprojectareas.html">
+        <div class="link-repo">Committees</div>
+        <div class="link-title">Eight Project Areas</div>
+        <div class="link-desc">Every MIDA project area side by side. Stratos was created in a single meeting and is about eight times Deer Valley's footprint.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/committees/weberhivemidaprojectareascorecard.html">
+        <div class="link-repo">Committees</div>
+        <div class="link-title">Eight Project Areas: Scorecard</div>
+        <div class="link-desc">The same eight MIDA project areas, each graded.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-sb337.html">
+        <div class="link-repo">Bill-Tracker</div>
+        <div class="link-title">S.B. 337: The One Authority to Rule Them All</div>
+        <div class="link-desc">After Stratos, Gov. Cox said MIDA had &ldquo;mission creep&rdquo; and needed major reform. The bill written to coordinate MIDA and five other authorities.</div>
+      </a>
+    </div>
+    <div class="section-label">Taxes and money</div>
+    <h2 class="section-title">What the public gives and gets</h2>
+    <p class="section-dek">The tax breaks Stratos can use, and the jobs and revenue claims.</p>
+    <div class="link-grid">
+      <a class="link-card" href="weber-hive-dc-sb114.html">
+        <div class="link-repo">Data Centers</div>
+        <div class="link-title">S.B. 114: The Exemption With No Jobs Requirement</div>
+        <div class="link-desc">Utah's data center sales tax exemption, with a full section on how it applies to Stratos.</div>
+      </a>
+      <a class="link-card" href="weber-hive-dc-national-math.html">
+        <div class="link-repo">Data Centers</div>
+        <div class="link-title">The National Math Behind Utah's Data Center Bets</div>
+        <div class="link-desc">Stratos's jobs claims (2,000 permanent, with no tenant announced), its plan to house workers on site, and who carries the risk if national demand falls short.</div>
+      </a>
+    </div>
+    <div class="section-label">Water and the lake</div>
+    <h2 class="section-title">Water, power and the Great Salt Lake</h2>
+    <p class="section-dek">How much water Stratos's power plants could use, and who holds water rights nearby.</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://weber-county-hive.github.io/Great-Salt-Lake/weber-gsl-outflows-by-user.html">
+        <div class="link-repo">Great-Salt-Lake</div>
+        <div class="link-title">Who's Actually Using the Water?</div>
+        <div class="link-desc">Puts Stratos's modeled power-plant water use, 2 billion to 16.6 billion gallons a year, beside farms, golf courses and other users.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/followthedeed/weber-hive-schultz-water-rights.html">
+        <div class="link-repo">Follow the Deed</div>
+        <div class="link-title">The Applicant Holds Those Rights</div>
+        <div class="link-desc">Speaker Mike Schultz's water rights in Box Elder County, and the open question of how close they sit to Stratos.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/Transparency/weber-hive-gsl-two-money-pots.html">
+        <div class="link-repo">Transparency</div>
+        <div class="link-title">One Lake, Two Money Pots</div>
+        <div class="link-desc">The Great Salt Lake trust council, including the lawmaker who sponsored S.B. 132, the bill behind Stratos's private power plants.</div>
+      </a>
+    </div>
+    <div class="section-label">Public vote</div>
+    <h2 class="section-title">The referendum that hasn't reached voters</h2>
+    <p class="section-dek">What happened when residents tried to put Stratos to a vote.</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://webercountyhive-coder.github.io/referendum/pid-mida-referendums-blocked.html#box-elder">
+        <div class="link-repo">Referendum</div>
+        <div class="link-title">Two Referendums, Zero Votes</div>
+        <div class="link-desc">The Box Elder County referendum against Stratos, now in court, and why it hasn't reached the ballot.</div>
+      </a>
+      <a class="link-card" href="weber-hive-dc-usc-summary.html">
+        <div class="link-repo">Data Centers</div>
+        <div class="link-title">Data Center Growth: Policy Choices</div>
+        <div class="link-desc">The one Aug. 19 hearing presentation that reported Stratos being delayed, and the county moratorium wave around it.</div>
+      </a>
+    </div>
+    <div class="section-label">Maps</div>
+    <h2 class="section-title">See it on the map</h2>
+    <p class="section-dek">Stratos pinned alongside everything around it.</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://weber-county-hive.github.io/utah-maps/utah-tax-increment-map.html">
+        <div class="link-repo">Utah Maps · MAP 001</div>
+        <div class="link-title">Where Utah's Tax Increment Goes</div>
+        <div class="link-desc">Data centers, PIDs, MIDA and Inland Port project areas on one map.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/utah-maps/great-salt-lake-pressures.html">
+        <div class="link-repo">Utah Maps · MAP 004</div>
+        <div class="link-title">Great Salt Lake Pressures</div>
+        <div class="link-desc">Data centers, water projects and military project areas around the lake.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/utah-maps/citizen-referendums.html">
+        <div class="link-repo">Utah Maps · MAP 006</div>
+        <div class="link-title">Citizen Referendums</div>
+        <div class="link-desc">Where Utahns have tried to put local decisions to a vote, including Stratos.</div>
+      </a>
+    </div>
+    <div class="section-label">2026 races</div>
+    <h2 class="section-title">Where Stratos comes up in the elections</h2>
+    <p class="section-dek">Candidate case files where Stratos votes, bills or statements are part of the record.</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://weber-county-hive.github.io/candidates2026/sd7-hollist-rushforth-ostler.html">
+        <div class="link-repo">Candidates 2026</div>
+        <div class="link-title">SD-7: Hollist vs. Rushforth vs. Ostler</div>
+        <div class="link-desc">Coverage tied Senate President Stuart Adams's primary loss in part to his MIDA vote on Stratos.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/candidates2026/sd5-koford-hernandez.html">
+        <div class="link-repo">Candidates 2026</div>
+        <div class="link-title">SD-5: Koford vs. Hernandez</div>
+        <div class="link-desc">Koford was House sponsor of three of the four 2026 water bills passed before Stratos was announced.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/candidates2026/box-elder-seat-a-smith-williams.html">
+        <div class="link-repo">Candidates 2026</div>
+        <div class="link-title">Box Elder Commission Seat A</div>
+        <div class="link-desc">Vance Smith beat an incumbent who voted for Stratos. What his own reports and disclosure form show.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/candidates2026/hd16-stevenson-treasure.html">
+        <div class="link-repo">Candidates 2026</div>
+        <div class="link-title">HD-16: Stevenson vs. Treasure</div>
+        <div class="link-desc">Abigail Treasure's campaign site carries a standalone statement on Stratos.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/candidates2026/hd6-bishop-rich.html">
+        <div class="link-repo">Candidates 2026</div>
+        <div class="link-title">HD-6: Bishop vs. Rich</div>
+        <div class="link-desc">No public statement by Rep. Rob Bishop on Stratos was found in news coverage.</div>
+      </a>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <span>&copy; 2026 The Weber County Hive &middot; 20 pages indexed Oct. 3, 2026</span>
+    <span><a href="https://webercountyhive.substack.com" target="_blank" rel="noopener">webercountyhive.substack.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

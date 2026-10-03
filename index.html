@@ -66,6 +66,21 @@
     .hub-grid { grid-template-columns: 1fr; }
     .hub-card { padding: 26px 24px; }
   }
+
+  .section-label { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); margin: 56px 0 8px; }
+  .section-title { font-family: var(--serif); font-weight: 800; font-size: 30px; line-height: 1.2; margin-bottom: 10px; }
+  .section-dek { font-family: var(--serif-body); font-size: 17px; color: var(--ink-dim); margin-bottom: 22px; max-width: 760px; }
+  .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .link-card { display: block; background: var(--paper-card); border: 2px solid var(--border); border-left: 6px solid var(--teal); border-radius: 8px; padding: 18px 20px; color: inherit; transition: border-color .15s ease; }
+  .link-card:hover { border-color: var(--rust); text-decoration: none; }
+  .link-repo { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-dimmer); margin-bottom: 6px; }
+  .link-title { font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--ink); line-height: 1.25; margin-bottom: 6px; }
+  .link-desc { font-family: var(--serif-body); font-size: 16px; color: var(--ink-dim); }
+  .facts { background: var(--paper-card); border: 2px solid var(--border); border-radius: 10px; padding: 24px 28px; font-family: var(--serif-body); font-size: 17px; }
+  .facts li { margin: 8px 0 8px 20px; }
+  .facts .note { font-size: 15px; color: var(--ink-dim); margin-top: 12px; }
+  .back { font-family: var(--mono); font-size: 13px; color: var(--header-dim); display:inline-block; margin-bottom: 18px; }
+  @media (max-width: 700px) { .link-grid { grid-template-columns: 1fr; } .section-title { font-size: 25px; } }
 </style>
 </head>
 <body>
@@ -85,6 +100,17 @@
     </div>
 
     <div class="hub-grid">
+      <a class="hub-card wide" href="stratos.html">
+        <div class="hub-eyebrow">Topic Index &middot; Box Elder County &middot; Utah's Largest Proposed Data Center</div>
+        <div class="hub-title">Stratos: Everything We've Reported</div>
+        <div class="hub-desc">The 40,000-acre campus in Hansel Valley shows up across our repos: how MIDA approved it, the tax breaks, the water, the referendum in court and the 2026 races. One click shows every page.</div>
+        <div class="hub-stat-row">
+          <div class="hub-stat"><strong>20</strong>pages</div>
+          <div class="hub-stat"><strong>10</strong>repos</div>
+          <div class="hub-stat"><strong>Apr. 24, 2026</strong>MIDA approval</div>
+        </div>
+        <div class="hub-cta">See every Stratos page &rarr;</div>
+      </a>
       <a class="hub-card wide" href="weber-hive-dc-meta-eagle-mountain.html">
         <div class="hub-eyebrow">Two-Part Case File &middot; Meta Platforms &middot; Eagle Mountain<span class="hub-new">NEW</span></div>
         <div class="hub-title">Meta in Eagle Mountain</div>
@@ -128,6 +154,41 @@
           <div class="hub-stat"><strong>2020&ndash;26</strong>sessions</div>
         </div>
         <div class="hub-cta">Open this docket &rarr;</div>
+      </a>
+    </div>
+    <div class="section-label">Across the Hive</div>
+    <h2 class="section-title">More data center reporting</h2>
+    <p class="section-dek">Data center pages that live in our other repos.</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://webercountyhive-coder.github.io/UIPA/uipa-tooele-zenith.html">
+        <div class="link-repo">UIPA</div>
+        <div class="link-title">Not the Landowner, Not the Developer</div>
+        <div class="link-desc">The 500 MW Tooele Valley data center, the Inland Port Authority's loan to its developer, and the wastewater permit fight.</div>
+      </a>
+      <a class="link-card" href="https://webercountyhive-coder.github.io/UIPA/weber-hive-uipa-explainer.html">
+        <div class="link-repo">UIPA</div>
+        <div class="link-title">What Is UIPA?</div>
+        <div class="link-desc">How the Inland Port Authority works, and why it matters for data centers.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-hb507.html">
+        <div class="link-repo">Bill-Tracker</div>
+        <div class="link-title">H.B. 507: The One-Year Gap</div>
+        <div class="link-desc">The 2026 law that limits local tax incentives for the largest data centers, starting a year after it took effect.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-sb225.html">
+        <div class="link-repo">Bill-Tracker</div>
+        <div class="link-title">S.B. 225: Public Corporation Amendments</div>
+        <div class="link-desc">How the Inland Port Authority's water-use standard changed during the 2026 session.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/committees/weberhivecommitteemidaprojectareas.html">
+        <div class="link-repo">Committees</div>
+        <div class="link-title">Eight Project Areas</div>
+        <div class="link-desc">Every MIDA project area side by side, including Stratos.</div>
+      </a>
+      <a class="link-card" href="https://weber-county-hive.github.io/utah-maps/utah-tax-increment-map.html">
+        <div class="link-repo">Utah Maps · MAP 001</div>
+        <div class="link-title">Where Utah's Tax Increment Goes</div>
+        <div class="link-desc">Data centers, PIDs, MIDA and Inland Port project areas on one map.</div>
       </a>
     </div>
   </div>
