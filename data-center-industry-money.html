@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Center Industry Money in Utah Politics | The Weber County Hive</title>
+<meta name="description" content="How much five tech and data-center-power companies have put into Utah politics each year since 2018, who received it, and how the pattern changed in the last three years.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{--bg:#fff;--panel:#f4f7fc;--ink:#14213d;--ink-soft:#3d4a66;--blue:#1f5fbf;--blue-soft:#e3ecfa;--gold:#b8901c;--line:#d5deec;--warn:#fff6dc;--warn-line:#e2c35a}
+*{box-sizing:border-box}html{font-size:19px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.6}
+a{color:var(--blue)}.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header.mast{background:var(--ink);padding:14px 0}header.mast a{color:#fff;text-decoration:none;font-family:Arial,sans-serif;font-size:.85rem;letter-spacing:.04em}
+.hero{padding:36px 0 18px;border-bottom:4px solid var(--blue)}
+.eyebrow{font-family:Arial,sans-serif;font-size:.78rem;letter-spacing:.12em;font-weight:700;color:var(--blue);text-transform:uppercase}
+h1{font-size:2.1rem;line-height:1.2;margin:.3em 0}h2{font-size:1.55rem;margin:1.8em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}h3{font-size:1.2rem;margin:1.2em 0 .4em}
+.dek{font-size:1.15rem;color:var(--ink-soft)}.tag{font-family:Arial,sans-serif;font-size:.8rem;color:var(--ink-soft)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:24px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat .n{font-family:Arial,sans-serif;font-size:1.7rem;font-weight:700;color:var(--gold)}.stat .n.plain{color:var(--blue)}
+.stat .l{font-size:.9rem;color:var(--ink-soft)}
+.table-scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+td.num,th.num{text-align:right;font-family:Arial,sans-serif}
+th{background:var(--ink);color:#fff;font-family:Arial,sans-serif;font-size:.85rem}
+tr:nth-child(even) td{background:var(--panel)}tr.total td{background:var(--blue-soft);font-weight:700}
+.cap{font-size:.85rem;color:var(--ink-soft)}
+.box{background:var(--panel);border-left:5px solid var(--blue);padding:14px 16px;margin:18px 0;border-radius:4px}
+.box.warn{background:var(--warn);border-left-color:var(--warn-line)}.box.fair{background:#eef7ee;border-left-color:#3c8a4a}.box h3{margin-top:0}
+#map{height:420px;border:1px solid var(--line);border-radius:8px;margin:12px 0}
+.chart-box{position:relative;height:400px;margin:14px 0}
+.mermaid{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0;text-align:center}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.tile{perspective:900px;height:190px;cursor:pointer;border:none;background:none;padding:0;font:inherit;color:inherit;text-align:left}
+.tile .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}.tile.flip .in{transform:rotateY(180deg)}
+.tile .f,.tile .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;padding:16px;display:flex;flex-direction:column;justify-content:center}
+.tile .f{background:var(--ink);color:#fff}.tile .f strong{font-size:1.3rem}.tile .f span{font-family:Arial,sans-serif;font-size:.78rem;opacity:.8;margin-top:8px}
+.tile .b{background:var(--blue-soft);transform:rotateY(180deg);font-size:.92rem}
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.picker button{font:inherit;font-size:.9rem;padding:8px 14px;border:2px solid var(--blue);background:#fff;color:var(--blue);border-radius:20px;cursor:pointer}.picker button.on{background:var(--blue);color:#fff}
+#pick-out{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;min-height:80px}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.person{border:1px solid var(--line);border-radius:8px;padding:12px 14px}.person b{display:block}
+.q{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0}.q .who{font-family:Arial,sans-serif;font-size:.8rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+details{border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:24px 0}summary{cursor:pointer;font-weight:700;font-size:1.1rem}details li{margin:6px 0;font-size:.9rem}
+footer{border-top:4px solid var(--blue);margin-top:40px;padding:20px 0 40px;font-size:.85rem;color:var(--ink-soft)}
+@media (max-width:600px){html{font-size:17px}h1{font-size:1.65rem}#map{height:340px}}
+</style>
+</head>
+<body>
+<header class="mast"><div class="wrap"><a href="index.html">← THE WEBER COUNTY HIVE · DATA CENTERS</a></div></header>
+<div class="wrap">
+<section class="hero">
+  <div class="eyebrow">Data Centers · Money · Oct. 3, 2026</div>
+  <h1>Data Center Industry Money in Utah Politics, 2018–2026</h1>
+  <p class="dek">How much five tech and data-center-power companies have put into Utah politics each year, who received it, and how the pattern changed: from many small checks across the Legislature to a few large ones aimed at the governor and chosen races.</p>
+  <p class="tag">The Weber County Hive — We report public records. You decide.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">$169,632</div><div class="l">from these five companies, 2018–2023 (six years)</div></div>
+    <div class="stat"><div class="n">$475,946</div><div class="l">from the same five, 2024–2026 (three years)</div></div>
+    <div class="stat"><div class="n">$201,042</div><div class="l">from Torus since 2022, every dollar to Gov. Spencer Cox</div></div>
+    <div class="stat"><div class="n">$251,446</div><div class="l">spent by Meta's PAC in one day, June 11, 2026, on two primary races</div></div>
+  </div>
+</section>
+
+<div class="box warn"><h3>Read this first</h3>This page covers only the five companies whose complete Utah records the Hive has pulled. Oracle, Google, Microsoft, Amazon, QTS, Aligned, Novva, DataBank, the Stratos developers, Creekstone, Joule and Williams are not in these totals yet, so the industry's real total is higher. Giving money is legal, and nothing here shows any vote was traded for it.</div>
+
+<h2>Words to know</h2>
+<p class="cap">Tap or click a card to flip it.</p>
+<div class="tiles">
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Contribution</strong><span>tap to flip</span></div><div class="b">Money given straight to a candidate, party or PAC. It shows up on the receiver's own campaign report.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Independent expenditure</strong><span>tap to flip</span></div><div class="b">Money a group spends on its own (ads, mailers, phone calls) to help or hurt a candidate. It never goes to the campaign, so it doesn't show on the candidate's report.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Leadership PAC</strong><span>tap to flip</span></div><div class="b">A committee run by legislative leaders or a party caucus, such as the House Republican Election Committee or SenDemPAC, that passes money on to other candidates.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Pass-through</strong><span>tap to flip</span></div><div class="b">Money that comes into one committee and goes right back out. Meta's Utah PAC received $270,000 and spent it the same day.</div></div></button>
+</div>
+
+<h2>Year by year</h2>
+<div class="table-scroll"><table>
+  <tr><th>Year</th><th class="num">Micron</th><th class="num">Lumen</th><th class="num">Torus</th><th class="num">Dell PAC</th><th class="num">Meta (outside spending)</th><th class="num">Total</th></tr>
+  <tr><td>2018</td><td class="num">$23,750</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num"><b>$23,750</b></td></tr>
+  <tr><td>2019</td><td class="num">$2,050</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num"><b>$2,050</b></td></tr>
+  <tr><td>2020</td><td class="num">$31,950</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num"><b>$31,950</b></td></tr>
+  <tr><td>2021</td><td class="num">$300</td><td class="num">$17,040</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num"><b>$17,340</b></td></tr>
+  <tr><td>2022</td><td class="num">—</td><td class="num">$9,750</td><td class="num">$50,000</td><td class="num">—</td><td class="num">—</td><td class="num"><b>$59,750</b></td></tr>
+  <tr><td>2023</td><td class="num">—</td><td class="num">$33,750</td><td class="num">$1,042</td><td class="num">—</td><td class="num">—</td><td class="num"><b>$34,792</b></td></tr>
+  <tr><td>2024</td><td class="num">—</td><td class="num">$16,500</td><td class="num">$50,000</td><td class="num">$10,000</td><td class="num">—</td><td class="num"><b>$76,500</b></td></tr>
+  <tr><td>2025</td><td class="num">—</td><td class="num">$29,500</td><td class="num">$50,000</td><td class="num">—</td><td class="num">—</td><td class="num"><b>$79,500</b></td></tr>
+  <tr><td>2026</td><td class="num">—</td><td class="num">$18,500</td><td class="num">$50,000</td><td class="num">—</td><td class="num">$251,446</td><td class="num"><b>$319,946</b></td></tr>
+  <tr class="total"><td>All years</td><td class="num">$58,050</td><td class="num">$125,040</td><td class="num">$201,042</td><td class="num">$10,000</td><td class="num">$251,446</td><td class="num">$645,578</td></tr>
+</table></div>
+<p class="cap">Dollars rounded to the nearest dollar. Micron includes IM Flash Technologies, the Lehi chip plant Micron took over in 2019. Dell's $10,000 is its one check to Gov. Cox; a same-day $10,000 entry listing Dell's PAC as both giver and receiver is left out. 2026 is through the latest reports pulled.</p>
+
+<div class="chart-box"><canvas id="yearChart" aria-label="Bar chart of yearly totals, checks versus outside spending"></canvas></div>
+
+<h2>Where the money went</h2>
+<div class="mermaid">
+flowchart LR
+  T["Torus<br/><b>$201,042</b>"] --> COX["Gov. Spencer Cox"]
+  D["Dell PAC<br/><b>$10,000</b>"] --> COX
+  L["Lumen<br/><b>$125,040</b>"] --> COX
+  L --> LP["Party leadership PACs<br/>and legislators, both parties"]
+  MI["Micron<br/><b>$58,050</b>"] --> LEG["About 100 small checks a year<br/>to legislators, both parties<br/>(2018–2020)"]
+  ME["Meta's national PAC<br/><b>$270,000</b>"] --> MU["Meta's Utah PAC<br/>same day"]
+  MU --> ADS["Ads, calls, mailers, data<br/>for Tami Tran and Logan Monson"]
+</div>
+
+<h3>Pick a company</h3>
+<div class="picker" id="picker">
+  <button type="button" data-k="torus" class="on">Torus</button>
+  <button type="button" data-k="meta">Meta</button>
+  <button type="button" data-k="lumen">Lumen</button>
+  <button type="button" data-k="micron">Micron</button>
+  <button type="button" data-k="dell">Dell</button>
+</div>
+<div id="pick-out" aria-live="polite"></div>
+
+<h2>What changed in the last three years</h2>
+<ul>
+  <li><strong>More money.</strong> These five gave about $170,000 over the six years from 2018 to 2023, and about $476,000 in the three years from 2024 to 2026.</li>
+  <li><strong>Fewer, bigger checks.</strong> In 2018–2020, Micron gave about 100 small checks a year, mostly $200 to $1,000, to legislators in both parties, then stopped after 2021. Since 2022, Torus has given $50,000 checks, every one to Gov. Cox. Meta's first Utah spending was $251,446 in one day, on two primary races.</li>
+  <li><strong>Outside spending appeared.</strong> Meta's money went to ads, calls, mailers and data for Tami Tran (Senate District 6) and Logan Monson (House District 69) rather than to their campaigns, so it does not appear in either candidate's own report. Both won their June 23 primaries.</li>
+  <li><strong>Steady giving continued alongside it.</strong> Lumen, which runs four data centers in Salt Lake City and Ogden, has given $10,000 to $34,000 a year since 2021, mostly to both parties' leadership PACs and Gov. Cox.</li>
+</ul>
+
+<h2>Lobbyists and relationships with officials</h2>
+<p>This section lists only relationships shown in public records or in the people's own published materials. A lobbying client relationship is legal and common; it means a company paid someone to represent it before government.</p>
+<div class="mermaid">
+flowchart TD
+  META["Meta"] -->|"listed as a client"| HM["HEMMCO LLC<br/>(Dan Hemmert)"]
+  HM -->|"MIDA listed as a client<br/>Jan. 19, 2023 – Aug. 3, 2026"| MIDA["MIDA"]
+  DH["Dan Hemmert"] -->|"executive director<br/>since Aug. 1, 2026"| MIDA
+  DH -->|"executive director<br/>2021–2022"| GOED["Governor's Office of<br/>Economic Development"]
+  DH -->|"state senator 2016–2021;<br/>on the committee that<br/>passed S.B. 114, absent for the vote"| SEN["Utah Senate"]
+  MIDA -->|"approved Apr. 24, 2026"| STR["Stratos data center<br/>project area"]
+  META -->|"$251,446 in outside spending, 2026"| TRAN["Tami Tran (SD-6)<br/>Logan Monson (HD-69)"]
+  TOR["Torus"] -->|"$201,042 since 2022"| COX["Gov. Spencer Cox"]
+</div>
+<div class="table-scroll"><table>
+  <tr><th>Company</th><th>Lobbyist on record</th><th>Source</th><th>Status</th></tr>
+  <tr><td>Meta</td><td>HEMMCO LLC (Dan Hemmert)</td><td>Hemmert's own LinkedIn client list and HEMMCO's website ("Meta Data Centers")</td><td>Confirmed as a listed client; registration dates for Meta not yet pulled</td></tr>
+  <tr><td>Silicon Slopes Commons (Utah Tech PAC)</td><td>Paul S. Rogers &amp; Associates</td><td>Utah Tech PAC's own 2017 report: $50,000 paid to the firm</td><td>Confirmed for 2017</td></tr>
+  <tr><td>Lumen</td><td>Not yet checked</td><td>lobbyist.utah.gov</td><td>Open</td></tr>
+  <tr><td>Torus</td><td>Not yet checked</td><td>lobbyist.utah.gov</td><td>Open</td></tr>
+  <tr><td>Micron</td><td>Not yet checked</td><td>lobbyist.utah.gov</td><td>Open</td></tr>
+  <tr><td>Dell</td><td>Not yet checked</td><td>lobbyist.utah.gov</td><td>Open</td></tr>
+</table></div>
+<ul>
+  <li><strong>Dan Hemmert.</strong> HEMMCO's state lobbyist registration lists MIDA as a client from Jan. 19, 2023 to Aug. 3, 2026, and most of his other clients ending on Aug. 3, 2026. MIDA's board appointed him executive director (Resolution 2026-12); his start date was reported as Aug. 1, 2026. MIDA approved the Stratos project area on April 24, 2026, before he was hired. Hemmert's LinkedIn lists Meta as a HEMMCO client. As a state senator, he was a member of the Senate committee that passed S.B. 114 in 2020 and was absent for that vote.</li>
+  <li><strong>Gov. Spencer Cox.</strong> Received all of Torus's contributions, Dell's one contribution and $24,000 from Lumen.</li>
+  <li><strong>Meta's Utah PAC</strong> is chaired by Josh Althouse, Meta's public policy director; its treasurer is an attorney at a Fremont, California political law firm.</li>
+</ul>
+<div class="box fair"><h3>The other side</h3>
+<ul>
+  <li>Every contribution and expenditure on this page was reported to the state and is public. That is how the Hive found it.</li>
+  <li>Companies of every kind give to Utah campaigns. Lumen and Micron gave to Democrats and Republicans alike.</li>
+  <li>Torus makes energy storage for utilities, data centers and industry. A company giving to a sitting governor is legal, and the records don't say why it gives.</li>
+</ul></div>
+
+<h2>Where these companies are in Utah</h2>
+<div id="map" role="img" aria-label="Map of company locations in Utah"></div>
+<p class="cap">Pins are at the addresses in the companies' filings or the Salt Lake Tribune's data center map. Dell's PAC files from Washington, D.C.</p>
+
+<h2>People in this record</h2>
+<div class="people">
+  <div class="person"><b>Gov. Spencer Cox</b>Received every Torus check ($201,042), Dell's $10,000, $24,000 from Lumen and Micron's largest 2020 check.</div>
+  <div class="person"><b>Sen. Tami Tran (SD-6)</b>Meta's PAC spent $152,503 on her primary. <a href="https://weber-county-hive.github.io/candidates2026/sd6-tran-neal.html">SD-6 case file →</a></div>
+  <div class="person"><b>Rep. Logan Monson (HD-69)</b>Meta's PAC spent $98,943 on his primary. He sits on the House Natural Resources, Agriculture and Environment Committee. <a href="https://weber-county-hive.github.io/committees/weber-hive-committee-nrae.html">Committee page →</a></div>
+  <div class="person"><b>Dan Hemmert</b>MIDA executive director since 2026; former HEMMCO lobbyist (clients listed include Meta and MIDA); former GOED executive director and state senator. <a href="stratos.html">Stratos pages →</a></div>
+  <div class="person"><b>Josh Althouse</b>Meta public policy director; chair of Meta's Utah PAC, Forge the Future Project.</div>
+</div>
+
+<h2>Questions to ask, and whom to ask</h2>
+<div class="q"><div class="who">Your state legislators</div>Have you received money from data center companies or the companies that power them, and did it come before or after votes on data center bills?</div>
+<div class="q"><div class="who">Gov. Spencer Cox's campaign</div>Every Torus contribution on record, $201,042 since 2022, has gone to your campaign. Does Torus have any contract, grant or matter before the state, and how is that handled?</div>
+<div class="q"><div class="who">Lt. Governor's Office (elections)</div>Should outside spending like Meta's show up on the candidate's own disclosure page, so voters see it in one place?</div>
+<div class="q"><div class="who">Candidates in 2026 races</div>Will you list on your website every company that spent money to help you, including outside spending?</div>
+
+<details>
+<summary>Sources and how they were read</summary>
+<ul>
+  <li>Utah campaign finance disclosures (disclosures.utah.gov), contributor searches by company name for each year 2018–2026, as pulled and shared by the Hive in September 2026. Micron and Lumen totals combine every spelling of each company's name; unrelated names caught by the same search words were left out.</li>
+  <li>Forge the Future Project (Meta's Utah PAC): Statement of Organization and 2026 Primary Report, disclosures.utah.gov.</li>
+  <li>Torus, Inc. contributions 2022–2026, disclosures.utah.gov; company description from <a href="https://www.businesswire.com/news/home/20250909631411/en/Torus-Raises-%24200-Million-to-Accelerate-Deployment-of-Modular-Power-Plants-for-Utilities-Data-Centers-and-Industry">Business Wire, Sept. 9, 2025</a>.</li>
+  <li>Dell Technologies Inc PAC, 2024 report and PAC page, disclosures.utah.gov.</li>
+  <li>Lumen data center locations: Salt Lake Tribune, "Utah data center map," Sept. 25, 2026.</li>
+  <li>HEMMCO LLC lobbyist registration (client begin and end dates), lobbyist.utah.gov, as obtained Sept. 3, 2026; Dan Hemmert's LinkedIn profile and HEMMCO's website client lists; MIDA board minutes, Aug. 20, 2026 (Resolution 2026-12); Salt Lake Tribune, June 26, 2026.</li>
+  <li>Utah Tech PAC 2017 report (DEX export), disclosures.utah.gov.</li>
+  <li>Senate Revenue and Taxation Committee minutes, Feb. 14, 2020 (S.B. 114 vote).</li>
+</ul>
+</details>
+</div>
+<footer><div class="wrap">The Weber County Hive · webercountyhive.substack.com · Tips and corrections: webercountyhive@gmail.com</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{fontSize:"22px",fontFamily:"Georgia, serif",primaryColor:"#e3ecfa",primaryBorderColor:"#1f5fbf",primaryTextColor:"#14213d",lineColor:"#1f5fbf"}});
+</script>
+<script>
+document.querySelectorAll('.tile').forEach(function(t){t.addEventListener('click',function(e){if(e.target.tagName==='A')return;t.classList.toggle('flip');});});
+(function(){
+  var d={
+    torus:'<b>Torus, Inc.</b> Makes energy storage for utilities, data centers and industry; based in South Salt Lake. Gave $50,000 (2022), $1,042 (2023), $50,000 (2024), $50,000 (2025) and $50,000 (2026), all to Gov. Spencer Cox. No other recipient appears in any year. <b>Total $201,042.</b>',
+    meta:'<b>Meta (Forge the Future Project).</b> Meta\'s national PAC sent $270,000 to its Utah PAC on June 11, 2026, and the Utah PAC spent $251,446 that same day: $152,503 helping Tami Tran and $98,943 helping Logan Monson, on ads, calls, mailers and data. $18,554 was left in the account. Meta also runs the Eagle Mountain data center campus.',
+    lumen:'<b>Lumen Technologies.</b> Runs four data centers in Salt Lake City and Ogden. Gave every year since 2021, $9,750 to $33,750 a year, to both parties\' leadership PACs, legislators of both parties and Gov. Cox ($24,000). <b>Total $125,040.</b>',
+    micron:'<b>Micron Technology</b> (including IM Flash, its Lehi chip plant). About 100 small checks a year to legislators of both parties in 2018 and 2020, plus party and leadership PACs; one $300 check in 2021; nothing since. <b>Total $58,050.</b>',
+    dell:'<b>Dell Technologies PAC.</b> Registered in Utah in 2024. One $10,000 check to Gov. Cox (April 29, 2024). Nothing else on record.'
+  };
+  var out=document.getElementById('pick-out'),btns=document.querySelectorAll('#picker button');
+  function show(k){out.innerHTML=d[k];btns.forEach(function(b){b.classList.toggle('on',b.dataset.k===k);});}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.k);});});show('torus');
+})();
+</script>
+<script>
+try{(function(){
+  if(typeof Chart==='undefined')return;
+  Chart.defaults.font.size=16;Chart.defaults.color='#14213d';
+  new Chart(document.getElementById('yearChart'),{type:'bar',data:{labels:['2018','2019','2020','2021','2022','2023','2024','2025','2026'],
+    datasets:[{label:'Checks to candidates, parties and PACs',data:[23750,2050,31950,17340,59750,34792,76500,79500,68500],backgroundColor:'#1f5fbf'},
+              {label:"Meta's outside spending",data:[0,0,0,0,0,0,0,0,251446],backgroundColor:'#b8901c'}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'},title:{display:true,text:'Money from five companies, by year',font:{size:18}}},
+      scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{callback:function(v){return '$'+v.toLocaleString();}}}}}});
+})();}catch(e){console.warn('chart',e);}
+</script>
+<script>
+try{(function(){
+  if(typeof L==='undefined')return;
+  var map=L.map('map',{scrollWheelZoom:false}).setView([40.75,-111.95],9);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:14,attribution:'© OpenStreetMap contributors'}).addTo(map);
+  [[40.7166,-111.913,'Torus, Inc.','855 W 2400 S, South Salt Lake (2025 filing address)'],
+   [40.43,-111.89,'Micron / IM Flash','4000 N Flash Drive, Lehi'],
+   [40.76,-111.89,'Lumen data centers','Salt Lake City 1, 2 and 4'],
+   [41.223,-111.97,'Lumen Ogden 1','Ogden'],
+   [40.314,-112.01,'Meta data center campus','Eagle Mountain']
+  ].forEach(function(p){L.marker([p[0],p[1]]).addTo(map).bindPopup('<b>'+p[2]+'</b><br>'+p[3]);});
+})();}catch(e){console.warn('map',e);}
+</script>
+</body>
+</html>
