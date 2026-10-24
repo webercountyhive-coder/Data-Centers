@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>It's Happening Statewide: Utah's Data Centers and Their Own Power Plants | The Weber County Hive</title>
-<meta name="description">Two-thirds of the data center capacity under construction in Utah will run behind the meter or off the grid. Region by region, the same three pieces keep showing up: local zoning, S.B. 132, and nuclear as the long-term power source.">
+<meta name="description" content="Two-thirds of the data center capacity under construction in Utah will run behind the meter or off the grid. Region by region, the same three pieces keep showing up: local zoning, S.B. 132, and nuclear as the long-term power source.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
 :root{
@@ -81,8 +81,25 @@ details li{margin:6px 0;font-size:.9rem}
 footer{border-top:4px solid var(--blue);margin-top:40px;padding:20px 0 40px;font-size:.85rem;color:var(--ink-soft)}
 @media (max-width:600px){html{font-size:18px}h1{font-size:1.7rem}#map{height:360px}}
 </style>
+<link rel="icon" type="image/png" href="hive-bee.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style id="uhp-brand">
+.hb-bar{background:#0d0b0a;border-bottom:1px solid #3a2f1c;padding:10px 20px;}
+.hb-bar a{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;text-decoration:none;}
+.hb-bar img{width:52px;height:52px;border-radius:4px;display:block;flex:none;}
+.hb-name{font-family:'Cinzel','Trajan Pro',Georgia,serif;color:#d4af37;font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;display:block;}
+.hb-sub{font-family:Georgia,serif;font-style:italic;color:#b8956a;font-size:12.5px;letter-spacing:.02em;display:block;margin-top:2px;}
+.hb-foot{background:#0d0b0a;color:#b8956a;text-align:center;padding:26px 20px 30px;font-family:Georgia,serif;}
+.hb-foot img{width:52px;height:52px;display:block;margin:0 auto 10px;}
+.hb-foot .hb-name{font-size:14px;}
+.hb-foot .hb-tag{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7650;margin-top:8px;display:block;}
+.uhp-dates{font-family:Arial,sans-serif;font-size:15px;color:inherit;opacity:.85;margin:8px 0 0}
+@media(max-width:600px){.hb-bar{padding:8px 16px}.hb-bar img{width:38px;height:38px}.hb-name{font-size:13px}.hb-sub{font-size:11.5px}}
+</style>
 </head>
 <body>
+<div class="hb-bar"><a href="https://webercountyhive.substack.com/" target="_blank" rel="noopener"><img src="uhp-badge.png" alt="Utah Hive Politics logo"><span><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span></span></a></div>
+
 
 <header class="mast"><div class="wrap"><a href="index.html">← THE WEBER COUNTY HIVE · DATA CENTERS</a></div></header>
 
@@ -228,6 +245,17 @@ flowchart LR
 <div class="q"><div class="who">Rocky Mountain Power</div>How many large-load requests under S.B. 132 has the utility received, and how many went to private generators?</div>
 <div class="q"><div class="who">Your county commission</div>Are data centers a permitted use anywhere in our county, and do they need a public hearing?</div>
 
+<h2>Updates since this was posted</h2>
+<div class="box">
+<ul>
+  <li><strong>Tooele County, Oct. 7, 2026:</strong> the planning commission voted unanimously to table Chapter 34, the county's draft data center ordinance, until it can define what a data center is. The assistant county manager said the county will not accept a data center application until Chapter 34 is complete. Next meeting: Oct. 28. (KSL, Oct. 8, 2026)</li>
+  <li><strong>Box Elder County, Oct. 15, 2026:</strong> Stratos filed a water rights change application. It lists 11 data center clusters, a 7.5-gigawatt power facility in fifteen 500-megawatt blocks, and 4,850 employees. The filing's own report calls the plant reciprocating engines; the news report described combined-cycle gas. A two-week notice and 20-day protest period follow. (Deseret News, Oct. 16, 2026)</li>
+  <li><strong>Box Elder County:</strong> the county's 180-day data center moratorium, Ordinance 654, was adopted after it consented to Stratos and cannot reach the project; the draft development agreement excludes the project area from any moratorium. (<a href="https://weber-county-hive.github.io/committees/weberhivecommitteemidaprojectareas.html">Eight Project Areas</a>)</li>
+  <li><strong>Carbon County:</strong> Valar's Carbon plan is called "Project Beehive." Canary Media reported Oct. 14 that residents criticized the county's nondisclosure agreements. The county's July 3 statement defends them, saying some companies would not look at the county without them. (Canary Media, Oct. 14, 2026; Salt Lake Tribune, Sept. 24, 2026)</li>
+  <li><strong>Inland Port Authority, Oct. 21, 2026:</strong> Executive Director Ben Hart told a legislative committee UIPA is not actively recruiting data centers, and that some data centers use its infrastructure. (<a href="https://weber-county-hive.github.io/Unelected-Power/uipa-hearing-fact-check.html">UIPA hearing fact-check</a>)</li>
+</ul>
+</div>
+
 <div class="connects">
   <h3>Where this connects</h3>
   <ul>
@@ -238,6 +266,10 @@ flowchart LR
     <li><a href="weber-hive-dc-national-math.html">The National Math Behind Utah's Data Center Bets</a></li>
     <li><a href="https://webercountyhive-coder.github.io/UIPA/uipa-tooele-zenith.html">Tooele Valley: Not the Landowner, Not the Developer</a> (UIPA)</li>
     <li><a href="https://weber-county-hive.github.io/utah-maps/utah-tax-increment-map.html">Where Utah's Tax Increment Goes</a> (Utah Maps)</li>
+    <li><a href="weber-hive-dc-hb76.html">H.B. 76 (2026): data center water reporting</a></li>
+    <li><a href="https://weber-county-hive.github.io/Transparency/nrc-doe-reactor-rule.html">One Reactor, Two Regulators</a> (Transparency): the federal reactor rule, Utah's test reactor and H.B. 78</li>
+    <li><a href="https://webercountyhive.substack.com/p/one-hearing-five-versions-of-the">Energy: Utah's Hidden Loopholes Disguised as Transparency</a> (Substack, Sept. 5, 2026 · the two S.B. 132 paths)</li>
+    <li><a href="https://webercountyhive.substack.com/p/the-shield-and-fragment-strategy-681">The Shield and Fragment Strategy</a> (Substack, Aug. 7, 2026 · 2026 water laws and Stratos)</li>
   </ul>
 </div>
 
@@ -271,6 +303,8 @@ flowchart LR
 </div>
 
 <footer><div class="wrap">The Weber County Hive · webercountyhive.substack.com · Tips and corrections: webercountyhive@gmail.com</div></footer>
+<div class="hb-foot"><img src="hive-bee.png" alt=""><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-tag">Independent · Accountability · Journalism</span></div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>

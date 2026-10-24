@@ -9,20 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;0,8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #f4f0e6;
-    --paper-card: #faf7ef;
-    --ink: #1c1c1a;
-    --ink-dim: #5b5850;
-    --ink-dimmer: #8c8878;
-    --header-bg: #142a2c;
-    --header-bg-2: #1c3a3a;
-    --header-text: #f4f0e6;
-    --header-dim: #9fb0ac;
-    --rust: #c0572e;
-    --amber: #d9a441;
-    --teal: #2e5f5a;
-    --border: #ddd6c4;
-    --border-dark: rgba(244, 240, 230, 0.16);
+    --paper: #ffffff;
+    --paper-card: #f4f7fc;
+    --ink: #14213d;
+    --ink-dim: #3d4a66;
+    --ink-dimmer: #5d6a85;
+    --header-bg: #14213d;
+    --header-bg-2: #1d2f56;
+    --header-text: #ffffff;
+    --header-dim: #c9d6ee;
+    --rust: #1f5fbf;
+    --amber: #b8901c;
+    --teal: #1f5fbf;
+    --border: #d5deec;
+    --border-dark: rgba(255, 255, 255, 0.16);
     --serif: 'Playfair Display', Georgia, serif;
     --serif-body: 'Source Serif 4', Georgia, serif;
     --sans: 'Inter', -apple-system, sans-serif;
@@ -35,13 +35,13 @@
   .wrap { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
 
   header { background: linear-gradient(155deg, var(--header-bg), var(--header-bg-2)); padding: 60px 0 48px; border-bottom: 3px solid var(--rust); }
-  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 18px; text-align: center; }
+  .eyebrow { font-family: var(--mono); font-size:14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 18px; text-align: center; }
   h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(34px, 5vw, 54px); line-height: 1.08; letter-spacing: -0.01em; color: var(--header-text); text-align: center; margin-bottom: 18px; }
-  .dek { font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--header-dim); max-width: 640px; margin: 0 auto; text-align: center; }
+  .dek { font-family: var(--serif-body); font-style: italic; font-size:20px; color: var(--header-dim); max-width: 640px; margin: 0 auto; text-align: center; }
 
   main { padding: 60px 0 80px; }
 
-  .context-box { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 22px 26px; font-family: var(--serif-body); font-size: 15.5px; color: var(--ink-dim); margin-bottom: 48px; }
+  .context-box { background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 22px 26px; font-family: var(--serif-body); font-size:18px; color: var(--ink-dim); margin-bottom: 48px; }
   .context-box strong { color: var(--ink); font-weight: 600; }
 
   .hub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
@@ -49,17 +49,17 @@
   .hub-card { display: block; background: var(--paper-card); border: 2px solid var(--border); border-radius: 10px; padding: 32px 30px; color: inherit; text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
   .hub-card:hover { border-color: var(--rust); transform: translateY(-3px); text-decoration: none; }
 
-  .hub-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .hub-eyebrow { font-family: var(--mono); font-size:13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
   .hub-title { font-family: var(--serif); font-weight: 800; font-size: 24px; color: var(--ink); margin-bottom: 12px; line-height: 1.2; }
-  .hub-desc { font-family: var(--serif-body); font-size: 15px; color: var(--ink-dim); margin-bottom: 18px; }
+  .hub-desc { font-family: var(--serif-body); font-size:17px; color: var(--ink-dim); margin-bottom: 18px; }
   .hub-stat-row { display: flex; gap: 18px; margin-bottom: 18px; }
-  .hub-stat { font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
+  .hub-stat { font-family: var(--mono); font-size:14px; color: var(--ink-dimmer); }
   .hub-stat strong { display: block; font-family: var(--serif); font-size: 20px; color: var(--rust); font-weight: 700; }
   .hub-card.wide { grid-column: 1 / -1; }
-  .hub-new { display:inline-block; background: var(--rust); color: var(--paper); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; padding: 2px 7px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
-  .hub-cta { font-family: var(--mono); font-size: 12px; color: var(--rust); }
+  .hub-new { display:inline-block; background: var(--rust); color: var(--paper); font-family: var(--mono); font-size:13px; letter-spacing: .08em; padding: 2px 7px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+  .hub-cta { font-family: var(--mono); font-size:14px; color: var(--rust); }
 
-  footer { padding: 36px 0 60px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); }
+  footer { padding: 36px 0 60px; border-top: 1px solid var(--border); font-family: var(--mono); font-size:14px; color: var(--ink-dimmer); }
 
   @media (max-width: 700px) {
     header { padding: 44px 0 34px; }
@@ -67,28 +67,46 @@
     .hub-card { padding: 26px 24px; }
   }
 
-  .section-label { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); margin: 56px 0 8px; }
+  .section-label { font-family: var(--mono); font-size:15px; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); margin: 56px 0 8px; }
   .section-title { font-family: var(--serif); font-weight: 800; font-size: 30px; line-height: 1.2; margin-bottom: 10px; }
-  .section-dek { font-family: var(--serif-body); font-size: 17px; color: var(--ink-dim); margin-bottom: 22px; max-width: 760px; }
+  .section-dek { font-family: var(--serif-body); font-size:20px; color: var(--ink-dim); margin-bottom: 22px; max-width: 760px; }
   .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .link-card { display: block; background: var(--paper-card); border: 2px solid var(--border); border-left: 6px solid var(--teal); border-radius: 8px; padding: 18px 20px; color: inherit; transition: border-color .15s ease; }
   .link-card:hover { border-color: var(--rust); text-decoration: none; }
-  .link-repo { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-dimmer); margin-bottom: 6px; }
+  .link-repo { font-family: var(--mono); font-size:14px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-dimmer); margin-bottom: 6px; }
   .link-title { font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--ink); line-height: 1.25; margin-bottom: 6px; }
-  .link-desc { font-family: var(--serif-body); font-size: 16px; color: var(--ink-dim); }
-  .facts { background: var(--paper-card); border: 2px solid var(--border); border-radius: 10px; padding: 24px 28px; font-family: var(--serif-body); font-size: 17px; }
+  .link-desc { font-family: var(--serif-body); font-size:18px; color: var(--ink-dim); }
+  .facts { background: var(--paper-card); border: 2px solid var(--border); border-radius: 10px; padding: 24px 28px; font-family: var(--serif-body); font-size:20px; }
   .facts li { margin: 8px 0 8px 20px; }
-  .facts .note { font-size: 15px; color: var(--ink-dim); margin-top: 12px; }
-  .back { font-family: var(--mono); font-size: 13px; color: var(--header-dim); display:inline-block; margin-bottom: 18px; }
+  .facts .note { font-size:17px; color: var(--ink-dim); margin-top: 12px; }
+  .back { font-family: var(--mono); font-size:15px; color: var(--header-dim); display:inline-block; margin-bottom: 18px; }
   @media (max-width: 700px) { .link-grid { grid-template-columns: 1fr; } .section-title { font-size: 25px; } }
+</style>
+<link rel="icon" type="image/png" href="hive-bee.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style id="uhp-brand">
+.hb-bar{background:#0d0b0a;border-bottom:1px solid #3a2f1c;padding:10px 20px;}
+.hb-bar a{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;text-decoration:none;}
+.hb-bar img{width:52px;height:52px;border-radius:4px;display:block;flex:none;}
+.hb-name{font-family:'Cinzel','Trajan Pro',Georgia,serif;color:#d4af37;font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;display:block;}
+.hb-sub{font-family:Georgia,serif;font-style:italic;color:#b8956a;font-size:12.5px;letter-spacing:.02em;display:block;margin-top:2px;}
+.hb-foot{background:#0d0b0a;color:#b8956a;text-align:center;padding:26px 20px 30px;font-family:Georgia,serif;}
+.hb-foot img{width:52px;height:52px;display:block;margin:0 auto 10px;}
+.hb-foot .hb-name{font-size:14px;}
+.hb-foot .hb-tag{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7650;margin-top:8px;display:block;}
+.uhp-dates{font-family:Arial,sans-serif;font-size:15px;color:inherit;opacity:.85;margin:8px 0 0}
+@media(max-width:600px){.hb-bar{padding:8px 16px}.hb-bar img{width:38px;height:38px}.hb-name{font-size:13px}.hb-sub{font-size:11.5px}}
 </style>
 </head>
 <body>
+<div class="hb-bar"><a href="https://webercountyhive.substack.com/" target="_blank" rel="noopener"><img src="uhp-badge.png" alt="Utah Hive Politics logo"><span><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span></span></a></div>
+
 <header>
   <div class="wrap">
     <a class="back" href="index.html">&larr; Data Centers hub</a>
     <div class="eyebrow">The Weber County Hive &middot; Box Elder County &middot; Topic Index</div>
     <h1>Stratos: Everything We've Reported</h1>
+<p class="uhp-dates">Posted Oct. 3, 2026 · Updated Oct. 24, 2026</p>
     <p class="dek">Utah's largest proposed data center shows up across many of our repos: the approval, the taxes, the water, the referendum and the 2026 races. Every page is here in one place.</p>
   </div>
 </header>
@@ -103,6 +121,9 @@
         <li>Master developer: O'Leary Digital Utah Development Co, LLC. The project is branded &ldquo;Wonder Valley.&rdquo;</li>
         <li>MIDA's 0.5% energy tax in the project area begins <strong>Oct. 1, 2026</strong> (Ordinance 2026-01).</li>
         <li>A citizen referendum against it is <strong>in court</strong>.</li>
+        <li><strong>Update, Oct. 24, 2026:</strong> the referendum case is before Judge Spencer D. Walsh in 1st District Court. The county and O'Leary Digital asked the judge to dismiss it; the referendum sponsors asked for summary judgment. No ruling had been issued as of Sept. 15, 2026 (Salt Lake Tribune). Nuclear reactors are a permitted use in Stratos's draft development standards; see <a href="weber-hive-dc-nuclear-projects.html">Utah's Nuclear Projects</a>.</li>
+        <li><strong>Update, Oct. 24, 2026:</strong> Stratos filed a water rights change application on Oct. 15, 2026, listing 4,850 employees and a 7.5-gigawatt power facility (Deseret News, Oct. 16). After a June 1 letter from MIDA's chair asking for a 75% reduction, more than 20,000 acres were removed from the footprint. Box Elder's 180-day data center moratorium, Ordinance 654, cannot reach the project. Two defamation suits have been filed against Kevin O'Leary and Fox News over claims about Stratos critics: one in July by Alliance for a Better Utah and others, and one on Oct. 14 by Taylor Knuth of Ogden (KSL, Oct. 15). Data center water reporting is covered on <a href="weber-hive-dc-hb76.html">H.B. 76</a>; the acreage and moratorium on <a href="https://weber-county-hive.github.io/committees/weberhivecommitteemidaprojectareas.html">Eight Project Areas</a>.</li>
+        <li>Read the article: <a href="https://webercountyhive.substack.com/p/the-shield-and-fragment-strategy-681">The Shield and Fragment Strategy</a> (Substack, Aug. 7, 2026).</li>
       </ul>
       <p class="note">MIDA's development agreement, interlocal agreement and development standards for Stratos are posted as drafts and are unsigned, according to MIDA's own document page.</p>
     </div>
@@ -169,6 +190,16 @@
         <div class="link-repo">Transparency</div>
         <div class="link-title">One Lake, Two Money Pots</div>
         <div class="link-desc">The Great Salt Lake trust council, including the lawmaker who sponsored S.B. 132, the bill behind Stratos's private power plants.</div>
+      </a>
+      <a class="link-card" href="weber-hive-dc-nuclear-projects.html">
+        <div class="link-repo">Data Centers · Power Series</div>
+        <div class="link-title">Utah's Nuclear Projects and the Data Centers Behind Them</div>
+        <div class="link-desc">Reactors are a permitted use in Stratos's draft standards. Where Stratos sits among ten nuclear plans statewide.</div>
+      </a>
+      <a class="link-card" href="weber-hive-dc-statewide-power.html">
+        <div class="link-repo">Data Centers · Power Series</div>
+        <div class="link-title">It's Happening Statewide</div>
+        <div class="link-desc">Stratos is one of several Utah campuses planned with its own power plant. The same three pieces, region by region.</div>
       </a>
     </div>
     <div class="section-label">Public vote</div>
@@ -244,6 +275,8 @@
     <span><a href="https://webercountyhive.substack.com" target="_blank" rel="noopener">webercountyhive.substack.com</a></span>
   </div>
 </footer>
+<div class="hb-foot"><img src="hive-bee.png" alt=""><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-tag">Independent · Accountability · Journalism</span></div>
+
 <script data-goatcounter="https://weberhive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

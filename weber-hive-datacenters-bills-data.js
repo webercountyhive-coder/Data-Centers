@@ -79,5 +79,27 @@ const BILLS_DOCS = [
     tags: ["Bain", "jobs", "local hiring", "Stratos", "Creekstone", "QTS", "Meta", "SB 114", "EDTIF", "2026"],
     status: "live",
     page: "weber-hive-dc-national-math.html"
+    },
+  {
+    id: "sb132-2025",
+    title: "S.B. 132 (2025) — The Law That Lets Data Centers Build Their Own Power Plants",
+    presenter: "Sen. Scott Sandall (primary sponsor) & Rep. Colin Jack (House sponsor)",
+    date: "2025-05-07",
+    hearing: "2025 General Session",
+    summary: "Customers needing 100 megawatts or more must pay their own costs, and may get power from a private plant when Rocky Mountain Power can't serve them in time or on agreed terms. A fully off-grid plant is exempt from regulation as a public utility. Case file covers the Office of Energy Development's pitch and what the bill does.",
+    tags: ["SB 132", "large load", "private generation", "PSC", "Sandall", "Jack", "2025"],
+    status: "live",
+    page: "weber-hive-dc-oed-sb132.html"
+  },
+  {
+    id: "hb76-2026",
+    title: "H.B. 76 (2026) — Data Center Water Transparency Amendments",
+    presenter: "Rep. Jill Koford (primary sponsor) & Sen. Scott Sandall (Senate sponsor)",
+    date: "2026-05-06",
+    hearing: "2026 General Session",
+    summary: "New large data centers (10,000 square feet or more) that start operating on or after July 1, 2026 and withdraw 75 acre-feet or more a year must report expected water needs before construction and actual withdrawals every year after. The Division of Water Rights must post each center's withdrawals online by Sept. 1. Took effect May 6, 2026. None of the seven Utah data centers with public water numbers is covered.",
+    tags: ["HB 76", "water", "reporting", "Koford", "2026"],
+    status: "live",
+    page: "weber-hive-dc-hb76.html"
   }
 ];
