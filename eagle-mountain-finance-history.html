@@ -10,18 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #16273f;
+    --navy: #14213d;
     --navy-2: #1f3856;
-    --manila: #f4f0e6;
-    --paper: #fbf9f3;
-    --ink: #1c1c1c;
-    --ink-soft: #4a4a44;
-    --rust: #a8431f;
-    --amber: #c8912b;
-    --line: #d8d0bc;
+    --manila: #ffffff;
+    --paper: #ffffff;
+    --ink: #14213d;
+    --ink-soft: #3d4a66;
+    --rust: #1f5fbf;
+    --amber: #b8901c;
+    --line: #d5deec;
     --good: #3d6b46;
-    --bad: #a8431f;
-    --unclear: #8a7a3d;
+    --bad: #1f5fbf;
+    --unclear: #b8901c;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--manila); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; line-height: 1.6; }
@@ -55,9 +55,9 @@
   .quote cite { display: block; font-style: normal; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; margin-top: 6px; color: var(--ink-soft); }
   .statute-box { background: var(--paper); border: 1px solid var(--line); padding: 16px 18px; margin: 14px 0; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; line-height: 1.65; }
   .statute-box .cite { color: var(--navy-2); font-weight: 600; display: block; margin-bottom: 8px; }
-  .callout { padding: 14px 18px; margin: 16px 0; border-left: 4px solid var(--rust); background: #fbeee6; font-size: 0.95rem; }
-  .callout.finding { border-left-color: var(--bad); background: #fbeee6; }
-  .callout.note { border-left-color: var(--unclear); background: #f7f1de; }
+  .callout { padding: 14px 18px; margin: 16px 0; border-left: 4px solid var(--rust); background: #e3ecfa; font-size: 0.95rem; }
+  .callout.finding { border-left-color: var(--bad); background: #e3ecfa; }
+  .callout.note { border-left-color: var(--unclear); background: #f4f7fc; }
   .callout.good { border-left-color: var(--good); background: #eaf1ea; }
   .callout strong { display: block; font-family: 'Source Sans 3', sans-serif; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.06em; margin-bottom: 6px; }
   table.compare { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
@@ -67,8 +67,8 @@
   table.compare td.num, table.compare th.num { text-align: right; font-family: 'IBM Plex Mono', monospace; }
   .status-badge { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
   .status-confirmed { background: #eaf1ea; color: var(--good); border: 1px solid var(--good); }
-  .status-disputed { background: #fbeee6; color: var(--bad); border: 1px solid var(--bad); }
-  .status-unverified { background: #f7f1de; color: var(--unclear); border: 1px solid var(--unclear); }
+  .status-disputed { background: #e3ecfa; color: var(--bad); border: 1px solid var(--bad); }
+  .status-unverified { background: #f4f7fc; color: var(--unclear); border: 1px solid var(--unclear); }
   .timeline { list-style: none; padding: 0; margin: 16px 0; }
   .timeline li { padding: 10px 0 10px 20px; border-left: 2px solid var(--line); position: relative; margin-left: 6px; }
   .timeline li::before { content: ''; position: absolute; left: -6px; top: 16px; width: 10px; height: 10px; border-radius: 50%; background: var(--navy); }
@@ -150,12 +150,12 @@
   #locmap { height: 380px; border: 1px solid var(--line); background: #eef1f4; }
   .locator .loc-foot { font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; margin-top: 8px; }
   .county-label{background:none;border:none;}
-  .county-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#14213D;opacity:.7;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
+  .county-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#14213D;opacity:.7;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
   .city-label{background:none;border:none;}
-  .city-label.key span{font-weight:600;font-size:11.5px;color:#14213D;}
-  .city-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#4a2f55;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
+  .city-label.key span{font-weight:600;font-size:14px;color:#14213D;}
+  .city-label span{display:block;transform:translate(-50%,-50%);font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4a2f55;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;pointer-events:none;}
   .loc-pin{background:none;border:none;}
-  .loc-pin span{display:block;width:22px;height:22px;border-radius:50%;background:#a8431f;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.5);transform:translate(-50%,-50%);}
+  .loc-pin span{display:block;width:22px;height:22px;border-radius:50%;background:#1f5fbf;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.5);transform:translate(-50%,-50%);}
   @media (max-width:640px){ #locmap{height:300px;} }
 </style>
 <style>
@@ -170,8 +170,25 @@
   }
   pre.mermaid, .mermaid-wrap .nodeLabel, .mermaid-wrap .edgeLabel, .mermaid-wrap foreignObject div { font-family: 'Source Sans 3', Arial, sans-serif !important; }
 </style>
+<link rel="icon" type="image/png" href="hive-bee.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style id="uhp-brand">
+.hb-bar{background:#0d0b0a;border-bottom:1px solid #3a2f1c;padding:10px 20px;}
+.hb-bar a{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;text-decoration:none;}
+.hb-bar img{width:52px;height:52px;border-radius:4px;display:block;flex:none;}
+.hb-name{font-family:'Cinzel','Trajan Pro',Georgia,serif;color:#d4af37;font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;display:block;}
+.hb-sub{font-family:Georgia,serif;font-style:italic;color:#b8956a;font-size:12.5px;letter-spacing:.02em;display:block;margin-top:2px;}
+.hb-foot{background:#0d0b0a;color:#b8956a;text-align:center;padding:26px 20px 30px;font-family:Georgia,serif;}
+.hb-foot img{width:52px;height:52px;display:block;margin:0 auto 10px;}
+.hb-foot .hb-name{font-size:14px;}
+.hb-foot .hb-tag{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7650;margin-top:8px;display:block;}
+.uhp-dates{font-family:Arial,sans-serif;font-size:15px;color:inherit;opacity:.85;margin:8px 0 0}
+@media(max-width:600px){.hb-bar{padding:8px 16px}.hb-bar img{width:38px;height:38px}.hb-name{font-size:13px}.hb-sub{font-size:11.5px}}
+</style>
 </head>
 <body>
+<div class="hb-bar"><a href="https://webercountyhive.substack.com/" target="_blank" rel="noopener"><img src="uhp-badge.png" alt="Utah Hive Politics logo"><span><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span></span></a></div>
+
 
 <div class="topbar">
   <span>THE WEBER COUNTY HIVE &middot; REFERENDUM DOCKET</span>
@@ -182,6 +199,7 @@
   <div class="masthead-inner">
     <div class="eyebrow">Eagle Mountain, Utah County &middot; Finance History</div>
     <h1>The "No Tax Increase Since 2010" City Was Sending $10&ndash;15 Million a Year to Redevelopment Areas Before the Rate Ever Moved</h1>
+<p class="uhp-dates">Updated Oct. 24, 2026: new Utah Hive Politics branding, colors and larger text. No findings changed.</p>
     <p class="dek">Eagle Mountain held its property-tax rate flat for roughly sixteen years &mdash; a fact the city cites often. But its own audited financial statements show a fast-growing amount of the property tax it collects never reaches the General Fund at all. It goes to redevelopment project areas first.</p>
     <div class="meta-row">
       <span>FY2022&ndash;FY2025 CONFIRMED</span>
@@ -494,12 +512,14 @@ flowchart TD
   The Weber County Hive &middot; Referendum Docket &middot; Reporting from public records only &mdash; no outreach to city officials or referendum subjects.<br>
   <a href="index.html">Back to all referendums tracked</a>
 </footer>
+<div class="hb-foot"><img src="hive-bee.png" alt=""><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-tag">Independent · Accountability · Journalism</span></div>
+
 
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: false, theme: 'base',
     flowchart: { htmlLabels: true, useMaxWidth: false, diagramPadding: 12, nodeSpacing: 30, rankSpacing: 40, wrappingWidth: 300 },
-    themeVariables: { primaryColor: '#fbf9f3', primaryTextColor: '#1c1c1c', primaryBorderColor: '#16273f', lineColor: '#16273f', fontFamily: '"Source Sans 3", Arial, sans-serif', fontSize: '22px' } });
+    themeVariables: { primaryColor: '#ffffff', primaryTextColor: '#14213d', primaryBorderColor: '#14213d', lineColor: '#14213d', fontFamily: '"Source Sans 3", Arial, sans-serif', fontSize: '22px' } });
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function(){ mermaid.run({ querySelector: 'pre.mermaid' }); });
 </script>
 

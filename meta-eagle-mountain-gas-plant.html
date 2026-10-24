@@ -9,16 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --color-paper:#f4f0e6;
-    --color-paper-deep:#ece5d4;
-    --color-ink:#241a16;
-    --color-ink-soft:#5c534c;
-    --color-link:#c0572e;
-    --color-stat:#d9a441;
-    --color-burgundy-light:#5c1a2b;
-    --color-burgundy-deep:#3d0f1c;
-    --color-line:#d8cfbc;
-    --color-card:#fbf8f1;
+    --color-paper:#ffffff;
+    --color-paper-deep:#f4f7fc;
+    --color-ink:#14213d;
+    --color-ink-soft:#3d4a66;
+    --color-link:#1f5fbf;
+    --color-stat:#b8901c;
+    --color-burgundy-light:#1d2f56;
+    --color-burgundy-deep:#14213d;
+    --color-line:#d5deec;
+    --color-card:#ffffff;
     --color-good:#4d7c5f;
     --color-flag:#a5372a;
   }
@@ -29,11 +29,11 @@
   a{color:var(--color-link);}
   .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
 
-  header.band{background:linear-gradient(135deg, var(--color-burgundy-light), var(--color-burgundy-deep));color:#f4ece6;padding:22px 0;}
+  header.band{background:linear-gradient(135deg, var(--color-burgundy-light), var(--color-burgundy-deep));color:#f4f7fc;padding:22px 0;}
   header.band .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-  .brandmark{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:#f4ece6;text-decoration:none;}
-  nav.topnav a{color:#f4ece6cc;text-decoration:none;margin-left:22px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.03em;border-bottom:1px solid transparent;}
-  nav.topnav a:hover{border-bottom-color:#f4ece6cc;}
+  .brandmark{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:#f4f7fc;text-decoration:none;}
+  nav.topnav a{color:#f4f7fccc;text-decoration:none;margin-left:22px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.03em;border-bottom:1px solid transparent;}
+  nav.topnav a:hover{border-bottom-color:#f4f7fccc;}
 
   .hero{padding:56px 0 40px;border-bottom:1px solid var(--color-line);}
   .hero .eyebrow{margin-bottom:14px;}
@@ -84,8 +84,8 @@
   .entity-table td.num{font-family:'IBM Plex Mono',monospace;font-size:.85rem;white-space:nowrap;}
   .status-pill{font-family:'IBM Plex Mono',monospace;font-size:.65rem;padding:3px 8px;border-radius:12px;white-space:nowrap;display:inline-block;}
   .status-confirmed{background:#e2ede4;color:var(--color-good);}
-  .status-flag{background:#f3dedb;color:var(--color-flag);}
-  .status-unresolved{background:#f4ecd9;color:#8a6d1f;}
+  .status-flag{background:#f4f7fc;color:var(--color-flag);}
+  .status-unresolved{background:#f4f7fc;color:#b8901c;}
 
   .timeline{border-left:2px solid var(--color-line);padding-left:22px;margin-left:6px;}
   .timeline-item{position:relative;margin-bottom:22px;}
@@ -102,10 +102,10 @@
   .vs-grid .said{font-style:italic;}
 
   /* connections */
-  .hub{background:var(--color-burgundy-deep);color:#f4ece6;padding:22px 26px;border-radius:2px;margin-bottom:22px;}
-  .hub .eyebrow{color:#d9a441;}
-  .hub h3{color:#f4ece6;font-size:1.3rem;margin:6px 0 4px;}
-  .hub p{margin:0;color:#e8d9c8;font-size:.95rem;}
+  .hub{background:var(--color-burgundy-deep);color:#f4f7fc;padding:22px 26px;border-radius:2px;margin-bottom:22px;}
+  .hub .eyebrow{color:#b8901c;}
+  .hub h3{color:#f4f7fc;font-size:1.3rem;margin:6px 0 4px;}
+  .hub p{margin:0;color:#d5deec;font-size:.95rem;}
   .conn-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
   .conn-card{background:var(--color-card);border:1px solid var(--color-line);border-top:4px solid var(--color-link);padding:18px 20px;}
   .conn-card.doers{border-top-color:var(--color-burgundy-light);}
@@ -175,14 +175,14 @@
   .flip-front .num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;color:var(--color-link);}
   .flip-front .label{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--color-ink-soft);letter-spacing:.03em;margin-top:4px;}
   .flip-front .hint{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--color-ink-soft);margin-top:8px;opacity:.75;}
-  .flip-back{transform:rotateY(180deg);background:var(--color-burgundy-deep);color:#f4ece6;border-color:var(--color-burgundy-deep);font-size:.95rem;line-height:1.5;overflow:auto;}
+  .flip-back{transform:rotateY(180deg);background:var(--color-burgundy-deep);color:#f4f7fc;border-color:var(--color-burgundy-deep);font-size:.95rem;line-height:1.5;overflow:auto;}
   .flip-back strong{color:var(--color-stat);}
   .flip:focus-visible .flip-face{outline:2px solid var(--color-link);outline-offset:2px;}
-  header.band{background:linear-gradient(135deg,#2c4449,#1b2b2f);}
-  .plain{background:#fff8e8;border-left:4px solid var(--color-stat);padding:10px 16px;margin:4px 0 20px;font-size:1rem;max-width:760px;}
-  .plain b{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.05em;color:#8a6d1f;margin-right:6px;}
+  header.band{background:linear-gradient(135deg,#14213d,#14213d);}
+  .plain{background:#fff6dc;border-left:4px solid var(--color-stat);padding:10px 16px;margin:4px 0 20px;font-size:1rem;max-width:760px;}
+  .plain b{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.05em;color:#b8901c;margin-right:6px;}
   .g-pend{background:#7a8a8c;font-size:.72rem;}
-  .callout{background:#eef3f2;border:1px solid #c9d6d4;border-left:4px solid #2c4449;padding:16px 20px;margin:18px 0;font-size:.97rem;}
+  .callout{background:#eef3f2;border:1px solid #c9d6d4;border-left:4px solid #14213d;padding:16px 20px;margin:18px 0;font-size:.97rem;}
   #plant .mermaid{text-align:left;}
   #plant .mermaid svg{display:block;margin:0 auto;}
   .does{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
@@ -197,18 +197,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-.series{background:#e9e2d0;border-bottom:1px solid #d6ccb4;}
+.series{background:#d5deec;border-bottom:1px solid #d5deec;}
 .series .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-top:10px;padding-bottom:10px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;}
-.series .lbl{letter-spacing:.08em;color:#5c534c;}
-.series a{color:#3d0f1c;text-decoration:none;border-bottom:1px dotted #c0572e;}
-.series .on{background:#2c4449;color:#f4f0e6;padding:3px 9px;border-radius:3px;border:0;}
-.nextpart{display:block;margin-top:14px;padding:18px 22px;border:2px solid #c0572e;border-radius:8px;background:#fbf8f0;color:inherit;text-decoration:none;}
-.nextpart:hover{background:#f6efe0;}
-.nextpart .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:#c0572e;}
+.series .lbl{letter-spacing:.08em;color:#3d4a66;}
+.series a{color:#14213d;text-decoration:none;border-bottom:1px dotted #1f5fbf;}
+.series .on{background:#14213d;color:#ffffff;padding:3px 9px;border-radius:3px;border:0;}
+.nextpart{display:block;margin-top:14px;padding:18px 22px;border:2px solid #1f5fbf;border-radius:8px;background:#f4f7fc;color:inherit;text-decoration:none;}
+.nextpart:hover{background:#f4f7fc;}
+.nextpart .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:#1f5fbf;}
 .nextpart .t{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin:.2em 0;}
+</style>
+<link rel="icon" type="image/png" href="hive-bee.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style id="uhp-brand">
+.hb-bar{background:#0d0b0a;border-bottom:1px solid #3a2f1c;padding:10px 20px;}
+.hb-bar a{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;text-decoration:none;}
+.hb-bar img{width:52px;height:52px;border-radius:4px;display:block;flex:none;}
+.hb-name{font-family:'Cinzel','Trajan Pro',Georgia,serif;color:#d4af37;font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;display:block;}
+.hb-sub{font-family:Georgia,serif;font-style:italic;color:#b8956a;font-size:12.5px;letter-spacing:.02em;display:block;margin-top:2px;}
+.hb-foot{background:#0d0b0a;color:#b8956a;text-align:center;padding:26px 20px 30px;font-family:Georgia,serif;}
+.hb-foot img{width:52px;height:52px;display:block;margin:0 auto 10px;}
+.hb-foot .hb-name{font-size:14px;}
+.hb-foot .hb-tag{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7650;margin-top:8px;display:block;}
+.uhp-dates{font-family:Arial,sans-serif;font-size:15px;color:inherit;opacity:.85;margin:8px 0 0}
+@media(max-width:600px){.hb-bar{padding:8px 16px}.hb-bar img{width:38px;height:38px}.hb-name{font-size:13px}.hb-sub{font-size:11.5px}}
 </style>
 </head>
 <body>
+<div class="hb-bar"><a href="https://webercountyhive.substack.com/" target="_blank" rel="noopener"><img src="uhp-badge.png" alt="Utah Hive Politics logo"><span><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span></span></a></div>
+
 
 <header class="band">
   <div class="wrap">
@@ -226,6 +243,7 @@
   <div class="wrap">
     <div class="eyebrow">META PLATFORMS · EAGLE MOUNTAIN, UTAH COUNTY · PART 2: "PROJECT AQUILA," THE GAS PLANT</div>
     <h1>The Plant Not in the Announcement</h1>
+<p class="uhp-dates">Posted Sept. 24, 2026 · Updated Oct. 24, 2026</p>
     <p class="dek">On Sept. 14, 2026, Meta said its Eagle Mountain data center "is matched with 100% clean and renewable energy." Public filings with the city, the state Division of Air Quality and the Public Service Commission show something the announcement doesn't mention: a Williams natural gas power plant planned on Meta's campus to serve Meta's expansion, set up to run separate from Rocky Mountain Power, with Meta Platforms, Inc. guaranteeing the power contract.</p>
     <div class="hero-meta">
       <div><div class="stat-num">286 MW</div><div class="stat-label">MOST THE GAS PLANT IS FILED TO MAKE (IF RUN NONSTOP, ABOUT WHAT 270,000 UTAH HOMES USE)</div></div>
@@ -423,10 +441,10 @@ flowchart TB
     AQ -->|"half-mile line"| DC
     RMP ~~~|"no connection,<br/>no backup"| DC
     RMP ==>|"renewables<br/>+ batteries"| DC2
-    style AQ fill:#3d0f1c,color:#f4ece6,stroke:#3d0f1c
-    style MONEY fill:#fbf3e6,stroke:#d9a441
+    style AQ fill:#14213d,color:#f4f7fc,stroke:#14213d
+    style MONEY fill:#f4f7fc,stroke:#b8901c
     style RMP fill:#eef3f2,stroke:#4d7c5f
-    style CAMPUS fill:#fbf8f1,stroke:#c0572e
+    style CAMPUS fill:#ffffff,stroke:#1f5fbf
 </div>
       <p class="cap">Solid arrows: gas or power flows described in the filings. Dotted arrow: money and ownership. The grid and the gas plant are not connected. How much of the campus each power source serves is not in the public record.</p>
     </div>
@@ -857,6 +875,20 @@ flowchart TB
 
 <section>
   <div class="wrap">
+    <div style="border:2px solid #14213d;border-radius:8px;padding:16px 20px;margin:28px 0;background:#fff;color:#14213d;font-size:17px;line-height:1.6">
+      <div style="font-family:Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1f5fbf">Where this connects · Added Oct. 24, 2026</div>
+      <ul style="margin:.5em 0 0 1.1em;padding:0">
+        <li><a href="weber-hive-dc-statewide-power.html">It's Happening Statewide</a>: about 1,700 of the 2,600 MW under construction in Utah is planned behind the meter or off the grid, including campuses like this one with their own gas plants.</li>
+        <li><a href="weber-hive-dc-nuclear-projects.html">Utah's Nuclear Projects and the Data Centers Behind Them</a>: ten nuclear plans and who would use the power.</li>
+        <li><a href="weber-hive-dc-west-weber-nuclear.html">West Weber: Zoned for Data Centers, Now Talking Nuclear</a></li>
+        <li><a href="https://webercountyhive.substack.com/p/one-campus-two-power-systems">One Campus, Two Power Systems</a> (Substack, Oct. 1, 2026 · Meta in Eagle Mountain and the gas plant)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <details class="sources">
       <summary>View all sources (37)</summary>
       <ol>
@@ -906,54 +938,56 @@ flowchart TB
     Compiled from Public Service Commission of Utah dockets, Utah Division of Air Quality records, Eagle Mountain City public notices and minutes, and company announcements. Public records only · No comment requested.
   </div>
 </footer>
+<div class="hb-foot"><img src="hive-bee.png" alt=""><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-tag">Independent · Accountability · Journalism</span></div>
+
 
 <script>
 document.querySelectorAll('.flip').forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('flipped');b.setAttribute('aria-pressed',b.classList.contains('flipped'));}));
 if (window.mermaid) { mermaid.initialize({ startOnLoad: true, theme: 'neutral', fontFamily: 'IBM Plex Mono, monospace', themeVariables: { fontSize: '19px' }, flowchart:{htmlLabels:true, curve:'basis', useMaxWidth:true, nodeSpacing:40, rankSpacing:70, padding:14} }); }
 if (window.Chart) {
   Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
-  Chart.defaults.color = '#5c534c';
+  Chart.defaults.color = '#3d4a66';
   const money = v => '$' + Number(v).toLocaleString();
   if (document.getElementById('moneyChart')) new Chart(document.getElementById('moneyChart'), {
     type: 'bar',
     data: { labels: ['Sweetwater #4 CRA tax increment requested (2026)', '2018 tax break, all 5 phases (city estimate)', 'Meta local infrastructure pledge (2026)', 'Meta PAC spending, 2026 primaries'],
-      datasets: [{ data: [778540678, 750000000, 50000000, 251446.36], backgroundColor: ['#c0572e','#d9a441','#4d7c5f','#5c1a2b'], borderRadius: 3 }] },
+      datasets: [{ data: [778540678, 750000000, 50000000, 251446.36], backgroundColor: ['#1f5fbf','#b8901c','#4d7c5f','#1d2f56'], borderRadius: 3 }] },
     options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => money(c.parsed.x) } } },
-      scales: { x: { ticks: { callback: v => '$' + (v/1e6) + 'M' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+      scales: { x: { ticks: { callback: v => '$' + (v/1e6) + 'M' }, grid: { color: '#d5deec' } }, y: { grid: { display: false } } } }
   });
   if (document.getElementById('jobsChart')) new Chart(document.getElementById('jobsChart'), {
     type: 'bar',
     data: { labels: ['Tyson Foods plant', 'Meta data center', 'QTS data center'],
-      datasets: [{ data: [2410, 100, 16.7], backgroundColor: ['#4d7c5f','#3d0f1c','#c0572e'], borderRadius: 3 }] },
+      datasets: [{ data: [2410, 100, 16.7], backgroundColor: ['#4d7c5f','#14213d','#1f5fbf'], borderRadius: 3 }] },
     options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => Math.round(c.parsed.x) + ' jobs per $1 billion' } } },
-      scales: { x: { grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+      scales: { x: { grid: { color: '#d5deec' } }, y: { grid: { display: false } } } }
   });
   if (document.getElementById('shareChart')) new Chart(document.getElementById('shareChart'), {
     type: 'doughnut',
     data: { labels: ['Meta Eagle Mountain campus (~2.9%)', 'Rest of Utah'],
-      datasets: [{ data: [1000000, 33688083], backgroundColor: ['#c0572e','#d8d0bd'], borderWidth: 0 }] },
+      datasets: [{ data: [1000000, 33688083], backgroundColor: ['#1f5fbf','#d5deec'], borderWidth: 0 }] },
     options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { label: c => c.label + ': ' + Number(c.parsed).toLocaleString() + ' MWh' } } } }
   });
   if (document.getElementById('mwChart')) new Chart(document.getElementById('mwChart'), {
     type: 'bar',
     data: { labels: ['Campus average draw, 2024', 'Planned gas plant (filed)'],
-      datasets: [{ data: [114, 286], backgroundColor: ['#5c1a2b','#c0572e'], borderRadius: 3 }] },
+      datasets: [{ data: [114, 286], backgroundColor: ['#1d2f56','#1f5fbf'], borderRadius: 3 }] },
     options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' MW' } } },
-      scales: { x: { ticks: { callback: v => v + ' MW' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+      scales: { x: { ticks: { callback: v => v + ' MW' }, grid: { color: '#d5deec' } }, y: { grid: { display: false } } } }
   });
   if (document.getElementById('waterChart')) new Chart(document.getElementById('waterChart'), {
     type: 'bar',
     data: { labels: ['Meta Eagle Mountain, 2024', 'Industry average'],
-      datasets: [{ data: [0.13, 1.9], backgroundColor: ['#4d7c5f','#d9a441'], borderRadius: 3 }] },
+      datasets: [{ data: [0.13, 1.9], backgroundColor: ['#4d7c5f','#b8901c'], borderRadius: 3 }] },
     options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' liters per kWh' } } },
-      scales: { x: { ticks: { callback: v => v + ' L' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+      scales: { x: { ticks: { callback: v => v + ' L' }, grid: { color: '#d5deec' } }, y: { grid: { display: false } } } }
   });
   if (document.getElementById('plantChart')) new Chart(document.getElementById('plantChart'), {
     type: 'bar',
     data: { labels: ['Project Aquila (Meta, Eagle Mtn)', 'Novva (West Jordan)', 'Joule (Millard County)'],
-      datasets: [{ data: [286, 235.6, 174.6], backgroundColor: ['#3d0f1c','#c0572e','#d9a441'], borderRadius: 3 }] },
+      datasets: [{ data: [286, 235.6, 174.6], backgroundColor: ['#14213d','#1f5fbf','#b8901c'], borderRadius: 3 }] },
     options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' MW' } } },
-      scales: { x: { ticks: { callback: v => v + ' MW' }, grid: { color: '#e6dfcf' } }, y: { grid: { display: false } } } }
+      scales: { x: { ticks: { callback: v => v + ' MW' }, grid: { color: '#d5deec' } }, y: { grid: { display: false } } } }
   });
 }
 </script>
