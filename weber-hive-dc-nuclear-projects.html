@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utah's Nuclear Projects and the Data Centers Behind Them | The Weber County Hive</title>
+<meta name="description" content="Every nuclear project and proposal in Utah as of October 2026, where each one stands, and what the public record says about who would use the power.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --bg:#ffffff; --panel:#f4f7fc; --ink:#14213d; --ink-soft:#3d4a66; --blue:#1f5fbf; --blue-soft:#e3ecfa;
+  --gold:#b8901c; --line:#d5deec; --warn:#fff6dc; --warn-line:#e2c35a;
+}
+*{box-sizing:border-box}
+html{font-size:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.65}
+a{color:var(--blue)}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+header.mast{background:var(--ink);color:#fff;padding:14px 0}
+header.mast a{color:#fff;text-decoration:none;font-family:Arial,sans-serif;font-size:.85rem;letter-spacing:.04em}
+.hero{padding:36px 0 18px;border-bottom:4px solid var(--blue)}
+.eyebrow{font-family:Arial,sans-serif;font-size:.8rem;letter-spacing:.12em;font-weight:700;color:var(--blue);text-transform:uppercase}
+.dates{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft);margin:.4em 0}
+h1{font-size:2.15rem;line-height:1.2;margin:.3em 0}
+h2{font-size:1.55rem;margin:1.8em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}
+h3{font-size:1.2rem;margin:1.2em 0 .4em}
+.dek{font-size:1.15rem;color:var(--ink-soft)}
+.tag{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:24px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat .n{font-family:Arial,sans-serif;font-size:1.7rem;font-weight:700;color:var(--blue)}
+.stat .l{font-size:.9rem;color:var(--ink-soft)}
+.table-scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:560px}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{background:var(--ink);color:#fff;font-family:Arial,sans-serif;font-size:.85rem}
+tr:nth-child(even) td{background:var(--panel)}
+.cap{font-size:.85rem;color:var(--ink-soft)}
+.box{background:var(--panel);border-left:5px solid var(--blue);padding:14px 16px;margin:18px 0;border-radius:4px}
+.box.warn{background:var(--warn);border-left-color:var(--warn-line)}
+.box.fair{background:#eef7ee;border-left-color:#3c8a4a}
+.box.short{background:var(--blue-soft);border-left-color:var(--ink)}
+.box h3{margin-top:0}
+#map{height:460px;border:1px solid var(--line);border-radius:8px;margin:12px 0}
+.chart-box{position:relative;height:380px;margin:14px 0}
+.mermaid{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0;text-align:center}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.tile{perspective:900px;height:200px;cursor:pointer;border:none;background:none;padding:0;font:inherit;color:inherit;text-align:left}
+.tile .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.tile.flip .in{transform:rotateY(180deg)}
+.tile .f,.tile .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;padding:16px;display:flex;flex-direction:column;justify-content:center}
+.tile .f{background:var(--ink);color:#fff}
+.tile .f strong{font-size:1.3rem}
+.tile .f span{font-family:Arial,sans-serif;font-size:.78rem;opacity:.8;margin-top:8px}
+.tile .b{background:var(--blue-soft);transform:rotateY(180deg);font-size:.88rem;overflow:auto}
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.picker button{font:inherit;font-size:.9rem;padding:8px 14px;border:2px solid var(--blue);background:#fff;color:var(--blue);border-radius:20px;cursor:pointer}
+.picker button.on{background:var(--blue);color:#fff}
+.pick-out{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;min-height:90px}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.person{border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:.95rem}
+.person b{display:block}
+.q{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0}
+.q .who{font-family:Arial,sans-serif;font-size:.8rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+.connects{border:2px solid var(--ink);border-radius:8px;padding:14px 18px;margin:24px 0}
+.connects h3{margin-top:0}
+.connects ul{margin:.3em 0 0 1.1em;padding:0}
+.counter{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0}
+.counter div{border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;font-size:.85rem;color:var(--ink-soft)}
+.counter b{display:block;font-family:Arial,sans-serif;font-size:1.5rem;color:var(--ink)}
+.timeline{list-style:none;padding:0;margin:14px 0;border-left:4px solid var(--blue)}
+.timeline li{position:relative;padding:4px 0 14px 22px}
+.timeline li::before{content:"";position:absolute;left:-11px;top:10px;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--blue)}
+.timeline .d{font-family:Arial,sans-serif;font-weight:700;font-size:.85rem;color:var(--blue);display:block}
+.lbl{display:inline-block;font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.lbl.doc{background:#e3f1e5;color:#24683a}
+.lbl.open{background:var(--warn);color:#7a5a00}
+details{border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:24px 0}
+summary{cursor:pointer;font-weight:700;font-size:1.1rem}
+details li{margin:6px 0;font-size:.9rem}
+footer{border-top:4px solid var(--blue);margin-top:40px;padding:20px 0 40px;font-size:.85rem;color:var(--ink-soft)}
+@media (max-width:600px){html{font-size:18px}h1{font-size:1.7rem}#map{height:360px}}
+</style>
+</head>
+<body>
+
+<header class="mast"><div class="wrap"><a href="index.html">← THE WEBER COUNTY HIVE · DATA CENTERS</a></div></header>
+
+<div class="wrap">
+<section class="hero">
+  <div class="eyebrow">Data Centers · Case File · Statewide · Power Series 2 of 3</div>
+  <h1>Utah's Nuclear Projects and the Data Centers Behind Them</h1>
+  <p class="dek">Utah has one test reactor running, one state land lease signed for a reactor campus, and at least seven more nuclear plans or proposals. Here is where each stands, and what the public record says about who would use the power.</p>
+  <p class="dates">Posted Oct. 24, 2026 · Updated Oct. 24, 2026</p>
+  <p class="tag">The Weber County Hive — We report public records. You decide.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">1</div><div class="l">reactor operating in Utah: Valar's Ward 250 test reactor, Emery County</div></div>
+    <div class="stat"><div class="n">Unanimous</div><div class="l">Trust Lands board vote, Sept. 17, 2026, leasing a square mile near Wellington to Valar</div></div>
+    <div class="stat"><div class="n">5 of 10</div><div class="l">projects on this page with a data center named as a power user in the record</div></div>
+    <div class="stat"><div class="n">~2032</div><div class="l">earliest new nuclear power on the public grid serving Utah (TerraPower, Wyoming, shared)</div></div>
+  </div>
+</section>
+
+<div class="box short">
+  <h3>The short version</h3>
+  <ul>
+    <li>Most of Utah's nuclear plans are private projects, not plans by the state's main utility to add power to the public grid.</li>
+    <li>In five of the ten projects below, a data center is named in the record as a planned user of the power.</li>
+    <li>The utility serving most Utahns, Rocky Mountain Power, has one firm reactor plan: TerraPower's plant in Kemmerer, Wyoming, around 2032, shared with other states.</li>
+    <li>Several of these projects sit on public land or use public tools: a state-owned lab, state trust land, a federal land application, and MIDA's development standards.</li>
+  </ul>
+</div>
+
+<h2>Words to know</h2>
+<p class="cap">Tap or click a card to flip it.</p>
+<div class="tiles">
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>SMR</strong><span>tap to flip</span></div><div class="b">Small modular reactor. A smaller reactor built in a factory and shipped in pieces. Holtec's SMR-300 makes about 300 megawatts. None is running commercially in the U.S. yet.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Microreactor</strong><span>tap to flip</span></div><div class="b">A very small reactor, often a few megawatts or less. Valar's Ward 250 is a test microreactor cooled by helium gas instead of water.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Criticality</strong><span>tap to flip</span></div><div class="b">The point where a reactor sustains a controlled chain reaction. It is a test milestone before a reactor makes usable power. "Zero-power" criticality means almost no power was produced.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>MOU</strong><span>tap to flip</span></div><div class="b">Memorandum of understanding. A written agreement to study or cooperate. It usually does not commit anyone to build anything.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Trust lands</strong><span>tap to flip</span></div><div class="b">State land held to earn money for Utah schools and other beneficiaries. The Trust Lands Administration leases or sells it. Its board approves big deals.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Grid power vs. dedicated power</strong><span>tap to flip</span></div><div class="b">Grid power reaches every customer. Dedicated power goes to one campus. Under S.B. 132, a dedicated "closed" system is not regulated as a public utility. <a href="weber-hive-dc-oed-sb132.html">S.B. 132 →</a></div></div></button>
+</div>
+
+<h2>Two kinds of nuclear plans</h2>
+<div class="mermaid">
+flowchart TD
+  N["<b>Nuclear plans tied to Utah</b>"] --> G["<b>For the public grid</b><br/>TerraPower<br/>Kemmerer, Wyoming<br/>about 2032,<br/>shared with other states"]
+  N --> D["<b>For a specific campus</b><br/>(data center named)<br/>Valar + Nvidia, Emery<br/>Valar campus, Carbon<br/>Creekstone study, Millard<br/>Stratos zone, Box Elder<br/>Federal campus bid, Tooele"]
+  N --> U["<b>User not named yet</b><br/>Brigham City<br/>Green River<br/>Weber County"]
+</div>
+<p class="cap">Eagle Mountain's zone is listed separately below: the city tied its nuclear discussion to data centers, but its adopted ordinance does not name nuclear.</p>
+
+<h2>Pick a project</h2>
+<div class="picker" id="picker">
+  <button type="button" data-k="emery" class="on">Valar · Emery</button>
+  <button type="button" data-k="carbon">Valar · Carbon</button>
+  <button type="button" data-k="brigham">Brigham City</button>
+  <button type="button" data-k="green">Green River</button>
+  <button type="button" data-k="creek">Creekstone</button>
+  <button type="button" data-k="stratos">Stratos</button>
+  <button type="button" data-k="tooele">Tooele campus</button>
+  <button type="button" data-k="eagle">Eagle Mountain</button>
+  <button type="button" data-k="weber">Weber</button>
+  <button type="button" data-k="terra">TerraPower (WY)</button>
+</div>
+<div class="pick-out" id="pick-out" aria-live="polite"></div>
+
+<h2>All ten, side by side</h2>
+<div class="table-scroll"><table>
+  <tr><th>Project</th><th>Where</th><th>Status (Oct. 2026)</th><th>Who uses the power, per the record</th><th>Public land or public tool</th></tr>
+  <tr><td>Valar Ward 250 test reactor</td><td>San Rafael Energy Lab, Emery County</td><td>Zero-power criticality June 18, 2026 (DOE)</td><td>Test reactor. Valar and Nvidia are exploring a 30 MW data center powered by it.</td><td>State-owned research lab</td></tr>
+  <tr><td>Valar campus near Wellington</td><td>Carbon County</td><td>State lease approved Sept. 17, 2026. Federal land application not yet complete.</td><td>Reported as a reactor campus with a data center and industry</td><td>640 acres of state trust land; about 9,000 acres of federal BLM land requested</td></tr>
+  <tr><td>Holtec SMR-300 hub</td><td>Brigham City, Box Elder County</td><td>Announced Nov. 17, 2025</td><td><strong>Not named.</strong> The companies market the reactor for data centers, industry and the grid.</td><td>State partnership (Office of Energy Development)</td></tr>
+  <tr><td>Green River plant revival</td><td>Emery County</td><td>Joint venture announced May 2026</td><td>Not named</td><td>—</td></tr>
+  <tr><td>Creekstone nuclear study</td><td>Delta, Millard County</td><td>Non-binding MOU, Dec. 11, 2025</td><td>Creekstone's own data center campus</td><td>State REDTIF tax credit for the campus</td></tr>
+  <tr><td>Stratos energy zone</td><td>Hansel Valley, Box Elder County</td><td>Nuclear is a permitted use in the draft standards</td><td>Stratos campus. MIDA describes dedicated on-site power.</td><td>MIDA project area</td></tr>
+  <tr><td>Federal nuclear campus bid</td><td>Tooele County</td><td>One of five finalist states, July 28, 2026</td><td>DOE says campuses may host data centers</td><td>Federal program; includes waste storage</td></tr>
+  <tr><td>Alternative Energy Overlay Zone</td><td>Eagle Mountain</td><td>Adopted July 2026; not yet applied to any land</td><td>The city tied its energy planning to data centers</td><td>City zoning</td></tr>
+  <tr><td>Nuclear discussion</td><td>West Weber, Weber County</td><td>Symposium Aug. 5, 2026; no project</td><td>Port companies, per the county; not named</td><td>Inland Port project area</td></tr>
+  <tr><td>TerraPower Natrium</td><td>Kemmerer, Wyoming</td><td>Under construction; about 2032</td><td>Rocky Mountain Power's grid, shared with other states</td><td>—</td></tr>
+</table></div>
+
+<h2>Where they are</h2>
+<div id="map" role="img" aria-label="Map of nuclear projects and proposals in Utah"></div>
+<p class="cap">Pins are approximate, placed at the town, valley or section named in public records. Click a pin for details.</p>
+
+<h2>The Carbon County lease, in the state's own numbers</h2>
+<p>Trust Lands staff presented these terms at the board's Aug. 20, 2026 meeting. The board approved the lease unanimously on Sept. 17. Item: SULA 2095 OBA, Section 16, Township 14 South, Range 11 East, about 6 miles north of Wellington.</p>
+<div class="table-scroll"><table>
+  <tr><th>Term</th><th>As presented</th></tr>
+  <tr><td>Land</td><td>480 acres now, plus 160 acres after the Utah National Guard relocates</td></tr>
+  <tr><td>Appraised value</td><td>$750 an acre ($480,000 for 640 acres)</td></tr>
+  <tr><td>Upfront bonus</td><td>$400,000</td></tr>
+  <tr><td>Yearly rent per acre</td><td>$30 in years 1–5, $206 in year 6, $419 in year 7, $625 from year 8, with inflation adjustments after year 10</td></tr>
+  <tr><td>Length</td><td>50 years plus two 25-year renewals (up to 100 years)</td></tr>
+  <tr><td>Rent over 50 years</td><td>About $35 million, to the school trust</td></tr>
+  <tr><td>Purchase option</td><td>Valar may buy the land. Staff called a purchase option rare for a surface lease. Conservative buyout value: about $6 million.</td></tr>
+  <tr><td>Water</td><td>The trust commits no water</td></tr>
+  <tr><td>Waste</td><td>No spent fuel or waste storage unless Valar buys that portion; reclamation and federal decommissioning bonds required</td></tr>
+</table></div>
+<div class="box warn">
+  <h3>Two records disagree on one number</h3>
+  What the land earns today from the National Guard: the meeting transcript records staff saying about $4,000 a year; the written minutes say about $4,000 a month. Both are reported here until the board's records settle it.
+</div>
+<div class="box warn">
+  <h3>Waste storage: two descriptions</h3>
+  Trust Lands staff said in August there would be no spent fuel or waste storage on the state parcel unless Valar buys that portion. An October news report, citing NPR, described the larger campus as including a nuclear fuel facility and waste storage. The larger campus includes federal land the state lease does not cover.
+</div>
+
+<div class="box warn">
+  <h3>What this page does not say</h3>
+  <ul>
+    <li><strong>The size of the Carbon campus.</strong> NPR reported documents describing 456 small reactors and 9.6 gigawatts. That figure has not been checked against the federal application and is not used as fact here.</li>
+    <li><strong>Who buys Brigham City's power.</strong> No record reviewed names a customer.</li>
+    <li><strong>Claims about a Carbon County farm and a grazing lease.</strong> A circulating post said a family faced eminent domain and another lost a grazing lease. No public record reviewed confirms either. No speaker at the Aug. 20 Trust Lands meeting mentioned a grazing lessee.</li>
+    <li><strong>That Stratos will build a reactor.</strong> Nuclear is permitted in its standards. That is not a proposal. MIDA's development agreement and standards are posted as drafts and are unsigned.</li>
+  </ul>
+</div>
+
+<div class="box fair">
+  <h3>The other side</h3>
+  <ul>
+    <li><strong>Water.</strong> Valar's reactor is cooled by helium in a closed loop, and the company says its Emery data center would use almost no water. Holtec's SMR-300 can use air-cooled condensers, which matters in a dry state.</li>
+    <li><strong>Schools.</strong> The Carbon lease is projected to pay about $35 million in rent to the school trust over 50 years, on land that earns little today.</li>
+    <li><strong>Local support.</strong> Emery County's commission sent Valar a letter of support. All three Carbon County commissioners spoke in favor of the lease.</li>
+    <li><strong>Ratepayers.</strong> Under S.B. 132, a private plant serving one campus does not put its costs on other electric customers.</li>
+    <li><strong>Public goal.</strong> Gov. Cox's Operation Gigawatt openly aims to double Utah's power production in ten years. None of this is hidden policy.</li>
+  </ul>
+</div>
+
+<h2>People in this record</h2>
+<div class="people">
+  <div class="person"><b>Isaiah Taylor</b>Founder and CEO, Valar Atomics.</div>
+  <div class="person"><b>Max Ukropina</b>Head of projects, Valar Atomics. Spoke at the July 1 Emery event on water and power bills.</div>
+  <div class="person"><b>Emy Lesofski</b>Director, Utah Office of Energy Development. Signed the April 2025 Holtec agreement and spoke at Valar's July 1 event. <a href="weber-hive-dc-statewide-power.html">Who keeps showing up →</a></div>
+  <div class="person"><b>Jake Garfield</b>Deputy director, Office of Energy Development. Spoke in favor of the Carbon lease at the Aug. 20 Trust Lands meeting.</div>
+  <div class="person"><b>Chris Hayter</b>Hi Tech Solutions president and COO; co-signed the Holtec agreement. Founder of Fulcrum Point, partner in the Green River revival. <a href="weber-hive-dc-statewide-power.html">Who keeps showing up →</a></div>
+  <div class="person"><b>Larry Jensen, Tony Martines and Commissioner Haddock</b>Carbon County Commissioners. All spoke in favor of the Valar lease.</div>
+  <div class="person"><b>Mike Nelson</b>Chair, Trust Lands Administration board.</div>
+  <div class="person"><b>Ray Conley</b>President and CEO, Creekstone Energy.</div>
+</div>
+
+<h2>Questions to ask, and whom to ask</h2>
+<div class="q"><div class="who">Trust Lands Administration</div>Does the National Guard currently pay about $4,000 a year or a month for its part of the Wellington parcel? Will the signed SULA 2095 lease be posted?</div>
+<div class="q"><div class="who">Bureau of Land Management, Utah</div>When will Valar's Carbon County application be complete, and when will the public comment period open?</div>
+<div class="q"><div class="who">Utah Office of Energy Development</div>Who are the expected customers for the Brigham City and Green River reactors: the public grid, or specific companies?</div>
+<div class="q"><div class="who">Carbon County Commission</div>Has the county signed nondisclosure agreements with Valar or Altigen? Will any be released?</div>
+<div class="q"><div class="who">Rocky Mountain Power</div>Besides TerraPower in Wyoming, does the utility have any plan to buy nuclear power from a Utah project?</div>
+
+<div class="connects">
+  <h3>Where this connects</h3>
+  <ul>
+    <li><a href="weber-hive-dc-west-weber-nuclear.html">West Weber: Zoned for Data Centers, Now Talking Nuclear</a> (Power Series 1 of 3)</li>
+    <li><a href="weber-hive-dc-statewide-power.html">It's Happening Statewide</a> (Power Series 3 of 3)</li>
+    <li><a href="stratos.html">Stratos: Everything We've Reported</a></li>
+    <li><a href="meta-eagle-mountain-gas-plant.html">Meta's Eagle Mountain Gas Plant</a>: a data center's own power plant, by gas</li>
+    <li><a href="weber-hive-dc-oed-sb132.html">Data Centers &amp; S.B. 132</a></li>
+    <li><a href="weber-hive-dc-goed-initiatives.html">GOED's Data Center Initiatives</a>: the Creekstone tax credit</li>
+  </ul>
+</div>
+
+<h2>Behind this piece</h2>
+<div class="counter">
+  <div><b>24</b>records read</div>
+  <div><b>70</b>dates, votes and figures checked</div>
+  <div><b>4</b>records checked but not used</div>
+  <div><b>~25</b>searches run (estimate)</div>
+</div>
+
+<details>
+<summary>Sources and how they were read</summary>
+<ul>
+  <li>U.S. Department of Energy, "Department of Energy Celebrates Second Advanced Reactor Achieving Criticality," June 18, 2026 — <a href="https://www.energy.gov/articles/department-energy-celebrates-second-advanced-reactor-achieving-criticality">energy.gov</a>. The state lab's own page calls it "full-power" criticality; this page uses DOE's "zero-power."</li>
+  <li>Utah San Rafael Energy Lab, Valar Atomics page — <a href="https://energylab.utah.gov/nuclear-energy/valar-atomics/">energylab.utah.gov</a>; American Nuclear Society, June 22, 2026 — <a href="https://www.ans.org/news/2026-06-22/article-8136/valars-ward-250-reaches-criticality-in-utah/">ans.org</a>.</li>
+  <li>Deseret News, "Valar Atomics and Nvidia announce data center collaboration," July 1, 2026 — <a href="https://www.deseret.com/u-s-world/2026/07/01/valar-atomics-nvidia-milestone/">deseret.com</a>; FOX 13 / East Idaho News, July 2, 2026 — <a href="https://www.fox13now.com/news/politics/a-waterless-ai-data-center-a-big-experiment-is-under-way-in-rural-utah">fox13now.com</a>.</li>
+  <li>Trust Lands Administration Board, Aug. 20, 2026: meeting transcript (<a href="https://www.utah.gov/pmn/files/1479057.pdf">1479057.pdf</a>, read by text fetch, first 2 hours 11 minutes of 2 hours 48 minutes) and minutes (<a href="https://www.utah.gov/pmn/files/1490469.pdf">1490469.pdf</a>, read from PDF text). Lease terms are from the transcript; the minutes do not list them.</li>
+  <li>Salt Lake Tribune, "Residents 'up in arms' over Carbon County data centers that would use nuclear, natural gas," Sept. 24, 2026 — <a href="https://www.sltrib.com/news/environment/2026/09/24/residents-up-arms-over-carbon/">sltrib.com</a>. Read in full. Source for the unanimous Sept. 17 vote and the Altigen gas project.</li>
+  <li>East Idaho News, "Nuclear-powered AI data center proposed on state and federal land in central eastern Utah," Oct. 1, 2026 — <a href="https://www.eastidahonews.com/2026/10/nuclear-powered-ai-data-center-proposed-on-state-and-federal-land-in-central-eastern-utah/">eastidahonews.com</a>. Read in full; the 456-reactor figure is NPR's and is unverified here.</li>
+  <li>Holtec International, "Utah Selected as the Location of Holtec's SMR-300 Mountain West New Nuclear Ecosystem," May 1, 2025 — <a href="https://holtecinternational.com/2025/05/01/hh40-10/">holtecinternational.com</a>; Hi Tech Solutions, May 7, 2025 — <a href="https://www.htsnuclear.com/transformative-nuclear-energy-ecosystem-to-power-the-mountain-west/">htsnuclear.com</a>; Brigham City, Nov. 17, 2025 — <a href="https://www.bcutah.gov/article/2553268">bcutah.gov</a>.</li>
+  <li>World Nuclear News, "Nineteen years on, companies team up for US new-build project," May 29, 2026 — <a href="https://www.world-nuclear-news.org/articles/nineteen-years-on-companies-team-up-for-us-new-build-project">world-nuclear-news.org</a>; ANS, June 1, 2026 — <a href="https://www.ans.org/news/2026-06-01/article-8082/blue-castle-project-to-be-revived-as-smr-facility/">ans.org</a>.</li>
+  <li>ANS, "Creekstone Energy taps EnergySolutions to study nuclear-powered data center," Dec. 17, 2025 — <a href="https://www.ans.org/news/2025-12-17/article-7623/creekstone-energy-taps-energysolutions-to-study-nuclearpowered-data-center/">ans.org</a>; GOED, Creekstone $17 billion commitment — <a href="https://business.utah.gov/tax-credits/creekstone-energy-llc-commits-17-billion-to-millard-county-data-center-project/">business.utah.gov</a>.</li>
+  <li>MIDA, Stratos Development Standards §3.02(A)(2) and Master Development Agreement §§4(b), 8(e) — draft and unsigned as posted by MIDA; read Sept. 4, 2026.</li>
+  <li>KUER / Associated Press, "Utah is a finalist for Energy Department nuclear campus, including waste storage," July 28, 2026 — <a href="https://www.kuer.org/politics-government/2026-07-28/utah-nuclear-lifecycle-innovation-campus-host-finalist-list">kuer.org</a>. Read in full.</li>
+  <li>Eagle Mountain Ordinance O-25-2026, Alternative Energy Overlay Zone, adopted July 7, 2026 — <a href="https://www.utah.gov/pmn/sitemap/notice/1094387.html">utah.gov/pmn</a>. Read from the notice text; the ordinance text does not name nuclear. City energy page — <a href="https://eaglemountain.gov/energy/">eaglemountain.gov</a>; KSL, Dec. 3, 2025 — <a href="https://www.ksl.com/article/51413923/eagle-mountain-takes-first-steps-toward-possible-nuclear-energy-future">ksl.com</a>.</li>
+  <li>Lehi Free Press, Feb. 11, 2026 (TerraPower Kemmerer, Brigham City power need) — <a href="https://lehifreepress.com/2026/02/11/utahs-massive-data-centers-seek-to-build-new-power-sources/">lehifreepress.com</a>.</li>
+  <li>KUER and KSL, Aug. 6, 2026 (Weber County symposium) — see the <a href="weber-hive-dc-west-weber-nuclear.html">West Weber page</a> for full sources.</li>
+</ul>
+</details>
+
+</div>
+
+<footer><div class="wrap">The Weber County Hive · webercountyhive.substack.com · Tips and corrections: webercountyhive@gmail.com</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{fontSize:"22px",fontFamily:"Georgia, serif",primaryColor:"#e3ecfa",primaryBorderColor:"#1f5fbf",primaryTextColor:"#14213d",lineColor:"#1f5fbf"}});
+</script>
+<script>
+document.querySelectorAll('.tile').forEach(function(t){t.addEventListener('click',function(e){if(e.target.tagName==='A')return;t.classList.toggle('flip');});});
+</script>
+<script>
+var PROJ={
+  emery:[39.23,-111.08,'Valar Atomics · San Rafael Energy Lab, Emery County','<b>Status:</b> Ward 250 test reactor reached zero-power criticality June 18, 2026, the first DOE-authorized reactor built outside a national laboratory. Valar then began raising its power.<br><b>Power users:</b> Valar and Nvidia said July 1, 2026 they are exploring a 30 MW data center powered by the reactor. Nvidia also announced a future "AI factory" in Emery County with no timeline.<br><b>Public tie:</b> the lab is owned by the state.'],
+  carbon:[39.63,-110.80,'Valar Atomics · near Wellington, Carbon County','<b>Status:</b> Trust Lands board unanimously approved a lease of 640 state acres on Sept. 17, 2026. A request for about 9,000 acres of federal BLM land was not yet complete as of Oct. 1.<br><b>Power users:</b> reported as a reactor campus with a data center and industry.<br><b>Nearby:</b> Altigen\'s "Jurassic Spark" campus east of Wellington would start with a 250 MW natural gas plant.'],
+  brigham:[41.51,-112.02,'Holtec SMR-300 hub · Brigham City','<b>Status:</b> announced Nov. 17, 2025 by Gov. Cox with Hi Tech Solutions and Holtec. Manufacturing, training and reactor deployment. $750 million private investment and 1,300 jobs projected in phase 1.<br><b>Power users:</b> not named. Reporters noted state leaders gave few specifics about why the area needs the power.'],
+  green:[38.99,-110.16,'Green River plant revival · Emery County','<b>Status:</b> Fulcrum Point Holdings and Blue Castle Holdings formed a joint venture in May 2026 to revive Blue Castle\'s Green River nuclear project using Holtec SMR-300 reactors.<br><b>Power users:</b> not named.'],
+  creek:[39.33,-112.55,'Creekstone Gigasite · Delta, Millard County','<b>Status:</b> the data center campus is under construction, powered by its own natural gas and solar, off the grid. Creekstone signed a non-binding MOU with EnergySolutions on Dec. 11, 2025 to study at least 2 GW of nuclear, with possible operation from 2030 to 2035.<br><b>Power users:</b> Creekstone\'s own campus.'],
+  stratos:[41.85,-112.55,'Stratos · Hansel Valley, Box Elder County','<b>Status:</b> MIDA\'s draft development standards list small modular reactors as a permitted use in the energy and technology zone. The draft agreement requires an energy facility of at least 3 GW within five years. No reactor has been proposed.<br><b>Power users:</b> the Stratos campus; MIDA describes the power as dedicated, on site.'],
+  tooele:[40.53,-112.3,'Federal nuclear campus bid · Tooele County','<b>Status:</b> Utah is one of five finalist states, July 28, 2026, under non-binding agreements with the Energy Department.<br><b>What it could include:</b> waste storage, uranium enrichment, spent-fuel reprocessing, fuel fabrication, reactors, power generation and data centers.<br><b>Still needed:</b> Congress must authorize the campuses.'],
+  eagle:[40.31,-112.01,'Alternative Energy Overlay Zone · Eagle Mountain','<b>Status:</b> the council delayed a vote in December 2025, then adopted Ordinance O-25-2026 in July 2026. It creates the zone but applies it to no land, and its text does not name nuclear.<br><b>Why:</b> the city said data centers need large amounts of power, and small reactors were one option it studied. Google delayed a campus there over power supply.'],
+  weber:[41.25,-112.17,'West Weber · Weber County','<b>Status:</b> county and state energy office held a nuclear symposium Aug. 5, 2026. No project or site. Listening session planned Dec. 2026 or Jan. 2027.<br><b>Power users:</b> port companies, per the county. <a href="weber-hive-dc-west-weber-nuclear.html">Full page →</a>'],
+  terra:[41.79,-110.54,'TerraPower Natrium · Kemmerer, Wyoming','<b>Status:</b> under construction; expected around 2032.<br><b>Power users:</b> Rocky Mountain Power\'s grid. Utah would share its roughly 500 MW with other Western states. It is the utility\'s only firm reactor plan.']
+};
+(function(){
+  var out=document.getElementById('pick-out'),btns=document.querySelectorAll('#picker button');
+  function show(k){out.innerHTML='<b>'+PROJ[k][2]+'</b><br>'+PROJ[k][3];btns.forEach(function(b){b.classList.toggle('on',b.dataset.k===k);});}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.k);});});
+  show('emery');
+})();
+try{(function(){
+  if(typeof L==='undefined')return;
+  var map=L.map('map',{scrollWheelZoom:false}).setView([40.2,-111.6],6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'© OpenStreetMap contributors'}).addTo(map);
+  Object.keys(PROJ).forEach(function(k){var p=PROJ[k];L.marker([p[0],p[1]]).addTo(map).bindPopup('<b>'+p[2]+'</b><br>'+p[3]);});
+})()}catch(e){console.warn('map',e);}
+</script>
+<script data-goatcounter="https://weberhive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

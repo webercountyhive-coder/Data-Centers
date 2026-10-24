@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>West Weber: Zoned for Data Centers, Now Talking Nuclear | The Weber County Hive</title>
+<meta name="description" content="Weber County made data centers a permitted use on West Weber port land in 2023. State law now lets big power users build their own plants. In 2026 the county began public talks on nuclear. What the records show, in order.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --bg:#ffffff; --panel:#f4f7fc; --ink:#14213d; --ink-soft:#3d4a66; --blue:#1f5fbf; --blue-soft:#e3ecfa;
+  --gold:#b8901c; --line:#d5deec; --warn:#fff6dc; --warn-line:#e2c35a;
+}
+*{box-sizing:border-box}
+html{font-size:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.65}
+a{color:var(--blue)}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+header.mast{background:var(--ink);color:#fff;padding:14px 0}
+header.mast a{color:#fff;text-decoration:none;font-family:Arial,sans-serif;font-size:.85rem;letter-spacing:.04em}
+.hero{padding:36px 0 18px;border-bottom:4px solid var(--blue)}
+.eyebrow{font-family:Arial,sans-serif;font-size:.8rem;letter-spacing:.12em;font-weight:700;color:var(--blue);text-transform:uppercase}
+.dates{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft);margin:.4em 0}
+h1{font-size:2.15rem;line-height:1.2;margin:.3em 0}
+h2{font-size:1.55rem;margin:1.8em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}
+h3{font-size:1.2rem;margin:1.2em 0 .4em}
+.dek{font-size:1.15rem;color:var(--ink-soft)}
+.tag{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:24px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat .n{font-family:Arial,sans-serif;font-size:1.7rem;font-weight:700;color:var(--blue)}
+.stat .l{font-size:.9rem;color:var(--ink-soft)}
+.table-scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:560px}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{background:var(--ink);color:#fff;font-family:Arial,sans-serif;font-size:.85rem}
+tr:nth-child(even) td{background:var(--panel)}
+.cap{font-size:.85rem;color:var(--ink-soft)}
+.box{background:var(--panel);border-left:5px solid var(--blue);padding:14px 16px;margin:18px 0;border-radius:4px}
+.box.warn{background:var(--warn);border-left-color:var(--warn-line)}
+.box.fair{background:#eef7ee;border-left-color:#3c8a4a}
+.box.short{background:var(--blue-soft);border-left-color:var(--ink)}
+.box h3{margin-top:0}
+#map{height:460px;border:1px solid var(--line);border-radius:8px;margin:12px 0}
+.chart-box{position:relative;height:380px;margin:14px 0}
+.mermaid{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0;text-align:center}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.tile{perspective:900px;height:200px;cursor:pointer;border:none;background:none;padding:0;font:inherit;color:inherit;text-align:left}
+.tile .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.tile.flip .in{transform:rotateY(180deg)}
+.tile .f,.tile .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;padding:16px;display:flex;flex-direction:column;justify-content:center}
+.tile .f{background:var(--ink);color:#fff}
+.tile .f strong{font-size:1.3rem}
+.tile .f span{font-family:Arial,sans-serif;font-size:.78rem;opacity:.8;margin-top:8px}
+.tile .b{background:var(--blue-soft);transform:rotateY(180deg);font-size:.88rem;overflow:auto}
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.picker button{font:inherit;font-size:.9rem;padding:8px 14px;border:2px solid var(--blue);background:#fff;color:var(--blue);border-radius:20px;cursor:pointer}
+.picker button.on{background:var(--blue);color:#fff}
+.pick-out{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;min-height:90px}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.person{border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:.95rem}
+.person b{display:block}
+.q{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0}
+.q .who{font-family:Arial,sans-serif;font-size:.8rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+.connects{border:2px solid var(--ink);border-radius:8px;padding:14px 18px;margin:24px 0}
+.connects h3{margin-top:0}
+.connects ul{margin:.3em 0 0 1.1em;padding:0}
+.counter{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0}
+.counter div{border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;font-size:.85rem;color:var(--ink-soft)}
+.counter b{display:block;font-family:Arial,sans-serif;font-size:1.5rem;color:var(--ink)}
+.timeline{list-style:none;padding:0;margin:14px 0;border-left:4px solid var(--blue)}
+.timeline li{position:relative;padding:4px 0 14px 22px}
+.timeline li::before{content:"";position:absolute;left:-11px;top:10px;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--blue)}
+.timeline .d{font-family:Arial,sans-serif;font-weight:700;font-size:.85rem;color:var(--blue);display:block}
+.lbl{display:inline-block;font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.lbl.doc{background:#e3f1e5;color:#24683a}
+.lbl.open{background:var(--warn);color:#7a5a00}
+details{border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:24px 0}
+summary{cursor:pointer;font-weight:700;font-size:1.1rem}
+details li{margin:6px 0;font-size:.9rem}
+footer{border-top:4px solid var(--blue);margin-top:40px;padding:20px 0 40px;font-size:.85rem;color:var(--ink-soft)}
+@media (max-width:600px){html{font-size:18px}h1{font-size:1.7rem}#map{height:360px}}
+</style>
+</head>
+<body>
+
+<header class="mast"><div class="wrap"><a href="index.html">← THE WEBER COUNTY HIVE · DATA CENTERS</a></div></header>
+
+<div class="wrap">
+<section class="hero">
+  <div class="eyebrow">Data Centers · Case File · Weber County · Power Series 1 of 3</div>
+  <h1>West Weber: Zoned for Data Centers, Now Talking Nuclear</h1>
+  <p class="dek">In 2023, Weber County made data centers a permitted use on land in what became the West Weber inland port area. In 2025, a state law let big power users build their own power plants. In 2026, the county began public talks about nuclear power for the port. Here is what the records show, in order.</p>
+  <p class="dates">Posted Oct. 24, 2026 · Updated Oct. 24, 2026</p>
+  <p class="tag">The Weber County Hive — We report public records. You decide.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">8,785</div><div class="l">acres in the West Weber inland port project area</div></div>
+    <div class="stat"><div class="n">Sept. 19, 2023</div><div class="l">date data centers became a permitted use in the M-T zone, 3-0 vote</div></div>
+    <div class="stat"><div class="n">100 MW</div><div class="l">power use at which S.B. 132 lets a customer build or buy its own plant</div></div>
+    <div class="stat"><div class="n">Dec. or Jan.</div><div class="l">county listening session planned on zoning and development policy</div></div>
+  </div>
+</section>
+
+<div class="box short">
+  <h3>The short version</h3>
+  <ul>
+    <li>In 2023, landowners asked Weber County to add data centers to the uses allowed in the new M-T (Manufacturing and Technology) zone in western Weber County. The county approved it 3-0. Nobody spoke against it at either hearing.</li>
+    <li>In 2025, S.B. 132 let any customer using 100 megawatts or more get power from its own private plant if Rocky Mountain Power can't serve it in time or on agreed terms.</li>
+    <li>In August 2026, the county and the state energy office held a public symposium on nuclear power, framed around the port's need for electricity.</li>
+    <li>No data center or reactor has been proposed in West Weber. The county says no sites or projects have been discussed. The pieces that would allow one are already in place.</li>
+  </ul>
+</div>
+
+<h2>Words to know</h2>
+<p class="cap">Tap or click a card to flip it.</p>
+<div class="tiles">
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Permitted use</strong><span>tap to flip</span></div><div class="b">A use the zoning code allows outright. Weber County's code marks these with a "P." A permitted use does not need a conditional use permit or its own public hearing.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>M-T zone</strong><span>tap to flip</span></div><div class="b">Weber County's Manufacturing and Technology zone, created in 2023 for "technological and manufacturing parks." It was proposed together with a rezone of about 355 acres at about 5900 W 1100 S.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Project area</strong><span>tap to flip</span></div><div class="b">Land the Utah Inland Port Authority (UIPA) adopts for development. UIPA keeps most of the growth in property tax there and can loan or grant money for roads, sewer, water and power.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>S.B. 132 (2025)</strong><span>tap to flip</span></div><div class="b">The state law on "large load" power customers, 100 megawatts or more. It requires them to pay their own costs, and lets them use a private power plant when the utility can't serve them. <a href="weber-hive-dc-oed-sb132.html">Full case file →</a></div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Behind the meter</strong><span>tap to flip</span></div><div class="b">Power made on site, or wired straight to one customer, without going through the public grid. Other customers neither pay for it nor receive it.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Listening session</strong><span>tap to flip</span></div><div class="b">A public meeting where residents ask questions and give input. Weber County says its next one, in December or January, will take input on zoning and development policy.</div></div></button>
+</div>
+
+<h2>The timeline</h2>
+<ul class="timeline">
+  <li><span class="d">Dec. 13, 2022</span>The Western Weber Planning Commission takes up three items together: a general plan change for about 355 acres at about 5900 W 1100 S, a new M-T zone, and rezoning those 355 acres from agricultural (A-2) to M-T. <span class="lbl doc">Public notice</span></li>
+  <li><span class="d">May 2023</span>The M-T zone is created. Its stated purpose is "technological and manufacturing parks." <span class="lbl doc">Aug. 8, 2023 minutes</span></li>
+  <li><span class="d">Aug. 8, 2023</span>The owners of the land rezoned to M-T ask the county to add "Critical Infrastructure (Data Center, Data Warehousing, and Data Processing)" as a permitted use. Staff renames it "Data Services" to avoid confusion with another code term. One person speaks at the hearing: Pat Burns, who said he liked this kind of business coming to that part of the county. The Planning Commission recommends approval 6-0. <span class="lbl doc">Minutes</span></li>
+  <li><span class="d">Sept. 7, 2023</span>GBP PCC LLC, which manages PCC Land LLC, the West Weber landowner, is formed. <span class="lbl doc">State business registry</span></li>
+  <li><span class="d">Sept. 12, 2023</span>The County Commission passes Resolution 39-2023, consenting to the first West Weber project area. <span class="lbl doc">Resolution</span></li>
+  <li><span class="d">Sept. 19, 2023</span>The County Commission adopts Ordinance 2023-28, making "Data Services: Data Centers, Data Warehousing, Data Processing" a permitted use in the M-T zone. Planner Bill Cobabe calls it "a simple line item adjustment." No public comment. Vote: Harvey aye, Bolos aye, Froerer aye. <span class="lbl doc">Minutes</span></li>
+  <li><span class="d">Late 2023</span>A second rezone to M-T, 19.43 acres at about 5900 W 900 S, is recommended with a condition: amend the existing Promontory Commerce Center Development Agreement. <span class="lbl doc">Minutes</span></li>
+  <li><span class="d">May 2024</span>UIPA adopts the West Weber project area. It grows from a 903-acre proposal to 8,785 acres. <span class="lbl doc">UIPA, KSL</span></li>
+  <li><span class="d">May 7, 2025</span>S.B. 132 takes effect. <span class="lbl doc">Enrolled bill</span></li>
+  <li><span class="d">May 20, 2025</span>UIPA reports 30 active recruitment projects at West Weber. Prospects include advanced manufacturing, data centers and energy. <span class="lbl doc">UIPA news release</span></li>
+  <li><span class="d">Dec. 15, 2025</span>UIPA's $5 million infrastructure loan to PCC Land LLC for West Weber sewer work is executed, after a first-round failure at the Legislature's Executive Appropriations Committee. <span class="lbl doc">UIPA letter to the Legislature</span></li>
+  <li><span class="d">Aug. 5, 2026</span>Weber County and the Utah Office of Energy Development host a nuclear energy symposium at the Ogden Eccles Conference Center. <span class="lbl doc">County release, KUER, KSL</span></li>
+  <li><span class="d">Dec. 2026 or Jan. 2027</span>Planned county listening session on zoning and development policy. Date not set. <span class="lbl open">Upcoming</span></li>
+</ul>
+
+<div class="mermaid">
+flowchart TD
+  A["<b>2023</b><br/>County zoning:<br/>data centers allowed<br/>by right in the M-T zone"] --> D["<b>The pieces now in place</b><br/>at West Weber"]
+  B["<b>2025</b><br/>State law S.B. 132:<br/>100 MW+ users may<br/>get their own power plant"] --> D
+  C["<b>2026</b><br/>County + state energy office:<br/>public talks on<br/>nuclear power for the port"] --> D
+  D --> E["<b>Not proposed yet</b><br/>No data center.<br/>No reactor.<br/>No site chosen."]
+</div>
+
+<h2>What was said in August</h2>
+<p>The Aug. 5 symposium was co-hosted by Weber County and the Utah Office of Energy Development. KUER, KSL, ABC4 and the Standard-Examiner covered it.</p>
+<ul>
+  <li><strong>Why the county held it.</strong> Economic Development Director Stephanie Russell told KUER the port area needs stable jobs, the companies that bring them need electricity, and nuclear is one option. She said the goal was to <em>"dispel myths, but we also want to talk about pros and cons."</em></li>
+  <li><strong>What the county says is not happening.</strong> County spokeswoman Jessika Clark told KSL no site locations or projects have been discussed. Commissioner Gage Froerer called it "just an option."</li>
+  <li><strong>Where nuclear could fit, per the county.</strong> Clark named the West Weber project area and the county's proposed Industrial District and Renewable Energy Hub. The county's brochure for that hub describes a 6,000-plus-acre site, served by Union Pacific rail, about 7 miles west of I-15.</li>
+  <li><strong>What the panel covered.</strong> Siting factors including earthquakes, flooding and water supply. Cambrian Nuclear CEO Ethan Bates said water for cooling limits today's reactors, while some smaller designs are air-cooled.</li>
+  <li><strong>Who spoke.</strong> BYU professor Matthew Memmott gave the keynote. Panelists were Michael Squires, Chris Hayter, Ethan Bates, John Battaglini and Michelle Zietlow-Miller.</li>
+  <li><strong>The next step.</strong> KUER reports a listening session in December or January, where residents can weigh in on the county's zoning and development policies.</li>
+</ul>
+<div class="box">
+  <h3>Already here: a nuclear-fuel supplier, not a power plant</h3>
+  Westinghouse has a plant inside the port project area that makes zirconium and hafnium used in nuclear fuel. That is manufacturing. There is no reactor in Weber County.
+</div>
+<div class="box">
+  <h3>The county brochure, read as written</h3>
+  The Renewable Energy Hub brochure lists Stephanie Russell as its contact. It projects 25,000 new jobs, 4,000 housing units and $780 million in new state revenue over 20 years. It also lists "25,000 sq. ft." of industrial and commercial space for a 6,000-plus-acre site. That may be a typo for a larger number. It is reported here as printed.
+</div>
+
+<h2>Where it stands on the map</h2>
+<div id="map" role="img" aria-label="Map of West Weber project area and related sites"></div>
+<p class="cap">Pins are approximate, placed from addresses and descriptions in public records. Click a pin for details.</p>
+
+<h2>Who would get the power?</h2>
+<p>This is the question the records don't answer yet. It matters because of how S.B. 132 works.</p>
+<div class="mermaid">
+flowchart LR
+  P["A plant built<br/>for West Weber"] --> G{"Connected to<br/>the public grid?"}
+  G -->|"Yes: sells to the grid"| R["Other customers<br/>can receive the power"]
+  G -->|"No: closed private system"| T["Only the tenant<br/>receives the power"]
+  T --> X["Not regulated as a public utility<br/>(S.B. 132, §54-26-504)"]
+</div>
+<ul>
+  <li>Under S.B. 132, a "closed private generation system" serves only its customers, stays separate from the utility's wires, and is exempt from regulation as a public utility.</li>
+  <li>Elsewhere in Utah, the documented nuclear plans so far are tied to specific data center campuses. See <a href="weber-hive-dc-nuclear-projects.html">Utah's nuclear projects →</a></li>
+  <li>For West Weber, no record reviewed says whether a plant would serve the grid or only port tenants. That is an open question.</li>
+</ul>
+
+<div class="box warn">
+  <h3>What this page does not say</h3>
+  <ul>
+    <li><strong>Who applied for the 2023 data center change.</strong> The minutes say only "land owners" of the M-T property. The December 2022 packet that may name them is a scanned PDF that could not be read as text, so it is listed as unread, not empty. PCC is not named as the applicant here.</li>
+    <li><strong>That nuclear at West Weber is for data centers.</strong> No West Weber record ties the two. The county's stated reason is jobs and electricity for port companies.</li>
+    <li><strong>That the 355 M-T acres and PCC Land's 376.86 acres are the same land.</strong> They are near each other. Matching them takes parcel numbers.</li>
+  </ul>
+</div>
+
+<div class="box fair">
+  <h3>The other side</h3>
+  <ul>
+    <li><strong>Education came first.</strong> Weber County held its public symposium before any project was proposed, the reverse of how Box Elder County's Stratos data center came to light. Russell told KUER that if leaders don't hear from residents, they'll assume everyone is fine with it, and that the county wants to know whether it's a good fit or not.</li>
+    <li><strong>Ratepayer protection is real.</strong> S.B. 132 requires large users to pay their own costs, and the Public Service Commission may approve a utility contract only if existing customers don't bear them. Utah's Office of Consumer Services called it one of the best protections in the nation.</li>
+    <li><strong>The zoning change was noticed and heard.</strong> Both the Planning Commission and the County Commission held public hearings in 2023. No one spoke against it.</li>
+    <li><strong>The area has long been zoned for industry.</strong> County staff noted in 2024 that much of western Weber County has been zoned industrial for years, alongside Compass Minerals and Westinghouse.</li>
+  </ul>
+</div>
+
+<h2>People in this record</h2>
+<div class="people">
+  <div class="person"><b>Stephanie Russell</b>Weber County Economic Development Director. Opened the Aug. 5 symposium and is the listed contact on the Renewable Energy Hub brochure. <a href="https://webercountyhive-coder.github.io/UIPA/little-mountain-service-area.html">Little Mountain Service Area →</a></div>
+  <div class="person"><b>Gage Froerer</b>Weber County Commissioner. Voted aye on Ordinance 2023-28 as chair. Called nuclear "just an option" in August 2026.</div>
+  <div class="person"><b>Jim Harvey</b>Weber County Commissioner in 2023. Made the motion to adopt Ordinance 2023-28.</div>
+  <div class="person"><b>Sharon Bolos</b>Weber County Commissioner. Seconded Ordinance 2023-28.</div>
+  <div class="person"><b>Pat Burns</b>The only public speaker at the Aug. 8, 2023 hearing; said he liked this kind of business coming to the area. <a href="https://webercountyhive-coder.github.io/UIPA/little-mountain-service-area.html">Little Mountain Service Area →</a></div>
+  <div class="person"><b>Chris Hayter</b>Symposium panelist. Founder of Hi Tech Solutions and Fulcrum Point Holdings, which have nuclear projects in Brigham City and Emery County. <a href="weber-hive-dc-statewide-power.html">Who keeps showing up →</a></div>
+  <div class="person"><b>Heather McShane</b>Spokesperson, Utah Office of Energy Development. Said the outreach is meant to hear residents' fears and questions.</div>
+  <div class="person"><b>Jessika Clark</b>Weber County spokeswoman. Said no sites or projects have been discussed.</div>
+</div>
+
+<h2>Questions to ask, and whom to ask</h2>
+<div class="q"><div class="who">Weber County Planning Division</div>Who applied for ZTA 2023-05, the 2023 change that made data centers a permitted use in the M-T zone?</div>
+<div class="q"><div class="who">Weber County Commission</div>Will the December/January listening session include the 2023 data center permission and whether data centers should need a conditional use permit?</div>
+<div class="q"><div class="who">Weber County Commission</div>If a power plant is built for the port, would it sell power to the public grid, or serve only port tenants?</div>
+<div class="q"><div class="who">Utah Inland Port Authority</div>Of the recruitment prospects at West Weber, how many are data centers, and how much power would each need?</div>
+<div class="q"><div class="who">Rocky Mountain Power</div>Has any West Weber prospect filed a large-load request of 100 megawatts or more under S.B. 132?</div>
+
+<div class="connects">
+  <h3>Where this connects</h3>
+  <ul>
+    <li><a href="weber-hive-dc-nuclear-projects.html">Utah's Nuclear Projects and the Data Centers Behind Them</a> (Power Series 2 of 3)</li>
+    <li><a href="weber-hive-dc-statewide-power.html">It's Happening Statewide</a> (Power Series 3 of 3)</li>
+    <li><a href="weber-hive-dc-oed-sb132.html">Data Centers &amp; S.B. 132</a>: the two paths for powering a data center</li>
+    <li><a href="https://weber-county-hive.github.io/Unelected-Power/uipa-hearing-fact-check.html">UIPA hearing fact-check</a> (Unelected-Power): the PCC Land loan and West Weber's share of tax growth</li>
+    <li><a href="https://webercountyhive-coder.github.io/UIPA/little-mountain-service-area.html">Little Mountain Service Area</a> (UIPA): the sewer district serving West Weber</li>
+    <li><a href="https://weber-county-hive.github.io/Unelected-Power/edcutah.html">EDCUtah</a> (Unelected-Power): Site Ready Utah's West Weber County Mega Site</li>
+    <li><a href="https://weber-county-hive.github.io/utah-maps/utah-tax-increment-map.html">Where Utah's Tax Increment Goes</a> (Utah Maps)</li>
+  </ul>
+</div>
+
+<h2>Behind this piece</h2>
+<div class="counter">
+  <div><b>17</b>records read</div>
+  <div><b>45</b>dates, votes and figures checked</div>
+  <div><b>3</b>records checked but not used</div>
+  <div><b>~20</b>searches run (estimate)</div>
+</div>
+
+<details>
+<summary>Sources and how they were read</summary>
+<ul>
+  <li>Western Weber Planning Commission, minutes, Aug. 8, 2023, item 3.1 ZTA 2023-05 — <a href="https://webercountyutah.gov/planning/documents/uploads/2023%20WWPC%208-8%20Minutes.docx.pdf">webercountyutah.gov</a>. Read from PDF text.</li>
+  <li>Weber County Commission, minutes, Sept. 19, 2023, items H2–H5, Ordinance 2023-28 — <a href="https://www3.co.weber.ut.us/min_pdf/min_09192023.pdf">co.weber.ut.us</a>. Read from PDF text.</li>
+  <li>Western Weber Planning Commission, public notice, Dec. 13, 2022 (GPA 2022-01, ZTA 2022-04, ZMA 2022-03) — <a href="https://www.utah.gov/pmn/sitemap/notice/799047.html">utah.gov/pmn</a>. Notice read in full. The attached packet (<a href="https://www.utah.gov/pmn/files/920185.pdf">920185.pdf</a>) returned no text; it appears to be scanned and is <strong>unread</strong>, not blank.</li>
+  <li>Western Weber Planning Commission, minutes with ZMA 2023-16 (Hancock rezone) — <a href="https://webercountyutah.gov/planning/documents/uploads/2023%20WWPC%2012-12%20Minutes.docx.pdf">webercountyutah.gov</a>. Read from search-result text.</li>
+  <li>Weber County, draft M-T zone ordinance, March 21, 2023 — <a href="https://www.webercountyutah.gov/commission/documents/uploads/21%20Mar%202023%20--%20DRAFT%20--%20M-T%20Zone%20%20(For%20CC%20-%20Final).pdf">webercountyutah.gov</a>. Purpose statement and permitted-use definition read from search-result text.</li>
+  <li>Weber County, "West Weber Development Area: Industrial District and Renewable Energy Hub" brochure — <a href="https://webercountyutah.gov/economic_development/documents/weber-county-reh.pdf">webercountyutah.gov</a>. Read from PDF text; undated.</li>
+  <li>KUER, "Weber County's inland port needs electricity. Nuclear could be an option," Macy Lipkin, Aug. 6, 2026 — <a href="https://www.kuer.org/business-economy/2026-08-06/weber-countys-inland-port-needs-electricity-nuclear-could-be-an-option">kuer.org</a>. Read in full.</li>
+  <li>KSL, "Weber County leaders interested in nuclear power potential, host symposium on topic," Tim Vandenack, Aug. 6, 2026 — <a href="https://www.ksl.com/article/51606555/weber-county-leaders-interested-in-nuclear-power-potential-host-symposium-on-topic">ksl.com</a>. Read in full.</li>
+  <li>ABC4, Aug. 6, 2026 — <a href="https://www.abc4.com/news/wasatch-front/weber-county-nuclear-symposium/">abc4.com</a>; Standard-Examiner, July 28, 2026 — <a href="https://www.standard.net/news/2026/jul/28/symposium-to-discuss-potential-for-nuclear-energy-development-in-weber-county/">standard.net</a>. Read from search-result text.</li>
+  <li>KSL, "Weber County inland port proposal draws fire from some," Jan. 3, 2024 — <a href="https://www.ksl.com/article/50832824/weber-county-inland-port-proposal-draws-fire-from-some-officials-move-forward-with-plans">ksl.com</a>; Salt Lake Tribune, Jan. 3, 2024 — <a href="https://www.sltrib.com/news/environment/2024/01/03/weber-county-wants-inland-port/">sltrib.com</a>. Read from search-result text.</li>
+  <li>UIPA, "One Year In: West Weber Project Area Attracts Major Interest," May 20, 2025 — <a href="https://inlandportauthority.utah.gov/all-news/one-year-in-west-weber-project-area-attracts-major-interest-lays-groundwork-for-growth/">inlandportauthority.utah.gov</a>. Read from search-result text.</li>
+  <li>Utah Legislature, S.B. 132 (2025), enrolled text, §§54-26-101, -301, -302, -402, -504, -505 — <a href="https://le.utah.gov/Session/2025/bills/enrolled/SB0132.pdf">le.utah.gov</a>. Read in full.</li>
+  <li>UIPA loan letters to the Executive Appropriations Committee, Feb. 9, 2026 (PCC Land loan executed Dec. 15, 2025) — <a href="https://le.utah.gov/interim/2026/pdf/00001737.pdf">le.utah.gov</a>. Read from PDF text; full history on the Hive's UIPA hearing fact-check.</li>
+  <li>GBP PCC LLC formation date and Resolution 39-2023: from the Hive's earlier West Weber research (Utah business registry; Weber County Commission records).</li>
+  <li>Lehi Free Press, Feb. 11, 2026 (Office of Consumer Services on S.B. 132) — <a href="https://lehifreepress.com/2026/02/11/utahs-massive-data-centers-seek-to-build-new-power-sources/">lehifreepress.com</a>.</li>
+</ul>
+</details>
+
+</div>
+
+<footer><div class="wrap">The Weber County Hive · webercountyhive.substack.com · Tips and corrections: webercountyhive@gmail.com</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{fontSize:"22px",fontFamily:"Georgia, serif",primaryColor:"#e3ecfa",primaryBorderColor:"#1f5fbf",primaryTextColor:"#14213d",lineColor:"#1f5fbf"}});
+</script>
+<script>
+document.querySelectorAll('.tile').forEach(function(t){t.addEventListener('click',function(e){if(e.target.tagName==='A')return;t.classList.toggle('flip');});});
+</script>
+<script>
+try{(function(){
+  if(typeof L==='undefined')return;
+  var map=L.map('map',{scrollWheelZoom:false}).setView([41.22,-112.08],10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:14,attribution:'© OpenStreetMap contributors'}).addTo(map);
+  var pins=[
+    [41.25,-112.17,'West Weber project area (approx. center)','Utah Inland Port Authority project area, 8,785 acres, adopted May 2024. North of the Ogden Bay Waterfowl Management Area and east of the Great Salt Lake bed.'],
+    [41.236,-112.135,'M-T zone, about 5900 W 1100 S (approx.)','About 355 acres rezoned from agricultural to Manufacturing and Technology (M-T) in 2023. Data centers became a permitted use in this zone on Sept. 19, 2023.'],
+    [41.27,-112.21,'Westinghouse plant (approx.)','Makes zirconium and hafnium for nuclear fuel. Manufacturing, not power generation.'],
+    [41.16,-112.2,'Ogden Bay Waterfowl Management Area','State wildlife management area south of the project area.'],
+    [41.2216,-111.9718,'Ogden Eccles Conference Center','Site of the Aug. 5, 2026 nuclear energy symposium, co-hosted by Weber County and the Utah Office of Energy Development.']
+  ];
+  pins.forEach(function(p){L.marker([p[0],p[1]]).addTo(map).bindPopup('<b>'+p[2]+'</b><br>'+p[3]);});
+})()}catch(e){console.warn('map',e);}
+</script>
+<script data-goatcounter="https://weberhive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

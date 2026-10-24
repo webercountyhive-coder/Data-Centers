@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>It's Happening Statewide: Utah's Data Centers and Their Own Power Plants | The Weber County Hive</title>
+<meta name="description">Two-thirds of the data center capacity under construction in Utah will run behind the meter or off the grid. Region by region, the same three pieces keep showing up: local zoning, S.B. 132, and nuclear as the long-term power source.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --bg:#ffffff; --panel:#f4f7fc; --ink:#14213d; --ink-soft:#3d4a66; --blue:#1f5fbf; --blue-soft:#e3ecfa;
+  --gold:#b8901c; --line:#d5deec; --warn:#fff6dc; --warn-line:#e2c35a;
+}
+*{box-sizing:border-box}
+html{font-size:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.65}
+a{color:var(--blue)}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+header.mast{background:var(--ink);color:#fff;padding:14px 0}
+header.mast a{color:#fff;text-decoration:none;font-family:Arial,sans-serif;font-size:.85rem;letter-spacing:.04em}
+.hero{padding:36px 0 18px;border-bottom:4px solid var(--blue)}
+.eyebrow{font-family:Arial,sans-serif;font-size:.8rem;letter-spacing:.12em;font-weight:700;color:var(--blue);text-transform:uppercase}
+.dates{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft);margin:.4em 0}
+h1{font-size:2.15rem;line-height:1.2;margin:.3em 0}
+h2{font-size:1.55rem;margin:1.8em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}
+h3{font-size:1.2rem;margin:1.2em 0 .4em}
+.dek{font-size:1.15rem;color:var(--ink-soft)}
+.tag{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:24px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat .n{font-family:Arial,sans-serif;font-size:1.7rem;font-weight:700;color:var(--blue)}
+.stat .l{font-size:.9rem;color:var(--ink-soft)}
+.table-scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:560px}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{background:var(--ink);color:#fff;font-family:Arial,sans-serif;font-size:.85rem}
+tr:nth-child(even) td{background:var(--panel)}
+.cap{font-size:.85rem;color:var(--ink-soft)}
+.box{background:var(--panel);border-left:5px solid var(--blue);padding:14px 16px;margin:18px 0;border-radius:4px}
+.box.warn{background:var(--warn);border-left-color:var(--warn-line)}
+.box.fair{background:#eef7ee;border-left-color:#3c8a4a}
+.box.short{background:var(--blue-soft);border-left-color:var(--ink)}
+.box h3{margin-top:0}
+#map{height:460px;border:1px solid var(--line);border-radius:8px;margin:12px 0}
+.chart-box{position:relative;height:380px;margin:14px 0}
+.mermaid{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0;text-align:center}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.tile{perspective:900px;height:200px;cursor:pointer;border:none;background:none;padding:0;font:inherit;color:inherit;text-align:left}
+.tile .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.tile.flip .in{transform:rotateY(180deg)}
+.tile .f,.tile .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;padding:16px;display:flex;flex-direction:column;justify-content:center}
+.tile .f{background:var(--ink);color:#fff}
+.tile .f strong{font-size:1.3rem}
+.tile .f span{font-family:Arial,sans-serif;font-size:.78rem;opacity:.8;margin-top:8px}
+.tile .b{background:var(--blue-soft);transform:rotateY(180deg);font-size:.88rem;overflow:auto}
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.picker button{font:inherit;font-size:.9rem;padding:8px 14px;border:2px solid var(--blue);background:#fff;color:var(--blue);border-radius:20px;cursor:pointer}
+.picker button.on{background:var(--blue);color:#fff}
+.pick-out{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;min-height:90px}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.person{border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:.95rem}
+.person b{display:block}
+.q{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0}
+.q .who{font-family:Arial,sans-serif;font-size:.8rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+.connects{border:2px solid var(--ink);border-radius:8px;padding:14px 18px;margin:24px 0}
+.connects h3{margin-top:0}
+.connects ul{margin:.3em 0 0 1.1em;padding:0}
+.counter{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0}
+.counter div{border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;font-size:.85rem;color:var(--ink-soft)}
+.counter b{display:block;font-family:Arial,sans-serif;font-size:1.5rem;color:var(--ink)}
+.timeline{list-style:none;padding:0;margin:14px 0;border-left:4px solid var(--blue)}
+.timeline li{position:relative;padding:4px 0 14px 22px}
+.timeline li::before{content:"";position:absolute;left:-11px;top:10px;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--blue)}
+.timeline .d{font-family:Arial,sans-serif;font-weight:700;font-size:.85rem;color:var(--blue);display:block}
+.lbl{display:inline-block;font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.lbl.doc{background:#e3f1e5;color:#24683a}
+.lbl.open{background:var(--warn);color:#7a5a00}
+details{border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:24px 0}
+summary{cursor:pointer;font-weight:700;font-size:1.1rem}
+details li{margin:6px 0;font-size:.9rem}
+footer{border-top:4px solid var(--blue);margin-top:40px;padding:20px 0 40px;font-size:.85rem;color:var(--ink-soft)}
+@media (max-width:600px){html{font-size:18px}h1{font-size:1.7rem}#map{height:360px}}
+</style>
+</head>
+<body>
+
+<header class="mast"><div class="wrap"><a href="index.html">← THE WEBER COUNTY HIVE · DATA CENTERS</a></div></header>
+
+<div class="wrap">
+<section class="hero">
+  <div class="eyebrow">Data Centers · Case File · Statewide · Power Series 3 of 3</div>
+  <h1>It's Happening Statewide: Utah's Data Centers and Their Own Power Plants</h1>
+  <p class="dek">Two-thirds of the data center capacity under construction in Utah is planned to run behind the meter or off the public grid. Region by region, the same three pieces keep showing up: local zoning, a 2025 state law, and nuclear as the long-term power source.</p>
+  <p class="dates">Posted Oct. 24, 2026 · Updated Oct. 24, 2026</p>
+  <p class="tag">The Weber County Hive — We report public records. You decide.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">48</div><div class="l">data centers operating in Utah, about 920 MW</div></div>
+    <div class="stat"><div class="n">2,600 MW</div><div class="l">more under construction in seven projects</div></div>
+    <div class="stat"><div class="n">1,700 MW</div><div class="l">of that planned behind the meter or off the grid, about two-thirds</div></div>
+    <div class="stat"><div class="n">2031</div><div class="l">year federal reliability regulators project elevated grid risk for Utah</div></div>
+  </div>
+</section>
+
+<div class="box short">
+  <h3>The short version</h3>
+  <ul>
+    <li>Utah's biggest new data centers are being built with their own power plants, mostly natural gas for now.</li>
+    <li>A 2025 law, S.B. 132, lets any customer using 100 megawatts or more do that when Rocky Mountain Power can't serve it in time or on agreed terms.</li>
+    <li>Nuclear is offered as the long-term source in several regions, and in the documented cases it is tied to specific campuses.</li>
+    <li>The law keeps those costs off other customers' bills. It also means other customers don't receive that power.</li>
+  </ul>
+</div>
+
+<h2>Words to know</h2>
+<p class="cap">Tap or click a card to flip it.</p>
+<div class="tiles">
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Megawatt (MW)</strong><span>tap to flip</span></div><div class="b">A million watts. A rough rule of thumb is that one megawatt can serve about 750 homes. Utah's biggest proposed campuses are listed in gigawatts: thousands of megawatts.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Behind the meter</strong><span>tap to flip</span></div><div class="b">Power made on site or wired straight to one customer, without passing through the public grid.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Large load</strong><span>tap to flip</span></div><div class="b">Utah's legal term for a customer expected to need 100 megawatts or more within five years. Most big data centers qualify.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Operation Gigawatt</strong><span>tap to flip</span></div><div class="b">Gov. Spencer Cox's plan, launched in 2024, to double Utah's power production in ten years, using what he calls an "any-of-the-above" approach that includes nuclear.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Office of Energy Development</strong><span>tap to flip</span></div><div class="b">The state office that carries out energy policy, including Operation Gigawatt. It runs public outreach on nuclear and partners with companies on projects.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Public Service Commission</strong><span>tap to flip</span></div><div class="b">Utah's utility regulator. Under S.B. 132 it reviews large-load contracts with the utility, but not private plants that stay off the grid.</div></div></button>
+</div>
+
+<h2>The numbers</h2>
+<div class="chart-box"><canvas id="mwChart" aria-label="Bar chart: of 2,600 MW under construction, about 1,700 MW behind the meter or off grid and about 900 MW on the grid"></canvas></div>
+<p class="cap">Source: Kem C. Gardner Policy Institute, "Data Center Growth in Utah and the United States," April 2026. The grid figure is the remainder of 2,600 minus 1,700, rounded.</p>
+<ul>
+  <li><strong>Where Utah's data centers are today:</strong> 48 operating, about 920 MW. The ten largest make up nearly 80% of that.</li>
+  <li><strong>Under construction:</strong> seven projects, about 2,600 MW. Joule's campus near Delta is the biggest at 1,400 MW for its current phase.</li>
+  <li><strong>Grid warning:</strong> the fact sheet says the North American Electric Reliability Corporation projects elevated grid risk for Utah in 2031, when supply may fall short under extreme conditions.</li>
+  <li><strong>Proposed, at full planned size:</strong> the Salt Lake Tribune's September map lists about 65 sites, with campuses in Box Elder, Millard, Duchesne, Iron, Carbon and Utah counties listed at a gigawatt or more.</li>
+</ul>
+
+<h2>The same three pieces, region after region</h2>
+<div class="mermaid">
+flowchart LR
+  A["<b>1. Local zoning</b><br/>A county, city or MIDA<br/>allows the data center<br/>or the power plant"] --> B["<b>2. S.B. 132 (2025)</b><br/>100 MW+ users may get<br/>power from their own<br/>private plant"]
+  B --> C["<b>3. The power source</b><br/>Natural gas now.<br/>Nuclear offered<br/>for later."]
+  C --> D["<b>Result</b><br/>Costs stay off other bills.<br/>Power stays off the grid."]
+</div>
+
+<h2>Pick a region</h2>
+<div class="picker" id="picker">
+  <button type="button" data-k="boxelder" class="on">Box Elder</button>
+  <button type="button" data-k="millard">Millard</button>
+  <button type="button" data-k="utahco">Utah County</button>
+  <button type="button" data-k="tooele">Tooele</button>
+  <button type="button" data-k="weber">Weber</button>
+  <button type="button" data-k="carbon">Carbon</button>
+  <button type="button" data-k="emery">Emery</button>
+  <button type="button" data-k="south">Iron &amp; Duchesne</button>
+</div>
+<div class="pick-out" id="pick-out" aria-live="polite"></div>
+
+<div class="table-scroll"><table>
+  <tr><th>Region</th><th>Biggest data center project(s)</th><th>Piece 1: Zoning</th><th>Piece 2: Own power</th><th>Piece 3: Nuclear tie</th></tr>
+  <tr><td>Box Elder</td><td>Stratos, 7.5 GW proposed</td><td>MIDA project area, April 2026</td><td>MIDA describes dedicated on-site power</td><td>Reactors permitted in draft standards; Brigham City SMR hub nearby</td></tr>
+  <tr><td>Millard</td><td>Creekstone (&gt;10 GW goal), Joule (4 GW)</td><td>County rezoned both</td><td>Both building their own gas power</td><td>Creekstone nuclear study (MOU)</td></tr>
+  <tr><td>Utah County</td><td>Meta, QTS, Tract, Google site</td><td>Eagle Mountain zoning; energy overlay zone July 2026</td><td>Gas generators approved for three data centers; Meta gas plant filed</td><td>City studied small reactors; resident pushback</td></tr>
+  <tr><td>Tooele</td><td>Zenith, 500 MW (paused)</td><td>Inland Port project area</td><td>UIPA loan listed a power plant among uses</td><td>Federal nuclear campus bid</td></tr>
+  <tr><td>Weber</td><td>None proposed</td><td>Data centers permitted in M-T zone since 2023</td><td>S.B. 132 applies</td><td>Nuclear symposium Aug. 2026</td></tr>
+  <tr><td>Carbon</td><td>Valar campus; Altigen "Jurassic Spark"</td><td>Trust Lands lease; county pipeline agreement</td><td>Altigen: 250 MW gas plant to start</td><td>Valar reactor campus</td></tr>
+  <tr><td>Emery</td><td>Valar + Nvidia, 30 MW</td><td>State-owned lab</td><td>Fully reactor-powered, per the companies</td><td>Valar test reactor; Green River revival</td></tr>
+  <tr><td>Iron, Duchesne</td><td>Antelope 1.5 GW, Red Butte 1.5 GW, Nine Mile 1 GW+</td><td>Proposed</td><td>Not found in records reviewed</td><td>None found</td></tr>
+</table></div>
+
+<h2>On the map</h2>
+<div id="map" role="img" aria-label="Map of Utah regions with large data center and power projects"></div>
+<p class="cap">Pins are approximate, placed at the town or valley named in public records. Click a pin for details.</p>
+
+<h2>Why the pieces line up: the utility can't keep up</h2>
+<ul>
+  <li><strong>Rocky Mountain Power's only firm reactor plan</strong> is TerraPower's plant in Kemmerer, Wyoming, around 2032. Utah would share its roughly 500 MW with other Western states.</li>
+  <li><strong>Developers say they can't wait.</strong> Google delayed an Eagle Mountain campus over power supply. Joule's managing partner told reporters the company is excited about nuclear someday but can't wait for it, so it is building gas power.</li>
+  <li><strong>S.B. 132 is the path.</strong> If the utility can't finish its study or agree on terms in time, a large customer may contract with a private generator. A fully off-grid "closed private generation system" is exempt from regulation as a public utility (§54-26-504).</li>
+</ul>
+
+<h2>Who keeps showing up</h2>
+<p>These are documented roles, listed so readers can see the same names across regions. Holding more than one role is not, by itself, a sign of wrongdoing.</p>
+<div class="table-scroll"><table>
+  <tr><th>Who</th><th>Role in each place</th></tr>
+  <tr><td><strong>Chris Hayter</strong><br>Hi Tech Solutions; Fulcrum Point Holdings</td><td>
+    <b>Brigham City:</b> signed the April 29, 2025 SMR-300 agreement with the state as Hi Tech's president and COO.<br>
+    <b>Green River:</b> his Fulcrum Point formed a joint venture with Blue Castle in May 2026 to revive the Green River plant.<br>
+    <b>Weber County:</b> panelist at the Aug. 5, 2026 nuclear "education" symposium, where he told the crowd Utah leaders are listening to the industry.</td></tr>
+  <tr><td><strong>Utah Office of Energy Development</strong></td><td>
+    <b>Weber County:</b> co-hosted the Aug. 5 symposium; its spokesperson said the goal is to hear residents' fears.<br>
+    <b>Statewide:</b> similar outreach in Carbon, Grand, Summit, Wayne and Duchesne counties.<br>
+    <b>Brigham City:</b> Director Emy Lesofski signed the Holtec agreement.<br>
+    <b>Emery:</b> Lesofski praised Valar at its July 1 event.<br>
+    <b>Carbon:</b> Deputy Director Jake Garfield spoke in favor of the Valar lease at the Aug. 20 Trust Lands meeting.</td></tr>
+  <tr><td><strong>Sen. Scott Sandall &amp; Rep. Colin Jack</strong></td><td>Primary sponsor and House sponsor of S.B. 132 (2025). Sandall said the law lets Rocky Mountain Power serve data centers, AI and large manufacturers without handcuffs.</td></tr>
+</table></div>
+<div class="box">
+  <h3>Read this fairly</h3>
+  Promoting energy development is the Office of Energy Development's job under Operation Gigawatt. The point here is a narrower one for readers: the office that runs the public "education" events is also a partner in specific projects. That's worth knowing when you sit in one of its sessions.
+</div>
+
+<div class="box">
+  <h3>Same areas, already marketed</h3>
+  EDCUtah's Site Ready Utah program markets large sites in the same areas as several of these projects, including a West Weber County Mega Site, a Millard County Mega Site and a Carbon Highway 10 Mega Site. Matching the sites to specific projects would take parcel numbers. <a href="https://weber-county-hive.github.io/Unelected-Power/edcutah.html">EDCUtah case file →</a>
+</div>
+
+<div class="box warn">
+  <h3>What this page does not say</h3>
+  <ul>
+    <li>That anyone coordinated these projects. The record shows the same law, the same state office and some of the same people. It does not show a plan.</li>
+    <li>That every proposed data center will be built. Several are proposals only; Tooele's is paused.</li>
+    <li>That nuclear will be built at any data center. In Utah, so far, only a test reactor is operating.</li>
+  </ul>
+</div>
+
+<div class="box fair">
+  <h3>The other side</h3>
+  <ul>
+    <li><strong>Ratepayers are protected from these costs.</strong> S.B. 132 requires large users to pay all their own costs. Michele Beck of Utah's Office of Consumer Services called it one of the best ideas out there for protecting customers.</li>
+    <li><strong>Off-grid plants don't compete for grid power.</strong> A campus making its own power isn't drawing on supply that homes and businesses use.</li>
+    <li><strong>Rural counties want the tax base.</strong> Millard and Carbon officials point to lost coal jobs and new tax revenue. Carbon County coal mines have produced none since 2023.</li>
+    <li><strong>The policy is public.</strong> Operation Gigawatt's goal of doubling power production is stated openly by the governor.</li>
+  </ul>
+</div>
+
+<h2>Questions to ask, and whom to ask</h2>
+<div class="q"><div class="who">Utah Public Service Commission</div>S.B. 132 requires the commission to review the program before Oct. 31, 2027, with public comment. When will that review open, and how can residents comment?</div>
+<div class="q"><div class="who">Your state legislators</div>Should private plants serving one campus have to report their fuel, emissions and output publicly, the way utilities do?</div>
+<div class="q"><div class="who">Utah Office of Energy Development</div>Which of the companies at your public nuclear events are also partners on state-supported projects?</div>
+<div class="q"><div class="who">Rocky Mountain Power</div>How many large-load requests under S.B. 132 has the utility received, and how many went to private generators?</div>
+<div class="q"><div class="who">Your county commission</div>Are data centers a permitted use anywhere in our county, and do they need a public hearing?</div>
+
+<div class="connects">
+  <h3>Where this connects</h3>
+  <ul>
+    <li><a href="weber-hive-dc-west-weber-nuclear.html">West Weber: Zoned for Data Centers, Now Talking Nuclear</a> (Power Series 1 of 3)</li>
+    <li><a href="weber-hive-dc-nuclear-projects.html">Utah's Nuclear Projects and the Data Centers Behind Them</a> (Power Series 2 of 3)</li>
+    <li><a href="weber-hive-dc-oed-sb132.html">Data Centers &amp; S.B. 132</a>: the Office of Energy Development's pitch, checked</li>
+    <li><a href="meta-eagle-mountain-gas-plant.html">Meta's Eagle Mountain Gas Plant</a></li>
+    <li><a href="weber-hive-dc-national-math.html">The National Math Behind Utah's Data Center Bets</a></li>
+    <li><a href="https://webercountyhive-coder.github.io/UIPA/uipa-tooele-zenith.html">Tooele Valley: Not the Landowner, Not the Developer</a> (UIPA)</li>
+    <li><a href="https://weber-county-hive.github.io/utah-maps/utah-tax-increment-map.html">Where Utah's Tax Increment Goes</a> (Utah Maps)</li>
+  </ul>
+</div>
+
+<h2>Behind this piece</h2>
+<div class="counter">
+  <div><b>22</b>records read</div>
+  <div><b>60</b>dates, votes and figures checked</div>
+  <div><b>5</b>records checked but not used</div>
+  <div><b>~25</b>searches run (estimate)</div>
+</div>
+
+<details>
+<summary>Sources and how they were read</summary>
+<ul>
+  <li>Kem C. Gardner Policy Institute, "Data Center Growth in Utah and the United States," April 2026 — <a href="https://d36oiwf74r1rap.cloudfront.net/wp-content/uploads/2026/04/Data-Center-Growth-FS-Apr2026.pdf">gardner.utah.edu</a>. Read from PDF text.</li>
+  <li>Utah House of Representatives, "Utah Data Center Laws," Sept. 8, 2026 — <a href="https://house.utleg.gov/2026-utah-data-center-regulations/">house.utleg.gov</a>. Read in full.</li>
+  <li>Utah Legislature, S.B. 132 (2025), enrolled text, §§54-26-402, -504, -505, -802 — <a href="https://le.utah.gov/Session/2025/bills/enrolled/SB0132.pdf">le.utah.gov</a>. Read in full.</li>
+  <li>Salt Lake Tribune, "Utah data center map," Harkins &amp; Larsen, Sept. 25, 2026. Table pages 1–7 read from pasted capture.</li>
+  <li>Lehi Free Press, "Utah's massive data centers seek to build new power sources," Feb. 11, 2026 — <a href="https://lehifreepress.com/2026/02/11/utahs-massive-data-centers-seek-to-build-new-power-sources/">lehifreepress.com</a>.</li>
+  <li>Utah News Dispatch, March 25, 2025 (S.B. 132) — <a href="https://utahnewsdispatch.com/2025/03/25/changes-to-rocky-mountain-power-contracts-with-ai-centers/">utahnewsdispatch.com</a>.</li>
+  <li>GOED, Creekstone commitment — <a href="https://business.utah.gov/tax-credits/creekstone-energy-llc-commits-17-billion-to-millard-county-data-center-project/">business.utah.gov</a>; Utah Business, Nov. 5, 2025 — <a href="https://www.utahbusiness.com/industry/2025/11/05/data-center-creekstone-energy-joule-capital-partners-millard-county-fillmore/">utahbusiness.com</a>.</li>
+  <li>Salt Lake Tribune, "Eagle Mountain delays decision on nuclear zoning plan," Dec. 18, 2025 — <a href="https://www.sltrib.com/news/environment/2025/12/18/eagle-mountain-delays-decision/">sltrib.com</a>; Grist, March 12, 2026 — <a href="https://grist.org/business/ai-utah-data-center-boom-fossil-fuels-gas/">grist.org</a>.</li>
+  <li>Salt Lake Tribune, Carbon County, Sept. 24, 2026 — <a href="https://www.sltrib.com/news/environment/2026/09/24/residents-up-arms-over-carbon/">sltrib.com</a>.</li>
+  <li>KUER, Aug. 6, 2026 (Office of Energy Development outreach counties) — <a href="https://www.kuer.org/business-economy/2026-08-06/weber-countys-inland-port-needs-electricity-nuclear-could-be-an-option">kuer.org</a>; KSL, Aug. 6, 2026 (Hayter at the Weber symposium) — <a href="https://www.ksl.com/article/51606555/weber-county-leaders-interested-in-nuclear-power-potential-host-symposium-on-topic">ksl.com</a>.</li>
+  <li>Holtec International, May 1, 2025 (signing photo caption: Lesofski, Springman, Hayter) — <a href="https://holtecinternational.com/2025/05/01/hh40-10/">holtecinternational.com</a>; World Nuclear News, May 29, 2026 — <a href="https://www.world-nuclear-news.org/articles/nineteen-years-on-companies-team-up-for-us-new-build-project">world-nuclear-news.org</a>.</li>
+  <li>Trust Lands Administration Board, Aug. 20, 2026 transcript — <a href="https://www.utah.gov/pmn/files/1479057.pdf">utah.gov/pmn</a> (partial read; see the <a href="weber-hive-dc-nuclear-projects.html">nuclear page</a>).</li>
+  <li>The Hive's Tooele Valley, Meta gas plant, Stratos and EDCUtah case files, linked above.</li>
+</ul>
+</details>
+
+</div>
+
+<footer><div class="wrap">The Weber County Hive · webercountyhive.substack.com · Tips and corrections: webercountyhive@gmail.com</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{fontSize:"22px",fontFamily:"Georgia, serif",primaryColor:"#e3ecfa",primaryBorderColor:"#1f5fbf",primaryTextColor:"#14213d",lineColor:"#1f5fbf"}});
+</script>
+<script>
+document.querySelectorAll('.tile').forEach(function(t){t.addEventListener('click',function(e){if(e.target.tagName==='A')return;t.classList.toggle('flip');});});
+</script>
+<script>
+var REG={
+  boxelder:[41.7,-112.3,'Box Elder County','<b>Stratos</b>, 7.5 GW proposed in Hansel Valley; MIDA approved the project area April 24, 2026. A citizen referendum is in 1st District Court; as of Sept. 15, 2026, no ruling. Nuclear is a permitted use in its draft standards. Separately, the state-backed Holtec SMR-300 hub is planned in Brigham City. <a href="stratos.html">Stratos pages →</a>'],
+  millard:[39.3,-112.45,'Millard County','<b>Creekstone</b> (goal of 10 GW, off-grid gas and solar) and <b>Joule</b> (4 GW, gas generators) are under construction near Delta and Holden after the county rezoned both. Creekstone signed a non-binding agreement to study at least 2 GW of nuclear. A county commissioner said the campuses won\'t draw on the local grid.'],
+  utahco:[40.31,-112.01,'Utah County (Eagle Mountain)','<b>Meta</b> (operating, expanding), <b>QTS</b> (650 MW under construction), <b>Tract</b> (1.7 GW proposed), and a <b>Google</b> site delayed over power supply. The city approved gas generators for three data centers and adopted an alternative energy overlay zone in July 2026 after earlier debate over small reactors. <a href="meta-eagle-mountain-gas-plant.html">Meta gas plant →</a>'],
+  tooele:[40.72,-112.37,'Tooele County','<b>Zenith</b> 500 MW campus in the Inland Port\'s Tooele Valley project area, now paused. A UIPA loan to the developer listed a power plant among its uses. Utah\'s bid for a federal nuclear campus, with waste storage, is sited in Tooele County. <a href="https://webercountyhive-coder.github.io/UIPA/uipa-tooele-zenith.html">Tooele case file →</a>'],
+  weber:[41.25,-112.17,'Weber County','No data center proposed. Data centers have been a permitted use in the M-T zone since Sept. 19, 2023. The county and state energy office held a nuclear symposium Aug. 5, 2026; listening session planned Dec. or Jan. <a href="weber-hive-dc-west-weber-nuclear.html">West Weber page →</a>'],
+  carbon:[39.6,-110.81,'Carbon County','<b>Valar Atomics</b>: state trust land lease near Wellington approved Sept. 17, 2026, for a reactor campus. <b>Altigen\'s "Jurassic Spark"</b>: a 1,200-acre campus east of Wellington starting with a 250 MW natural gas plant. The county has defended using nondisclosure agreements to recruit companies. <a href="weber-hive-dc-nuclear-projects.html">Nuclear page →</a>'],
+  emery:[39.23,-111.08,'Emery County','<b>Valar Atomics</b> test reactor at the state-owned San Rafael Energy Lab, with a planned 30 MW data center with Nvidia. <b>Green River</b> nuclear plant revival announced May 2026.'],
+  south:[37.85,-113.25,'Iron and Duchesne counties','<b>Antelope Data Campus</b> (1.5 GW) and <b>Red Butte</b> (1.5 GW) proposed in Iron County; <b>Nine Mile</b> (1 GW+) proposed in Duchesne County. No power source was found in the records reviewed.']
+};
+(function(){
+  var out=document.getElementById('pick-out'),btns=document.querySelectorAll('#picker button');
+  function show(k){out.innerHTML='<b>'+REG[k][2]+'</b><br>'+REG[k][3];btns.forEach(function(b){b.classList.toggle('on',b.dataset.k===k);});}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.k);});});
+  show('boxelder');
+})();
+try{(function(){
+  if(typeof L==='undefined')return;
+  var map=L.map('map',{scrollWheelZoom:false}).setView([39.9,-111.7],6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'© OpenStreetMap contributors'}).addTo(map);
+  Object.keys(REG).forEach(function(k){var p=REG[k];L.marker([p[0],p[1]]).addTo(map).bindPopup('<b>'+p[2]+'</b><br>'+p[3]);});
+  L.marker([40.10,-110.10]).addTo(map).bindPopup('<b>Nine Mile Data Center</b><br>Duchesne County · 1 GW+ proposed');
+})()}catch(e){console.warn('map',e);}
+try{(function(){
+  if(typeof Chart==='undefined')return;
+  Chart.defaults.font.size=16;Chart.defaults.color='#14213d';
+  new Chart(document.getElementById('mwChart'),{type:'bar',
+    data:{labels:['Operating today','Under construction: on the grid','Under construction: behind the meter / off grid'],
+      datasets:[{label:'Megawatts',data:[920,900,1700],backgroundColor:['#9db8e3','#9db8e3','#1f5fbf']}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Utah data center capacity (MW)',font:{size:18}}},
+      scales:{y:{beginAtZero:true,ticks:{callback:function(v){return v.toLocaleString();}}},x:{ticks:{autoSkip:false,maxRotation:0,callback:function(v,i){return this.getLabelForValue(v).split(': ');}}}}}});
+})()}catch(e){console.warn('chart',e);}
+</script>
+<script data-goatcounter="https://weberhive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
