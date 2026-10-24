@@ -9,16 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;0,8..60,600;0,8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #f4f0e6;
-    --paper-card: #faf7ef;
-    --ink: #1c1c1a;
-    --ink-dim: #5b5850;
-    --ink-dimmer: #8c8878;
-    --rust: #c0572e;
-    --amber: #d9a441;
-    --teal: #2e5f5a;
+    --paper: #ffffff;
+    --paper-card: #f4f7fc;
+    --ink: #14213d;
+    --ink-dim: #3d4a66;
+    --ink-dimmer: #5d6a85;
+    --rust: #1f5fbf;
+    --amber: #b8901c;
+    --teal: #1f5fbf;
     --blue: #3a5f7d;
-    --border: #ddd6c4;
+    --border: #d5deec;
     --serif: 'Playfair Display', Georgia, serif;
     --serif-body: 'Source Serif 4', Georgia, serif;
     --sans: 'Inter', -apple-system, sans-serif;
@@ -36,14 +36,14 @@
 
   .wrap { max-width: 800px; margin: 0 auto; padding: 0 32px; }
 
-  .breadcrumb { font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer); padding: 24px 0 0; }
+  .breadcrumb { font-family: var(--mono); font-size:14px; color: var(--ink-dimmer); padding: 24px 0 0; }
   .breadcrumb a { color: var(--ink-dim); text-decoration: none; }
   .breadcrumb a:hover { color: var(--rust); }
 
   header { padding: 20px 0 36px; border-bottom: 2px solid var(--ink); }
 
   .eyebrow {
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    font-family: var(--mono); font-size:14px; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--rust); margin-bottom: 16px;
   }
 
@@ -52,15 +52,15 @@
     line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 16px;
   }
 
-  .dek { font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--ink-dim); max-width: 620px; }
+  .dek { font-family: var(--serif-body); font-style: italic; font-size:20px; color: var(--ink-dim); max-width: 620px; }
 
   .meta-row { display: flex; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
-  .meta-item { font-family: var(--mono); font-size: 11.5px; color: var(--ink-dimmer); }
+  .meta-item { font-family: var(--mono); font-size:14px; color: var(--ink-dimmer); }
   .meta-item strong { color: var(--ink-dim); font-weight: 500; }
 
   .badge-pill {
     display: inline-block; background: var(--teal); color: var(--paper);
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    font-family: var(--mono); font-size:13px; letter-spacing: 0.08em;
     text-transform: uppercase; padding: 6px 14px; border-radius: 3px; margin-bottom: 18px;
   }
 
@@ -77,9 +77,9 @@
   .flip-front:hover { border-color: var(--rust); }
   .flip-back { background: var(--teal); color: var(--paper); transform: rotateY(180deg); border: 2px solid var(--teal); }
   .flip-term { font-family: var(--serif); font-weight: 700; font-size: 18px; color: var(--ink); }
-  .flip-hint { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dimmer); margin-top: 8px; }
-  .flip-back-title { font-family: var(--serif); font-weight: 700; font-size: 13.5px; margin-bottom: 7px; }
-  .flip-back-def { font-family: var(--sans); font-size: 12.5px; line-height: 1.42; }
+  .flip-hint { font-family: var(--mono); font-size:13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dimmer); margin-top: 8px; }
+  .flip-back-title { font-family: var(--serif); font-weight: 700; font-size:16px; margin-bottom: 7px; }
+  .flip-back-def { font-family: var(--sans); font-size:14px; line-height: 1.42; }
   .flip-back a { color: var(--amber); }
 
   nav.jumplinks {
@@ -87,7 +87,7 @@
     border-bottom: 1px solid var(--border);
   }
   nav.jumplinks button {
-    font-family: var(--mono); font-size: 11.5px; background: var(--paper-card);
+    font-family: var(--mono); font-size:14px; background: var(--paper-card);
     border: 1px solid var(--border); color: var(--ink-dim); padding: 6px 12px;
     border-radius: 3px; cursor: pointer; transition: border-color 0.15s, color 0.15s;
   }
@@ -97,37 +97,37 @@
   section:last-of-type { border-bottom: none; }
 
   .section-num {
-    font-family: var(--mono); font-size: 11px; color: var(--rust);
+    font-family: var(--mono); font-size:13px; color: var(--rust);
     letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
   }
 
   h2 { font-family: var(--serif); font-weight: 700; font-size: 27px; margin-bottom: 18px; letter-spacing: -0.005em; }
   h3 { font-family: var(--serif); font-weight: 700; font-size: 19px; margin: 30px 0 12px; }
 
-  p { margin-bottom: 15px; font-family: var(--serif-body); font-size: 16px; color: var(--ink); }
+  p { margin-bottom: 15px; font-family: var(--serif-body); font-size:18px; color: var(--ink); }
   p.dim { color: var(--ink-dim); }
 
   ul, ol { margin: 0 0 16px 22px; }
-  li { margin-bottom: 9px; font-family: var(--serif-body); font-size: 16px; }
+  li { margin-bottom: 9px; font-family: var(--serif-body); font-size:18px; }
 
-  .callout { border-radius: 4px; padding: 18px 22px; margin: 20px 0; font-size: 15px; background: var(--paper-card); }
+  .callout { border-radius: 4px; padding: 18px 22px; margin: 20px 0; font-size:17px; background: var(--paper-card); }
   .callout-claim { border: 1px dashed var(--blue); }
   .callout-gap { border: 1px dashed var(--rust); }
   .callout-confirm { border: 1px dashed var(--teal); }
   .callout-label {
-    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+    font-family: var(--mono); font-size:13px; letter-spacing: 0.08em;
     text-transform: uppercase; margin-bottom: 8px; display: block;
   }
   .callout-claim .callout-label { color: var(--blue); }
   .callout-gap .callout-label { color: var(--rust); }
   .callout-confirm .callout-label { color: var(--teal); }
-  .callout p { margin-bottom: 0; font-family: var(--sans); font-size: 14.5px; color: var(--ink-dim); }
+  .callout p { margin-bottom: 0; font-family: var(--sans); font-size:17px; color: var(--ink-dim); }
   .callout p + p { margin-top: 10px; }
 
-  table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 13.5px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size:16px; }
   th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
   th {
-    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em;
+    font-family: var(--mono); font-size:13px; letter-spacing: 0.04em;
     text-transform: uppercase; color: var(--ink-dimmer); font-weight: 500;
   }
   td { font-family: var(--serif-body); color: var(--ink-dim); }
@@ -135,24 +135,24 @@
 
   .phase-track { display: flex; flex-wrap: wrap; gap: 6px; margin: 20px 0; }
   .phase { flex: 1 1 140px; background: var(--paper-card); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; }
-  .phase-num { font-family: var(--mono); font-size: 10px; color: var(--rust); letter-spacing: 0.06em; margin-bottom: 6px; display: block; }
-  .phase-title { font-family: var(--serif); font-weight: 700; font-size: 14.5px; margin-bottom: 6px; }
-  .phase-detail { font-family: var(--sans); color: var(--ink-dimmer); font-size: 12px; }
+  .phase-num { font-family: var(--mono); font-size:13px; color: var(--rust); letter-spacing: 0.06em; margin-bottom: 6px; display: block; }
+  .phase-title { font-family: var(--serif); font-weight: 700; font-size:17px; margin-bottom: 6px; }
+  .phase-detail { font-family: var(--sans); color: var(--ink-dimmer); font-size:14px; }
 
   .quote {
-    font-family: var(--serif-body); font-style: italic; font-size: 17px; color: var(--ink-dim);
+    font-family: var(--serif-body); font-style: italic; font-size:20px; color: var(--ink-dim);
     border-left: 3px solid var(--amber); padding-left: 20px; margin: 22px 0;
   }
-  .quote cite { display: block; font-family: var(--mono); font-style: normal; font-size: 11.5px; color: var(--ink-dimmer); margin-top: 8px; }
+  .quote cite { display: block; font-family: var(--mono); font-style: normal; font-size:14px; color: var(--ink-dimmer); margin-top: 8px; }
 
-  .slide-ref { font-family: var(--mono); font-size: 11px; color: var(--ink-dimmer); }
+  .slide-ref { font-family: var(--mono); font-size:13px; color: var(--ink-dimmer); }
 
-  .sources { font-family: var(--sans); font-size: 13.5px; color: var(--ink-dimmer); }
+  .sources { font-family: var(--sans); font-size:16px; color: var(--ink-dimmer); }
   .sources li { margin-bottom: 10px; font-family: var(--sans); }
   .sources a { word-break: break-all; }
 
   footer {
-    padding: 40px 0 64px; font-family: var(--mono); font-size: 12px; color: var(--ink-dimmer);
+    padding: 40px 0 64px; font-family: var(--mono); font-size:14px; color: var(--ink-dimmer);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
   }
 
@@ -161,8 +161,25 @@
     section { padding: 32px 0; }
   }
 </style>
+<link rel="icon" type="image/png" href="hive-bee.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style id="uhp-brand">
+.hb-bar{background:#0d0b0a;border-bottom:1px solid #3a2f1c;padding:10px 20px;}
+.hb-bar a{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;text-decoration:none;}
+.hb-bar img{width:52px;height:52px;border-radius:4px;display:block;flex:none;}
+.hb-name{font-family:'Cinzel','Trajan Pro',Georgia,serif;color:#d4af37;font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;display:block;}
+.hb-sub{font-family:Georgia,serif;font-style:italic;color:#b8956a;font-size:12.5px;letter-spacing:.02em;display:block;margin-top:2px;}
+.hb-foot{background:#0d0b0a;color:#b8956a;text-align:center;padding:26px 20px 30px;font-family:Georgia,serif;}
+.hb-foot img{width:52px;height:52px;display:block;margin:0 auto 10px;}
+.hb-foot .hb-name{font-size:14px;}
+.hb-foot .hb-tag{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7650;margin-top:8px;display:block;}
+.uhp-dates{font-family:Arial,sans-serif;font-size:15px;color:inherit;opacity:.85;margin:8px 0 0}
+@media(max-width:600px){.hb-bar{padding:8px 16px}.hb-bar img{width:38px;height:38px}.hb-name{font-size:13px}.hb-sub{font-size:11.5px}}
+</style>
 </head>
 <body>
+<div class="hb-bar"><a href="https://webercountyhive.substack.com/" target="_blank" rel="noopener"><img src="uhp-badge.png" alt="Utah Hive Politics logo"><span><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span></span></a></div>
+
 
 <div class="wrap">
   <div class="breadcrumb"><a href="weber-hive-datacenters-docket.html">&larr; Data Centers Docket</a></div>
@@ -170,6 +187,7 @@
   <header>
     <div class="eyebrow">Case file 2 of 5 &middot; Aug. 19, 2026 EDWS interim hearing</div>
     <h1>Abundance Accelerator Initiative</h1>
+<p class="uhp-dates">Posted Aug. 19, 2026 · Updated Oct. 24, 2026</p>
     <p class="dek">The Department of Environmental Quality's own map of who actually approves a data center in Utah &mdash; and its blunt answer: no single agency does.</p>
     <div class="meta-row">
       <div class="meta-item"><strong>Presenter:</strong> Dept. of Environmental Quality (Commissioner Tim Davis)</div>
@@ -412,6 +430,8 @@
     <span><a href="weber-hive-datacenters-docket.html">&larr; Back to Data Centers Docket</a></span>
     <span>&copy; 2026 The Weber County Hive</span>
   </footer>
+<div class="hb-foot"><img src="hive-bee.png" alt=""><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-tag">Independent · Accountability · Journalism</span></div>
+
 </div>
 
 <script>

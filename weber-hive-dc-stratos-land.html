@@ -7,15 +7,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
 <style>
   :root{
-    --paper:#f2ede2;
-    --ink:#20241f;
-    --ink-soft:#4a4f45;
-    --line:#c9c0a8;
-    --rule:#8a8265;
-    --flag:#8a2e1f;
-    --flag-soft:#f4e2dc;
-    --gold:#8a6a1f;
-    --gold-soft:#f4ecdc;
+    --paper:#ffffff;
+    --ink:#14213d;
+    --ink-soft:#3d4a66;
+    --line:#d5deec;
+    --rule:#9aa8c2;
+    --flag:#1f5fbf;
+    --flag-soft:#e3ecfa;
+    --gold:#b8901c;
+    --gold-soft:#f4f7fc;
     --serif:"Iowan Old Style","Georgia","Times New Roman",serif;
     --sans:"Helvetica Neue",Arial,sans-serif;
     --mono:"Courier New",Courier,monospace;
@@ -25,25 +25,25 @@
   .sheet{max-width:760px;margin:0 auto;padding:56px 28px 120px;}
 
   .masthead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px double var(--rule);padding-bottom:14px;margin-bottom:6px;}
-  .masthead .name{font-family:var(--sans);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;font-size:12px;color:var(--ink-soft);}
-  .masthead .date{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--ink-soft);}
-  .file-tag{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--gold);margin-top:18px;text-transform:uppercase;}
+  .masthead .name{font-family:var(--sans);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;font-size:14px;color:var(--ink-soft);}
+  .masthead .date{font-family:var(--mono);font-size:13px;letter-spacing:0.04em;color:var(--ink-soft);}
+  .file-tag{font-family:var(--mono);font-size:13px;letter-spacing:0.08em;color:var(--gold);margin-top:18px;text-transform:uppercase;}
 
   h1{font-family:var(--serif);font-size:clamp(2rem, 5vw, 2.9rem);line-height:1.12;font-weight:400;margin:14px 0 6px;letter-spacing:-0.01em;}
   .dek{font-family:var(--sans);font-size:1.08rem;color:var(--ink-soft);max-width:58ch;margin:0 0 24px;}
 
-  .byline-row{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:32px;}
+  .byline-row{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:14px;color:var(--ink-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:32px;}
   .byline-row span b{color:var(--ink);font-weight:700;}
 
   blockquote{margin:0 0 34px;border-left:3px solid var(--flag);background:var(--flag-soft);padding:16px 20px;}
   blockquote p{font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.5;margin:0 0 6px;color:var(--ink);}
-  blockquote cite{font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);}
+  blockquote cite{font-family:var(--sans);font-style:normal;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);}
 
   .accordion{border-top:2px solid var(--gold);}
   .acc-item{border-bottom:1px solid var(--line);}
   .acc-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 2px;cursor:pointer;user-select:none;}
-  .acc-head h2{margin:0;padding:0;border:none;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);}
-  .acc-toggle{font-family:var(--mono);font-size:14px;color:var(--gold);flex-shrink:0;transition:transform .2s ease;}
+  .acc-head h2{margin:0;padding:0;border:none;font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);}
+  .acc-toggle{font-family:var(--mono);font-size:16px;color:var(--gold);flex-shrink:0;transition:transform .2s ease;}
   .acc-item.open .acc-toggle{transform:rotate(45deg);}
   .acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
   .acc-item.open .acc-body{max-height:4000px;}
@@ -55,23 +55,23 @@
   .tl-item{position:relative;padding:2px 0 20px 22px;font-family:var(--sans);}
   .tl-item::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);}
   .tl-item.clash::before{background:var(--flag);}
-  .tl-date{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:0.03em;display:block;margin-bottom:2px;}
+  .tl-date{font-family:var(--mono);font-size:13px;color:var(--gold);letter-spacing:0.03em;display:block;margin-bottom:2px;}
   .tl-item.clash .tl-date{color:var(--flag);}
-  .tl-text{font-size:14.5px;color:var(--ink);}
+  .tl-text{font-size:17px;color:var(--ink);}
 
   .stat-strip{display:flex;gap:12px;margin:20px 0;flex-wrap:wrap;}
   .stat{flex:1;min-width:130px;border:1px solid var(--line);background:#fff;padding:14px 12px;text-align:center;}
   .stat .num{font-family:var(--serif);font-size:1.7rem;color:var(--gold);line-height:1;}
-  .stat .label{font-family:var(--sans);font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px;}
+  .stat .label{font-family:var(--sans);font-size:13px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px;}
 
   .verdict-strip{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0;}
   .verdict{flex:1;min-width:150px;border:1px solid var(--line);background:#fff;padding:12px 14px;}
-  .verdict .vlabel{font-family:var(--mono);font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
-  .verdict .vtext{font-family:var(--sans);font-size:12.5px;color:var(--ink);margin-top:4px;font-weight:700;}
+  .verdict .vlabel{font-family:var(--mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .verdict .vtext{font-family:var(--sans);font-size:14px;color:var(--ink);margin-top:4px;font-weight:700;}
   .verdict.confirmed{border-left:3px solid var(--gold);}
   .verdict.open{border-left:3px solid var(--flag);}
 
-  .caveat{background:#eae4d4;border:1px solid var(--line);padding:18px 20px;margin:24px 0 0;font-family:var(--sans);font-size:13px;color:var(--ink-soft);}
+  .caveat{background:#d5deec;border:1px solid var(--line);padding:18px 20px;margin:24px 0 0;font-family:var(--sans);font-size:15px;color:var(--ink-soft);}
   .caveat b{color:var(--ink);}
   .caveat.caveat--first{margin-top:0;}
 
@@ -85,10 +85,27 @@
     overflow-x:auto;
   }
 
-  footer{margin-top:44px;padding-top:16px;border-top:3px double var(--rule);font-family:var(--sans);font-size:11px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  footer{margin-top:44px;padding-top:16px;border-top:3px double var(--rule);font-family:var(--sans);font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+</style>
+<link rel="icon" type="image/png" href="hive-bee.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style id="uhp-brand">
+.hb-bar{background:#0d0b0a;border-bottom:1px solid #3a2f1c;padding:10px 20px;}
+.hb-bar a{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;text-decoration:none;}
+.hb-bar img{width:52px;height:52px;border-radius:4px;display:block;flex:none;}
+.hb-name{font-family:'Cinzel','Trajan Pro',Georgia,serif;color:#d4af37;font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;display:block;}
+.hb-sub{font-family:Georgia,serif;font-style:italic;color:#b8956a;font-size:12.5px;letter-spacing:.02em;display:block;margin-top:2px;}
+.hb-foot{background:#0d0b0a;color:#b8956a;text-align:center;padding:26px 20px 30px;font-family:Georgia,serif;}
+.hb-foot img{width:52px;height:52px;display:block;margin:0 auto 10px;}
+.hb-foot .hb-name{font-size:14px;}
+.hb-foot .hb-tag{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7650;margin-top:8px;display:block;}
+.uhp-dates{font-family:Arial,sans-serif;font-size:15px;color:inherit;opacity:.85;margin:8px 0 0}
+@media(max-width:600px){.hb-bar{padding:8px 16px}.hb-bar img{width:38px;height:38px}.hb-name{font-size:13px}.hb-sub{font-size:11.5px}}
 </style>
 </head>
 <body>
+<div class="hb-bar"><a href="https://webercountyhive.substack.com/" target="_blank" rel="noopener"><img src="uhp-badge.png" alt="Utah Hive Politics logo"><span><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span></span></a></div>
+
 <div class="sheet">
 
   <div class="masthead">
@@ -98,6 +115,7 @@
 
   <div class="file-tag">Stratos / Box Elder County / MIDA</div>
   <h1>"Do You Have The Land?"</h1>
+<p class="uhp-dates">Posted Aug. 26, 2026 · Updated Oct. 24, 2026</p>
   <p class="dek">MIDA approved the 40,000-acre Stratos data center in April 2026. The House Speaker says he was blindsided by a project that turned up ten miles from his own 25,000 acres — but the investor behind it says the Speaker was in the room a year earlier than he admits, and the state authority that approved it is chaired by the same Senate President who was reportedly in that room too.</p>
 
   <div class="byline-row">
@@ -212,6 +230,8 @@ flowchart TD
     <span>The Weber County Hive</span>
     <span>Built from KSL, Salt Lake Tribune, ABC4, Fox News &mdash; no comment requested</span>
   </footer>
+<div class="hb-foot"><img src="hive-bee.png" alt=""><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-tag">Independent · Accountability · Journalism</span></div>
+
 
 </div>
 
@@ -220,11 +240,11 @@ flowchart TD
     startOnLoad: true,
     theme: 'base',
     themeVariables: {
-      primaryColor: '#f4ecdc',
-      primaryTextColor: '#20241f',
-      primaryBorderColor: '#8a6a1f',
-      lineColor: '#8a8265',
-      secondaryColor: '#f4e2dc',
+      primaryColor: '#f4f7fc',
+      primaryTextColor: '#14213d',
+      primaryBorderColor: '#b8901c',
+      lineColor: '#9aa8c2',
+      secondaryColor: '#e3ecfa',
       tertiaryColor: '#e2e8e0',
       fontFamily: 'Helvetica Neue, Arial, sans-serif',
       fontSize: '13px'
