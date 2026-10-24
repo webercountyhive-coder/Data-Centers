@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H.B. 76 (2026): Data Center Water Reporting | The Weber County Hive</title>
+<meta name="description" content="Utah's first law requiring data centers to report their water use. Who it covers, what gets published, and why none of Utah's data centers with public water numbers are covered by it.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --bg:#ffffff; --panel:#f4f7fc; --ink:#14213d; --ink-soft:#3d4a66; --blue:#1f5fbf; --blue-soft:#e3ecfa;
+  --gold:#b8901c; --line:#d5deec; --warn:#fff6dc; --warn-line:#e2c35a;
+}
+*{box-sizing:border-box}
+html{font-size:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.65}
+a{color:var(--blue)}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+header.mast{background:var(--ink);color:#fff;padding:14px 0}
+header.mast a{color:#fff;text-decoration:none;font-family:Arial,sans-serif;font-size:.85rem;letter-spacing:.04em}
+.hero{padding:36px 0 18px;border-bottom:4px solid var(--blue)}
+.eyebrow{font-family:Arial,sans-serif;font-size:.8rem;letter-spacing:.12em;font-weight:700;color:var(--blue);text-transform:uppercase}
+.dates{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft);margin:.4em 0}
+h1{font-size:2.15rem;line-height:1.2;margin:.3em 0}
+h2{font-size:1.55rem;margin:1.8em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}
+h3{font-size:1.2rem;margin:1.2em 0 .4em}
+.dek{font-size:1.15rem;color:var(--ink-soft)}
+.tag{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:24px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat .n{font-family:Arial,sans-serif;font-size:1.7rem;font-weight:700;color:var(--blue)}
+.stat .l{font-size:.9rem;color:var(--ink-soft)}
+.table-scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:560px}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{background:var(--ink);color:#fff;font-family:Arial,sans-serif;font-size:.85rem}
+tr:nth-child(even) td{background:var(--panel)}
+.cap{font-size:.85rem;color:var(--ink-soft)}
+.box{background:var(--panel);border-left:5px solid var(--blue);padding:14px 16px;margin:18px 0;border-radius:4px}
+.box.warn{background:var(--warn);border-left-color:var(--warn-line)}
+.box.fair{background:#eef7ee;border-left-color:#3c8a4a}
+.box.short{background:var(--blue-soft);border-left-color:var(--ink)}
+.box h3{margin-top:0}
+#map{height:460px;border:1px solid var(--line);border-radius:8px;margin:12px 0}
+.chart-box{position:relative;height:380px;margin:14px 0}
+.mermaid{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0;text-align:center}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.tile{perspective:900px;height:200px;cursor:pointer;border:none;background:none;padding:0;font:inherit;color:inherit;text-align:left}
+.tile .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.tile.flip .in{transform:rotateY(180deg)}
+.tile .f,.tile .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;padding:16px;display:flex;flex-direction:column;justify-content:center}
+.tile .f{background:var(--ink);color:#fff}
+.tile .f strong{font-size:1.3rem}
+.tile .f span{font-family:Arial,sans-serif;font-size:.78rem;opacity:.8;margin-top:8px}
+.tile .b{background:var(--blue-soft);transform:rotateY(180deg);font-size:.88rem;overflow:auto}
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.picker button{font:inherit;font-size:.9rem;padding:8px 14px;border:2px solid var(--blue);background:#fff;color:var(--blue);border-radius:20px;cursor:pointer}
+.picker button.on{background:var(--blue);color:#fff}
+.pick-out{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;min-height:90px}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.person{border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:.95rem}
+.person b{display:block}
+.q{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0}
+.q .who{font-family:Arial,sans-serif;font-size:.8rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+.connects{border:2px solid var(--ink);border-radius:8px;padding:14px 18px;margin:24px 0}
+.connects h3{margin-top:0}
+.connects ul{margin:.3em 0 0 1.1em;padding:0}
+.counter{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0}
+.counter div{border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;font-size:.85rem;color:var(--ink-soft)}
+.counter b{display:block;font-family:Arial,sans-serif;font-size:1.5rem;color:var(--ink)}
+.timeline{list-style:none;padding:0;margin:14px 0;border-left:4px solid var(--blue)}
+.timeline li{position:relative;padding:4px 0 14px 22px}
+.timeline li::before{content:"";position:absolute;left:-11px;top:10px;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--blue)}
+.timeline .d{font-family:Arial,sans-serif;font-weight:700;font-size:.85rem;color:var(--blue);display:block}
+.lbl{display:inline-block;font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.lbl.doc{background:#e3f1e5;color:#24683a}
+.lbl.open{background:var(--warn);color:#7a5a00}
+details{border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:24px 0}
+summary{cursor:pointer;font-weight:700;font-size:1.1rem}
+details li{margin:6px 0;font-size:.9rem}
+footer{border-top:4px solid var(--blue);margin-top:40px;padding:20px 0 40px;font-size:.85rem;color:var(--ink-soft)}
+@media (max-width:600px){html{font-size:18px}h1{font-size:1.7rem}#map{height:360px}}
+</style>
+<link rel="icon" type="image/png" href="hive-bee.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style id="uhp-brand">
+.hb-bar{background:#0d0b0a;border-bottom:1px solid #3a2f1c;padding:10px 20px;}
+.hb-bar a{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;text-decoration:none;}
+.hb-bar img{width:52px;height:52px;border-radius:4px;display:block;flex:none;}
+.hb-name{font-family:'Cinzel','Trajan Pro',Georgia,serif;color:#d4af37;font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;display:block;}
+.hb-sub{font-family:Georgia,serif;font-style:italic;color:#b8956a;font-size:12.5px;letter-spacing:.02em;display:block;margin-top:2px;}
+.hb-foot{background:#0d0b0a;color:#b8956a;text-align:center;padding:26px 20px 30px;font-family:Georgia,serif;}
+.hb-foot img{width:52px;height:52px;display:block;margin:0 auto 10px;}
+.hb-foot .hb-name{font-size:14px;}
+.hb-foot .hb-tag{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7650;margin-top:8px;display:block;}
+.uhp-dates{font-family:Arial,sans-serif;font-size:15px;color:inherit;opacity:.85;margin:8px 0 0}
+@media(max-width:600px){.hb-bar{padding:8px 16px}.hb-bar img{width:38px;height:38px}.hb-name{font-size:13px}.hb-sub{font-size:11.5px}}
+</style>
+</head>
+<body>
+<div class="hb-bar"><a href="https://webercountyhive.substack.com/" target="_blank" rel="noopener"><img src="uhp-badge.png" alt="Utah Hive Politics logo"><span><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span></span></a></div>
+
+
+<header class="mast"><div class="wrap"><a href="index.html">← THE WEBER COUNTY HIVE · DATA CENTERS</a> · <a href="weber-hive-datacenters-bills-docket.html">Bills docket</a></div></header>
+
+<div class="wrap">
+<section class="hero">
+  <div class="eyebrow">Data Centers · Bill Case File · 2026 General Session</div>
+  <h1>H.B. 76 (2026): The First Law Requiring Data Centers to Report Their Water</h1>
+  <p class="dek">Starting in 2026, new large data centers in Utah must tell the state how much water they expect to use and how much they actually take, and the state must post each one's numbers online. The law covers only data centers that open on or after July 1, 2026. None of the Utah data centers with public water numbers today fall under it.</p>
+  <p class="dates">Posted Oct. 24, 2026 · Updated Oct. 24, 2026</p>
+  <p class="tag">The Weber County Hive — We report public records. You decide.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">75 acre-feet</div><div class="l">yearly water withdrawal that triggers the law, about 24.4 million gallons</div></div>
+    <div class="stat"><div class="n">July 1, 2026</div><div class="l">data centers that begin operating before this date are not "new" under the law</div></div>
+    <div class="stat"><div class="n">Sept. 1</div><div class="l">yearly deadline for the state to post each covered center's water withdrawals</div></div>
+    <div class="stat"><div class="n">0 of 7</div><div class="l">Utah data centers with public water numbers that the law covers</div></div>
+  </div>
+</section>
+
+<div class="box short">
+  <h3>The short version</h3>
+  <ul>
+    <li>H.B. 76 requires new large data centers to report their water: expected use before construction, actual withdrawals every year after.</li>
+    <li>The state's Division of Water Rights must post each covered center's yearly withdrawals online, by name, not lumped together.</li>
+    <li>It applies only to data centers that start operating on or after July 1, 2026, that use 75 acre-feet a year or more, and that cover at least 10,000 square feet.</li>
+    <li>The seven Utah data centers with water numbers in public reporting all opened before that date, so the law doesn't reach them.</li>
+  </ul>
+</div>
+
+<h2>Words to know</h2>
+<p class="cap">Tap or click a card to flip it.</p>
+<div class="tiles">
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Acre-foot</strong><span>tap to flip</span></div><div class="b">The water it takes to cover one acre one foot deep: about 325,851 gallons. A typical Utah household uses roughly half an acre-foot a year.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Withdrawal</strong><span>tap to flip</span></div><div class="b">Water taken from a source, such as a well, a stream or a city system. Some of it may be returned later, so withdrawal is not the same as water used up.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>New large data center</strong><span>tap to flip</span></div><div class="b">Under H.B. 76: a data center of at least 10,000 square feet, withdrawing 75 acre-feet or more a year, that begins operating on or after July 1, 2026.</div></div></button>
+  <button class="tile" type="button"><div class="in"><div class="f"><strong>Division of Water Rights</strong><span>tap to flip</span></div><div class="b">The state office, led by the State Engineer, that approves water rights and changes to them. It receives the H.B. 76 reports and posts the numbers.</div></div></button>
+</div>
+
+<h2>The bill</h2>
+<div class="table-scroll"><table>
+  <tr><th>Item</th><th>From the enrolled bill</th></tr>
+  <tr><td>Title</td><td>Data Center Water Transparency Amendments</td></tr>
+  <tr><td>Primary sponsor</td><td>Rep. Jill Koford</td></tr>
+  <tr><td>Senate sponsor</td><td>Sen. Scott D. Sandall (also primary sponsor of S.B. 132, the 2025 large-load power law)</td></tr>
+  <tr><td>Effective</td><td>May 6, 2026</td></tr>
+  <tr><td>Who is covered</td><td>Data centers of 10,000 square feet or more, withdrawing 75 acre-feet a year or more, that begin operating on or after July 1, 2026</td></tr>
+</table></div>
+
+<h2>What a covered data center must report</h2>
+<div class="mermaid">
+flowchart TD
+  A["<b>90 to 360 days before construction</b><br/>Tell the local water provider,<br/>in writing, the water it expects to need"] --> B["<b>Before construction</b><br/>Report to the Division of Water Rights:<br/>county and city, expected yearly withdrawal,<br/>discharge treatment, water reuse plans"]
+  B --> C["<b>Every year by July 1</b><br/>Report last year's actual withdrawals<br/>and efforts to cut water use"]
+  C --> D["<b>Every year by Sept. 1</b><br/>The state posts each covered<br/>center's withdrawals online, by name"]
+</div>
+<p>The Division of Water Rights also posts a county-by-county summary of information the law treats as protected, with company names removed.</p>
+
+<h2>Who would be covered, and who isn't</h2>
+<p>These are the Utah data centers with water numbers in public reporting. All seven were operating before July 1, 2026, so H.B. 76 does not require them to report. The last column shows whether each one's yearly use is above the 75-acre-foot line.</p>
+<div class="table-scroll"><table>
+  <tr><th>Data center (city)</th><th>Gallons a year</th><th>Acre-feet (Hive calculation)</th><th>Above 75 acre-feet?</th></tr>
+  <tr><td>NSA Utah Data Center (Bluffdale)</td><td>126 million</td><td>about 387</td><td>Yes</td></tr>
+  <tr><td>Aligned Data Centers (West Valley City)</td><td>80 million</td><td>about 246</td><td>Yes</td></tr>
+  <tr><td>Aligned Data Centers (West Jordan)</td><td>47.4 million</td><td>about 145</td><td>Yes</td></tr>
+  <tr><td>Meta (Eagle Mountain), 2024, reported by Meta</td><td>about 35 million</td><td>about 107</td><td>Yes</td></tr>
+  <tr><td>eBay (South Jordan)</td><td>19.5 million</td><td>about 60</td><td>No</td></tr>
+  <tr><td>DataBank Granite Point (Bluffdale)</td><td>7.7 million</td><td>about 24</td><td>No</td></tr>
+  <tr><td>Novva (West Jordan)</td><td>3 million</td><td>about 9</td><td>No</td></tr>
+</table></div>
+<p class="cap">Sources: city water provider records for about Oct. 2024 to Sept. 2025, as reported by the Salt Lake Tribune / Great Salt Lake Collaborative, Jan. 14, 2026; Meta's own 2024 figure. Acre-feet = gallons ÷ 325,851. These are withdrawals as reported, not water used up.</p>
+<div id="map" role="img" aria-label="Map of Utah data centers with public water numbers"></div>
+<p class="cap">Pins are approximate, placed at the city named in the reporting. Click a pin for details.</p>
+
+<div class="box">
+  <h3>One case in point: Meta's monthly water use is confidential</h3>
+  Meta's 2018 agreement with Eagle Mountain keeps the campus's monthly water use confidential, so the only public number is the yearly total Meta reports itself. H.B. 76 would not change that for buildings already operating. <a href="weber-hive-dc-meta-eagle-mountain.html">Meta case file →</a>
+</div>
+<div class="box">
+  <h3>Stratos: reporting written into a draft agreement, with a confidentiality clause</h3>
+  Stratos's draft interlocal agreement with Box Elder County requires MIDA to report energy, jobs and other figures to the county each year, the reporting tied to H.B. 76. The same section says the information may be marked confidential, and the county must treat it that way. That agreement is posted as an unsigned draft. Separately, Stratos filed a water rights change application in October 2026 claiming a closed recycling loop with 90% recovery. <a href="stratos.html">Stratos pages →</a>
+</div>
+
+<div class="box warn">
+  <h3>Open questions this page does not answer</h3>
+  <ul>
+    <li><strong>Expansions.</strong> Whether a new building at a campus that opened before July 1, 2026, such as Meta's or QTS's in Eagle Mountain, counts as a "new large data center" is not settled in the records reviewed.</li>
+    <li><strong>What counts as protected.</strong> The bill lets some reported information be treated as protected and published only in a county summary. Which items fall in that category is not listed on this page.</li>
+    <li><strong>First postings.</strong> No covered data center would have a full year of data until 2027, so the first posted numbers should come in 2027 or later.</li>
+  </ul>
+</div>
+
+<div class="box fair">
+  <h3>The other side</h3>
+  <ul>
+    <li><strong>It adds rules written for data centers.</strong> Covered centers' numbers get posted by name, not just in county totals.</li>
+    <li><strong>The threshold is low enough to matter.</strong> At 75 acre-feet, four of the seven centers with public numbers would have qualified if they were new.</li>
+    <li><strong>It asks for plans, not just totals.</strong> Covered centers must describe water reuse, discharge treatment and efforts to cut use.</li>
+  </ul>
+</div>
+
+<h2>People in this record</h2>
+<div class="people">
+  <div class="person"><b>Rep. Jill Koford</b>Primary sponsor of H.B. 76. Also the 2026 Senate District 5 candidate. <a href="https://weber-county-hive.github.io/candidates2026/">Candidates 2026 →</a></div>
+  <div class="person"><b>Sen. Scott Sandall</b>Senate sponsor of H.B. 76 and primary sponsor of S.B. 132 (2025), the law that lets large data centers build their own power. <a href="weber-hive-dc-oed-sb132.html">S.B. 132 →</a></div>
+</div>
+
+<h2>Questions to ask, and whom to ask</h2>
+<div class="q"><div class="who">Utah Division of Water Rights</div>Has any data center filed an H.B. 76 pre-construction report yet? Where on your website will the yearly numbers be posted?</div>
+<div class="q"><div class="who">Your state legislators</div>Should data centers that opened before July 1, 2026 also report their water use?</div>
+<div class="q"><div class="who">Eagle Mountain City Council</div>Would Meta's new buildings be covered by H.B. 76, and will the city release Meta's monthly water use?</div>
+<div class="q"><div class="who">Box Elder County Commission</div>If the Stratos agreements are signed, will the county keep the yearly water and jobs reports confidential?</div>
+
+<div class="connects">
+  <h3>Where this connects</h3>
+  <ul>
+    <li><a href="https://weber-county-hive.github.io/Great-Salt-Lake/weber-gsl-outflows-by-user.html">Who's Actually Using the Water?</a> (Great-Salt-Lake): data centers next to farms, golf courses and homes</li>
+    <li><a href="https://weber-county-hive.github.io/utah-maps/great-salt-lake-pressures.html">Great Salt Lake Pressures</a> (Utah Maps · MAP 004)</li>
+    <li><a href="https://weber-county-hive.github.io/Bill-Tracker/weber-hive-sb225.html">S.B. 225</a> (Bill-Tracker): how the Inland Port Authority's water standard changed in 2026</li>
+    <li><a href="weber-hive-dc-meta-eagle-mountain.html">Meta in Eagle Mountain, Part 1</a></li>
+    <li><a href="weber-hive-dc-statewide-power.html">It's Happening Statewide</a></li>
+  </ul>
+</div>
+
+<h2>Behind this piece</h2>
+<div class="counter">
+  <div><b>5</b>records read</div>
+  <div><b>30</b>dates and figures checked</div>
+  <div><b>1</b>record checked but not used</div>
+  <div><b>~6</b>searches run (estimate)</div>
+</div>
+
+<details>
+<summary>Sources and how they were read</summary>
+<ul>
+  <li>Utah Legislature, H.B. 76 (2026), Data Center Water Transparency Amendments, enrolled copy — <a href="https://le.utah.gov/Session/2026/bills/enrolled/HB0076.pdf">le.utah.gov</a>. Read from PDF text.</li>
+  <li>Utah Legislature, transmittal letter for 3rd Substitute H.B. 76, March 5, 2026 — <a href="https://pf.utleg.gov/public-web/transmittal-letters/2026GS-HB0076S03-S-2.pdf">pf.utleg.gov</a>.</li>
+  <li>Utah House of Representatives, "Utah Data Center Laws," Sept. 8, 2026 — <a href="https://house.utleg.gov/2026-utah-data-center-regulations/">house.utleg.gov</a>.</li>
+  <li>Salt Lake Tribune / Great Salt Lake Collaborative, "Can Utah become a data center hub without draining its water supply?" Jan. 14, 2026 — <a href="https://greatsaltlakenews.org/latest-news/salt-lake-tribune/can-utah-become-a-data-center-hub-without-draining-its-water-supply">greatsaltlakenews.org</a>. Figures as reported on the Hive's Great-Salt-Lake page.</li>
+  <li>Deseret News, "Stratos project water application reveals new details," Oct. 16, 2026 — <a href="https://www.deseret.com/utah/2026/10/16/stratos-project-water-application-reveals-new-details-on-massive-data-center/">deseret.com</a>.</li>
+  <li>MIDA, Stratos draft Interlocal Cooperation Agreement §5(i) — draft and unsigned as posted by MIDA; read Sept. 4, 2026.</li>
+</ul>
+</details>
+
+</div>
+
+<footer><div class="wrap">The Weber County Hive · webercountyhive.substack.com · Tips and corrections: webercountyhive@gmail.com</div></footer>
+<div class="hb-foot"><img src="hive-bee.png" alt=""><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-tag">Independent · Accountability · Journalism</span></div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{fontSize:"22px",fontFamily:"Georgia, serif",primaryColor:"#e3ecfa",primaryBorderColor:"#1f5fbf",primaryTextColor:"#14213d",lineColor:"#1f5fbf"}});
+</script>
+<script>
+document.querySelectorAll('.tile').forEach(function(t){t.addEventListener('click',function(e){if(e.target.tagName==='A')return;t.classList.toggle('flip');});});
+</script>
+<script>
+try{(function(){
+  if(typeof L==='undefined')return;
+  var map=L.map('map',{scrollWheelZoom:false}).setView([40.55,-112.0],10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:14,attribution:'© OpenStreetMap contributors'}).addTo(map);
+  var pins=[
+    [40.429,-111.933,'NSA Utah Data Center (Bluffdale)','126 million gallons a year (about 387 acre-feet). Opened before July 1, 2026; not covered by H.B. 76.'],
+    [40.70,-112.00,'Aligned Data Centers (West Valley City)','80 million gallons a year (about 246 acre-feet). Not covered.'],
+    [40.59,-112.03,'Aligned Data Centers (West Jordan)','47.4 million gallons a year (about 145 acre-feet). Not covered.'],
+    [40.32,-112.02,'Meta (Eagle Mountain)','About 35 million gallons in 2024, as reported by Meta (about 107 acre-feet). Monthly use confidential under a 2018 city agreement.'],
+    [40.53,-111.98,'eBay (South Jordan)','19.5 million gallons a year (about 60 acre-feet). Below the 75-acre-foot line.'],
+    [40.48,-111.92,'DataBank Granite Point (Bluffdale)','7.7 million gallons a year (about 24 acre-feet). Below the line.'],
+    [40.615,-112.04,'Novva (West Jordan)','3 million gallons a year (about 9 acre-feet). Below the line.']
+  ];
+  pins.forEach(function(p){L.marker([p[0],p[1]]).addTo(map).bindPopup('<b>'+p[2]+'</b><br>'+p[3]);});
+})()}catch(e){console.warn('map',e);}
+</script>
+<script data-goatcounter="https://weberhive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
