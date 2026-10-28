@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>"Zero Water" in Eagle Mountain, in plain words | Utah Hive Politics</title>
+<meta name="description" content="A reader comment says Eagle Mountain's new data centers use closed-loop cooling with zero water lost. What the records show: true for the QTS campus's cooling loop, by the company's own account — but not for every data center there, and not for all the water a data center uses.">
+<link rel="icon" type="image/png" href="hive-bee.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --panel:#f4f7fc; --ink:#14213d; --ink-soft:#3d4a66; --blue:#1f5fbf; --blue-soft:#e3ecfa;
+  --line:#d5deec; --ok:#2f7d3e; --okbg:#eaf6ec; --warn:#a36a00; --warnbg:#fff6dc; --q:#5a4a9c; --qbg:#efecfa;
+}
+*{box-sizing:border-box}
+html{font-size:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.65}
+a{color:var(--blue)}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+.dc-top{background:var(--ink);padding:10px 0}
+.dc-top a{color:#fff;font-family:Arial,sans-serif;font-size:.8rem;text-decoration:none}
+.hero{padding:32px 0 16px;border-bottom:4px solid var(--blue)}
+.eyebrow{font-family:Arial,sans-serif;font-size:.78rem;letter-spacing:.12em;font-weight:700;color:var(--blue);text-transform:uppercase}
+h1{font-size:2.05rem;line-height:1.2;margin:.3em 0;text-wrap:balance}
+h2{font-size:1.5rem;margin:1.8em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}
+.dek{font-size:1.12rem;color:var(--ink-soft)}
+.dates{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft);margin:.5em 0}
+.short{background:var(--blue-soft);border-left:6px solid var(--ink);border-radius:6px;padding:16px 20px;margin:22px 0}
+.short h2{margin:0 0 6px;border:0;padding:0;font-size:1.3rem}
+.short ul{margin:0 0 8px 20px;padding:0}.short li{margin:6px 0}
+.short .more a{font-weight:700}
+.ww{display:grid;grid-template-columns:1fr 2fr;gap:14px;margin:18px 0}
+@media(max-width:700px){.ww{grid-template-columns:1fr}}
+.ww>div{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.lbl{font-family:Arial,sans-serif;font-size:.75rem;letter-spacing:.14em;font-weight:700;color:var(--blue)}
+.ww ul{margin:6px 0 0 18px;padding:0;font-size:.92rem}.ww li{margin:4px 0}
+blockquote{margin:16px 0;padding:14px 18px;background:#fafafa;border-left:5px solid #9aa6bd;font-style:italic;color:#2a3550}
+.cap{font-size:.85rem;color:var(--ink-soft);font-family:Arial,sans-serif}
+.table-scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:620px}
+th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+th{background:var(--ink);color:#fff;font-family:Arial,sans-serif;font-size:.82rem}
+.r{font-family:Arial,sans-serif;font-weight:700;font-size:.82rem;white-space:nowrap;border-radius:4px;padding:3px 7px;display:inline-block}
+.r.ok{background:var(--okbg);color:var(--ok)}.r.part{background:var(--warnbg);color:var(--warn)}.r.op{background:var(--qbg);color:var(--q)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:22px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat .n{font-family:Arial,sans-serif;font-size:1.6rem;font-weight:700;color:var(--blue)}
+.stat .l{font-size:.88rem;color:var(--ink-soft)}
+.box{background:var(--panel);border-left:5px solid var(--blue);padding:14px 16px;margin:18px 0;border-radius:4px}
+.box.fair{background:#eef7ee;border-left-color:#3c8a4a}
+.mermaid{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0;text-align:center;overflow-x:auto}
+.ask li,.connect li{margin:10px 0}
+.connect span{display:block;font-size:.9rem;color:var(--ink-soft)}
+details{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:24px 0}
+summary{cursor:pointer;font-weight:700;font-family:Arial,sans-serif}
+details li{font-size:.88rem;margin:8px 0}
+/* Hive branding bars (top and bottom) */
+.hb-bar{background:#0d0b0a;border-bottom:1px solid #3a2f1c;padding:10px 20px;}
+.hb-bar a{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;text-decoration:none;}
+.hb-bar img{width:52px;height:52px;border-radius:4px;display:block;flex:none;}
+.hb-name{font-family:'Cinzel','Trajan Pro',Georgia,serif;color:#d4af37;font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;display:block;}
+.hb-sub{font-family:Georgia,serif;font-style:italic;color:#b8956a;font-size:12.5px;letter-spacing:.02em;display:block;margin-top:2px;}
+.hb-line-top{display:block;font-family:Georgia,serif;color:#e8d9b5;font-size:13px;margin-top:4px}
+.hb-foot{background:#0d0b0a;color:#b8956a;text-align:center;padding:26px 20px 30px;font-family:Georgia,serif;margin-top:40px}
+.hb-foot img{width:52px;height:52px;display:block;margin:0 auto 10px;}
+.hb-foot .hb-name{font-size:14px;}
+.hb-foot .hb-tag{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7650;margin-top:8px;display:block;}
+.hb-line{max-width:720px;margin:14px auto 0;color:#e8d9b5;font-size:15.5px;line-height:1.5}
+.hb-tips{margin:16px 0 4px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hb-btn{display:inline-block;border:2px solid #d4af37;background:#d4af37;color:#0d0b0a;font:700 15px Georgia,serif;padding:10px 18px;border-radius:6px;text-decoration:none}
+.hb-btn2{background:transparent;color:#d4af37}
+.hb-small{font-size:12.5px;color:#8a7650;margin:6px 0 0}
+@media(max-width:600px){.hb-bar{padding:8px 16px}.hb-bar img{width:38px;height:38px}.hb-name{font-size:13px}.hb-sub{font-size:11.5px}.hb-line-top{font-size:11.5px}html{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="hb-bar"><a href="https://webercountyhive.substack.com/" target="_blank" rel="noopener"><img src="uhp-badge.png" alt="Utah Hive Politics logo"><span><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-line-top">The people's publication. We investigate what's best for the public as a whole, not any party or special interest.</span></span></a></div>
+<div class="dc-top"><div class="wrap"><a href="index.html">← All Data Centers pages</a> &nbsp;·&nbsp; <a href="https://weber-county-hive.github.io/-weber-county-hive-index/">Hive library ↗</a></div></div>
+
+<div class="wrap" style="font-size:1.05rem">
+<div class="hero">
+  <div class="eyebrow">Plain words · A comment we checked</div>
+  <h1>"Zero Water" in Eagle Mountain, in plain words</h1>
+  <p class="dates">Posted Oct. 28, 2026</p>
+</div>
+
+<h2>What this is</h2>
+<p>Someone commented online that the new data centers in Eagle Mountain don't lose any water, because they cool their computers with a "closed loop," like a car radiator. We checked that against news reports and state records.</p>
+
+<h2>Who's involved</h2>
+<ul>
+<li><b>QTS</b>, a company building three big data center buildings in Eagle Mountain right now.</li>
+<li><b>Meta</b> (Facebook's company), which already runs a data center in Eagle Mountain.</li>
+<li><b>Novva</b>, a data center in West Jordan that already uses a closed loop.</li>
+<li><b>Rep. Jill Koford</b>, who sponsored Utah's new data center water-reporting law, H.B. 76.</li>
+</ul>
+
+<h2>What the records show</h2>
+<p><b>The closed-loop part is true for QTS.</b> QTS says its cooling system only has to be filled with water once, and then the same water goes around and around. That's like a car radiator. This is what the company says. Nobody outside the company has published measurements yet.</p>
+<p><b>It isn't true for every data center in Eagle Mountain.</b> Meta's data center there took more than 35 million gallons of water in 2024. A 2018 agreement with the city keeps its monthly water numbers private.</p>
+<p><b>"Zero water" only means the cooling loop.</b> The QTS buildings still use city water for the first fill, bathrooms, kitchens, landscaping and keeping the air from getting too dry. And making electricity takes water too. Researchers told KUTV that the power plants are usually the bigger water user. Closed loops need more electricity than the older kind of cooling.</p>
+<p><b>The comment is right that this is better than the old way.</b> Novva's owner says his West Jordan data center uses about 3 million gallons a year with a closed loop. He says the older evaporating kind would have used about 250 million.</p>
+
+<h2>What isn't known yet</h2>
+<ul>
+<li>How much water QTS's first fill took. The company hasn't said.</li>
+<li>How much water QTS will use in a year. Utah's new law, H.B. 76, makes data centers that open after July 1, 2026 report their water, but only if they use 75 acre-feet (about 24.4 million gallons) or more a year. If QTS uses less, it won't have to report.</li>
+<li>Meta's monthly water use. Meta opened before the law, so it doesn't have to report.</li>
+</ul>
+
+<details><summary>Sources (click to open)</summary><ul>
+<li>Utah News Dispatch on the QTS Eagle Mountain campus, April 2026 — <a href="https://kiowacountypress.net/content/utah-193-acre-data-center-campus-set-be-done-year-big-water-promises">kiowacountypress.net</a></li>
+<li>KUTV, "Questions grow over water use at massive QTS Data Center in Eagle Mountain," April 21, 2026 — <a href="https://kutv.com/news/utah-water/questions-grow-over-water-use-at-massive-qts-data-center-in-eagle-mountain">kutv.com</a></li>
+<li>Grist with The Salt Lake Tribune, Jan. 21, 2026 — <a href="https://grist.org/technology/utah-data-center-water-supply-meta-novva">grist.org</a></li>
+<li>H.B. 76 (2026) — <a href="weber-hive-dc-hb76.html">our H.B. 76 page</a></li>
+</ul></details>
+<p style="margin-top:28px"><b>Want the full details?</b> <a href="weber-hive-dc-eagle-mountain-cooling-check.html">Read the full page with every source →</a></p>
+</div>
+
+<div class="hb-foot"><img src="hive-bee.png" alt=""><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-tag">Independent · Accountability · Journalism</span><p class="hb-line">The Weber County Hive and Utah Hive Politics: the people's publication. We investigate what's best for the public as a whole, not for any party or special interest group.</p><p class="hb-tips"><a class="hb-btn" href="https://weber-county-hive.github.io/-weber-county-hive-index/tips.html#send">Send a tip</a><a class="hb-btn hb-btn2" href="https://weber-county-hive.github.io/-weber-county-hive-index/tips.html">Tips we checked</a><a class="hb-btn hb-btn2" href="https://weber-county-hive.github.io/-weber-county-hive-index/tips.html#send">See a mistake? Tell us</a></p><p class="hb-small">We never name tipsters. When we correct a page, the fix and its date are shown on the page.</p><p class="hb-small"><a href="https://webercountyhive.substack.com/" style="color:#d4af37">webercountyhive.substack.com</a></p></div>
+
+<script data-goatcounter="https://weberhive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

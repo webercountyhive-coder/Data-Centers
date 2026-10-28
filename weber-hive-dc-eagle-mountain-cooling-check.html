@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>"Zero Water" in Eagle Mountain? A Comment We Checked | Utah Hive Politics</title>
+<meta name="description" content="A reader comment says Eagle Mountain's new data centers use closed-loop cooling with zero water lost. What the records show: true for the QTS campus's cooling loop, by the company's own account — but not for every data center there, and not for all the water a data center uses.">
+<link rel="icon" type="image/png" href="hive-bee.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --panel:#f4f7fc; --ink:#14213d; --ink-soft:#3d4a66; --blue:#1f5fbf; --blue-soft:#e3ecfa;
+  --line:#d5deec; --ok:#2f7d3e; --okbg:#eaf6ec; --warn:#a36a00; --warnbg:#fff6dc; --q:#5a4a9c; --qbg:#efecfa;
+}
+*{box-sizing:border-box}
+html{font-size:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.65}
+a{color:var(--blue)}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+.dc-top{background:var(--ink);padding:10px 0}
+.dc-top a{color:#fff;font-family:Arial,sans-serif;font-size:.8rem;text-decoration:none}
+.hero{padding:32px 0 16px;border-bottom:4px solid var(--blue)}
+.eyebrow{font-family:Arial,sans-serif;font-size:.78rem;letter-spacing:.12em;font-weight:700;color:var(--blue);text-transform:uppercase}
+h1{font-size:2.05rem;line-height:1.2;margin:.3em 0;text-wrap:balance}
+h2{font-size:1.5rem;margin:1.8em 0 .5em;border-bottom:2px solid var(--line);padding-bottom:.2em}
+.dek{font-size:1.12rem;color:var(--ink-soft)}
+.dates{font-family:Arial,sans-serif;font-size:.85rem;color:var(--ink-soft);margin:.5em 0}
+.short{background:var(--blue-soft);border-left:6px solid var(--ink);border-radius:6px;padding:16px 20px;margin:22px 0}
+.short h2{margin:0 0 6px;border:0;padding:0;font-size:1.3rem}
+.short ul{margin:0 0 8px 20px;padding:0}.short li{margin:6px 0}
+.short .more a{font-weight:700}
+.ww{display:grid;grid-template-columns:1fr 2fr;gap:14px;margin:18px 0}
+@media(max-width:700px){.ww{grid-template-columns:1fr}}
+.ww>div{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.lbl{font-family:Arial,sans-serif;font-size:.75rem;letter-spacing:.14em;font-weight:700;color:var(--blue)}
+.ww ul{margin:6px 0 0 18px;padding:0;font-size:.92rem}.ww li{margin:4px 0}
+blockquote{margin:16px 0;padding:14px 18px;background:#fafafa;border-left:5px solid #9aa6bd;font-style:italic;color:#2a3550}
+.cap{font-size:.85rem;color:var(--ink-soft);font-family:Arial,sans-serif}
+.table-scroll{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:620px}
+th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+th{background:var(--ink);color:#fff;font-family:Arial,sans-serif;font-size:.82rem}
+.r{font-family:Arial,sans-serif;font-weight:700;font-size:.82rem;white-space:nowrap;border-radius:4px;padding:3px 7px;display:inline-block}
+.r.ok{background:var(--okbg);color:var(--ok)}.r.part{background:var(--warnbg);color:var(--warn)}.r.op{background:var(--qbg);color:var(--q)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:22px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat .n{font-family:Arial,sans-serif;font-size:1.6rem;font-weight:700;color:var(--blue)}
+.stat .l{font-size:.88rem;color:var(--ink-soft)}
+.box{background:var(--panel);border-left:5px solid var(--blue);padding:14px 16px;margin:18px 0;border-radius:4px}
+.box.fair{background:#eef7ee;border-left-color:#3c8a4a}
+.mermaid{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0;text-align:center;overflow-x:auto}
+.ask li,.connect li{margin:10px 0}
+.connect span{display:block;font-size:.9rem;color:var(--ink-soft)}
+details{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:24px 0}
+summary{cursor:pointer;font-weight:700;font-family:Arial,sans-serif}
+details li{font-size:.88rem;margin:8px 0}
+/* Hive branding bars (top and bottom) */
+.hb-bar{background:#0d0b0a;border-bottom:1px solid #3a2f1c;padding:10px 20px;}
+.hb-bar a{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;text-decoration:none;}
+.hb-bar img{width:52px;height:52px;border-radius:4px;display:block;flex:none;}
+.hb-name{font-family:'Cinzel','Trajan Pro',Georgia,serif;color:#d4af37;font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;display:block;}
+.hb-sub{font-family:Georgia,serif;font-style:italic;color:#b8956a;font-size:12.5px;letter-spacing:.02em;display:block;margin-top:2px;}
+.hb-line-top{display:block;font-family:Georgia,serif;color:#e8d9b5;font-size:13px;margin-top:4px}
+.hb-foot{background:#0d0b0a;color:#b8956a;text-align:center;padding:26px 20px 30px;font-family:Georgia,serif;margin-top:40px}
+.hb-foot img{width:52px;height:52px;display:block;margin:0 auto 10px;}
+.hb-foot .hb-name{font-size:14px;}
+.hb-foot .hb-tag{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a7650;margin-top:8px;display:block;}
+.hb-line{max-width:720px;margin:14px auto 0;color:#e8d9b5;font-size:15.5px;line-height:1.5}
+.hb-tips{margin:16px 0 4px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hb-btn{display:inline-block;border:2px solid #d4af37;background:#d4af37;color:#0d0b0a;font:700 15px Georgia,serif;padding:10px 18px;border-radius:6px;text-decoration:none}
+.hb-btn2{background:transparent;color:#d4af37}
+.hb-small{font-size:12.5px;color:#8a7650;margin:6px 0 0}
+@media(max-width:600px){.hb-bar{padding:8px 16px}.hb-bar img{width:38px;height:38px}.hb-name{font-size:13px}.hb-sub{font-size:11.5px}.hb-line-top{font-size:11.5px}html{font-size:18px}}
+@media(max-width:640px){table{min-width:0}table,tbody,tr,td{display:block;width:100%}tr:first-child{display:none}tr{border:1px solid var(--line);border-radius:8px;margin:0 0 12px;overflow:hidden}td{border:0;border-bottom:1px solid var(--line)}td:first-child{background:var(--panel);font-weight:700}}
+</style>
+</head>
+<body>
+
+<div class="hb-bar"><a href="https://webercountyhive.substack.com/" target="_blank" rel="noopener"><img src="uhp-badge.png" alt="Utah Hive Politics logo"><span><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-line-top">The people's publication. We investigate what's best for the public as a whole, not any party or special interest.</span></span></a></div>
+<div class="dc-top"><div class="wrap"><a href="index.html">← All Data Centers pages</a> &nbsp;·&nbsp; <a href="https://weber-county-hive.github.io/-weber-county-hive-index/">Hive library ↗</a></div></div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="eyebrow">A comment we checked · Eagle Mountain · Water</div>
+  <h1>"Zero Water Lost"? What the Records Say About Eagle Mountain's Data Center Cooling</h1>
+  <p class="dek">A reader comment says the data centers being built in Eagle Mountain use closed-loop cooling and lose no water to evaporation. Part of that matches the record. Part of it leaves things out.</p>
+  <p class="dates">Posted Oct. 28, 2026 · Updated Oct. 28, 2026</p>
+</div>
+
+<section class="short"><h2>The short version</h2><ul>
+<li>QTS, the campus going up in Eagle Mountain now, says it uses closed-loop cooling that "would only need to be filled once." That is the company's own claim; no independent numbers have been published.</li>
+<li>Not every Eagle Mountain data center works that way. Meta's campus there withdrew more than 35 million gallons in 2024, and a 2018 city agreement keeps its monthly water use confidential.</li>
+<li>"Zero water" covers the cooling loop only. The buildings still use city water, and experts say the larger share of a data center's water use is usually at the power plants that make its electricity.</li>
+<li>Utah's new water-reporting law (H.B. 76) only covers data centers that open on or after July 1, 2026 and pass a 75 acre-foot yearly line.</li>
+</ul><p class="more"><a href="weber-hive-dc-eagle-mountain-cooling-check-plain.html">Read the plain-words version →</a></p></section>
+
+<div class="ww">
+  <div><div class="lbl">WHERE</div><p style="margin:6px 0 0">Eagle Mountain (Utah County) · West Jordan (Salt Lake County), for comparison</p></div>
+  <div><div class="lbl">WHO</div><ul>
+    <li><b>QTS Data Centers</b> — building a 193-acre, three-building campus in Eagle Mountain</li>
+    <li><b>Meta</b> — runs the Eagle Mountain data center approved in 2018</li>
+    <li><b>Novva</b> — West Jordan data center that already runs a closed-loop system</li>
+    <li><b>Eagle Mountain City</b> — party to the development agreements</li>
+    <li><b>Rep. Jill Koford</b> — primary sponsor of H.B. 76 (2026), data center water reporting</li>
+  </ul></div>
+</div>
+
+<h2>The comment</h2>
+<p>This was posted publicly in reply to data center coverage. We don't name commenters. Here it is word for word:</p>
+<blockquote>"Oh no! Development! Data centers are not perfect neighbors for sure but most armageddon hysteria is either based on old technology or pure political BS. Centers under construction right now in Eagle Mountain are built with newer technology and closed loop cooling much like the radiator in your car. ZERO water lost to evaporation. It's much more expensive than evaporative cooling but used here and other centers in environmentally challenging areas. Rather than complain about old practices (like old school little kids riding in the back windows of cars) you should be cheering and fighting for those mean old billionaires to use those newer, more expensive technologies that meet local needs."</blockquote>
+
+<div class="stats">
+  <div class="stat"><div class="n">1 fill</div><div class="l">QTS says its cooling loop needs to be filled only once (fill size not published)</div></div>
+  <div class="stat"><div class="n">35M+ gal</div><div class="l">Meta Eagle Mountain water withdrawal in 2024, per Meta</div></div>
+  <div class="stat"><div class="n">75 acre-ft</div><div class="l">yearly withdrawal (about 24.4M gallons) that triggers H.B. 76 reporting</div></div>
+</div>
+
+<h2>Claim by claim</h2>
+<div class="table-scroll"><table>
+<tr><th style="width:28%">The comment says</th><th>What the records show</th><th style="width:15%">Rating</th></tr>
+<tr><td>Centers under construction now in Eagle Mountain use closed-loop cooling.</td><td>QTS says its Eagle Mountain campus uses a closed-loop system that "would only need to be filled once." Construction topped out April 17, 2026, with completion expected later in 2026. This is the developer's description; no outside measurement has been published.</td><td><span class="r ok">✅ True for QTS</span></td></tr>
+<tr><td>"Much like the radiator in your car."</td><td>A closed loop recirculates the same coolant instead of evaporating it, which is the comparison the comment makes. Novva in West Jordan describes its system the same way.</td><td><span class="r ok">✅ Fair comparison</span></td></tr>
+<tr><td>"ZERO water lost to evaporation."</td><td>QTS executives say the campus "won't consume any additional water for cooling systems once the project is operational." That covers the cooling loop. The buildings still use city water for the first fill, bathrooms, kitchens, irrigation and humidification (KUTV). Water used to make the campus's electricity is not counted. And Meta's campus in the same city withdrew more than 35 million gallons in 2024.</td><td><span class="r part">⚠️ Partly true</span></td></tr>
+<tr><td>"Much more expensive than evaporative cooling."</td><td>Novva's CEO says his closed-loop system needs more energy, and that evaporative cooling would have used about 250 million gallons a year at his campus. No cost figures for QTS were found in the records reviewed.</td><td><span class="r part">⚠️ Partly shown</span></td></tr>
+<tr><td>Used "here and other centers."</td><td>Novva (West Jordan) uses closed-loop cooling and reported about 3 million gallons in a year, roughly two-thirds of it for landscaping, plus a one-time 55,000-gallon fill.</td><td><span class="r ok">✅ True</span></td></tr>
+<tr><td>Concerns are "hysteria" or "political BS."</td><td>An opinion, not something a public record can confirm or rule out.</td><td><span class="r op">Opinion</span></td></tr>
+</table></div>
+
+<h2>Where the water still goes</h2>
+<p>A closed loop takes evaporation out of the cooling step. It doesn't take water out of the whole picture.</p>
+<pre class="mermaid">
+flowchart TB
+  A["City water"] --> B["Cooling loop<br/>filled once<br/>(size not published)"]
+  A --> C["Building use<br/>bathrooms, kitchens,<br/>irrigation, humidity"]
+  D["Power plants"] --> E["Electricity for servers<br/>and for the loop's fans<br/>and pumps"]
+  E --> F["Data center"]
+  B --> F
+  C --> F
+  D -.-> G["Water used making power<br/>usually the larger share,<br/>per researchers"]
+</pre>
+<p class="cap">Sources: Utah News Dispatch (April 2026), KUTV (April 21, 2026). The "larger share" point is from Ben Abbott and Hilary Hungerford as quoted by KUTV.</p>
+
+<div class="box fair"><b>To be fair to the comment:</b> it's right that closed-loop cooling is a real improvement over evaporative cooling, and that it costs more energy to run. Novva's CEO estimated his campus would use about 250 million gallons a year with evaporative cooling, compared with about 3 million with his system. If QTS's numbers hold up, that is a meaningful difference.</div>
+
+<h2>Will anyone be able to check?</h2>
+<p>Utah's new law, H.B. 76 (primary sponsor Rep. Jill Koford), requires data centers of 10,000 square feet or more to report their water use to the state, which posts the numbers. It covers only centers that begin operating on or after July 1, 2026, and only those that withdraw 75 acre-feet a year or more (about 24.4 million gallons). Reports are due Sept. 1 each year.</p>
+<ul>
+<li><b>QTS</b> is expected to open after July 1, 2026. If its yearly withdrawal reaches the 75 acre-foot line, its numbers will be public. If its closed loop keeps it below that line, it won't have to report.</li>
+<li><b>Meta</b> opened before July 1, 2026, so H.B. 76 doesn't require it to report. Whether new buildings at an older campus count as "new" is not settled in the records reviewed.</li>
+</ul>
+<p>Rep. Koford told KUTV the bill is "a start." Full details: <a href="weber-hive-dc-hb76.html">our H.B. 76 page</a>.</p>
+
+<section class="ask"><h2>Questions to ask, and to whom</h2><ul>
+<li><b>Ask: Eagle Mountain City Council, public comment at a council meeting</b> — How many gallons did the QTS closed-loop system take for its first fill, and what yearly water use is written into the QTS development agreement?</li>
+<li><b>Ask: Eagle Mountain City Council</b> — Will the city make Meta's monthly water use public, now that the campus has grown since the 2018 agreement?</li>
+<li><b>Ask: Utah Division of Water Rights</b> — Will the QTS Eagle Mountain campus file an H.B. 76 report, and when will its numbers be posted?</li>
+<li><b>Ask: Legislature's Economic Development and Workforce Services Interim Committee, public comment</b> — Do new buildings at campuses that opened before July 1, 2026 count as "new" data centers under H.B. 76?</li>
+<li><b>Ask: Utah Public Service Commission, public comment on Rocky Mountain Power filings</b> — How much new electricity will the Eagle Mountain campuses draw, and from which power plants?</li>
+</ul></section>
+
+<section class="connect"><h2>Connecting stories</h2><ul>
+<li><a href="weber-hive-dc-hb76.html">H.B. 76: Data Center Water Reporting</a><span>Who the new law covers, the 75 acre-foot line, and a map of Utah data centers with public water numbers.</span></li>
+<li><a href="weber-hive-dc-meta-eagle-mountain.html">Meta in Eagle Mountain</a><span>The 2018 deal, water and energy use, and the filed 286 MW gas plant.</span></li>
+<li><a href="meta-eagle-mountain-gas-plant.html">Meta's Eagle Mountain gas plant</a><span>Where some of the campus's electricity is planned to come from.</span></li>
+<li><a href="weber-hive-dc-statewide-power.html">Statewide power for data centers</a><span>The bigger picture on the electricity side of the water question.</span></li>
+</ul></section>
+
+<details><summary>Sources (click to open)</summary><ul>
+<li>Alixel Cabrera, Utah News Dispatch, on the QTS 193-acre Eagle Mountain campus (closed-loop cooling, topping out April 17, 2026), republished by Kiowa County Press — <a href="https://kiowacountypress.net/content/utah-193-acre-data-center-campus-set-be-done-year-big-water-promises">kiowacountypress.net</a></li>
+<li>Brian Will, KUTV, "Questions grow over water use at massive QTS Data Center in Eagle Mountain," April 21, 2026 — <a href="https://kutv.com/news/utah-water/questions-grow-over-water-use-at-massive-qts-data-center-in-eagle-mountain">kutv.com</a></li>
+<li>Grist with The Salt Lake Tribune, on Meta Eagle Mountain and Novva water use, Jan. 21, 2026 — <a href="https://grist.org/technology/utah-data-center-water-supply-meta-novva">grist.org</a></li>
+<li>Eagle Mountain City, "QTS begins construction on new datacenter campus in Eagle Mountain" — <a href="https://eaglemountain.gov/qts-begins-construction-on-new-datacenter-campus-in-eagle-mountain">eaglemountain.gov</a></li>
+<li>H.B. 76 (2026), Data Center Water Transparency Amendments, enrolled bill, as summarized on <a href="weber-hive-dc-hb76.html">our H.B. 76 page</a> (posted Oct. 24, 2026).</li>
+<li>All articles read Oct. 28, 2026. Company water claims are as stated by the companies and were not independently measured in any source reviewed.</li>
+</ul></details>
+
+</div>
+
+<div class="hb-foot"><img src="hive-bee.png" alt=""><span class="hb-name">Utah Hive Politics</span><span class="hb-sub">from the publisher of The Weber County Hive</span><span class="hb-tag">Independent · Accountability · Journalism</span><p class="hb-line">The Weber County Hive and Utah Hive Politics: the people's publication. We investigate what's best for the public as a whole, not for any party or special interest group.</p><p class="hb-tips"><a class="hb-btn" href="https://weber-county-hive.github.io/-weber-county-hive-index/tips.html#send">Send a tip</a><a class="hb-btn hb-btn2" href="https://weber-county-hive.github.io/-weber-county-hive-index/tips.html">Tips we checked</a><a class="hb-btn hb-btn2" href="https://weber-county-hive.github.io/-weber-county-hive-index/tips.html#send">See a mistake? Tell us</a></p><p class="hb-small">We never name tipsters. When we correct a page, the fix and its date are shown on the page.</p><p class="hb-small"><a href="https://webercountyhive.substack.com/" style="color:#d4af37">webercountyhive.substack.com</a></p></div>
+
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs";
+mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{fontSize:"22px",fontFamily:"Georgia, serif",primaryColor:"#e3ecfa",primaryBorderColor:"#1f5fbf",primaryTextColor:"#14213d",lineColor:"#1f5fbf"}});
+</script>
+<script data-goatcounter="https://weberhive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
